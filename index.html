@@ -103,7 +103,7 @@
         <h3 class="page-title white-text teal">Experience</h3>
         <div class="container">
        
-          <div class="card">
+          <div class="card reveal">
             <div class="card-content">
               <div class="row">
                 <div class="col s12 m2"><a href="https://www.insight.com/" target="_blank"><img src="static/img/insight.png" class="responsive-img center-block" style="background-color: transparent;"></a></div>
@@ -799,4 +799,40 @@
       });
     </script>
   
+
+    <script>
+      // Scroll-reveal observer
+      (function() {
+        var targets = document.querySelectorAll('.card, section > .container > .row, #about .container > *');
+        targets.forEach(function(el) {
+          if (!el.classList.contains('reveal') && !el.classList.contains('reveal-left')) {
+            el.classList.add('reveal');
+          }
+        });
+
+        var observer = new IntersectionObserver(function(entries) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              // once revealed, unobserve
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.12 });
+
+        document.querySelectorAll('.reveal, .reveal-left, .reveal-stagger').forEach(function(el) {
+          observer.observe(el);
+        });
+      })();
+
+      // Subtle hero parallax
+      (function() {
+        var hero = document.getElementById('intro');
+        if (!hero) return;
+        window.addEventListener('scroll', function() {
+          var scrolled = window.pageYOffset;
+          hero.style.backgroundPositionY = (50 + scrolled * 0.15) + '%';
+        }, { passive: true });
+      })();
+    </script>
 </html>
