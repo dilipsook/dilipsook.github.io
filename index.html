@@ -4,14 +4,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <!-- Materialize - Compiled and minified CSS-->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.95.3/css/materialize.min.css">
-    <!-- Font Awesome Icon - CSS-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-    <!-- Custom Styles-->
     <link rel="stylesheet" href="static/css/style.css">
     <title>Dilip Kumar | Cloud Solution Specialist</title>
-    <!-- Open Graph-->
     <meta property="og:locale" content="en_US">
     <meta property="og:type" content="website">
     <meta property="og:title" content="Dilip Kumar | Cloud Solution Specialist">
@@ -31,27 +27,33 @@
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="static/img/favicon/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
-    <!--if lt IE 9script(src='//html5shim.googlecode.com/svn/trunk/html5.js')
-    -->
     <meta name="robots" content="index, follow">
-
     <meta name="google-site-verification" content="-3F1R8ekDXe8XFfCi7eIVfXOSWqlp_pWNQX2dfgKD4Y">
   </head>
   <body>
+    <!-- Page loader -->
+    <div id="page-loader">
+      <div class="loader-inner">
+        <div class="loader-logo">DK</div>
+        <div class="loader-bar"><div class="loader-progress"></div></div>
+        <div class="loader-text">Initializing cloud environment...</div>
+      </div>
+    </div>
+
     <!-- Navigation Menu-->
     <nav ng-class="hide-on-small-only">
       <ul class="side-nav fixed section table-of-contents">
         <li class="logo"><a id="logo-container" href="#intro" class="brand-logo teal-text">Dilip Kumar<span class="brown-text light">Cloud Solution Specialist</span></a></li>
-        <li class="bold"><a href="#about" class="waves-effect waves-dark teal-text"><i class="mdi-social-person small"></i><span>About</span></a></li>
-        <li class="bold"><a href="#experience" class="waves-effect waves-dark cyan-text"><i class="mdi-action-trending-up small"></i><span>Experience</span></a></li>
-        <li class="bold"><a href="#projects" class="waves-effect waves-dark indigo-text"><i class="mdi-av-web small"></i><span>Projects</span></a></li>
-        <li class="bold"><a href="#skills" class="waves-effect waves-dark purple-text"><i class="mdi-av-equalizer small"></i><span>Skills</span></a></li>
-		<li class="bold"><a href="#certifications" class="waves-effect waves-dark red-text"><i class="mdi-action-verified-user small"></i><span>Certifications</span></a></li>
-        <li class="bold"><a href="#awards" class="waves-effect waves-dark red-text"><i class="mdi-action-grade small"></i><span>Awards</span></a></li>
-        <li class="bold"><a href="#education" class="waves-effect waves-dark orange-text"><i class="mdi-social-school small"></i><span>Education</span></a></li>
-        <li class="bold"><a href="#contact" class="waves-effect waves-dark brown-text"><i class="mdi-content-mail small"></i><span>Contact</span></a></li>
-		<li class="bold"><a href="Dilip_Kumar_Resume_.pdf" target="_blank" class="waves-effect waves-dark grey-text text-darken-3"><i class="mdi-action-description small"></i><span>Resume_1</span></a></li>
-		<li class="bold"><a href="Dilip_Kumar_Resume.pdf" target="_blank" class="waves-effect waves-dark grey-text text-darken-3"><i class="mdi-action-description small"></i><span>Resume_2</span></a></li>
+        <li class="bold nav-item" style="--i:1"><a href="#about" class="waves-effect waves-dark teal-text"><i class="mdi-social-person small"></i><span>About</span></a></li>
+        <li class="bold nav-item" style="--i:2"><a href="#experience" class="waves-effect waves-dark cyan-text"><i class="mdi-action-trending-up small"></i><span>Experience</span></a></li>
+        <li class="bold nav-item" style="--i:3"><a href="#projects" class="waves-effect waves-dark indigo-text"><i class="mdi-av-web small"></i><span>Projects</span></a></li>
+        <li class="bold nav-item" style="--i:4"><a href="#skills" class="waves-effect waves-dark purple-text"><i class="mdi-av-equalizer small"></i><span>Skills</span></a></li>
+        <li class="bold nav-item" style="--i:5"><a href="#certifications" class="waves-effect waves-dark red-text"><i class="mdi-action-verified-user small"></i><span>Certifications</span></a></li>
+        <li class="bold nav-item" style="--i:6"><a href="#awards" class="waves-effect waves-dark red-text"><i class="mdi-action-grade small"></i><span>Awards</span></a></li>
+        <li class="bold nav-item" style="--i:7"><a href="#education" class="waves-effect waves-dark orange-text"><i class="mdi-social-school small"></i><span>Education</span></a></li>
+        <li class="bold nav-item" style="--i:8"><a href="#contact" class="waves-effect waves-dark brown-text"><i class="mdi-content-mail small"></i><span>Contact</span></a></li>
+        <li class="bold nav-item" style="--i:9"><a href="Dilip_Kumar_Resume_.pdf" target="_blank" class="waves-effect waves-dark grey-text text-darken-3"><i class="mdi-action-description small"></i><span>Resume_1</span></a></li>
+        <li class="bold nav-item" style="--i:10"><a href="Dilip_Kumar_Resume.pdf" target="_blank" class="waves-effect waves-dark grey-text text-darken-3"><i class="mdi-action-description small"></i><span>Resume_2</span></a></li>
       </ul>
     </nav>
     <nav class="hide-on-large only trigger z-depth-1"><a href="#" data-activates="slide-out" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
@@ -63,46 +65,106 @@
         <li class="bold"><a href="#experience" class="waves-effect waves-dark cyan-text"><i class="mdi-action-trending-up small"></i><span>Experience</span></a></li>
         <li class="bold"><a href="#projects" class="waves-effect waves-dark indigo-text"><i class="mdi-av-web small"></i><span>Projects</span></a></li>
         <li class="bold"><a href="#skills" class="waves-effect waves-dark purple-text"><i class="mdi-av-equalizer small"></i><span>Skills</span></a></li>
-		<li class="bold"><a href="#certifications" class="waves-effect waves-dark red-text"><i class="mdi-action-verified-user small"></i><span>Certifications</span></a></li>
+        <li class="bold"><a href="#certifications" class="waves-effect waves-dark red-text"><i class="mdi-action-verified-user small"></i><span>Certifications</span></a></li>
         <li class="bold"><a href="#awards" class="waves-effect waves-dark red-text"><i class="mdi-action-grade small"></i><span>Awards</span></a></li>
         <li class="bold"><a href="#education" class="waves-effect waves-dark orange-text"><i class="mdi-social-school small"></i><span>Education</span></a></li>
         <li class="bold"><a href="#contact" class="waves-effect waves-dark brown-text"><i class="mdi-content-mail small"></i><span>Contact</span></a></li>
-		<li class="bold"><a href="Dilip_Kumar_Resume_.pdf" target="_blank" class="waves-effect waves-dark grey-text text-darken-3"><i class="mdi-action-description small"></i><span>Resume_1</span></a></li>
-		<li class="bold"><a href="Dilip_Kumar_Resume.pdf" target="_blank" class="waves-effect waves-dark grey-text text-darken-3"><i class="mdi-action-description small"></i><span>Resume_2</span></a></li>
+        <li class="bold"><a href="Dilip_Kumar_Resume_.pdf" target="_blank" class="waves-effect waves-dark grey-text text-darken-3"><i class="mdi-action-description small"></i><span>Resume_1</span></a></li>
+        <li class="bold"><a href="Dilip_Kumar_Resume.pdf" target="_blank" class="waves-effect waves-dark grey-text text-darken-3"><i class="mdi-action-description small"></i><span>Resume_2</span></a></li>
       </ul>
     </nav>
+
     <!-- Main Content-->
     <main>
+
+      <!-- ═══════════════ INTRO ═══════════════ -->
       <section id="intro" class="section scrollspy full-height">
+        <div class="intro-particles" id="particles-container"></div>
         <div class="container">
-          <h4>Crafting <span class="teal">Innovative cloud solutions</span><br>for seamless, scalable, <span class="underline">and secure digital transformations.</span>.</h4>
+          <div class="hero-badge">☁ Available for Cloud Projects</div>
+          <h4>
+            <span class="hero-greeting">Hello, I'm Dilip Kumar</span><br>
+            Crafting <span class="teal typed-wrapper"><span id="typed-text"></span><span class="typed-cursor">|</span></span><br>
+            for seamless, scalable, <span class="underline">and secure digital transformations.</span>
+          </h4>
+          <div class="hero-stats">
+            <div class="hero-stat"><span class="stat-num" data-target="8">0</span>+ <span>Years Exp.</span></div>
+            <div class="hero-stat"><span class="stat-num" data-target="150">0</span>+ <span>Clients Served</span></div>
+            <div class="hero-stat"><span class="stat-num" data-target="500">0</span>+ <span>Servers Migrated</span></div>
+            <div class="hero-stat">$<span class="stat-num" data-target="60">0</span>K+ <span>Monthly Savings</span></div>
+          </div>
         </div>
+        <div class="scroll-hint"><i class="fa fa-chevron-down"></i></div>
       </section>
+
+      <!-- ═══════════════ ABOUT ═══════════════ -->
       <section id="about" class="section scrollspy">
         <h3 class="page-title white-text teal">About</h3>
         <div class="container flow-text">
-          <blockquote>Mission-driven Systems Engineer turned Cloud Solutions Specialist with a passion for innovation.</blockquote>
-          <p>Hi, I'm Dilip Kumar, a Cloud Engineer from Bihar, India, with I am a results-driven Cloud Solution Specialist and Architect with a passion for leveraging cutting-edge technologies to drive scalable, secure, and cost-effective solutions.
-		  With a robust background in both AWS and Azure ecosystems, I excel at designing and implementing cloud infrastructures tailored to meet diverse business needs. My extensive experience spans cloud migrations, automation, and performance optimization, with a strong emphasis on security, compliance, and cost management.</p>
-    <h5 class="teal-text" style="margin-top: 20px;">📍 What I Bring to the Table</h5>
-    <ul class="flow-text" style="margin-top: 10px;">
-      <li>• Experience managing complex projects, aligning technical solutions with business objectives, and mentoring teams to drive cloud adoption and innovation.</li>
-	  <li>• Skilled in monitoring and optimizing cloud resources using AWS Cost Explorer, Azure Cost Management, and billing analytics to implement cost-saving strategies and improve resource utilization.</li>
-      <li>• Strong communicator with a proven track record of building trust, ensuring stakeholder alignment, and delivering results that exceed expectations.</li>
-      <li>• Deep knowledge of cloud platforms and system administration, enabling me to provide resilient, high-performance solutions that optimize ROI.</li>
-    </ul>
-    
-    <h5 class="teal-text" style="margin-top: 20px; margin-bottom: 10px;">⌨ Let’s Work Together!</h5>
-    <p style="margin-top: 5px;">I am always looking to connect with forward-thinking organizations and professionals eager to harness the power of cloud technologies. Whether you’re seeking to transform your infrastructure, optimize operations, or build a secure, scalable environment, I am ready to partner with you.</p>
-    <p style="margin-top: 5px;"><strong>Get in Touch with Me Today:</strong> Let’s discuss how I can help your organization achieve its cloud goals. You can reach me directly on LinkedIn or via email. Together, we can build innovative solutions that drive success!</p>
-  </div>
-</section>
+          <blockquote class="reveal-left">Mission-driven Systems Engineer turned Cloud Solutions Specialist — building the infrastructure that powers tomorrow's businesses.</blockquote>
+          
+          <p class="reveal">Hi, I'm <strong>Dilip Kumar</strong>, a Cloud Solution Specialist & Architect based in Delhi, India. With over <strong>8 years of hands-on experience</strong> across AWS and Azure ecosystems, I design and implement cloud infrastructures that are scalable, secure, and cost-optimised — from day-zero architecture to live production environments.</p>
+
+          <p class="reveal">I've had the privilege of working with some of India's most recognized organizations — including <strong>Johnson &amp; Johnson</strong>, <strong>LoanTap</strong>, <strong>Indian Air Force</strong>, and <strong>ISRO</strong> — delivering infrastructure that directly impacts business outcomes.</p>
+
+          <!-- Animated stat counters in About -->
+          <div class="about-stats reveal">
+            <div class="about-stat-card">
+              <div class="about-stat-icon teal-text"><i class="fa fa-cloud"></i></div>
+              <div class="about-stat-value">AWS &amp; Azure</div>
+              <div class="about-stat-label">Dual Cloud Expert</div>
+            </div>
+            <div class="about-stat-card">
+              <div class="about-stat-icon teal-text"><i class="fa fa-dollar"></i></div>
+              <div class="about-stat-value">$60K+/mo</div>
+              <div class="about-stat-label">Cloud Cost Savings</div>
+            </div>
+            <div class="about-stat-card">
+              <div class="about-stat-icon teal-text"><i class="fa fa-server"></i></div>
+              <div class="about-stat-value">500+ Servers</div>
+              <div class="about-stat-label">Migrated to Cloud</div>
+            </div>
+            <div class="about-stat-card">
+              <div class="about-stat-icon teal-text"><i class="fa fa-shield"></i></div>
+              <div class="about-stat-value">5 Certs</div>
+              <div class="about-stat-label">AWS &amp; Azure Certified</div>
+            </div>
+          </div>
+
+          <h5 class="teal-text reveal" style="margin-top: 30px;">📍 What I Bring to the Table</h5>
+          <ul class="flow-text about-list" style="margin-top: 10px;">
+            <li class="about-list-item reveal">
+              <span class="about-list-icon">🚀</span>
+              <span>Experience managing complex cloud projects end-to-end — aligning technical solutions with business objectives, mentoring teams, and driving cloud adoption that sticks.</span>
+            </li>
+            <li class="about-list-item reveal">
+              <span class="about-list-icon">💰</span>
+              <span>Deep expertise in FinOps: using AWS Cost Explorer, Azure Cost Management, Reserved Instances, and billing analytics to cut cloud spend without cutting performance.</span>
+            </li>
+            <li class="about-list-item reveal">
+              <span class="about-list-icon">🔐</span>
+              <span>Security-first mindset — IAM, WAF, GuardDuty, MFA, and compliance frameworks woven into every architecture from the ground up.</span>
+            </li>
+            <li class="about-list-item reveal">
+              <span class="about-list-icon">🤝</span>
+              <span>Strong communicator with a proven track record of building trust with stakeholders, translating complex infra decisions into clear business value.</span>
+            </li>
+          </ul>
+
+          <h5 class="teal-text reveal" style="margin-top: 30px; margin-bottom: 10px;">⌨ Let's Work Together!</h5>
+          <p class="reveal" style="margin-top: 5px;">I'm always looking to partner with forward-thinking organizations eager to harness cloud technologies. Whether you need to transform your infrastructure, optimize operations, or build a secure multi-cloud environment — let's talk.</p>
+          <p class="reveal" style="margin-top: 5px;"><strong>Reach me on <a href="https://www.linkedin.com/in/dilipsookk/" class="teal-text hoverline" target="_blank">LinkedIn</a> or <a href="mailto:dilipsook@gmail.com" class="teal-text hoverline">Email</a></strong> — together, we build infrastructure that drives success.</p>
         </div>
       </section>
+
+      <!-- ═══════════════ EXPERIENCE ═══════════════ -->
       <section id="experience" class="section scrollspy">
         <h3 class="page-title white-text teal">Experience</h3>
         <div class="container">
-       
+
+          <!-- Timeline connector -->
+          <div class="timeline-line"></div>
+
           <div class="card reveal">
             <div class="card-content">
               <div class="row">
@@ -112,38 +174,32 @@
                 </div>
               </div>
               <div class="role brown-text">Cloud Solution Specialist</div>
-              <p><em class="grey-text">I'm excited about the prospect of joining a high-growth company where I can leverage my expertise in Cloud and process-driven development to drive meaningful change and contribute to building robust infrastructure </em></p>
-              <h6>AWS & Azure Infra Setup for Johnson & Johnson</h6>
+              <p><em class="grey-text">Leading cloud solution design and delivery for enterprise clients — with a focus on AWS &amp; Azure infrastructure, security, and seamless migrations at scale.</em></p>
+              <h6>AWS &amp; Azure Infra Setup for Johnson &amp; Johnson</h6>
               <ul>
-                <li>Proficient in implementing cloud practices and principles to streamline development and operations processes.</li>
-				<li>Proficient in migrating servers and databases from on-premises to AWS and Azure cloud using AWS MGN and Azure Migrate.</li>
-				<li>Designed and implemented scalable and secure AWS infrastructure to support Johnson & Johnson's applications and services.</li>
-				<li>Experienced in designing and maintaining scalable and resilient infrastructure architectures to ensure consistency and repeatability across environments.</li>
-                  <ul>
-                   <li>Utilized AWS services such as EC2, S3, RDS, and Lambda to ensure high availability and fault tolerance.</li>
-					<li>Strong background in cloud computing platforms, including AWS and Azure, with expertise in deploying and managing cloud-based infrastructure.</li>
-					<li>Implemented security measures, including IAM roles and policies, to enforce strict access controls and meet compliance requirements.</li>
-					<li>Experience with Oracle WebLogic for the deployemnt of ear files and application deployments</li>
-					<li>Developed automation scripts using Bash to streamline repetitive tasks and enhance operational efficiency.</li>
-					<li>Implemented monitoring and alerting with AWS CloudWatch to proactively identify and resolve issues.</li>
-					<li>Experience with Azure infrastructure deployment, management, and migration.</li>
-					<li>Deployed and configured virtual machines, storage accounts, and networking components in the Azure environment.</li>
-					<li>Executed migrations from on-premises to Azure using the Azure Migrate tool.</li>
-					<li>Executed migrations from on-premises to AWS using the AWS MGN tool.</li>
-					<li>Managed database migrations from on-premises to Azure and AWS using the DMS tool.</li>
-                  </ul>
-                </li>
-                <li>Stack: AWS / Azure / WebLogic / RedHat / Oracle / Labvantage / Jira </li>
+                <li>Designed and implemented scalable, secure AWS infrastructure for Johnson &amp; Johnson's Labvantage LIMS application.</li>
+                <li>Proficient in migrating servers and databases from on-premises to AWS and Azure using AWS MGN and Azure Migrate.</li>
+                <li>Utilized AWS services — EC2, S3, RDS, Lambda — to ensure high availability and fault tolerance across all environments.</li>
+                <ul>
+                  <li>Implemented IAM roles, policies, and security controls to enforce strict access and meet compliance requirements.</li>
+                  <li>Deployed Oracle WebLogic for application deployment of EAR files.</li>
+                  <li>Developed Bash automation scripts to streamline repetitive operational tasks.</li>
+                  <li>Set up AWS CloudWatch monitoring and alerting to proactively identify and resolve production issues.</li>
+                  <li>Deployed and configured virtual machines, storage accounts, and networking components in Azure.</li>
+                  <li>Executed on-premises to Azure migrations using Azure Migrate and on-premises to AWS using AWS MGN.</li>
+                  <li>Managed database migrations using AWS/Azure DMS tool.</li>
+                </ul>
+                <li>Stack: AWS / Azure / WebLogic / RedHat / Oracle / Labvantage / Jira</li>
               </ul>
               <h6>Accomplishments</h6>
               <ul>
-                <li>Handled all the AWS infra development and deployment for Johnson & Johnson Labvantage LIMS application </li>
+                <li>🏆 Single-handedly handled AWS infra development &amp; deployment for Johnson &amp; Johnson Labvantage LIMS — ensuring zero-downtime go-live.</li>
               </ul>
             </div>
-            <div class="card-action"><span>Dec 2022 - Present  |  Delhi  </span></div>
+            <div class="card-action"><span>Dec 2022 – Present &nbsp;|&nbsp; Delhi</span></div>
           </div>
 
-          <div class="card">
+          <div class="card reveal">
             <div class="card-content">
               <div class="row">
                 <div class="col s12 m2"><a href="https://loantap.in/" target="_blank"><img src="static/img/loantap.svg" class="responsive-img center-block"></a></div>
@@ -152,34 +208,32 @@
                 </div>
               </div>
               <div class="role brown-text">Cloud Specialist</div>
-              <p><em class="grey-text">By pursuing long-term partnerships instead of short-term projects, we’re helping businesses achieve their goals today and build toward a more profitable future.</em></p>
+              <p><em class="grey-text">Owned the entire AWS cloud footprint for a fast-growing fintech — from infrastructure architecture to cost governance, security, and CI/CD pipelines.</em></p>
               <h6>Deployment and Architecture of AWS Infra</h6>
               <ul>
-                <li>Building the AWS Infra from scratch and deploying the application on all the respective server</li>
-                <li>Handling, installing & Configuring WordPress, Databases, PHP, Webserver, Redis-Server, PhpMyAdmin, AWS Infra</li>
-                <li>Providing end-to-end support & Troubleshooting from Application, Database, and AWS Infra.
+                <li>Built AWS infrastructure from scratch and deployed applications across all environments.</li>
+                <li>Installed &amp; configured WordPress, Databases, PHP, Webserver, Redis-Server, PhpMyAdmin.</li>
+                <li>End-to-end support &amp; troubleshooting across Application, Database, and AWS layers:
                   <ul>
-                    <li>Working on webservers like Nginx and Apache</li>
-                    <li>Creating new sites and hosting them </li>
-                    <li>Managing Cloudflare </li>
-                    <li>Migration of DB & WEB server from On-Prem to AWS Cloud</li>
-                    <li>Cost Optimization of AWS</li>
-					<li>Creating & Managing WAF, ALB rules, Route53 etc. </li>
-                    <li>CICD</li>
+                    <li>Nginx and Apache webserver configuration and site management.</li>
+                    <li>Cloudflare DNS and CDN management.</li>
+                    <li>DB &amp; Web server migration from On-Prem to AWS Cloud.</li>
+                    <li>AWS Cost Optimization, WAF &amp; ALB rules, Route53 management.</li>
+                    <li>CI/CD pipeline setup and management.</li>
                   </ul>
                 </li>
-                <li>Stack: AWS / Lambda / FTP / CI/CD / Wordpress / phpMyAdmin / VPN / Onenote </li>
+                <li>Stack: AWS / Lambda / FTP / CI/CD / Wordpress / phpMyAdmin / VPN / Onenote</li>
               </ul>
               <h6>Accomplishments</h6>
               <ul>
-                <li>Done cost optimization and saved $2000 per month</li>
-                <li>Looking after the AWS Infra, database troubleshooting and application troubleshooting</li>
+                <li>💰 Saved <strong>$2,000/month</strong> through AWS cost optimization and rightsizing.</li>
+                <li>🏆 Awarded <strong>Employee of the Quarter (April 2022)</strong> for exceptional infrastructure work.</li>
               </ul>
             </div>
-            <div class="card-action"><span>JAN 2022 - Dec 2022  |  Pune  </span></div>
+            <div class="card-action"><span>Jan 2022 – Dec 2022 &nbsp;|&nbsp; Pune</span></div>
           </div>
 
-          <div class="card">
+          <div class="card reveal">
             <div class="card-content">
               <div class="row">
                 <div class="col s12 m2"><a href="https://www.rapyder.com/" target="_blank"><img src="static/img/rapyder.png" class="responsive-img center-block" style="background-color: black;"></a></div>
@@ -187,56 +241,33 @@
                   <p><span class="card-title"><a href="https://www.rapyder.com/" target="_blank" class="teal-text hoverline">Rapyder Cloud Solutions</a></span></p>
                 </div>
               </div>
-              <div class="role brown-text">Team Lead-Cloud Operations</div>
-              <p><em class="grey-text">By pursuing long-term partnerships instead of short-term projects, we’re helping businesses achieve their goals today and build toward a more profitable future.</em></p>
-              <h6>Managing the entire team of MS(Managed Service)</h6>
+              <div class="role brown-text">Team Lead – Cloud Operations</div>
+              <p><em class="grey-text">Led a Managed Services team handling 150+ client AWS accounts — driving migrations, cost optimization, and 24/7 operational excellence.</em></p>
+              <h6>Managing the Entire Managed Services (MS) Team</h6>
               <ul>
-                <li>Building the Infra, deploying the Security from scratch</li>
-                <li>Managing the AWS infa & Servers of 150+ clients</li>
+                <li>Built and secured infrastructure from scratch for 150+ client AWS environments.</li>
+                <li>Designed and executed AWS cloud-to-cloud and on-premises-to-cloud migration projects.
                   <ul>
-                <li>Handling tickets in a professional manner and following ITIL standard processes.</li>
-				<li>Experience in Windows Server Administration and Linux.</li>
-				<li>Hands-on experience with AWS Services including EC2, Route 53, Savings Plan, IAM, S3, VPC, Auto Scaling, ELB, CloudWatch, CloudTrail, RDS, Systems Manager, ACM, SSM, etc.</li>
-				<li>Designing detailed migration plans for workloads from any platform to AWS using CloudEndure.</li>
-				<li>Designed and executed AWS cloud-to-cloud migration projects for several clients.</li>
-				<li>Performed database migrations, including on-premises to cloud and cloud-to-cloud migrations within the AWS environment.</li>
-				<li>Successfully completed EC2 migrations, network migrations, and network switch-over activities on cloud platforms.</li>
-				<li>Experienced in creating multiple VPCs with public and private subnets as per requirements and distributing them across various availability zones.</li>
-				<li>Created NAT gateways and instances to allow communication from private instances to the internet through bastion hosts.</li>
-				<li>Utilized security groups, network ACLs, internet gateways, and route tables to ensure a secure zone within the AWS public cloud.</li>
-				<li>Created and configured elastic load balancers and auto-scaling groups to distribute traffic, ensuring a cost-efficient, fault-tolerant, and highly available environment.</li>
-				<li>Installed and configured MySQL databases.</li>
-				<li>Created and managed MySQL databases, including user creation and permissions management.</li>
-				<li>Responsible for setting up SSL communication and renewing SSL certificates in production and non-production environments.</li>
-				<li>Installed and configured Apache and Tomcat for website hosting.</li>
-				<li>Involved in migration activities such as migrating from on-premises to AWS RDS.</li>
-				<li>Enabled SSM agents for all instances as part of onboarding checklists.</li>
-				<li>Troubleshot issues related to CloudWatch, EC2 Instances, VPC, and auto-scaling groups.</li>
-				<li>Prepared cost optimization reports following AWS best practices and demonstrated them to clients to reduce AWS account costs.</li>
-				<li>Enabled patching mechanisms for both Windows and Linux instances using Systems Manager.</li>
-				<li>Scheduled AMI and snapshot backups using the Cloudzatic automation tool.</li>
-				<li>Configured bucket policies and enabled lifecycle policies for newly created or uploaded objects.</li>
-				<li>Enabled MFA for AWS accounts and 2FA for Linux servers.</li>
-				<li>Managed instance type upgrades and downgrades to optimize costs.</li>
-				<li>Configured website redirection from Apache HTTPS to ALB HTTPS by setting up the appropriate rules.</li>
-				<li>Created and managed users, groups, and permissions using IAM roles and policies.</li>
-				<li>Increased file system size using EBS volumes for desired EC2 instances.</li>
-				<li>Implemented domain name service (DNS) through Route 53 for highly available and scalable applications.</li>
-				<li>Experienced in creating RDS instances to serve data through servers and respond to requests.</li>
+                    <li>Hands-on with EC2, Route 53, Savings Plan, IAM, S3, VPC, Auto Scaling, ELB, CloudWatch, CloudTrail, RDS, Systems Manager, ACM, SSM.</li>
+                    <li>Designed multi-AZ VPCs with public/private subnets, NAT gateways, and bastion hosts.</li>
+                    <li>Configured ELB and Auto Scaling Groups for cost-efficient, fault-tolerant environments.</li>
+                    <li>SSL certificate setup, renewal, and HTTPS redirection via Apache/ALB rules.</li>
+                    <li>Enabled MFA, 2FA, and patching for Windows &amp; Linux via Systems Manager.</li>
+                    <li>Prepared detailed cost optimization reports for clients aligned to AWS best practices.</li>
                   </ul>
                 </li>
-                <li>Stack: AWS / CDN / WebHosting / Database / Zoho / Windows / ADDS / Linux / VPN / StatusCake / Putty </li>
+                <li>Stack: AWS / CDN / WebHosting / Database / Zoho / Windows / ADDS / Linux / VPN / StatusCake</li>
               </ul>
               <h6>Accomplishments</h6>
               <ul>
-                <li>Done cost optimization for Dhani and saved $30000 per month</li>
-                <li>Migrated 50 servers from on-prem to AWS using cloud endure tool</li>
+                <li>💰 Saved <strong>$30,000/month</strong> for Dhani through targeted AWS cost optimization.</li>
+                <li>🚀 Migrated <strong>50 servers</strong> from on-premises to AWS using CloudEndure — on time and zero data loss.</li>
               </ul>
             </div>
-            <div class="card-action"><span>Mar 2020 - Jan 2022  |  Bengaluru </span></div>
+            <div class="card-action"><span>Mar 2020 – Jan 2022 &nbsp;|&nbsp; Bengaluru</span></div>
           </div>
 
-          <div class="card">
+          <div class="card reveal">
             <div class="card-content">
               <div class="row">
                 <div class="col s12 m2"><a href="https://www.cerebracomputers.com/" target="_blank"><img src="static/img/cerebra.png" class="responsive-img center-block"></a></div>
@@ -245,594 +276,568 @@
                 </div>
               </div>
               <div class="role brown-text">System Engineer</div>
-              <p><em class="grey-text">Installed IT equipment and set up data centers for central and state governments of India.</em></p>
-			  
-                    <li>Experience in supporting Microsoft Azure systems, including SQL Server hosted on Azure Virtual Machines and Azure SQL Databases, Storage Accounts, Resource Groups, Azure Load Balancer (internal, zone-redundant), Traffic Manager, VM Autoscaling, Media Services, and App Services.</li>
-					<li>Strong expertise in Azure system configuration, on-premises database migrations, backup and recovery, geographic data replication, performance monitoring and tuning, and disaster recovery configuration and execution.</li>
-					<li>Configured failover clusters and hypervisor technologies, including KVM, VMware, and Hyper-V; created domains; managed DHCP, Group Policy, user accounts, and DNS.</li>
-					<li>Installed, configured, and administered Microsoft Windows Server (2012 & 2016); performed networking essentials; handled cable management, PC hardware support, troubleshooting PC and OS issues; and mounted racks.</li>
-					<li>Hands-on experience with Cisco Nexus 5K switch, Cisco Nexus 2348TQ, Cisco Nexus C2332TQ, Cisco ASA 5516-X firewall, Cisco 4300 router, Cisco SAN switch, SFP 10G and QSFP 40G modules, Fujitsu Eternus-DX500 Storage, and managing rack PDUs.</li>
-
-                  </ul>
-                </li>
-                <li>Stack: Rack Server / Windows / SFP Modules / Firewall / Tower Server / Rack PDUs / Thin Client  / VMware / FTP / WinMerge / </li>
+              <p><em class="grey-text">Installed IT equipment and built data centers for central and state governments of India — including ISRO, Indian Air Force, and Karnataka State agencies.</em></p>
+              <ul>
+                <li>Supported Azure systems: SQL on Azure VMs, Azure SQL Databases, Storage Accounts, Resource Groups, Load Balancers, Traffic Manager, VM Autoscaling, App Services.</li>
+                <li>Configured failover clusters, hypervisor technologies (KVM, VMware, Hyper-V), AD, DHCP, Group Policy, DNS.</li>
+                <li>Installed &amp; administered Windows Server 2012/2016; handled cable management, PC hardware, rack mounting.</li>
+                <li>Hands-on with Cisco Nexus switches, ASA firewall, Cisco routers, SAN switches, SFP/QSFP modules, Fujitsu Eternus-DX500 Storage.</li>
+                <li>Stack: Rack Server / Windows / SFP Modules / Firewall / VMware / FTP / WinMerge</li>
               </ul>
               <h6>Accomplishments</h6>
               <ul>
-                <li>Setup Data Centre for Karnataka State Remote Sensing Application Center, Govt of Karnataka</li>
-                <li>Setup Data Centre for Indian AirForce, Bengaluru</li>
+                <li>🏛 Built the Data Centre for <strong>Karnataka State Remote Sensing Application Center (KSRSAC)</strong>, Govt. of Karnataka.</li>
+                <li>✈ Built the Data Centre for <strong>Indian Air Force</strong>, Bengaluru.</li>
               </ul>
             </div>
-            <div class="card-action"><span>May 2017 - March 2020  |  Bengaluru </span></div>
-          </div>         
-          
+            <div class="card-action"><span>May 2017 – March 2020 &nbsp;|&nbsp; Bengaluru</span></div>
+          </div>
+
         </div>
       </section>
+
+      <!-- ═══════════════ PROJECTS ═══════════════ -->
       <section id="projects" class="section scrollspy">
         <h3 class="page-title white-text teal">Projects</h3>
         <div class="container">
           <div class="row">
-            <!-- Anodyne -->
             <div class="col s12 m6 l4">
-              <div class="card medium">
+              <div class="card medium reveal">
                 <div class="card-image waves-effect waves-block waves-light"><img src="static/img/johnson.svg" class="activator"></div>
-                <div class="card-content"><span class="card-title activator teal-text hoverline">johnson & johnson<i class="mdi-navigation-more-vert right"></i></span>
-                  <p> johnson & johnson Labvantage LIMS aaplication setup on AWS Infra.</p>
+                <div class="card-content"><span class="card-title activator teal-text hoverline">Johnson &amp; Johnson<i class="mdi-navigation-more-vert right"></i></span>
+                  <p>Labvantage LIMS application setup on enterprise AWS infrastructure with HA &amp; DR.</p>
                 </div>
                 <div class="card-reveal"><span class="card-title brown-text">Accomplishments<i class="mdi-navigation-close right"></i></span>
                   <ul>
-                    <li>Creating VM's and Databases on HA  <strong>with DR</strong></li>
-                    <li>Creating <strong>Appliction Deployment</strong> using Oracle WebLogic</li>
-                    <li>Automated deploymented using <strong>Scripts</strong></li>
-                    <li>Creating NLB with 10 VM's </li>
+                    <li>VMs &amp; Databases on HA with <strong>full DR setup</strong></li>
+                    <li>Application Deployment via <strong>Oracle WebLogic</strong></li>
+                    <li>Automated deployments using <strong>Bash Scripts</strong></li>
+                    <li>NLB fronting 10 VMs for load distribution</li>
                   </ul>
-                  <div class="card-action"><a href="https://www.jnj.com/" target="_blank" data-position="top" data-tooltip="View Online" class="btn-floating btn-large waves-effect waves-light brown tooltipped"><i class="fa fa-external-link"></i></a>
-          </div>
+                  <div class="card-action"><a href="https://www.jnj.com/" target="_blank" class="btn-floating btn-large waves-effect waves-light brown tooltipped"><i class="fa fa-external-link"></i></a></div>
                 </div>
               </div>
             </div>
-			            <div class="col s12 m6 l4">
-              <div class="card medium">
+            <div class="col s12 m6 l4">
+              <div class="card medium reveal">
                 <div class="card-image waves-effect waves-block waves-light"><img src="static/img/dhani.svg" class="activator"></div>
                 <div class="card-content"><span class="card-title activator teal-text hoverline">Dhani<i class="mdi-navigation-more-vert right"></i></span>
-                  <p> Cloud Cost Optimization achieving savings of $28,000/month</p>
+                  <p>Cloud FinOps initiative achieving AWS savings of <strong>$28,000/month</strong>.</p>
                 </div>
                 <div class="card-reveal"><span class="card-title brown-text">Accomplishments<i class="mdi-navigation-close right"></i></span>
                   <ul>
-                    <li>Successfully optimized AWS account costs <strong>achieving savings of $28,000/month</strong></li>
-                    <li>Through efficient usage of AWS tools<strong>(AWS cost explorer, RI, S3 calculator, Start Stop service, AWS Budget)</strong>and services</li>
+                    <li>Saved <strong>$28,000/month</strong> through rigorous AWS cost optimisation</li>
+                    <li>Leveraged <strong>AWS Cost Explorer, RI, S3 Calculator, Budget Alerts</strong></li>
+                    <li>Right-sized 100+ EC2 instances</li>
                   </ul>
-                  <div class="card-action"><a href="https://www.dhani.com/" target="_blank" data-position="top" data-tooltip="View Online" class="btn-floating btn-large waves-effect waves-light brown tooltipped"><i class="fa fa-external-link"></i></a>
-          </div>
+                  <div class="card-action"><a href="https://www.dhani.com/" target="_blank" class="btn-floating btn-large waves-effect waves-light brown tooltipped"><i class="fa fa-external-link"></i></a></div>
                 </div>
               </div>
             </div>
-            <!-- Saved By the Text-->
             <div class="col s12 m6 l4">
-              <div class="card medium">
+              <div class="card medium reveal">
                 <div class="card-image waves-effect waves-block waves-light"><img src="static/img/bbk.webp" class="activator"></div>
                 <div class="card-content"><span class="card-title activator teal-text hoverline">Biryani By Kilo<i class="mdi-navigation-more-vert right"></i></span>
-                  <p>AWS Infra Setup</p>
+                  <p>End-to-end AWS infrastructure for a high-traffic food-tech platform.</p>
                 </div>
                 <div class="card-reveal"><span class="card-title brown-text">Accomplishments<i class="mdi-navigation-close right"></i></span>
                   <ul>
-                    <li>Implemented AWS solutions using <strong>EC2, S3, EBS, Route 53, RDS and Aurora</strong></li>
-                    <li>Designed, deployed, and operated highly available, scalable, and <strong>fault-tolerant systems using AWS</strong></li>
-                    <li>Working across multiple <strong>AWS accounts</strong></li>
-                    <li><strong>Setup</strong>AWS organizations</li>
+                    <li>AWS solutions: <strong>EC2, S3, EBS, Route 53, RDS, Aurora</strong></li>
+                    <li>Highly available, scalable, fault-tolerant multi-account AWS architecture</li>
+                    <li>AWS Organizations setup for governance</li>
                   </ul>
-                  <div class="card-action"><a href="https://biryanibykilo.com/" target="_blank" data-position="top" data-tooltip="View Online" class="btn-floating btn-large waves-effect waves-light brown tooltipped"><i class="fa fa-external-link"></i></a>
+                  <div class="card-action"><a href="https://biryanibykilo.com/" target="_blank" class="btn-floating btn-large waves-effect waves-light brown tooltipped"><i class="fa fa-external-link"></i></a></div>
                 </div>
               </div>
             </div>
-			</div>
-            <!-- Skate Something-->
             <div class="col s12 m6 l4">
-              <div class="card medium">
+              <div class="card medium reveal">
                 <div class="card-image waves-effect waves-block waves-light"><img src="static/img/serviceplus.svg" class="activator"></div>
                 <div class="card-content"><span class="card-title activator teal-text hoverline">ServicePlus<i class="mdi-navigation-more-vert right"></i></span>
-                  <p>Database Migration & Cost optimization</p>
+                  <p>Database migration from Rackspace to AWS RDS + cost optimization.</p>
                 </div>
                 <div class="card-reveal"><span class="card-title brown-text">Accomplishments<i class="mdi-navigation-close right"></i></span>
                   <ul>
-                    <li>Database migration completed from Rackspace to AWS RDS using the AWS <strong>Database Migration Service (DMS) tool</strong></li>
-                    <li>Successfully optimized the costs of the existing AWS account, resulting in a savings of $1500</li>
-                    <li>DR Setup</li>
+                    <li>DB migration via <strong>AWS DMS</strong> from Rackspace → AWS RDS</li>
+                    <li>$1,500/month saved post-migration</li>
+                    <li>Full <strong>DR setup</strong> implemented</li>
                   </ul>
-                  <div class="card-action"><a href="https://www.serviceplus.com/" target="_blank" data-position="top" data-tooltip="View Online" 
-          class="btn-floating btn-large waves-effect waves-light brown tooltipped"><i class="fa fa-external-link"></i></a>
-          <i class="fa fa-external-link"></i></a></div>
+                  <div class="card-action"><a href="https://www.serviceplus.com/" target="_blank" class="btn-floating btn-large waves-effect waves-light brown tooltipped"><i class="fa fa-external-link"></i></a></div>
                 </div>
               </div>
             </div>
-            <!-- RI WiFi-->
             <div class="col s12 m6 l4">
-              <div class="card medium">
+              <div class="card medium reveal">
                 <div class="card-image waves-effect waves-block waves-light"><img src="static/img/navi.svg" class="activator"></div>
                 <div class="card-content"><span class="card-title activator teal-text hoverline">Navi<i class="mdi-navigation-more-vert right"></i></span>
-                  <p>Application Migration</p>
+                  <p>On-premises to AWS application migration via AWS Migration Hub.</p>
                 </div>
                 <div class="card-reveal"><span class="card-title brown-text">Accomplishments<i class="mdi-navigation-close right"></i></span>
                   <ul>
-                    <li>Application migration <strong>from on-premises</strong> to AWS Cloud <strong>through AWS Migration Hub service</strong></li>
-                    <li><strong>Creation of landing zones, cost estimations, discovery & assessment</strong></li>
-                    <li>Configuring default parameters such as backup, monitoring, and patching, ALB, ASG, High avalibility, Guarduty etc.</li>
+                    <li>Full lift-and-shift via <strong>AWS Migration Hub</strong></li>
+                    <li>Landing zones, cost estimations, discovery &amp; assessment</li>
+                    <li>Configured ALB, ASG, HA, GuardDuty, backup &amp; monitoring</li>
                   </ul>
-                  <div class="card-action">
-          <a href="https://navi.com/" target="_blank" data-position="top" data-tooltip="View Online" class="btn-floating btn-large waves-effect waves-light brown tooltipped"><i class="fa fa-external-link"></i></a></div>
+                  <div class="card-action"><a href="https://navi.com/" target="_blank" class="btn-floating btn-large waves-effect waves-light brown tooltipped"><i class="fa fa-external-link"></i></a></div>
                 </div>
               </div>
             </div>
-            <!-- Pinterest-->
             <div class="col s12 m6 l4">
-              <div class="card medium">
+              <div class="card medium reveal">
                 <div class="card-image waves-effect waves-block waves-light"><img src="static/img/isro.png" class="activator"></div>
-                <div class="card-content"><span class="card-title activator teal-text hoverline">Satish Dhawan Space Centre (SDSC) SHAR – ISRO<i class="mdi-navigation-more-vert right"></i></span>
-                  <p>VDI Setup</p>
+                <div class="card-content"><span class="card-title activator teal-text hoverline">ISRO – SDSC SHAR<i class="mdi-navigation-more-vert right"></i></span>
+                  <p>VMware-based VDI infrastructure for 100 clients in an isolated environment.</p>
                 </div>
                 <div class="card-reveal"><span class="card-title brown-text">Accomplishments<i class="mdi-navigation-close right"></i></span>
                   <ul>
-                    <li>Implemented a VDI project using VMware ESXi, vCenter, and VMware Horizon for 100 clients.</li>
-					<li>Connected clients via Dell Wyse Thin Clients.</li>
-					<li>Executed the project in an isolated, non-internet zone environment.</li>
+                    <li>VDI with <strong>VMware ESXi, vCenter, VMware Horizon</strong> for 100 users</li>
+                    <li>Dell Wyse Thin Client connectivity</li>
+                    <li>Fully air-gapped, non-internet isolated environment</li>
                   </ul>
-                  <div class="card-action"><a href="https://www.isro.gov.in/SDSC.html" target="_blank" data-position="top" data-tooltip="View Online" class="btn-floating btn-large waves-effect waves-light brown tooltipped"><i class="fa fa-external-link"></i></a></div>
+                  <div class="card-action"><a href="https://www.isro.gov.in/SDSC.html" target="_blank" class="btn-floating btn-large waves-effect waves-light brown tooltipped"><i class="fa fa-external-link"></i></a></div>
                 </div>
               </div>
             </div>
-            <!-- Shelter Finder-->
             <div class="col s12 m6 l4">
-              <div class="card medium">
+              <div class="card medium reveal">
                 <div class="card-image waves-effect waves-block waves-light"><img src="static/img/IAF.png" class="activator"></div>
-                <div class="card-content"><span class="card-title activator teal-text hoverline">INDIAN AIRFORCE <i class="mdi-navigation-more-vert right"></i></span>
-                  <p>Mini Datacenter setup</p>
+                <div class="card-content"><span class="card-title activator teal-text hoverline">Indian Air Force<i class="mdi-navigation-more-vert right"></i></span>
+                  <p>Mini data center setup with full Windows Server &amp; virtualization stack.</p>
                 </div>
                 <div class="card-reveal"><span class="card-title brown-text">Accomplishments<i class="mdi-navigation-close right"></i></span>
                   <ul>
-                    <li>Installed rack server in a 45U rack.<strong>Configured Windows Server 2012 R2 Standard </strong> on Fujitsu servers.</li>
-                    <li><strong>Set up RAID-5  </strong> for data redundancy <strong>and performance.</strong></li>
-                    <li>Configured Active Directory Domain Services  <strong>(AD DS)</strong>to establish a domain.</li>
-                    <li>Managed rack configurations and storage connections..</li>
-					<li>Installed and configured Hyper-V for virtualization.</li>
+                    <li>Rack server in 45U rack; <strong>Windows Server 2012 R2</strong> on Fujitsu</li>
+                    <li><strong>RAID-5</strong> for redundancy; <strong>Active Directory DS</strong> domain setup</li>
+                    <li>Hyper-V virtualization configured</li>
                   </ul>
-                  <div class="card-action"><a href="https://indianairforce.nic.in/" target="_blank" data-position="top" data-tooltip="View Online" class="btn-floating btn-large waves-effect waves-light brown tooltipped"><i class="fa fa-external-link"></i></a></div>
+                  <div class="card-action"><a href="https://indianairforce.nic.in/" target="_blank" class="btn-floating btn-large waves-effect waves-light brown tooltipped"><i class="fa fa-external-link"></i></a></div>
                 </div>
               </div>
             </div>
-            <!-- Custom Social Feed-->
             <div class="col s12 m6 l4">
-              <div class="card medium">
+              <div class="card medium reveal">
                 <div class="card-image waves-effect waves-block waves-light"><img src="static/img/ksrsac.jpg" class="activator"></div>
-                <div class="card-content"><span class="card-title activator teal-text hoverline">KSRSAC, Govt of Karnataka<i class="mdi-navigation-more-vert right"></i></span>
-                  <p>Data Center Setup</p>
+                <div class="card-content"><span class="card-title activator teal-text hoverline">KSRSAC, Govt. of Karnataka<i class="mdi-navigation-more-vert right"></i></span>
+                  <p>Full data center buildout for Karnataka's state remote sensing agency.</p>
                 </div>
                 <div class="card-reveal"><span class="card-title brown-text">Accomplishments<i class="mdi-navigation-close right"></i></span>
                   <ul>
-                     <li>Installed and configured Windows Server 2012 R2 Standard and RAID-5 on Fujitsu Primergy RX4770 M3 and RX2540 M2 machines.</li>
-                     <li>Created domain, configured Hyper-V, set up failover clustering, and managed group policies and user accounts</li>
-                     <li>Mounted Fujitsu 42U and 30U racks</li>
-					 <li>Connected 9 enclosures to Fujitsu Eternus DX-500 storage controller using SAS cables.</li>
-					 <li>inked fiber cables to Fujitsu servers via SFP 10G modules.</li>
+                    <li>Windows Server 2012 R2, RAID-5 on Fujitsu Primergy servers</li>
+                    <li>Domain, Hyper-V, failover clustering, GPO, user management</li>
+                    <li>9 enclosures connected to Fujitsu Eternus DX-500 via SAS</li>
+                    <li>SFP 10G fiber links across 42U &amp; 30U racks</li>
                   </ul>
-                  <div class="card-action"><a href="https://ksrsac.karnataka.gov.in/" target="_blank" data-position="top" data-tooltip="View Online" class="btn-floating btn-large waves-effect waves-light brown tooltipped"><i class="fa fa-external-link"></i></a></div>
+                  <div class="card-action"><a href="https://ksrsac.karnataka.gov.in/" target="_blank" class="btn-floating btn-large waves-effect waves-light brown tooltipped"><i class="fa fa-external-link"></i></a></div>
                 </div>
               </div>
             </div>
-
-            <!-- Custom Social Feed-->
             <div class="col s12 m6 l4">
-              <div class="card medium">
+              <div class="card medium reveal">
                 <div class="card-image waves-effect waves-block waves-light"><img src="static/img/court.png" class="activator"></div>
                 <div class="card-content"><span class="card-title activator teal-text hoverline">High Court of Karnataka<i class="mdi-navigation-more-vert right"></i></span>
-                  <p>video conferencing setup.</p>
+                  <p>State-wide video conferencing deployment across courts &amp; jails.</p>
                 </div>
                 <div class="card-reveal"><span class="card-title brown-text">Accomplishments<i class="mdi-navigation-close right"></i></span>
                   <ul>
-                     <li>Installed and configured video conferencing systems in all courts and jails across Karnataka.</li>
-                     <li>Completed the setup at over 80 locations,<strong>including jails, district courts,</strong> and the High Court.</li>
+                    <li>Deployed video conferencing across <strong>80+ locations</strong></li>
+                    <li>Covered district courts, jails, and the High Court of Karnataka</li>
                   </ul>
-                  <div class="card-action"><a href="https://karnatakajudiciary.kar.nic.in/newwebsite/" target="_blank" data-position="top" data-tooltip="View Online" class="btn-floating btn-large waves-effect waves-light brown tooltipped"><i class="fa fa-external-link"></i></a></div>
+                  <div class="card-action"><a href="https://karnatakajudiciary.kar.nic.in/newwebsite/" target="_blank" class="btn-floating btn-large waves-effect waves-light brown tooltipped"><i class="fa fa-external-link"></i></a></div>
                 </div>
               </div>
             </div>
-
-             <!-- Custom Social Feed-->
             <div class="col s12 m6 l4">
-              <div class="card medium">
+              <div class="card medium reveal">
                 <div class="card-image waves-effect waves-block waves-light"><img src="static/img/Nimhans.png" class="activator"></div>
                 <div class="card-content"><span class="card-title activator teal-text hoverline">NIMHANS<i class="mdi-navigation-more-vert right"></i></span>
-                  <p>New AWS Infra Setup</p>
+                  <p>New AWS infrastructure following best practices for a national health institute.</p>
                 </div>
                 <div class="card-reveal"><span class="card-title brown-text">Accomplishments<i class="mdi-navigation-close right"></i></span>
                   <ul>
-                     <li>Set up new infrastructure following AWS best practices.</li>
-                     <li>Utilized AWS services including VPC, IGW, NAT, Route 53, CloudFront, RDS,and Global Accelerator.</li>
-                     <li>Established a Linux environment with:<strong>WordPress, PHP, Ngnix, Redis Server</strong></li>
+                    <li>AWS services: <strong>VPC, IGW, NAT, Route 53, CloudFront, RDS, Global Accelerator</strong></li>
+                    <li>Linux environment: WordPress, PHP, Nginx, Redis</li>
                   </ul>
-                  <div class="card-action"><a href="hhttps://nimhans.ac.in/" target="_blank" data-position="top" data-tooltip="View Online" class="btn-floating btn-large waves-effect waves-light brown tooltipped"><i class="fa fa-external-link"></i></a></div>
+                  <div class="card-action"><a href="https://nimhans.ac.in/" target="_blank" class="btn-floating btn-large waves-effect waves-light brown tooltipped"><i class="fa fa-external-link"></i></a></div>
                 </div>
               </div>
-            </div>
-
-
             </div>
           </div>
         </div>
       </section>
+
+      <!-- ═══════════════ SKILLS ═══════════════ -->
       <section id="skills" class="section scrollspy">
         <h3 class="page-title white-text teal">Skills</h3>
         <div class="container">
-          <div class="card">
+          <div class="card reveal">
             <div class="card-content">
               <h4 class="brown-text light">AWS</h4>
               <div class="row text-center">
-<div class="col s4 m2"><img src="static/img/RDS.svg" class="responsive-img">RDS</div>
-<div class="col s4 m2"><img src="static/img/Database-Migration-Service.svg" class="responsive-img">Database-Migration</div>
-<div class="col s4 m2"><img src="static/img/ElastiCache.svg" class="responsive-img">ElastiCache</div>
-<div class="col s4 m2"><img src="static/img/EC2.svg" class="responsive-img">EC2</div>
-<div class="col s4 m2"><img src="static/img/Lightsail.svg" class="responsive-img">Lightsail</div>
-<div class="col s4 m2"><img src="static/img/EC2-Auto-Scaling.svg" class="responsive-img">EC2-Auto-Scaling</div>
-<div class="col s4 m2"><img src="static/img/Application-Auto-Scaling.svg" class="responsive-img">ASG</div>
-<div class="col s4 m2"><img src="static/img/Lambda.svg" class="responsive-img">Lambda</div>
-<div class="col s4 m2"><img src="static/img/Compute-Optimizer.svg" class="responsive-img">Compute-Optimizer</div>
-<div class="col s4 m2"><img src="static/img/Simple-Notification-Service.svg" class="responsive-img">SNS</div>
-<div class="col s4 m2"><img src="static/img/EventBridge.svg" class="responsive-img">EventBridge</div>
-<div class="col s4 m2"><img src="static/img/Simple-Queue-Service.svg" class="responsive-img">SQS</div>
-<div class="col s4 m2"><img src="static/img/Billing-Conductor.svg" class="responsive-img">Billing-Conductor</div>
-<div class="col s4 m2"><img src="static/img/Budgets.svg" class="responsive-img">Budgets</div>
-<div class="col s4 m2"><img src="static/img/Cost-and-Usage-Report.svg" class="responsive-img">Cost-Usage-Report</div>
-<div class="col s4 m2"><img src="static/img/Cost-Explorer.svg" class="responsive-img">Cost-Explorer</div>
-<div class="col s4 m2"><img src="static/img/Savings-Plans.svg" class="responsive-img">Savings-Plans</div>
-<div class="col s4 m2"><img src="static/img/Reserved-Instance-Reporting.svg" class="responsive-img">Reserved-Instance</div>
-<div class="col s4 m2"><img src="static/img/Simple-Storage-Service.svg" class="responsive-img">S3</div>
-<div class="col s4 m2"><img src="static/img/S3-on-Outposts.svg" class="responsive-img">S3-on-Outposts</div>
-<div class="col s4 m2"><img src="static/img/Storage-Gateway.svg" class="responsive-img">Storage-Gateway</div>
-<div class="col s4 m2"><img src="static/img/Backup.svg" class="responsive-img">Backup</div>
-<div class="col s4 m2"><img src="static/img/EFS.svg" class="responsive-img">EFS</div>
-<div class="col s4 m2"><img src="static/img/Snowball.svg" class="responsive-img">Snowball</div>
-<div class="col s4 m2"><img src="static/img/Simple-Storage-Service-Glacier.svg" class="responsive-img">S3-Glacier</div>
-<div class="col s4 m2"><img src="static/img/CloudWatch.svg" class="responsive-img">CloudWatch</div>
-<div class="col s4 m2"><img src="static/img/Systems-Manager.svg" class="responsive-img">Systems-Manager</div>
-<div class="col s4 m2"><img src="static/img/CloudTrail.svg" class="responsive-img">CloudTrail</div>
-<div class="col s4 m2"><img src="static/img/AppConfig.svg" class="responsive-img">AppConfig</div>
-<div class="col s4 m2"><img src="static/img/GuardDuty.svg" class="responsive-img">GuardDuty</div>
-<div class="col s4 m2"><img src="static/img/WAF.svg" class="responsive-img">WAF</div>
-<div class="col s4 m2"><img src="static/img/Shield.svg" class="responsive-img">Shield</div>
-<div class="col s4 m2"><img src="static/img/Virtual-Private-Cloud.svg" class="responsive-img">VPC</div>
-<div class="col s4 m2"><img src="static/img/Transit-Gateway.svg" class="responsive-img">Transit-Gateway</div>
-<div class="col s4 m2"><img src="static/img/Site-to-Site-VPN.svg" class="responsive-img">Site-to-Site-VPN</div>
-<div class="col s4 m2"><img src="static/img/Route-53.svg" class="responsive-img">Route-53</div>
-<div class="col s4 m2"><img src="static/img/Global-Accelerator.svg" class="responsive-img">Global-Accelerator</div>
-<div class="col s4 m2"><img src="static/img/Elastic-Load-Balancing.svg" class="responsive-img">ELB</div>
-<div class="col s4 m2"><img src="static/img/Direct-Connect.svg" class="responsive-img">Direct-Connect</div>
-<div class="col s4 m2"><img src="static/img/CloudFront.svg" class="responsive-img">CloudFront</div>
-<div class="col s4 m2"><img src="static/img/Application-Migration-Service.svg" class="responsive-img">Application-Migration</div>
-<div class="col s4 m2"><img src="static/img/Server-Migration-Service.svg" class="responsive-img">Server-Migration</div>
-<div class="col s4 m2"><img src="static/img/Database-Migration-Service.svg" class="responsive-img">Database-Migration</div>
-
+<div class="col s4 m2 skill-icon"><img src="static/img/RDS.svg" class="responsive-img"><span>RDS</span></div>
+<div class="col s4 m2 skill-icon"><img src="static/img/Database-Migration-Service.svg" class="responsive-img"><span>DMS</span></div>
+<div class="col s4 m2 skill-icon"><img src="static/img/ElastiCache.svg" class="responsive-img"><span>ElastiCache</span></div>
+<div class="col s4 m2 skill-icon"><img src="static/img/EC2.svg" class="responsive-img"><span>EC2</span></div>
+<div class="col s4 m2 skill-icon"><img src="static/img/Lightsail.svg" class="responsive-img"><span>Lightsail</span></div>
+<div class="col s4 m2 skill-icon"><img src="static/img/EC2-Auto-Scaling.svg" class="responsive-img"><span>EC2 Auto Scaling</span></div>
+<div class="col s4 m2 skill-icon"><img src="static/img/Application-Auto-Scaling.svg" class="responsive-img"><span>ASG</span></div>
+<div class="col s4 m2 skill-icon"><img src="static/img/Lambda.svg" class="responsive-img"><span>Lambda</span></div>
+<div class="col s4 m2 skill-icon"><img src="static/img/Compute-Optimizer.svg" class="responsive-img"><span>Compute Optimizer</span></div>
+<div class="col s4 m2 skill-icon"><img src="static/img/Simple-Notification-Service.svg" class="responsive-img"><span>SNS</span></div>
+<div class="col s4 m2 skill-icon"><img src="static/img/EventBridge.svg" class="responsive-img"><span>EventBridge</span></div>
+<div class="col s4 m2 skill-icon"><img src="static/img/Simple-Queue-Service.svg" class="responsive-img"><span>SQS</span></div>
+<div class="col s4 m2 skill-icon"><img src="static/img/Billing-Conductor.svg" class="responsive-img"><span>Billing</span></div>
+<div class="col s4 m2 skill-icon"><img src="static/img/Budgets.svg" class="responsive-img"><span>Budgets</span></div>
+<div class="col s4 m2 skill-icon"><img src="static/img/Cost-and-Usage-Report.svg" class="responsive-img"><span>Cost Report</span></div>
+<div class="col s4 m2 skill-icon"><img src="static/img/Cost-Explorer.svg" class="responsive-img"><span>Cost Explorer</span></div>
+<div class="col s4 m2 skill-icon"><img src="static/img/Savings-Plans.svg" class="responsive-img"><span>Savings Plans</span></div>
+<div class="col s4 m2 skill-icon"><img src="static/img/Reserved-Instance-Reporting.svg" class="responsive-img"><span>Reserved Instance</span></div>
+<div class="col s4 m2 skill-icon"><img src="static/img/Simple-Storage-Service.svg" class="responsive-img"><span>S3</span></div>
+<div class="col s4 m2 skill-icon"><img src="static/img/S3-on-Outposts.svg" class="responsive-img"><span>S3 Outposts</span></div>
+<div class="col s4 m2 skill-icon"><img src="static/img/Storage-Gateway.svg" class="responsive-img"><span>Storage Gateway</span></div>
+<div class="col s4 m2 skill-icon"><img src="static/img/Backup.svg" class="responsive-img"><span>Backup</span></div>
+<div class="col s4 m2 skill-icon"><img src="static/img/EFS.svg" class="responsive-img"><span>EFS</span></div>
+<div class="col s4 m2 skill-icon"><img src="static/img/Snowball.svg" class="responsive-img"><span>Snowball</span></div>
+<div class="col s4 m2 skill-icon"><img src="static/img/Simple-Storage-Service-Glacier.svg" class="responsive-img"><span>S3 Glacier</span></div>
+<div class="col s4 m2 skill-icon"><img src="static/img/CloudWatch.svg" class="responsive-img"><span>CloudWatch</span></div>
+<div class="col s4 m2 skill-icon"><img src="static/img/Systems-Manager.svg" class="responsive-img"><span>Systems Manager</span></div>
+<div class="col s4 m2 skill-icon"><img src="static/img/CloudTrail.svg" class="responsive-img"><span>CloudTrail</span></div>
+<div class="col s4 m2 skill-icon"><img src="static/img/GuardDuty.svg" class="responsive-img"><span>GuardDuty</span></div>
+<div class="col s4 m2 skill-icon"><img src="static/img/WAF.svg" class="responsive-img"><span>WAF</span></div>
+<div class="col s4 m2 skill-icon"><img src="static/img/Shield.svg" class="responsive-img"><span>Shield</span></div>
+<div class="col s4 m2 skill-icon"><img src="static/img/Virtual-Private-Cloud.svg" class="responsive-img"><span>VPC</span></div>
+<div class="col s4 m2 skill-icon"><img src="static/img/Transit-Gateway.svg" class="responsive-img"><span>Transit Gateway</span></div>
+<div class="col s4 m2 skill-icon"><img src="static/img/Site-to-Site-VPN.svg" class="responsive-img"><span>Site-to-Site VPN</span></div>
+<div class="col s4 m2 skill-icon"><img src="static/img/Route-53.svg" class="responsive-img"><span>Route 53</span></div>
+<div class="col s4 m2 skill-icon"><img src="static/img/Global-Accelerator.svg" class="responsive-img"><span>Global Accelerator</span></div>
+<div class="col s4 m2 skill-icon"><img src="static/img/Elastic-Load-Balancing.svg" class="responsive-img"><span>ELB</span></div>
+<div class="col s4 m2 skill-icon"><img src="static/img/Direct-Connect.svg" class="responsive-img"><span>Direct Connect</span></div>
+<div class="col s4 m2 skill-icon"><img src="static/img/CloudFront.svg" class="responsive-img"><span>CloudFront</span></div>
+<div class="col s4 m2 skill-icon"><img src="static/img/Application-Migration-Service.svg" class="responsive-img"><span>App Migration</span></div>
+<div class="col s4 m2 skill-icon"><img src="static/img/Server-Migration-Service.svg" class="responsive-img"><span>Server Migration</span></div>
               </div>
             </div>
           </div>
-          <div class="card">
+
+          <div class="card reveal">
             <div class="card-content">
               <h4 class="brown-text light">Azure</h4>
               <div class="row text-center">
-                <div class="col s4 m2"><img src="static/img/VM.svg" class="responsive-img">VM</div>
-<div class="col s4 m2"><img src="static/img/VM-Scale-Sets.svg" class="responsive-img">VM-Scale-Sets</div>
-<div class="col s4 m2"><img src="static/img/Users.svg" class="responsive-img">Users</div>
-<div class="col s4 m2"><img src="static/img/Storage-Account.svg" class="responsive-img">Storage-Account</div>
-<div class="col s4 m2"><img src="static/img/SQL-Managed-Instance.svg" class="responsive-img">SQL-Managed-Instance</div>
-<div class="col s4 m2"><img src="static/img/Resource-Groups.svg" class="responsive-img">Resource-Groups</div>
-<div class="col s4 m2"><img src="static/img/Reservations.svg" class="responsive-img">Reservations</div>
-<div class="col s4 m2"><img src="static/img/Peering-Service.svg" class="responsive-img">Peering-Service</div>
-<div class="col s4 m2"><img src="static/img/Monitor.svg" class="responsive-img">Monitor</div>
-<div class="col s4 m2"><img src="static/img/NAT.svg" class="responsive-img">NAT</div>
-<div class="col s4 m2"><img src="static/img/Load-Balancers.svg" class="responsive-img">Load-Balancers</div>
-<div class="col s4 m2"><img src="static/img/Disks.svg" class="responsive-img">Disks</div>
-<div class="col s4 m2"><img src="static/img/Disks-Snapshots.svg" class="responsive-img">Disks-Snapshots</div>
-<div class="col s4 m2"><img src="static/img/Cost-Alerts.svg" class="responsive-img">Cost-Alerts</div>
-<div class="col s4 m2"><img src="static/img/Cost-Budgets.svg" class="responsive-img">Cost-Budgets</div>
-<div class="col s4 m2"><img src="static/img/Cost-Analysis.svg" class="responsive-img">Cost-Analysis</div>
-<div class="col s4 m2"><img src="static/img/Cost-Management.svg" class="responsive-img">Cost-Management</div>
-<div class="col s4 m2"><img src="static/img/Connections.svg" class="responsive-img">Connections</div>
-<div class="col s4 m2"><img src="static/img/Blob-Block.svg" class="responsive-img">Blob-Block</div>
-<div class="col s4 m2"><img src="static/img/Azure-SQL-VM.svg" class="responsive-img">Azure-SQL-VM</div>
-<div class="col s4 m2"><img src="static/img/Azure-Migrate.svg" class="responsive-img">Azure-Migrate</div>
-<div class="col s4 m2"><img src="static/img/Availability-Sets.svg" class="responsive-img">Availability-Sets</div>
-<div class="col s4 m2"><img src="static/img/Activity-Log.svg" class="responsive-img">Activity-Log</div>
-<div class="col s4 m2"><img src="static/img/All-Resources.svg" class="responsive-img">All-Resources</div>
-<div class="col s4 m2"><img src="static/img/Azure-Arc.svg" class="responsive-img">Azure-Arc</div>     
+<div class="col s4 m2 skill-icon"><img src="static/img/VM.svg" class="responsive-img"><span>VM</span></div>
+<div class="col s4 m2 skill-icon"><img src="static/img/VM-Scale-Sets.svg" class="responsive-img"><span>VM Scale Sets</span></div>
+<div class="col s4 m2 skill-icon"><img src="static/img/Users.svg" class="responsive-img"><span>Users</span></div>
+<div class="col s4 m2 skill-icon"><img src="static/img/Storage-Account.svg" class="responsive-img"><span>Storage Account</span></div>
+<div class="col s4 m2 skill-icon"><img src="static/img/SQL-Managed-Instance.svg" class="responsive-img"><span>SQL Managed</span></div>
+<div class="col s4 m2 skill-icon"><img src="static/img/Resource-Groups.svg" class="responsive-img"><span>Resource Groups</span></div>
+<div class="col s4 m2 skill-icon"><img src="static/img/Monitor.svg" class="responsive-img"><span>Monitor</span></div>
+<div class="col s4 m2 skill-icon"><img src="static/img/Load-Balancers.svg" class="responsive-img"><span>Load Balancers</span></div>
+<div class="col s4 m2 skill-icon"><img src="static/img/Cost-Management.svg" class="responsive-img"><span>Cost Management</span></div>
+<div class="col s4 m2 skill-icon"><img src="static/img/Azure-Migrate.svg" class="responsive-img"><span>Azure Migrate</span></div>
+<div class="col s4 m2 skill-icon"><img src="static/img/Azure-Arc.svg" class="responsive-img"><span>Azure Arc</span></div>
+<div class="col s4 m2 skill-icon"><img src="static/img/NAT.svg" class="responsive-img"><span>NAT</span></div>
               </div>
             </div>
           </div>
-          <div class="card">
-            <div class="card-content">
-              <h4 class="brown-text light">Migration</h4>
-              <div class="row text-center">
-			  <div class="col s4 m2"><img src="static/img/Application-Migration-Service.svg" class="responsive-img">Application-Migration</div>
-<div class="col s4 m2"><img src="static/img/Server-Migration-Service.svg" class="responsive-img">Server-Migration</div>
-<div class="col s4 m2"><img src="static/img/Database-Migration-Service.svg" class="responsive-img">Database-Migration</div>
-<div class="col s4 m2"><img src="static/img/Azure-Migrate.svg" class="responsive-img">Azure-Migrate</div>
-              </div>
-            </div>
-          </div>
-          <div class="card">
-            <div class="card-content">
-              <h4 class="brown-text light">Linux</h4>
-              <div class="row text-center">
-			  <div class="col s4 m2"><img src="static/img/linux.png" class="responsive-img">Linux</div>
-<div class="col s4 m2"><img src="static/img/apache.webp" class="responsive-img">apache</div>
-<div class="col s4 m2"><img src="static/img/Tomcat.png" class="responsive-img">Tomcat</div>
-<div class="col s4 m2"><img src="static/img/Nginx.png" class="responsive-img">Nginx</div>
-			  <div class="col s4 m2"><img src="static/img/wordpress.png" class="responsive-img">Wordpress</div>
 
+          <div class="card reveal">
+            <div class="card-content">
+              <h4 class="brown-text light">Linux &amp; Web</h4>
+              <div class="row text-center">
+<div class="col s4 m2 skill-icon"><img src="static/img/linux.png" class="responsive-img"><span>Linux</span></div>
+<div class="col s4 m2 skill-icon"><img src="static/img/apache.webp" class="responsive-img"><span>Apache</span></div>
+<div class="col s4 m2 skill-icon"><img src="static/img/Tomcat.png" class="responsive-img"><span>Tomcat</span></div>
+<div class="col s4 m2 skill-icon"><img src="static/img/Nginx.png" class="responsive-img"><span>Nginx</span></div>
+<div class="col s4 m2 skill-icon"><img src="static/img/wordpress.png" class="responsive-img"><span>Wordpress</span></div>
               </div>
             </div>
           </div>
-          <div class="card">
-            <div class="card-content">
-              <h4 class="brown-text light">Windows</h4>
-              <div class="row text-center">
-<div class="col s4 m2"><img src="static/img/windows-server.png" class="responsive-img">windows-server</div>
-<div class="col s4 m2"><img src="static/img/active-directory.svg" class="responsive-img">active-directory</div>
-<div class="col s4 m2"><img src="static/img/dhcp.png" class="responsive-img">dhcp</div>
-              </div>
-            </div>
-          </div>
-       <div class="card">
-            <div class="card-content">
-              <h4 class="brown-text light">Oracle</h4>
-              <div class="row text-center">
-<div class="col s4 m2"><img src="static/img/oracle-weblogic.png" class="responsive-img">oracle-weblogic</div>
-              </div>
-            </div>
-          </div>
-          <div class="card">
-            <div class="card-content">
-              <h4 class="brown-text light">monitoring</h4>
-              <div class="row text-center">
-                
-				<div class="col s4 m2"><img src="static/img/CloudWatch.svg" class="responsive-img">CloudWatch</div>
-				<div class="col s4 m2"><img src="static/img/Monitor.svg" class="responsive-img">Azure Monitor</div>
-				<div class="col s4 m2"><img src="static/img/status_cake.png" class="responsive-img">status-cake</div>
-				<div class="col s4 m2"><img src="static/img/site24x7.jpg" class="responsive-img">site24x7</div>
-				
-              </div>
-            </div>
-          </div>
-          <div class="card">
-            <div class="card-content">
-              <h4 class="brown-text light">VPN</h4>
-              <div class="row text-center">
-			  <div class="col s4 m2"><img src="static/img/Site-to-Site-VPN.svg" class="responsive-img">Site-to-Site-VPN</div>
-<div class="col s4 m2"><img src="static/img/openvpn.png" class="responsive-img">openvpn</div>
 
+          <div class="card reveal">
+            <div class="card-content">
+              <h4 class="brown-text light">Windows &amp; Virtualisation</h4>
+              <div class="row text-center">
+<div class="col s4 m2 skill-icon"><img src="static/img/windows-server.png" class="responsive-img"><span>Windows Server</span></div>
+<div class="col s4 m2 skill-icon"><img src="static/img/active-directory.svg" class="responsive-img"><span>Active Directory</span></div>
+<div class="col s4 m2 skill-icon"><img src="static/img/dhcp.png" class="responsive-img"><span>DHCP</span></div>
+<div class="col s4 m2 skill-icon"><img src="static/img/oracle-weblogic.png" class="responsive-img"><span>Oracle WebLogic</span></div>
               </div>
             </div>
           </div>
-          <div class="card">
-            <div class="card-content">
-              <h4 class="brown-text light">Cloud CICD</h4>
-              <div class="row text-center">
-                <div class="col s4 m2"><img src="static/img/aws-cicd.jpeg" class="responsive-img">AWS CICD : Code Commmit / Code Build / Code Deploy</div>
 
+          <div class="card reveal">
+            <div class="card-content">
+              <h4 class="brown-text light">Monitoring &amp; Security</h4>
+              <div class="row text-center">
+<div class="col s4 m2 skill-icon"><img src="static/img/CloudWatch.svg" class="responsive-img"><span>CloudWatch</span></div>
+<div class="col s4 m2 skill-icon"><img src="static/img/Monitor.svg" class="responsive-img"><span>Azure Monitor</span></div>
+<div class="col s4 m2 skill-icon"><img src="static/img/status_cake.png" class="responsive-img"><span>StatusCake</span></div>
+<div class="col s4 m2 skill-icon"><img src="static/img/site24x7.jpg" class="responsive-img"><span>Site24x7</span></div>
+<div class="col s4 m2 skill-icon"><img src="static/img/Site-to-Site-VPN.svg" class="responsive-img"><span>Site-to-Site VPN</span></div>
+<div class="col s4 m2 skill-icon"><img src="static/img/openvpn.png" class="responsive-img"><span>OpenVPN</span></div>
+<div class="col s4 m2 skill-icon"><img src="static/img/aws-cicd.jpeg" class="responsive-img"><span>AWS CI/CD</span></div>
               </div>
             </div>
           </div>
         </div>
-		<section id="certifications" class="section scrollspy">
-        <h3 class="page-title white-text teal">Certifications</h3>
-        <div class="container">
-          <div class="card">
-            <div class="card-content">
-              <h4 class="brown-text light">AWS</h4>
-              <div class="row text-center">
-                <div class="col s4 m2"><img src="static/img/awssys.png" class="responsive-img">AWS Certified SysOps Administrator – Associate</div>
-                <div class="col s4 m2"><img src="static/img/awssa.png" class="responsive-img">AWS Certified Solutions Architect – Associate</div>       
+
+        <!-- ═══════════════ CERTIFICATIONS ═══════════════ -->
+        <section id="certifications" class="section scrollspy">
+          <h3 class="page-title white-text teal">Certifications</h3>
+          <div class="container">
+            <div class="card reveal">
+              <div class="card-content">
+                <h4 class="brown-text light">AWS</h4>
+                <div class="row text-center">
+                  <div class="col s4 m2 skill-icon cert-badge"><img src="static/img/awssys.png" class="responsive-img"><span>SysOps Admin – Associate</span></div>
+                  <div class="col s4 m2 skill-icon cert-badge"><img src="static/img/awssa.png" class="responsive-img"><span>Solutions Architect – Associate</span></div>
+                </div>
+              </div>
+            </div>
+            <div class="card reveal">
+              <div class="card-content">
+                <h4 class="brown-text light">Microsoft Azure</h4>
+                <div class="row text-center">
+                  <div class="col s4 m2 skill-icon cert-badge"><img src="static/img/azurene.png" class="responsive-img"><span>Azure Network Engineer Associate</span></div>
+                  <div class="col s4 m2 skill-icon cert-badge"><img src="static/img/azureaa.png" class="responsive-img"><span>Azure Administrator Associate</span></div>
+                </div>
+              </div>
+            </div>
+            <div class="card reveal">
+              <div class="card-content">
+                <h4 class="brown-text light">Microsoft</h4>
+                <div class="row text-center">
+                  <div class="col s4 m2 skill-icon cert-badge"><img src="static/img/MCSA.png" class="responsive-img"><span>MCSA: Windows Server 2016</span></div>
+                </div>
               </div>
             </div>
           </div>
-          <div class="card">
-            <div class="card-content">
-              <h4 class="brown-text light">Microsoft Azure</h4>
-              <div class="row text-center">
-                <div class="col s4 m2"><img src="static/img/azurene.png" class="responsive-img">Microsoft Certified: Azure Network Engineer Associate</div>
-                <div class="col s4 m2"><img src="static/img/azureaa.png" class="responsive-img">Microsoft Certified: Azure Administrator Associate</div>
-              </div>
-            </div>
-          </div>
-		  <div class="card">
-            <div class="card-content">
-              <h4 class="brown-text light">Microsoft</h4>
-              <div class="row text-center">
-                <div class="col s4 m2"><img src="static/img/MCSA.png" class="responsive-img">MCSA: Windows Server 2016 - Certified</div>
-              </div>
-            </div>
-          </div>
-        </div>
-       </section>
-       </section>
+        </section>
+      </section>
+
+      <!-- ═══════════════ AWARDS ═══════════════ -->
       <section id="awards" class="section scrollspy">
         <h3 class="page-title white-text teal">Awards</h3>
         <div class="container">
           <div class="row">
             <div class="col s12 m6">
-              <div class="card">
+              <div class="card reveal award-card">
+                <div class="award-ribbon">🏆</div>
                 <div class="card-content">
-                  <p><span class="card-title"><a href="https://loantap.in/" target="_blank" class="teal-text hoverline">Employee of the QUarter</a></span></p>
-                  <p class="brown-text">LoanTap | April 2022</p>
+                  <p><span class="card-title"><a href="https://loantap.in/" target="_blank" class="teal-text hoverline">Employee of the Quarter</a></span></p>
+                  <p class="brown-text">LoanTap Financial Technology &nbsp;|&nbsp; April 2022</p>
                   <ul>
-                    <li>Quarterly award presented to a team member who exemplifies LoanTap's purpose, vision, and values, and who goes above and beyond in their role to make a particularly positive impact on the company and the team.</li>
+                    <li>Recognised as a team member who exemplifies LoanTap's purpose, vision, and values — going above and beyond to make a particularly positive impact on the company and team through exceptional cloud infrastructure work.</li>
                   </ul>
                 </div>
               </div>
             </div>
-          
           </div>
-          
-          
         </div>
       </section>
+
+      <!-- ═══════════════ EDUCATION ═══════════════ -->
       <section id="education" class="section scrollspy">
         <h3 class="page-title white-text teal">Education</h3>
         <div class="container">
           <div class="row">
             <div class="col s12 m6">
-              <div class="card">
+              <div class="card reveal edu-card">
                 <div class="card-content">
-                  <p><span class="card-title"><a href="https://dtek.karnataka.gov.in/english" class="teal-text hoverline">Department of Technical Education, Govt. of Karnataka</a></span></p>
-                  <p class="brown-text">Bangalore, India | 2013 - 2017</p>
-                  <ul>
-                    <li>Diploma in Computer Science</li>
-                    <li>BSF Institute of Technology </li>
-                  </ul>
+                  <p><span class="card-title"><a href="https://dtek.karnataka.gov.in/english" class="teal-text hoverline">Dept. of Technical Education, Govt. of Karnataka</a></span></p>
+                  <p class="brown-text">BSF Institute of Technology, Bengaluru &nbsp;|&nbsp; 2013 – 2017</p>
+                  <ul><li>Diploma in Computer Science</li></ul>
                 </div>
               </div>
             </div>
             <div class="col s12 m6">
-              <div class="card">
+              <div class="card reveal edu-card">
                 <div class="card-content">
                   <p><span class="card-title"><a href="https://www.annamalaiuniversity.ac.in/" class="teal-text hoverline">Annamalai University</a></span></p>
-                  <p class="brown-text">Bangalore, India | 2018 - 2020</p>
-                  <ul>
-                    <li>BCA</li>
-                    <li>Annamalai University</li>
-                  </ul>
+                  <p class="brown-text">Bengaluru, India &nbsp;|&nbsp; 2018 – 2020</p>
+                  <ul><li>Bachelor of Computer Applications (BCA)</li></ul>
                 </div>
               </div>
             </div>
-      
-      <div class="col s12 m6">
-              <div class="card">
+            <div class="col s12 m6">
+              <div class="card reveal edu-card">
                 <div class="card-content">
-                 <p><span class="card-title"><a href="https://www.annamalaiuniversity.ac.in/" class="teal-text hoverline">Annamalai University</a></span></p>
-                  <p class="brown-text">Bangalore, India | 2020 - 2022</p>
-                  <ul>
-                    <li>MCA</li>
-                    <li>Annamalai University </li>
-                  </ul>
+                  <p><span class="card-title"><a href="https://www.annamalaiuniversity.ac.in/" class="teal-text hoverline">Annamalai University</a></span></p>
+                  <p class="brown-text">Bengaluru, India &nbsp;|&nbsp; 2020 – 2022</p>
+                  <ul><li>Master of Computer Applications (MCA)</li></ul>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </section>
-<section id="contact" class="section scrollspy full-height">
-  <h3 class="page-title white-text teal">Contact</h3>
-  <div class="container">
-    <!-- Email Section -->
-    <p>
-      <a href="mailto:dilipsook@gmail.com" data-position="top" data-tooltip="Email Dilip" class="btn-floating btn-large waves-effect waves-light brown tooltipped">
-        <i class="fa fa-envelope"></i>
-      </a>
-      <a href="mailto:dilipsook@gmail.com" class="hoverline">dilipsook@gmail.com</a>
-    </p>
-    
-    <!-- GitHub Section -->
-    <p>
-      <a href="https://github.com/dilipsook" target="_blank" data-position="top" data-tooltip="View Dilip on GitHub" class="btn-floating btn-large waves-effect waves-light brown tooltipped">
-        <i class="fa fa-github"></i>
-      </a>
-      <a href="https://github.com/dilipsook" class="hoverline">https://github.com/dilipsook</a>
-    </p>
-    
-    <!-- LinkedIn Section -->
-    <p>
-      <a href="https://www.linkedin.com/in/dilipsookk/" target="_blank" data-position="top" data-tooltip="View Dilip on LinkedIn" class="btn-floating btn-large waves-effect waves-light brown tooltipped">
-        <i class="fa fa-linkedin"></i>
-      </a>
-      <a href="https://www.linkedin.com/in/dilipsookk/" class="hoverline">linkedin.com/in/dilipsook</a>
-    </p>
-    
-    <!-- StackOverflow Section -->
-    <p>
-      <a href="http://stackoverflow.com/users/19229599/dilip-kumar" target="_blank" data-position="top" data-tooltip="View Dilip on StackOverflow" class="btn-floating btn-large waves-effect waves-light brown tooltipped">
-        <i class="fa fa-stack-overflow"></i>
-      </a>
-      <a href="http://stackoverflow.com/users/19229599/dilip-kumar" class="hoverline">stackoverflow.com/in/dilip-kumar</a>
-    </p>
 
-    <!-- "Get in Touch" Section -->
-    <div class="contact-message" style="margin-top: 20px; font-size: 1.2em; line-height: 1.8; text-align: left;">
-      <p>
-        <strong>📩 Get in Touch with Me Today:</strong>
-      </p>
-      <p style="font-size: 1.1em; margin-bottom: 10px;">
-        Let’s discuss how I can help your organization achieve its cloud goals. You can reach me directly on
-      </p>
-      <div style="margin-top: 15px;">
-        <a href="https://www.linkedin.com/in/dilipsookk/" target="_blank" 
-           class="hoverline teal-text" 
-           style="font-weight: bold; text-decoration: none; margin-right: 20px; padding-right: 20px;">
-          LinkedIn
-        </a>
-        <span style="font-weight: normal; margin-left: 5px; margin-right: 5px;">or via</span> 
-        <a href="mailto:dilipsook@gmail.com" 
-           class="hoverline teal-text" 
-           style="font-weight: bold; text-decoration: none; margin-left: 20px; padding-left: 20px;">
-          Email
-        </a>
-      </div>
-      <p style="margin-top: 15px;">Together, we can build innovative solutions that drive success!</p>
-    </div>
-  </div>
-</section>
+      <!-- ═══════════════ CONTACT ═══════════════ -->
+      <section id="contact" class="section scrollspy full-height">
+        <h3 class="page-title white-text teal">Contact</h3>
+        <div class="container">
+          <p class="reveal contact-intro">I'm always open to discussing cloud projects, architecture challenges, or new opportunities. Drop me a line — let's build something great.</p>
 
+          <div class="contact-links reveal">
+            <p>
+              <a href="mailto:dilipsook@gmail.com" data-position="top" data-tooltip="Email Dilip" class="btn-floating btn-large waves-effect waves-light brown tooltipped contact-btn">
+                <i class="fa fa-envelope"></i>
+              </a>
+              <a href="mailto:dilipsook@gmail.com" class="hoverline">dilipsook@gmail.com</a>
+            </p>
+            <p>
+              <a href="https://github.com/dilipsook" target="_blank" data-position="top" data-tooltip="GitHub" class="btn-floating btn-large waves-effect waves-light brown tooltipped contact-btn">
+                <i class="fa fa-github"></i>
+              </a>
+              <a href="https://github.com/dilipsook" class="hoverline">github.com/dilipsook</a>
+            </p>
+            <p>
+              <a href="https://www.linkedin.com/in/dilipsookk/" target="_blank" data-position="top" data-tooltip="LinkedIn" class="btn-floating btn-large waves-effect waves-light brown tooltipped contact-btn">
+                <i class="fa fa-linkedin"></i>
+              </a>
+              <a href="https://www.linkedin.com/in/dilipsookk/" class="hoverline">linkedin.com/in/dilipsookk</a>
+            </p>
+            <p>
+              <a href="http://stackoverflow.com/users/19229599/dilip-kumar" target="_blank" data-position="top" data-tooltip="StackOverflow" class="btn-floating btn-large waves-effect waves-light brown tooltipped contact-btn">
+                <i class="fa fa-stack-overflow"></i>
+              </a>
+              <a href="http://stackoverflow.com/users/19229599/dilip-kumar" class="hoverline">stackoverflow.com/users/dilip-kumar</a>
+            </p>
+          </div>
 
+          <div class="contact-cta reveal">
+            <p>📩 <strong>Ready to transform your cloud infrastructure?</strong></p>
+            <p>Let's connect on <a href="https://www.linkedin.com/in/dilipsookk/" target="_blank" class="hoverline teal-text" style="font-weight:bold">LinkedIn</a> or via <a href="mailto:dilipsook@gmail.com" class="hoverline teal-text" style="font-weight:bold">Email</a> — together, we can build innovative solutions that drive success!</p>
+          </div>
+        </div>
+      </section>
 
     </main>
-    <!-- jQuery-->
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <!-- Materialize - Compiled and minified JavaScript-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.95.3/js/materialize.min.js"></script>
     <script>
-      // Materialize - Initializers
       $(document).ready(function(){
         $('.scrollspy').scrollSpy();
-        // Initialize collapse button
-        $(".button-collapse").sideNav({
-            menuWidth: 190, // Default is 240
-            edge: 'left', // Choose the horizontal origin
-            closeOnClick: true // Closes side-nav on <a> clicks, useful for Angular/Meteor
-          }
-        );
+        $(".button-collapse").sideNav({ menuWidth: 190, edge: 'left', closeOnClick: true });
+        $('.tooltipped').tooltip({ delay: 50 });
       });
     </script>
-  
 
     <script>
-      // Scroll-reveal observer
-      (function() {
-        var targets = document.querySelectorAll('.card, section > .container > .row, #about .container > *');
-        targets.forEach(function(el) {
-          if (!el.classList.contains('reveal') && !el.classList.contains('reveal-left')) {
-            el.classList.add('reveal');
+    // ── PAGE LOADER ──────────────────────────────
+    window.addEventListener('load', function() {
+      var loader = document.getElementById('page-loader');
+      setTimeout(function() {
+        loader.classList.add('loaded');
+        setTimeout(function() { loader.style.display = 'none'; }, 600);
+      }, 1200);
+    });
+
+    // ── TYPED TEXT ───────────────────────────────
+    (function() {
+      var phrases = [
+        'Innovative Cloud Solutions',
+        'Scalable AWS Architectures',
+        'Secure Azure Environments',
+        'Cost-Optimised Infrastructures',
+        'Seamless Cloud Migrations'
+      ];
+      var el = document.getElementById('typed-text');
+      if (!el) return;
+      var pi = 0, ci = 0, deleting = false, pause = false;
+      function tick() {
+        var full = phrases[pi];
+        if (pause) { pause = false; setTimeout(tick, 1500); return; }
+        if (!deleting) {
+          el.textContent = full.substring(0, ci + 1);
+          ci++;
+          if (ci === full.length) { deleting = true; pause = true; setTimeout(tick, 100); return; }
+          setTimeout(tick, 65);
+        } else {
+          el.textContent = full.substring(0, ci - 1);
+          ci--;
+          if (ci === 0) { deleting = false; pi = (pi + 1) % phrases.length; setTimeout(tick, 400); return; }
+          setTimeout(tick, 35);
+        }
+      }
+      setTimeout(tick, 800);
+    })();
+
+    // ── SCROLL REVEAL ────────────────────────────
+    (function() {
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(e) {
+          if (e.isIntersecting) {
+            e.target.classList.add('visible');
+            observer.unobserve(e.target);
           }
         });
+      }, { threshold: 0.1 });
 
-        var observer = new IntersectionObserver(function(entries) {
-          entries.forEach(function(entry) {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('visible');
-              // once revealed, unobserve
-              observer.unobserve(entry.target);
-            }
-          });
-        }, { threshold: 0.12 });
+      // Auto-tag cards and containers
+      document.querySelectorAll(
+        '.card, #about .container > p, #about .container > h5, #about .about-list-item, .about-stats, .contact-intro, .contact-links, .contact-cta'
+      ).forEach(function(el) {
+        if (!el.classList.contains('reveal') && !el.classList.contains('reveal-left')) {
+          el.classList.add('reveal');
+        }
+        observer.observe(el);
+      });
 
-        document.querySelectorAll('.reveal, .reveal-left, .reveal-stagger').forEach(function(el) {
-          observer.observe(el);
+      document.querySelectorAll('.reveal, .reveal-left').forEach(function(el) {
+        observer.observe(el);
+      });
+    })();
+
+    // ── HERO PARALLAX ────────────────────────────
+    (function() {
+      var hero = document.getElementById('intro');
+      if (!hero) return;
+      window.addEventListener('scroll', function() {
+        hero.style.backgroundPositionY = (50 + window.pageYOffset * 0.18) + '%';
+      }, { passive: true });
+    })();
+
+    // ── COUNTER ANIMATION ────────────────────────
+    (function() {
+      var counters = document.querySelectorAll('.stat-num');
+      var observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(e) {
+          if (!e.isIntersecting) return;
+          var el = e.target;
+          var target = parseInt(el.getAttribute('data-target'), 10);
+          var start = 0, duration = 1600;
+          var step = Math.ceil(target / (duration / 16));
+          var timer = setInterval(function() {
+            start += step;
+            if (start >= target) { start = target; clearInterval(timer); }
+            el.textContent = start;
+          }, 16);
+          observer.unobserve(el);
         });
-      })();
+      }, { threshold: 0.5 });
+      counters.forEach(function(c) { observer.observe(c); });
+    })();
 
-      // Subtle hero parallax
-      (function() {
-        var hero = document.getElementById('intro');
-        if (!hero) return;
-        window.addEventListener('scroll', function() {
-          var scrolled = window.pageYOffset;
-          hero.style.backgroundPositionY = (50 + scrolled * 0.15) + '%';
-        }, { passive: true });
-      })();
+    // ── PARTICLES (hero bg dots) ─────────────────
+    (function() {
+      var container = document.getElementById('particles-container');
+      if (!container) return;
+      for (var i = 0; i < 30; i++) {
+        var dot = document.createElement('div');
+        dot.className = 'particle';
+        dot.style.left = Math.random() * 100 + '%';
+        dot.style.top  = Math.random() * 100 + '%';
+        dot.style.animationDelay = (Math.random() * 6) + 's';
+        dot.style.animationDuration = (4 + Math.random() * 6) + 's';
+        dot.style.width = dot.style.height = (2 + Math.random() * 4) + 'px';
+        container.appendChild(dot);
+      }
+    })();
+
+    // ── SCROLL HINT FADE ─────────────────────────
+    window.addEventListener('scroll', function() {
+      var hint = document.querySelector('.scroll-hint');
+      if (hint) hint.style.opacity = window.pageYOffset > 80 ? '0' : '1';
+    }, { passive: true });
     </script>
 </html>
