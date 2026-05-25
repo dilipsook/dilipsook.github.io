@@ -363,3 +363,254 @@ small { display: none;}
 	    margin: 0 auto;
 	}
 }
+
+/* =============================================
+   ANIMATIONS & ENHANCEMENTS
+   ============================================= */
+
+/* --- Page load fade-in --- */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInLeft {
+  from { opacity: 0; transform: translateX(-30px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fadeInRight {
+  from { opacity: 0; transform: translateX(30px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.92); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes pulse-border {
+  0%, 100% { border-color: #009688; }
+  50%       { border-color: #26a69a; }
+}
+
+@keyframes typewriter-cursor {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+/* --- Intro hero text animation --- */
+#intro.section .container h4 {
+  animation: fadeInUp 1s ease 0.3s both;
+}
+
+/* --- Floating subtle parallax on hero --- */
+#intro.section {
+  transition: background-position 0.1s ease-out;
+}
+
+/* --- Nav sidebar slide in --- */
+ul.side-nav.fixed {
+  animation: slideDown 0.6s ease 0.1s both;
+}
+
+/* --- Section headings --- */
+h3.page-title {
+  animation: fadeInLeft 0.7s ease both;
+  position: relative;
+  overflow: hidden;
+}
+
+h3.page-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0;
+  width: 0; height: 3px;
+  background: rgba(255,255,255,0.5);
+  animation: expandWidth 0.8s ease 0.5s forwards;
+}
+
+@keyframes expandWidth {
+  to { width: 100%; }
+}
+
+/* --- Scroll-reveal for sections (JS-driven class) --- */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.reveal-left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Stagger children */
+.reveal-stagger > * {
+  opacity: 0;
+  transform: translateY(25px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.reveal-stagger.visible > *:nth-child(1) { opacity: 1; transform: none; transition-delay: 0s; }
+.reveal-stagger.visible > *:nth-child(2) { opacity: 1; transform: none; transition-delay: 0.1s; }
+.reveal-stagger.visible > *:nth-child(3) { opacity: 1; transform: none; transition-delay: 0.2s; }
+.reveal-stagger.visible > *:nth-child(4) { opacity: 1; transform: none; transition-delay: 0.3s; }
+.reveal-stagger.visible > *:nth-child(5) { opacity: 1; transform: none; transition-delay: 0.4s; }
+.reveal-stagger.visible > *:nth-child(6) { opacity: 1; transform: none; transition-delay: 0.5s; }
+.reveal-stagger.visible > *:nth-child(n+7) { opacity: 1; transform: none; transition-delay: 0.6s; }
+
+/* --- Card hover lift --- */
+.card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 35px rgba(0,0,0,0.15) !important;
+}
+
+/* --- Skill icons hover spin/scale --- */
+#skills .col img.responsive-img,
+#certifications .col img.responsive-img {
+  transition: transform 0.35s cubic-bezier(0.34,1.56,0.64,1), filter 0.3s ease;
+  cursor: pointer;
+}
+
+#skills .col img.responsive-img:hover,
+#certifications .col img.responsive-img:hover {
+  transform: scale(1.25) rotate(-3deg);
+  filter: drop-shadow(0 4px 12px rgba(0,150,136,0.35));
+}
+
+/* --- Teal underline shimmer effect on intro --- */
+#intro.section .underline {
+  background: linear-gradient(90deg, #009688 40%, #4db6ac 50%, #009688 60%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 3s linear infinite;
+  border-bottom: none;
+  display: inline-block;
+}
+
+/* --- Contact buttons animated pulse on hover --- */
+.btn-floating {
+  transition: transform 0.25s ease, box-shadow 0.25s ease !important;
+}
+
+.btn-floating:hover {
+  transform: scale(1.15) rotate(8deg) !important;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.25) !important;
+}
+
+/* --- Nav link hover animation --- */
+ul.side-nav.fixed a {
+  position: relative;
+  transition: padding-left 0.25s ease, color 0.2s ease !important;
+}
+
+ul.side-nav.fixed li:not(.logo) a::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 0;
+  background: rgba(0,150,136,0.08);
+  transition: width 0.25s ease;
+}
+
+ul.side-nav.fixed li:not(.logo) a:hover::before {
+  width: 100%;
+}
+
+/* --- Blockquote animated left border --- */
+blockquote {
+  transition: border-left-color 0.3s ease;
+  animation: fadeInLeft 0.8s ease 0.3s both;
+}
+
+blockquote:hover {
+  border-left-color: #009688;
+}
+
+/* --- About section list items stagger --- */
+#about ul.flow-text li {
+  opacity: 0;
+  transform: translateX(-15px);
+  animation: fadeInLeft 0.5s ease forwards;
+}
+#about ul.flow-text li:nth-child(1) { animation-delay: 0.2s; }
+#about ul.flow-text li:nth-child(2) { animation-delay: 0.35s; }
+#about ul.flow-text li:nth-child(3) { animation-delay: 0.5s; }
+#about ul.flow-text li:nth-child(4) { animation-delay: 0.65s; }
+
+/* --- Card title link hover underline slide --- */
+.card-title a {
+  position: relative;
+}
+
+.card-title a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px; left: 0;
+  width: 0; height: 2px;
+  background: #009688;
+  transition: width 0.3s ease;
+}
+
+.card-title a:hover::after {
+  width: 100%;
+}
+
+/* --- Intro hero subtle animated overlay --- */
+#intro.section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.15) 100%);
+  animation: fadeIn 1.2s ease both;
+  pointer-events: none;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* --- Logo name pulse on load --- */
+#logo-container {
+  animation: scaleIn 0.6s ease both;
+}
+
+/* --- Awards card shimmer border on hover --- */
+#awards .card:hover {
+  outline: 2px solid rgba(0,150,136,0.3);
+}
+
+/* --- Section transition smooth scroll visual --- */
+section {
+  transition: opacity 0.15s ease;
+}
