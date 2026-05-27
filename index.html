@@ -29,6 +29,27 @@
     <meta name="theme-color" content="#ffffff">
     <meta name="robots" content="index, follow">
     <meta name="google-site-verification" content="-3F1R8ekDXe8XFfCi7eIVfXOSWqlp_pWNQX2dfgKD4Y">
+  
+  <style id="mobile-critical">
+    @media (max-width: 992px) {
+      #desktop-sidenav,
+      ul.side-nav.fixed,
+      .side-nav.fixed { 
+        display: none !important;
+        visibility: hidden !important;
+        width: 0 !important;
+        left: -9999px !important;
+        transform: translateX(-9999px) !important;
+      }
+      main {
+        padding-left: 0 !important;
+        margin-left: 0 !important;
+      }
+      body {
+        overflow-x: hidden !important;
+      }
+    }
+  </style>
   </head>
   <body>
     <!-- Page loader -->
@@ -42,7 +63,7 @@
 
     <!-- Navigation Menu-->
     <nav ng-class="hide-on-small-only">
-      <ul class="side-nav fixed section table-of-contents">
+      <ul id="desktop-sidenav" class="side-nav fixed section table-of-contents">
         <li class="logo"><a id="logo-container" href="#intro" class="brand-logo teal-text">Dilip Kumar<span class="brown-text light">Cloud Solution Specialist</span></a></li>
         <li class="bold nav-item" style="--i:1"><a href="#about" class="waves-effect waves-dark teal-text"><i class="mdi-social-person small"></i><span>About</span></a></li>
         <li class="bold nav-item" style="--i:2"><a href="#experience" class="waves-effect waves-dark cyan-text"><i class="mdi-action-trending-up small"></i><span>Experience</span></a></li>
@@ -746,15 +767,11 @@
     <script>
       $(document).ready(function(){
         $('.scrollspy').scrollSpy();
-        $(".button-collapse").sideNav({
-          menuWidth: 190, edge: 'left', closeOnClick: true,
-          menuOpeningSpeed: 250,
-          edge: 'left',
-          draggable: true,
-          onOpen: function(el){ $('#slide-out').addClass('active'); },
-          onClose: function(el){ $('#slide-out').removeClass('active'); }
-        });
         $('.tooltipped').tooltip({ delay: 50 });
+        // Only init Materialize sideNav on desktop
+        if(window.innerWidth > 992){
+          $(".button-collapse").sideNav({ menuWidth: 190, edge: 'left', closeOnClick: true });
+        }
       });
     </script>
 
