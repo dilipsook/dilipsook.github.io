@@ -56,27 +56,39 @@
         <li class="bold nav-item" style="--i:10"><a href="Dilip_Kumar_Resume.pdf" target="_blank" class="waves-effect waves-dark grey-text text-darken-3"><i class="mdi-action-description small"></i><span>Resume_2</span></a></li>
       </ul>
     </nav>
-    <nav class="hide-on-large only trigger z-depth-1"><a href="#" data-activates="slide-out" class="button-collapse hamburger-btn" aria-label="Menu">
-        <span class="ham-bar ham-bar-1"></span>
-        <span class="ham-bar ham-bar-2"></span>
-        <span class="ham-bar ham-bar-3"></span>
-      </a>
-      <div class="name-title"><a id="name" href="#main" class="teal-text">Dilip Kumar</a><span class="brown-text light">Cloud Solution Specialist</span></div>
-    </nav>
-    <nav class="hide-on-large only">
-      <ul id="slide-out" class="side-nav">
-        <li class="bold"><a href="#about" class="waves-effect waves-dark teal-text"><i class="mdi-social-person small"></i><span>About</span></a></li>
-        <li class="bold"><a href="#experience" class="waves-effect waves-dark cyan-text"><i class="mdi-action-trending-up small"></i><span>Experience</span></a></li>
-        <li class="bold"><a href="#projects" class="waves-effect waves-dark indigo-text"><i class="mdi-av-web small"></i><span>Projects</span></a></li>
-        <li class="bold"><a href="#skills" class="waves-effect waves-dark purple-text"><i class="mdi-av-equalizer small"></i><span>Skills</span></a></li>
-        <li class="bold"><a href="#certifications" class="waves-effect waves-dark red-text"><i class="mdi-action-verified-user small"></i><span>Certifications</span></a></li>
-        <li class="bold"><a href="#awards" class="waves-effect waves-dark red-text"><i class="mdi-action-grade small"></i><span>Awards</span></a></li>
-        <li class="bold"><a href="#education" class="waves-effect waves-dark orange-text"><i class="mdi-social-school small"></i><span>Education</span></a></li>
-        <li class="bold"><a href="#contact" class="waves-effect waves-dark brown-text"><i class="mdi-content-mail small"></i><span>Contact</span></a></li>
-        <li class="bold"><a href="Dilip_Kumar_Resume_.pdf" target="_blank" class="waves-effect waves-dark grey-text text-darken-3"><i class="mdi-action-description small"></i><span>Resume_1</span></a></li>
-        <li class="bold"><a href="Dilip_Kumar_Resume.pdf" target="_blank" class="waves-effect waves-dark grey-text text-darken-3"><i class="mdi-action-description small"></i><span>Resume_2</span></a></li>
-      </ul>
-    </nav>
+    <!-- ═══ MOBILE TOP BAR ═══ -->
+    <div class="mobile-topbar hide-on-large-only">
+      <div class="mobile-topbar-name">
+        <span class="mobile-name-dk">DK</span>
+        <div>
+          <div class="mobile-name-full">Dilip Kumar</div>
+          <div class="mobile-name-role">Cloud Solution Specialist</div>
+        </div>
+      </div>
+      <button class="mobile-menu-trigger" id="mobileMenuTrigger" aria-label="Open Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <!-- ═══ MOBILE FULL-SCREEN OVERLAY MENU ═══ -->
+    <div class="mobile-overlay" id="mobileOverlay">
+      <div class="mobile-overlay-inner">
+        <button class="mobile-overlay-close" id="mobileOverlayClose">✕</button>
+        <div class="mobile-overlay-logo">DK</div>
+        <nav class="mobile-overlay-nav">
+          <a href="#about"          class="mob-nav-link" data-label="About"><i class="fa fa-user"></i><span>About</span></a>
+          <a href="#experience"     class="mob-nav-link" data-label="Experience"><i class="fa fa-briefcase"></i><span>Experience</span></a>
+          <a href="#projects"       class="mob-nav-link" data-label="Projects"><i class="fa fa-code"></i><span>Projects</span></a>
+          <a href="#skills"         class="mob-nav-link" data-label="Skills"><i class="fa fa-cogs"></i><span>Skills</span></a>
+          <a href="#certifications" class="mob-nav-link" data-label="Certifications"><i class="fa fa-certificate"></i><span>Certifications</span></a>
+          <a href="#awards"         class="mob-nav-link" data-label="Awards"><i class="fa fa-trophy"></i><span>Awards</span></a>
+          <a href="#education"      class="mob-nav-link" data-label="Education"><i class="fa fa-graduation-cap"></i><span>Education</span></a>
+          <a href="#contact"        class="mob-nav-link" data-label="Contact"><i class="fa fa-envelope"></i><span>Contact</span></a>
+          <a href="Dilip_Kumar_Resume_.pdf" target="_blank" class="mob-nav-link" data-label="Resume 1"><i class="fa fa-file-pdf-o"></i><span>Resume 1</span></a>
+          <a href="Dilip_Kumar_Resume.pdf"  target="_blank" class="mob-nav-link" data-label="Resume 2"><i class="fa fa-file-pdf-o"></i><span>Resume 2</span></a>
+        </nav>
+      </div>
+    </div>
 
     <!-- Main Content-->
     <main>
@@ -1033,5 +1045,38 @@
         }
       });
     });
+    </script>
+
+    <script>
+    /* ── MOBILE OVERLAY MENU ── */
+    (function(){
+      var trigger = document.getElementById('mobileMenuTrigger');
+      var overlay = document.getElementById('mobileOverlay');
+      var closeBtn = document.getElementById('mobileOverlayClose');
+      var links    = document.querySelectorAll('.mob-nav-link');
+
+      function openMenu(){
+        overlay.classList.add('open');
+        document.body.style.overflow = 'hidden';
+        trigger.classList.add('is-open');
+        // stagger links
+        links.forEach(function(l,i){
+          l.style.transitionDelay = (i*0.05+0.15)+'s';
+          l.classList.add('link-in');
+        });
+      }
+      function closeMenu(){
+        overlay.classList.remove('open');
+        document.body.style.overflow = '';
+        trigger.classList.remove('is-open');
+        links.forEach(function(l){ l.classList.remove('link-in'); l.style.transitionDelay='0s'; });
+      }
+
+      if(trigger) trigger.addEventListener('click', openMenu);
+      if(closeBtn) closeBtn.addEventListener('click', closeMenu);
+      links.forEach(function(l){ l.addEventListener('click', closeMenu); });
+      // close on overlay bg click
+      if(overlay) overlay.addEventListener('click', function(e){ if(e.target===overlay) closeMenu(); });
+    })();
     </script>
 </html>
