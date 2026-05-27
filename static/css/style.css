@@ -7,7 +7,7 @@ blockquote { border-left: 5px solid #795548; color: #795548; font-size: 125%; fo
 .text-center { text-align: center; }
 nav { background: white; box-shadow: none; height: 0; }
 nav i { padding: 0 15px; position: relative; top: 5px; }
-main { background: url(../img/bg.png) repeat; padding-left: 190px; }
+main { background: url(../img/bg.png) repeat; padding-left: 190px; } /* desktop default */
 ul.side-nav { width: 190px; }
 
   main{ padding-left:190px !important; }
@@ -575,7 +575,12 @@ li.li-reveal { animation:liSlideIn .4s ease both; }
    DESKTOP — keep side nav visible (≥993px)
 ══════════════════════════════════════════════ */
 @media (min-width: 993px) {
-  ul.side-nav.fixed  { display: block !important; }
+  #desktop-sidenav,
+  ul.side-nav.fixed { display: block !important; visibility: visible !important; left: 0 !important; transform: none !important; }
+  main { padding-left: 190px !important; }
+  .mobile-topbar,
+  .mobile-overlay { display: none !important; }
+}
   main               { padding-left: 190px !important; }
   .mobile-topbar,
   .mobile-overlay    { display: none !important; }
