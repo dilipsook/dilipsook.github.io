@@ -9,6 +9,13 @@ nav { background: white; box-shadow: none; height: 0; }
 nav i { padding: 0 15px; position: relative; top: 5px; }
 main { background: url(../img/bg.png) repeat; padding-left: 190px; }
 ul.side-nav { width: 190px; }
+/* Ensure desktop fixed nav is always visible on large screens */
+@media (min-width:993px){
+  ul.side-nav.fixed{ display:block !important; }
+  main{ padding-left:190px !important; }
+  .hamburger-btn{ display:none !important; }
+  nav.hide-on-large{ display:none !important; }
+}
 ul.side-nav li { padding: 0; }
 ul.side-nav.fixed a { box-sizing: content-box; color: #444; display: block; line-height: 100%; padding: 10px 0 12px; }
 ul.table-of-contents li.logo a.active, ul.table-of-contents li.logo a:hover { border: none; font-weight: 200; }
@@ -600,24 +607,89 @@ li.li-reveal { animation:liSlideIn .4s ease both; }
 @media (max-width:1160px){ .card ul li{ line-height:150% } }
 
 @media (max-width:992px){
-  main{ padding-left:0; padding-top:64px }
-  ul.side-nav a{ line-height:100%; padding:0; width:100% }
-  nav{ background:#fff; height:64px; position:absolute }
-  nav a.button-collapse, nav a.button-collapse i{ color:#009688; height:56px; line-height:56px }
-  h3{ padding:20px 30px; margin-bottom:40px }
-  .container{ margin:0 auto }
-  nav.hide-on-large.only.trigger{ display:block; position:fixed; top:0; z-index:2 }
-  .name-title{ display:block; height:100%; padding-top:15px; text-align:center; width:100%; position:absolute }
-  .name-title>span, .name-title>a{ position:relative; line-height:20px }
-  .name-title a{ font-size:22px; display:block }
-  .name-title span{ display:block; font-size:14px }
-  h3,.container{ position:relative; top:64px }
-  section#intro{ margin-bottom:-64px }
-  .timeline-line{ display:none }
-  .hero-stats{ gap:10px }
-  .hero-stat{ padding:9px 14px }
-  /* hamburger position fix */
-  .hamburger-btn{ position:relative; top:10px; left:8px }
+  /* ── Fix white gap: hide the desktop fixed side-nav completely ── */
+  ul.side-nav.fixed {
+    display:none !important;
+  }
+  main {
+    padding-left:0 !important;
+    padding-top:64px;
+  }
+  ul.side-nav a{ line-height:100%; padding:0; width:100%; }
+  nav{ background:#fff; height:64px; position:absolute; }
+  nav a.button-collapse, nav a.button-collapse i{
+    color:#009688; height:56px; line-height:56px;
+  }
+  h3{ padding:20px 30px; margin-bottom:40px; }
+  .container{ margin:0 auto; }
+  nav.hide-on-large.only.trigger{
+    display:block; position:fixed; top:0; z-index:100;
+    width:100%; background:#fff;
+    box-shadow:0 2px 8px rgba(0,0,0,.1);
+  }
+  .name-title{
+    display:block; height:100%; padding-top:15px;
+    text-align:center; width:100%; position:absolute;
+  }
+  .name-title>span, .name-title>a{ position:relative; line-height:20px; }
+  .name-title a{ font-size:22px; display:block; }
+  .name-title span{ display:block; font-size:14px; }
+  h3, .container{ position:relative; top:64px; }
+  section#intro{ margin-bottom:-64px; }
+  .timeline-line{ display:none; }
+  .hero-stats{ gap:10px; }
+  .hero-stat{ padding:9px 14px; }
+
+  /* ── Hamburger button ── */
+  .hamburger-btn{
+    position:absolute;
+    top:50%; left:12px;
+    transform:translateY(-50%);
+    z-index:101;
+    padding:8px;
+    background:none;
+    border:none;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    gap:5px;
+    width:40px; height:40px;
+    cursor:pointer;
+  }
+  .ham-bar{
+    display:block;
+    width:22px; height:2px;
+    background:#009688;
+    border-radius:2px;
+    transform-origin:center;
+    transition:transform .35s cubic-bezier(.23,1,.32,1),
+               opacity .35s ease,
+               background .2s ease;
+  }
+  .hamburger-btn:hover .ham-bar-1{ transform:translateX(3px); }
+  .hamburger-btn:hover .ham-bar-2{ transform:scaleX(0.7); }
+  .hamburger-btn:hover .ham-bar-3{ transform:translateX(-3px); }
+  .hamburger-btn.is-open .ham-bar-1{ transform:translateY(7px) rotate(45deg); background:#e57373; }
+  .hamburger-btn.is-open .ham-bar-2{ opacity:0; transform:scaleX(0); }
+  .hamburger-btn.is-open .ham-bar-3{ transform:translateY(-7px) rotate(-45deg); background:#e57373; }
+
+  /* ── Slide-out mobile menu ── */
+  #slide-out{
+    background:#fff;
+    box-shadow:3px 0 20px rgba(0,0,0,.15);
+    z-index:99;
+  }
+  #slide-out li a{
+    padding:14px 20px !important;
+    display:flex !important;
+    align-items:center;
+    gap:10px;
+    border-bottom:1px solid #f5f5f5;
+    transition:background .2s ease, padding-left .2s ease;
+  }
+  #slide-out li a:hover{ background:#e0f2f1; padding-left:28px !important; }
+  #slide-out li a i{ font-size:1.1rem; }
+  #slide-out li a span{ font-size:0.95rem; }
 }
 
 @media (max-width:600px){
