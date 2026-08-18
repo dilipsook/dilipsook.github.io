@@ -2,21 +2,16 @@
 <html>
  <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.95.3/css/materialize.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="static/css/style.css">
-    <link rel="stylesheet" href="static/css/enhance.css">
     <title>Dilip Kumar | Cloud Solution Specialist</title>
     <meta property="og:locale" content="en_US">
     <meta property="og:type" content="website">
     <meta property="og:title" content="Dilip Kumar | Cloud Solution Specialist">
     <meta property="og:description" content="Crafting Innovative cloud solutions for seamless, scalable, and secure digital transformations.">
-    <meta property="og:url" content="http://dilipkumar.com/">
+    <meta property="og:url" content="https://dilipsook.github.io/">
     <meta property="og:site_name" content="Dilip Kumar | Cloud Solution Specialist">
     <meta property="article:publisher" content="https://dilipkumar.com/">
     <meta property="og:image" content="">
@@ -44,17 +39,9 @@
       </div>
     </div>
 
-    <!-- Scroll progress -->
-    <div id="scroll-progress"><div id="scroll-progress-bar"></div></div>
-
-    <!-- Cursor glow (desktop only, css-gated) -->
-    <div id="cursor-glow" aria-hidden="true"></div>
-    <div id="cursor-dot" aria-hidden="true"></div>
-
     <!-- Navigation Menu-->
     <nav ng-class="hide-on-small-only">
-      <ul class="side-nav fixed section table-of-contents">
-        <li class="nav-indicator" id="nav-indicator" aria-hidden="true"></li>
+      <ul class="side-nav fixed table-of-contents">
         <li class="logo"><a id="logo-container" href="#intro" class="brand-logo teal-text">Dilip Kumar<span class="brown-text light">Cloud Solution Specialist</span></a></li>
         <li class="bold nav-item" style="--i:1"><a href="#about" class="waves-effect waves-dark teal-text"><i class="mdi-social-person small"></i><span>About</span></a></li>
         <li class="bold nav-item" style="--i:2"><a href="#experience" class="waves-effect waves-dark cyan-text"><i class="mdi-action-trending-up small"></i><span>Experience</span></a></li>
@@ -64,8 +51,7 @@
         <li class="bold nav-item" style="--i:6"><a href="#awards" class="waves-effect waves-dark red-text"><i class="mdi-action-grade small"></i><span>Awards</span></a></li>
         <li class="bold nav-item" style="--i:7"><a href="#education" class="waves-effect waves-dark orange-text"><i class="mdi-social-school small"></i><span>Education</span></a></li>
         <li class="bold nav-item" style="--i:8"><a href="#contact" class="waves-effect waves-dark brown-text"><i class="mdi-content-mail small"></i><span>Contact</span></a></li>
-        <li class="bold nav-item" style="--i:9"><a href="Dilip_Kumar_Resume_.pdf" target="_blank" class="waves-effect waves-dark grey-text text-darken-3"><i class="mdi-action-description small"></i><span>Resume_1</span></a></li>
-        <li class="bold nav-item" style="--i:10"><a href="Dilip_Kumar_Resume.pdf" target="_blank" class="waves-effect waves-dark grey-text text-darken-3"><i class="mdi-action-description small"></i><span>Resume_2</span></a></li>
+        <li class="bold nav-item resume-link" style="--i:9"><a href="Dilip_Kumar_Resume.pdf" target="_blank"><i class="mdi-action-description small"></i><span>Resume</span></a></li>
       </ul>
     </nav>
     <nav class="hide-on-large only trigger z-depth-1"><a href="#" data-activates="slide-out" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
@@ -81,8 +67,7 @@
         <li class="bold"><a href="#awards" class="waves-effect waves-dark red-text"><i class="mdi-action-grade small"></i><span>Awards</span></a></li>
         <li class="bold"><a href="#education" class="waves-effect waves-dark orange-text"><i class="mdi-social-school small"></i><span>Education</span></a></li>
         <li class="bold"><a href="#contact" class="waves-effect waves-dark brown-text"><i class="mdi-content-mail small"></i><span>Contact</span></a></li>
-        <li class="bold"><a href="Dilip_Kumar_Resume_.pdf" target="_blank" class="waves-effect waves-dark grey-text text-darken-3"><i class="mdi-action-description small"></i><span>Resume_1</span></a></li>
-        <li class="bold"><a href="Dilip_Kumar_Resume.pdf" target="_blank" class="waves-effect waves-dark grey-text text-darken-3"><i class="mdi-action-description small"></i><span>Resume_2</span></a></li>
+        <li class="bold resume-link"><a href="Dilip_Kumar_Resume.pdf" target="_blank"><i class="mdi-action-description small"></i><span>Resume</span></a></li>
       </ul>
     </nav>
 
@@ -93,17 +78,32 @@
       <section id="intro" class="section scrollspy full-height">
         <div class="intro-particles" id="particles-container"></div>
         <div class="container">
-          <div class="hero-badge">☁️ Available for Cloud Solutions, Web Development, SEO, Hosting & Digital Projects</div>
+          <div class="hero-badge">☁️ Available for Cloud Solutions, Web Development, SEO, Hosting &amp; Digital Projects</div>
           <h4>
-            <span class="hero-greeting">Hello, I'm Dilip Kumar</span><br>
-            Crafting <span class="teal typed-wrapper"><span id="typed-text"></span><span class="typed-cursor">|</span></span><br>
-            for seamless, scalable, <span class="underline">and secure digital transformations.</span>
+            <span class="hero-greeting">Hello, I'm Dilip Kumar</span>
+            <span class="hero-role">I build <span class="typed-wrapper"><span id="typed-text">Cloud Solutions</span><span class="typed-cursor">|</span></span></span>
+            <span class="underline">Secure, scalable cloud infrastructure that turns complex transformation into measurable business outcomes.</span>
           </h4>
+          <div class="cloud-orbit" aria-hidden="true">
+            <span class="orbit-ring orbit-ring-one"></span>
+            <span class="orbit-ring orbit-ring-two"></span>
+            <span class="orbit-core"><i class="fa fa-cloud"></i></span>
+            <span class="orbit-node node-aws">AWS</span>
+            <span class="orbit-node node-azure">AZ</span>
+            <span class="orbit-node node-devops">CI/CD</span>
+          </div>
           <div class="hero-stats">
-            <div class="hero-stat"><span class="stat-num" data-target="9">0</span>+ <span>Years Exp.</span></div>
-            <div class="hero-stat"><span class="stat-num" data-target="150">0</span>+ <span>Clients Served</span></div>
-            <div class="hero-stat"><span class="stat-num" data-target="500">0</span>+ <span>Servers Migrated</span></div>
+            <div class="hero-stat"><span class="stat-num" data-target="9">0</span>+ <span>Years of Exp.</span></div>
+            <div class="hero-stat"><span class="stat-num" data-target="200">0</span>+ <span>Clients Served</span></div>
+            <div class="hero-stat"><span class="stat-num" data-target="1000">0</span>+ <span>Servers Migrated</span></div>
             <div class="hero-stat">$<span class="stat-num" data-target="60">0</span>K+ <span>Monthly Savings</span></div>
+          </div>
+          <div class="hero-actions">
+            <a href="#experience" class="hero-primary">Explore my work <i class="fa fa-arrow-right"></i></a>
+            <a href="Dilip_Kumar_Resume.pdf" target="_blank" class="hero-secondary"><i class="fa fa-download"></i> Download resume</a>
+          </div>
+          <div class="infra-live" aria-label="Live infrastructure activity">
+            <span><i></i>AWS healthy</span><span><i></i>Azure connected</span><span><i></i>CI/CD active</span><span><i></i>Monitoring live</span>
           </div>
         </div>
         <div class="scroll-hint"><i class="fa fa-chevron-down"></i></div>
@@ -114,8 +114,8 @@
         <h3 class="page-title white-text teal">About</h3>
         <div class="container flow-text">
           <blockquote class="reveal-left">Mission-driven Systems Engineer turned Cloud Solutions Specialist — building the infrastructure that powers tomorrow's businesses.</blockquote>
-          
-          <p class="reveal">Hi, I'm <strong>Dilip Kumar</strong>, a Cloud Solution Specialist & Architect based in Delhi, India. With over <strong>9 Years of hands-on experience</strong> across AWS and Azure ecosystems, I design and implement cloud infrastructures that are scalable, secure, and cost-optimised — from day-zero architecture to live production environments.</p>
+
+          <p class="reveal">Hi, I'm <strong>Dilip Kumar</strong>, a Cloud Solution Specialist & Architect based in Delhi, India. With over <strong>9 years of hands-on experience</strong> across AWS and Azure ecosystems, I design and implement cloud infrastructures that are scalable, secure, and cost-optimised — from day-zero architecture to live production environments.</p>
 
           <p class="reveal">I've had the privilege of working with some of India's most recognized organizations — including <strong>Johnson &amp; Johnson</strong>, <strong>LoanTap</strong>, <strong>Indian Air Force</strong>, and <strong>ISRO</strong> — delivering infrastructure that directly impacts business outcomes.</p>
 
@@ -133,7 +133,7 @@
             </div>
             <div class="about-stat-card">
               <div class="about-stat-icon teal-text"><i class="fa fa-server"></i></div>
-              <div class="about-stat-value">500+ Servers</div>
+              <div class="about-stat-value">1000+ Servers</div>
               <div class="about-stat-label">Migrated to Cloud</div>
             </div>
             <div class="about-stat-card">
@@ -284,7 +284,7 @@
               <div class="row">
                 <div class="col s12 m2"><a href="https://www.cerebracomputers.com/" target="_blank"><img src="static/img/cerebra.png" class="responsive-img center-block"></a></div>
                 <div class="col s12 m10">
-                  <p><span class="card-title"><a href="https://www.cerebracomputers.com/" target="_blank" class="teal-text hoverline">Cerebra Integrated Technologies Ltd.</a></span></p>
+                  <p><span class="card-title"><a href="https://www.cerebracomputers.com/" target="_blank" class="teal-text hoverline">Cerebra Integrated Technologies Limited</a></span></p>
                 </div>
               </div>
               <div class="role brown-text">System Engineer</div>
@@ -526,6 +526,12 @@
 <div class="col s4 m2 skill-icon"><img src="static/img/CloudFront.svg" class="responsive-img"><span>CloudFront</span></div>
 <div class="col s4 m2 skill-icon"><img src="static/img/Application-Migration-Service.svg" class="responsive-img"><span>App Migration</span></div>
 <div class="col s4 m2 skill-icon"><img src="static/img/Server-Migration-Service.svg" class="responsive-img"><span>Server Migration</span></div>
+<div class="col s4 m2 skill-icon"><img src="static/img/Users.svg" class="responsive-img" alt="AWS IAM"><span>IAM</span></div>
+<div class="col s4 m2 skill-icon"><img src="static/img/kubernetes.svg" class="responsive-img" alt="Amazon EKS"><span>Amazon EKS</span></div>
+<div class="col s4 m2 skill-icon"><img src="static/img/athena.svg" class="responsive-img" alt="Amazon Athena"><span>Athena</span></div>
+<div class="col s4 m2 skill-icon"><img src="static/img/AppConfig.svg" class="responsive-img" alt="AWS AppConfig"><span>AppConfig</span></div>
+<div class="col s4 m2 skill-icon"><img src="static/img/terraform.png" class="responsive-img" alt="AWS Infrastructure as Code"><span>Infrastructure as Code</span></div>
+<div class="col s4 m2 skill-icon"><img src="static/img/docker.svg" class="responsive-img" alt="Containers on AWS"><span>Containers</span></div>
               </div>
             </div>
           </div>
@@ -546,6 +552,28 @@
 <div class="col s4 m2 skill-icon"><img src="static/img/Azure-Migrate.svg" class="responsive-img"><span>Azure Migrate</span></div>
 <div class="col s4 m2 skill-icon"><img src="static/img/Azure-Arc.svg" class="responsive-img"><span>Azure Arc</span></div>
 <div class="col s4 m2 skill-icon"><img src="static/img/NAT.svg" class="responsive-img"><span>NAT</span></div>
+<div class="col s4 m2 skill-icon"><img src="static/img/Blob-Block.svg" class="responsive-img" alt="Azure Blob Storage"><span>Blob Storage</span></div>
+<div class="col s4 m2 skill-icon"><img src="static/img/Storage-Azure-Files.svg" class="responsive-img" alt="Azure Files"><span>Azure Files</span></div>
+<div class="col s4 m2 skill-icon"><img src="static/img/Disks.svg" class="responsive-img" alt="Azure Managed Disks"><span>Managed Disks</span></div>
+<div class="col s4 m2 skill-icon"><img src="static/img/Disks-Snapshots.svg" class="responsive-img" alt="Azure Snapshots"><span>Snapshots</span></div>
+<div class="col s4 m2 skill-icon"><img src="static/img/Availability-Sets.svg" class="responsive-img" alt="Azure Availability Sets"><span>Availability Sets</span></div>
+<div class="col s4 m2 skill-icon"><img src="static/img/active-directory.svg" class="responsive-img" alt="Microsoft Entra ID"><span>Entra ID</span></div>
+<div class="col s4 m2 skill-icon"><img src="static/img/Cost-Analysis.svg" class="responsive-img" alt="Azure Cost Analysis"><span>Cost Analysis</span></div>
+<div class="col s4 m2 skill-icon"><img src="static/img/Cost-Alerts.svg" class="responsive-img" alt="Azure Cost Alerts"><span>Cost Alerts</span></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card reveal devops-card">
+            <div class="card-content">
+              <h4 class="brown-text light">DevOps</h4>
+              <p class="skill-intro">Automated delivery, repeatable infrastructure, and production-ready container orchestration.</p>
+              <div class="row text-center">
+                <div class="col s6 m3 skill-icon"><img src="static/img/jenkins.jpeg" class="responsive-img" alt="Jenkins"><span>Jenkins</span></div>
+                <div class="col s6 m3 skill-icon"><img src="static/img/github.png" class="responsive-img" alt="GitHub"><span>GitHub</span></div>
+                <div class="col s6 m3 skill-icon"><img src="static/img/terraform.png" class="responsive-img" alt="Terraform"><span>Terraform</span></div>
+                <div class="col s6 m3 skill-icon"><img src="static/img/kubernetes.svg" class="responsive-img" alt="AWS EKS"><span>AWS EKS</span></div>
+                <div class="col s6 m3 skill-icon"><img src="static/img/aws-cicd.jpeg" class="responsive-img" alt="CI/CD Pipeline"><span>CI/CD Pipeline</span></div>
               </div>
             </div>
           </div>
@@ -686,32 +714,24 @@
       <section id="contact" class="section scrollspy full-height">
         <h3 class="page-title white-text teal">Contact</h3>
         <div class="container">
-          <p class="reveal contact-intro">I'm always open to discussing cloud projects, architecture challenges, or new opportunities. Drop me a line — let's build something great.</p>
+          <div class="contact-lead reveal">
+            <span class="contact-status">Available for select projects</span>
+            <h4>Have a cloud challenge?<br><span>Let's solve it together.</span></h4>
+            <p class="contact-intro">Cloud architecture, migrations, FinOps, web development, hosting, SEO, or a new opportunity — send me a message and I’ll get back to you.</p>
+          </div>
 
           <div class="contact-links reveal">
             <p>
-              <a href="mailto:dilipsook@gmail.com" data-position="top" data-tooltip="Email Dilip" class="btn-floating btn-large waves-effect waves-light brown tooltipped contact-btn">
-                <i class="fa fa-envelope"></i>
-              </a>
-              <a href="mailto:dilipsook@gmail.com" class="hoverline">dilipsook@gmail.com</a>
+              <a href="mailto:dilipsook@gmail.com" class="contact-link-card"><span class="contact-btn"><i class="fa fa-envelope"></i></span><span><small>Email</small>dilipsook@gmail.com</span><i class="fa fa-external-link"></i></a>
             </p>
             <p>
-              <a href="https://github.com/dilipsook" target="_blank" data-position="top" data-tooltip="GitHub" class="btn-floating btn-large waves-effect waves-light brown tooltipped contact-btn">
-                <i class="fa fa-github"></i>
-              </a>
-              <a href="https://github.com/dilipsook" class="hoverline">github.com/dilipsook</a>
+              <a href="https://github.com/dilipsook" target="_blank" class="contact-link-card"><span class="contact-btn"><i class="fa fa-github"></i></span><span><small>GitHub</small>github.com/dilipsook</span><i class="fa fa-external-link"></i></a>
             </p>
             <p>
-              <a href="https://www.linkedin.com/in/dilipsookk/" target="_blank" data-position="top" data-tooltip="LinkedIn" class="btn-floating btn-large waves-effect waves-light brown tooltipped contact-btn">
-                <i class="fa fa-linkedin"></i>
-              </a>
-              <a href="https://www.linkedin.com/in/dilipsookk/" class="hoverline">linkedin.com/in/dilipsookk</a>
+              <a href="https://www.linkedin.com/in/dilipsookk/" target="_blank" class="contact-link-card"><span class="contact-btn"><i class="fa fa-linkedin"></i></span><span><small>LinkedIn</small>linkedin.com/in/dilipsookk</span><i class="fa fa-external-link"></i></a>
             </p>
             <p>
-              <a href="http://stackoverflow.com/users/19229599/dilip-kumar" target="_blank" data-position="top" data-tooltip="StackOverflow" class="btn-floating btn-large waves-effect waves-light brown tooltipped contact-btn">
-                <i class="fa fa-stack-overflow"></i>
-              </a>
-              <a href="http://stackoverflow.com/users/19229599/dilip-kumar" class="hoverline">stackoverflow.com/users/dilip-kumar</a>
+              <a href="http://stackoverflow.com/users/19229599/dilip-kumar" target="_blank" class="contact-link-card"><span class="contact-btn"><i class="fa fa-stack-overflow"></i></span><span><small>Stack Overflow</small>stackoverflow.com/users/dilip-kumar</span><i class="fa fa-external-link"></i></a>
             </p>
           </div>
 
@@ -724,19 +744,22 @@
 
     </main>
 
-    <a href="#intro" id="back-to-top" aria-label="Back to top"><i class="fa fa-chevron-up"></i></a>
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.95.3/js/materialize.min.js"></script>
     <script>
-      $(document).ready(function(){
-        $('.scrollspy').scrollSpy();
-        $(".button-collapse").sideNav({ menuWidth: 190, edge: 'left', closeOnClick: true });
-        $('.tooltipped').tooltip({ delay: 50 });
+    // Mobile navigation (framework-free)
+    (function() {
+      var toggle = document.querySelector('.button-collapse');
+      var drawer = document.getElementById('slide-out');
+      if (!toggle || !drawer) return;
+      toggle.addEventListener('click', function(event) {
+        event.preventDefault();
+        drawer.classList.toggle('open');
+        toggle.setAttribute('aria-expanded', drawer.classList.contains('open'));
       });
-    </script>
+      drawer.querySelectorAll('a').forEach(function(link) {
+        link.addEventListener('click', function() { drawer.classList.remove('open'); });
+      });
+    })();
 
-    <script>
     // ── PAGE LOADER ──────────────────────────────
     window.addEventListener('load', function() {
       var loader = document.getElementById('page-loader');
@@ -853,7 +876,97 @@
       var hint = document.querySelector('.scroll-hint');
       if (hint) hint.style.opacity = window.pageYOffset > 80 ? '0' : '1';
     }, { passive: true });
-    </script>
 
-    <script src="static/js/enhance.js"></script>
+    // ── STAGGERED SECTION MOTION ─────────────────
+    (function() {
+      var motionOff = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var headings = document.querySelectorAll('h3.page-title');
+      var headingObserver = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            headingObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.35 });
+      headings.forEach(function(heading) { headingObserver.observe(heading); });
+
+      document.querySelectorAll('.section').forEach(function(section) {
+        section.querySelectorAll('.card, .about-stat-card, .about-list-item, .contact-link-card').forEach(function(item, index) {
+          item.style.transitionDelay = Math.min(index * 45, 270) + 'ms';
+        });
+      });
+
+      if (motionOff || !window.matchMedia('(pointer: fine)').matches) return;
+      document.querySelectorAll('#skills .card, #projects .card, .contact-link-card').forEach(function(card) {
+        card.addEventListener('pointermove', function(event) {
+          var rect = card.getBoundingClientRect();
+          var x = (event.clientX - rect.left) / rect.width - .5;
+          var y = (event.clientY - rect.top) / rect.height - .5;
+          card.style.transform = 'perspective(900px) rotateX(' + (-y * 3) + 'deg) rotateY(' + (x * 4) + 'deg) translateY(-4px)';
+        });
+        card.addEventListener('pointerleave', function() { card.style.transform = ''; });
+      });
+    })();
+
+    // ── LIVE CLOUD NETWORK + SCROLL PROGRESS ─────
+    (function() {
+      var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var hero = document.getElementById('intro');
+      if (!hero) return;
+
+      var progress = document.createElement('div');
+      progress.className = 'scroll-progress';
+      progress.setAttribute('aria-hidden', 'true');
+      document.body.appendChild(progress);
+      function updateProgress() {
+        var total = document.documentElement.scrollHeight - window.innerHeight;
+        progress.style.width = (total > 0 ? (window.scrollY / total) * 100 : 0) + '%';
+      }
+      window.addEventListener('scroll', updateProgress, { passive: true });
+      updateProgress();
+
+      if (reduced) return;
+      var canvas = document.createElement('canvas');
+      canvas.className = 'network-canvas';
+      canvas.setAttribute('aria-hidden', 'true');
+      hero.appendChild(canvas);
+      var context = canvas.getContext('2d');
+      var nodes = [];
+      function resizeNetwork() {
+        var ratio = Math.min(window.devicePixelRatio || 1, 2);
+        var rect = hero.getBoundingClientRect();
+        canvas.width = Math.round(rect.width * ratio);
+        canvas.height = Math.round(rect.height * ratio);
+        canvas.style.width = rect.width + 'px';
+        canvas.style.height = rect.height + 'px';
+        context.setTransform(ratio, 0, 0, ratio, 0, 0);
+        nodes = Array.from({ length: window.innerWidth < 760 ? 12 : 22 }, function() {
+          return { x: Math.random() * rect.width, y: Math.random() * rect.height, vx: (Math.random() - .5) * .18, vy: (Math.random() - .5) * .18 };
+        });
+      }
+      function drawNetwork() {
+        var width = hero.clientWidth, height = hero.clientHeight;
+        context.clearRect(0, 0, width, height);
+        nodes.forEach(function(node, index) {
+          node.x += node.vx; node.y += node.vy;
+          if (node.x < 0 || node.x > width) node.vx *= -1;
+          if (node.y < 0 || node.y > height) node.vy *= -1;
+          context.beginPath(); context.arc(node.x, node.y, 1.4, 0, Math.PI * 2);
+          context.fillStyle = index % 3 ? 'rgba(71,181,255,.55)' : 'rgba(85,230,193,.7)'; context.fill();
+          nodes.slice(index + 1).forEach(function(other) {
+            var dx = node.x - other.x, dy = node.y - other.y, distance = Math.sqrt(dx * dx + dy * dy);
+            if (distance < 125) {
+              context.beginPath(); context.moveTo(node.x, node.y); context.lineTo(other.x, other.y);
+              context.strokeStyle = 'rgba(71,181,255,' + ((1 - distance / 125) * .16) + ')'; context.lineWidth = .7; context.stroke();
+            }
+          });
+        });
+        requestAnimationFrame(drawNetwork);
+      }
+      resizeNetwork();
+      window.addEventListener('resize', resizeNetwork);
+      requestAnimationFrame(drawNetwork);
+    })();
+    </script>
 </html>
