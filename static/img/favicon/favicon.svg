@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="bg" x1="8" y1="7" x2="57" y2="58" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#102a40"/>
+      <stop offset="1" stop-color="#071523"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="18" y1="18" x2="49" y2="49" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#55e6c1"/>
+      <stop offset="1" stop-color="#18bfe8"/>
+    </linearGradient>
+  </defs>
+  <rect x="2" y="2" width="60" height="60" rx="17" fill="url(#bg)"/>
+  <rect x="2.75" y="2.75" width="58.5" height="58.5" rx="16.25" fill="none" stroke="#55e6c1" stroke-opacity=".34" stroke-width="1.5"/>
+  <path d="M20 39.5h25.25a7.75 7.75 0 0 0 .6-15.48 13.75 13.75 0 0 0-25.98-1.8A8.75 8.75 0 0 0 20 39.5Z" fill="url(#accent)"/>
+  <path d="M21.5 29.25v6.5M42.5 29.25v6.5M32 23v16.5" stroke="#071523" stroke-width="2.6" stroke-linecap="round"/>
+  <circle cx="21.5" cy="28.75" r="2.2" fill="#071523"/>
+  <circle cx="42.5" cy="28.75" r="2.2" fill="#071523"/>
+  <circle cx="32" cy="21.75" r="2.2" fill="#071523"/>
+  <text x="32" y="52" fill="#f3f8fc" font-family="Arial, sans-serif" font-size="10" font-weight="800" letter-spacing="1.2" text-anchor="middle">DK</text>
+</svg>
