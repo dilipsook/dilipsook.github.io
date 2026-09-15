@@ -1,0 +1,1423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dilip Kumar — Cloud Solution Specialist &amp; Multi-Cloud Architect</title>
+  <meta name="description" content="Portfolio of Dilip Kumar — Cloud Solution Specialist &amp; Architect with 9+ years experience across AWS and Azure, $60K/mo FinOps savings, 1,000+ servers migrated for Johnson &amp; Johnson, LoanTap, ISRO, and IAF.">
+  <meta name="theme-color" content="#070b13">
+
+  <!-- Open Graph / Meta -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Dilip Kumar — Cloud Architect &amp; Solution Specialist">
+  <meta property="og:description" content="Architecting secure, scalable multi-cloud platforms. Dual AWS &amp; Azure certified, $60K/mo FinOps savings, 1,000+ server migrations.">
+  <meta property="og:image" content="assets/images/profile/DSC_0004_web.jpg">
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/png" href="assets/images/badges/awssa.png">
+
+  <!-- Google Fonts Preconnect -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="assets/css/main.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/animations.css">
+</head>
+<body>
+
+  <!-- Ambient Light Orbs & Grid Overlay -->
+  <div class="ambient-glow" aria-hidden="true">
+    <div class="glow-orb glow-orb-1"></div>
+    <div class="glow-orb glow-orb-2"></div>
+    <div class="glow-orb glow-orb-3"></div>
+  </div>
+  <div class="bg-grid-overlay" aria-hidden="true"></div>
+
+  <!-- Interactive Constellation Network Canvas -->
+  <canvas id="networkCanvas" aria-hidden="true"></canvas>
+
+  <div class="page-wrapper">
+
+    <!-- ====================================================================
+         1. Header & Navigation
+         ==================================================================== -->
+    <header class="navbar">
+      <div class="container nav-container">
+        <a href="#overview" class="nav-brand" aria-label="Dilip Kumar Home">
+          <div class="brand-icon">☁️</div>
+          <div class="brand-meta">
+            <span class="brand-name">DILIP KUMAR</span>
+            <span class="brand-role">Cloud Architect · FinOps</span>
+          </div>
+        </a>
+
+        <!-- Live Status Pill -->
+        <div class="nav-status">
+          <span class="status-dot"></span>
+          <span>Open for Enterprise Engagements</span>
+        </div>
+
+        <!-- Desktop Navigation Links -->
+        <ul class="nav-links">
+          <li><a href="#overview" class="nav-link active">Overview</a></li>
+          <li><a href="#architecture" class="nav-link">Architecture</a></li>
+          <li><a href="#projects" class="nav-link">Projects</a></li>
+          <li><a href="#experience" class="nav-link">Experience</a></li>
+          <li><a href="#skills" class="nav-link">Skills</a></li>
+          <li><a href="#gallery" class="nav-link">Perspective</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+
+        <!-- Action Buttons -->
+        <div class="nav-actions">
+          <a href="resume.html" class="btn-nav-resume" title="View &amp; Print Executive Resume">
+            <span>📄</span>
+            <span>Resume</span>
+          </a>
+          <button class="burger-btn" id="burgerBtn" aria-label="Toggle navigation menu">
+            <span class="burger-line"></span>
+            <span class="burger-line"></span>
+            <span class="burger-line"></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Mobile Slideout Navigation -->
+    <div class="menu-backdrop" id="menuBackdrop"></div>
+    <nav class="mobile-menu" id="mobileMenu">
+      <div class="mobile-menu-top">
+        <ul class="mobile-nav-links">
+          <li><a href="#overview" class="mobile-nav-link">Overview</a></li>
+          <li><a href="#architecture" class="mobile-nav-link">Architecture Pillars</a></li>
+          <li><a href="#finops" class="mobile-nav-link">FinOps ROI Calculator</a></li>
+          <li><a href="#projects" class="mobile-nav-link">Featured Projects</a></li>
+          <li><a href="#experience" class="mobile-nav-link">Career Experience</a></li>
+          <li><a href="#skills" class="mobile-nav-link">Skills Matrix</a></li>
+          <li><a href="#gallery" class="mobile-nav-link">Architectural Story</a></li>
+          <li><a href="#certifications" class="mobile-nav-link">Certifications &amp; Honors</a></li>
+          <li><a href="#contact" class="mobile-nav-link">Get In Touch</a></li>
+        </ul>
+      </div>
+      <div class="mobile-menu-bottom">
+        <a href="resume.html" class="btn-primary" style="width: 100%; justify-content: center;">
+          <span>📄 View Redesigned Resume</span>
+        </a>
+      </div>
+    </nav>
+
+    <main>
+
+      <!-- ====================================================================
+           2. Hero Section (Featuring DSC_0004.jpg as Main Portrait)
+           ==================================================================== -->
+      <section id="overview" class="hero-section">
+        <div class="container hero-grid">
+          
+          <!-- Hero Text Content -->
+          <div class="hero-content">
+            <div class="hero-pill">
+              <span class="hero-pill-badge">9+ YEARS EXP</span>
+              <span>Cloud Architect &amp; FinOps Specialist</span>
+            </div>
+
+            <span class="hero-name-badge">DILIP KUMAR</span>
+            <h1 class="hero-title">
+              Architecting <span class="gradient-cloud">Resilient</span> Cloud Systems.
+            </h1>
+
+            <div class="hero-subtitle">
+              <span>I specialize in </span>
+              <span class="typewriter-text" id="typewriterText"></span>
+            </div>
+
+            <p class="hero-description">
+              Senior Cloud Solutions Specialist &amp; Multi-Cloud Architect based in Delhi, India. 
+              Dual-certified across <strong>AWS</strong> &amp; <strong>Microsoft Azure</strong>, with over <strong>$60,000/month</strong> in documented FinOps savings and <strong>1,000+ zero-downtime server migrations</strong> for enterprise clients including <strong>Johnson &amp; Johnson</strong>, <strong>LoanTap</strong>, <strong>ISRO</strong>, and <strong>Indian Air Force</strong>.
+            </p>
+
+            <!-- CTA Action Buttons -->
+            <div class="hero-cta-group">
+              <a href="#projects" class="btn-primary">
+                <span>Explore Case Studies</span>
+                <span>→</span>
+              </a>
+              <a href="resume.html" class="btn-secondary">
+                <span>📄 View Redesigned Resume</span>
+              </a>
+              <a href="#finops" class="btn-finops-chip">
+                <span>💰 Calculate FinOps ROI</span>
+              </a>
+            </div>
+
+            <!-- Social Links -->
+            <div class="hero-socials">
+              <a href="https://linkedin.com/in/dilipsookk" target="_blank" rel="noopener" class="hero-social-link" title="LinkedIn Profile">
+                <span>in</span>
+              </a>
+              <a href="https://github.com/dilipsook" target="_blank" rel="noopener" class="hero-social-link" title="GitHub Profile">
+                <span>git</span>
+              </a>
+              <a href="http://stackoverflow.com/users/19229599/dilip-kumar" target="_blank" rel="noopener" class="hero-social-link" title="Stack Overflow">
+                <span>so</span>
+              </a>
+              <a href="mailto:dilipsook@gmail.com" class="hero-social-link" title="Direct Email">
+                <span>@</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- Hero Visual: Main Picture DSC_0004.jpg -->
+          <div class="hero-visual">
+            <div class="portrait-container">
+              <div class="portrait-glow"></div>
+              
+              <div class="portrait-frame">
+                <picture>
+                  <source srcset="assets/images/profile/DSC_0004_portrait.jpg" type="image/jpeg">
+                  <img src="assets/images/profile/DSC_0004.jpg" alt="Dilip Kumar — Cloud Architect" class="portrait-img">
+                </picture>
+                <div class="portrait-vignette"></div>
+              </div>
+
+              <!-- Floating Metric Badges -->
+              <div class="float-card float-card-1">
+                <div class="float-icon" style="background: rgba(255, 153, 0, 0.15); color: #ff9900;">☁️</div>
+                <div>
+                  <div class="float-val">9+ Years</div>
+                  <div class="float-lbl">Dual-Cloud Architect</div>
+                </div>
+              </div>
+
+              <div class="float-card float-card-2">
+                <div class="float-icon" style="background: rgba(14, 165, 233, 0.15); color: #38bdf8;">🏆</div>
+                <div>
+                  <div class="float-val">5x Certified</div>
+                  <div class="float-lbl">AWS &amp; Azure Credentialed</div>
+                </div>
+              </div>
+
+              <div class="float-card float-card-3">
+                <div class="float-icon" style="background: rgba(16, 185, 129, 0.15); color: #34d399;">💰</div>
+                <div>
+                  <div class="float-val">$60K+/mo</div>
+                  <div class="float-lbl">Documented FinOps Saved</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           3. Key Performance Metrics Ribbon
+           ==================================================================== -->
+      <section class="metrics-section">
+        <div class="container">
+          <div class="metrics-grid">
+            
+            <div class="metric-card reveal">
+              <div class="metric-number-wrap">
+                <span class="metric-number stat-counter" data-target="9">0</span>
+                <span class="metric-suffix">+</span>
+              </div>
+              <div class="metric-label">Years of Experience</div>
+              <div class="metric-sub">Enterprise Multi-Cloud Delivery</div>
+            </div>
+
+            <div class="metric-card reveal reveal-delay-1">
+              <div class="metric-number-wrap">
+                <span class="metric-suffix" style="font-size: 2.2rem; color: #34d399;">$</span>
+                <span class="metric-number stat-counter" data-target="60">0</span>
+                <span class="metric-suffix">K+</span>
+              </div>
+              <div class="metric-label">Monthly Cloud Savings</div>
+              <div class="metric-sub">FinOps &amp; Rightsizing Governance</div>
+            </div>
+
+            <div class="metric-card reveal reveal-delay-2">
+              <div class="metric-number-wrap">
+                <span class="metric-number stat-counter" data-target="1000">0</span>
+                <span class="metric-suffix">+</span>
+              </div>
+              <div class="metric-label">Servers &amp; DBs Migrated</div>
+              <div class="metric-sub">Zero-Downtime Cutover Record</div>
+            </div>
+
+            <div class="metric-card reveal reveal-delay-3">
+              <div class="metric-number-wrap">
+                <span class="metric-number stat-counter" data-target="200">0</span>
+                <span class="metric-suffix">+</span>
+              </div>
+              <div class="metric-label">Client Environments</div>
+              <div class="metric-sub">Managed &amp; Architected 24/7</div>
+            </div>
+
+            <div class="metric-card reveal reveal-delay-4">
+              <div class="metric-number-wrap">
+                <span class="metric-number stat-counter" data-target="5">0</span>
+                <span class="metric-suffix">x</span>
+              </div>
+              <div class="metric-label">Official Certifications</div>
+              <div class="metric-sub">AWS &amp; Microsoft Certified</div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           4. Architecture Pillars & FinOps Simulator
+           ==================================================================== -->
+      <section id="architecture" class="section">
+        <div class="container">
+          <div class="section-header reveal">
+            <span class="section-tag tag-amber">Design Principles</span>
+            <h2 class="section-title">Architectural Pillars &amp; Core Philosophy</h2>
+            <p class="section-desc">
+              Every system is engineered to satisfy the five pillars of the AWS and Azure Well-Architected Frameworks: Operational Excellence, Security, Reliability, Performance Efficiency, and Cost Optimization.
+            </p>
+          </div>
+
+          <!-- 4 Pillars Grid -->
+          <div class="pillars-grid">
+            
+            <div class="pillar-card reveal">
+              <div class="pillar-icon icon-blue">🛡️</div>
+              <h3 class="pillar-title">High Availability &amp; DR</h3>
+              <p class="pillar-desc">
+                Multi-AZ active-active topologies, cross-region replication, Network Load Balancer fronting, and automated failover clustering designed to achieve 99.99% uptime SLAs.
+              </p>
+              <div class="pillar-tags">
+                <span class="tech-chip">Multi-AZ VPC</span>
+                <span class="tech-chip">NLB / ALB</span>
+                <span class="tech-chip">Aurora Multi-Master</span>
+                <span class="tech-chip">RTO &lt; 15m</span>
+              </div>
+            </div>
+
+            <div class="pillar-card reveal reveal-delay-1">
+              <div class="pillar-icon icon-green">🚀</div>
+              <h3 class="pillar-title">Zero-Downtime Migration</h3>
+              <p class="pillar-desc">
+                Full-lifecycle server and database migrations from on-premises to AWS &amp; Azure. Continuous CDC replication using AWS DMS, AWS MGN, and Azure Migrate with zero data loss.
+              </p>
+              <div class="pillar-tags">
+                <span class="tech-chip">AWS MGN</span>
+                <span class="tech-chip">AWS DMS (CDC)</span>
+                <span class="tech-chip">Azure Migrate</span>
+                <span class="tech-chip">CloudEndure</span>
+              </div>
+            </div>
+
+            <div class="pillar-card reveal reveal-delay-2">
+              <div class="pillar-icon icon-amber">💰</div>
+              <h3 class="pillar-title">FinOps Cost Governance</h3>
+              <p class="pillar-desc">
+                Slashing enterprise cloud spend without degrading throughput. Leveraging AWS Cost Explorer, Compute Optimizer, RI/SP commitments, and storage tiering ($60K+/mo saved).
+              </p>
+              <div class="pillar-tags">
+                <span class="tech-chip">Savings Plans</span>
+                <span class="tech-chip">Compute Rightsizing</span>
+                <span class="tech-chip">S3 Glacier</span>
+                <span class="tech-chip">Budgets Anomaly</span>
+              </div>
+            </div>
+
+            <div class="pillar-card reveal reveal-delay-3">
+              <div class="pillar-icon icon-violet">🔐</div>
+              <h3 class="pillar-title">DevSecOps &amp; Security-First</h3>
+              <p class="pillar-desc">
+                Baking security into the pipeline with IAM least privilege, AWS WAF, Shield, GuardDuty, MFA enforcement, and repeatable Infrastructure as Code via Terraform.
+              </p>
+              <div class="pillar-tags">
+                <span class="tech-chip">Terraform IaC</span>
+                <span class="tech-chip">AWS WAF / Shield</span>
+                <span class="tech-chip">GuardDuty</span>
+                <span class="tech-chip">Jenkins / GitHub</span>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- FinOps ROI Calculator Widget -->
+          <div id="finops" class="finops-calculator-wrap reveal">
+            <div class="finops-grid">
+              
+              <!-- Left: Controls -->
+              <div>
+                <span class="section-tag tag-mint">Interactive Tool</span>
+                <h3 class="calc-title">Cloud FinOps Optimization Simulator</h3>
+                <p class="calc-desc">
+                  Curious how much your organization could save with precision cloud cost governance? Drag the slider to match your current monthly cloud spend across AWS or Azure.
+                </p>
+
+                <div class="slider-group">
+                  <div class="slider-label-row">
+                    <span style="font-weight: 600; color: #e2e8f0;">Monthly AWS / Azure Spend:</span>
+                    <span class="spend-display" id="spendDisplay">$35,000</span>
+                  </div>
+                  <input type="range" class="spend-slider" id="spendSlider" min="5000" max="200000" step="2500" value="35000">
+                  <div class="spend-min-max">
+                    <span>$5K/mo</span>
+                    <span>$100K/mo</span>
+                    <span>$200K+/mo</span>
+                  </div>
+                </div>
+
+                <div style="background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border-subtle); border-radius: 12px; padding: 16px;">
+                  <div style="font-size: 0.85rem; font-weight: 700; color: #34d399; margin-bottom: 4px;">🏆 Real-World Track Record:</div>
+                  <p style="font-size: 0.86rem; color: var(--text-secondary); margin: 0;">
+                    • <strong>$28,000/month</strong> recurring savings delivered for Dhani Financial.<br>
+                    • <strong>$2,000/month</strong> saved for LoanTap fintech platform.<br>
+                    • <strong>$1,500/month</strong> saved on ServicePlus database migration.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Right: Projected Results -->
+              <div class="calc-results-card">
+                <div class="results-header">Projected Savings Assessment</div>
+                <div class="savings-total-wrap">
+                  <span class="savings-total-val" id="savingsDisplay">$11,200</span>
+                  <span class="savings-period">/ month projected savings</span>
+                </div>
+                <div class="savings-annual">
+                  Estimated Annual Savings: <strong id="annualSavingsDisplay" style="color: #fff; font-size: 1.15rem;">$134,400</strong>
+                </div>
+
+                <div class="savings-breakdown">
+                  <div>
+                    <div class="breakdown-row">
+                      <span class="breakdown-name">💻 Compute Rightsizing &amp; Graviton</span>
+                      <span class="breakdown-val" id="valCompute">$2,975/mo</span>
+                    </div>
+                    <div class="breakdown-bar-bg"><div class="breakdown-bar-fill" id="barCompute" style="width: 27%;"></div></div>
+                  </div>
+
+                  <div>
+                    <div class="breakdown-row">
+                      <span class="breakdown-name">📑 Reserved Instances &amp; Savings Plans</span>
+                      <span class="breakdown-val" id="valRI">$4,900/mo</span>
+                    </div>
+                    <div class="breakdown-bar-bg"><div class="breakdown-bar-fill" id="barRI" style="width: 44%;"></div></div>
+                  </div>
+
+                  <div>
+                    <div class="breakdown-row">
+                      <span class="breakdown-name">⏱️ Automated Scheduling &amp; Idle Cleanup</span>
+                      <span class="breakdown-val" id="valIdle">$1,750/mo</span>
+                    </div>
+                    <div class="breakdown-bar-bg"><div class="breakdown-bar-fill" id="barIdle" style="width: 15%;"></div></div>
+                  </div>
+
+                  <div>
+                    <div class="breakdown-row">
+                      <span class="breakdown-name">📦 S3 Glacier &amp; Blob Tiering</span>
+                      <span class="breakdown-val" id="valStorage">$1,575/mo</span>
+                    </div>
+                    <div class="breakdown-bar-bg"><div class="breakdown-bar-fill" id="barStorage" style="width: 14%;"></div></div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           5. Featured Enterprise Case Studies & Projects
+           ==================================================================== -->
+      <section id="projects" class="section">
+        <div class="container">
+          <div class="section-header reveal">
+            <span class="section-tag tag-cyan">Enterprise Galaxy</span>
+            <h2 class="section-title">High-Impact Missions &amp; Case Studies</h2>
+            <p class="section-desc">
+              Proven track record delivering mission-critical infrastructure for global enterprises, defense institutions, space research organizations, and high-growth fintechs.
+            </p>
+          </div>
+
+          <!-- Filter Navigation -->
+          <div class="project-filters reveal">
+            <button class="filter-btn active" data-filter="all">All Missions</button>
+            <button class="filter-btn" data-filter="finops">FinOps &amp; Cost</button>
+            <button class="filter-btn" data-filter="migration">Cloud Migration</button>
+            <button class="filter-btn" data-filter="enterprise">Enterprise &amp; Govt</button>
+            <button class="filter-btn" data-filter="ha">High Availability</button>
+          </div>
+
+          <!-- Projects Grid -->
+          <div class="projects-grid">
+
+            <!-- 1. Johnson & Johnson -->
+            <div class="project-card reveal" data-category="migration enterprise ha">
+              <div>
+                <div class="project-top">
+                  <div class="client-logo-box">
+                    <img src="assets/images/logos/johnson.svg" alt="Johnson &amp; Johnson">
+                  </div>
+                  <span class="impact-badge">Zero-Downtime Cutover</span>
+                </div>
+                <h3 class="project-title">Enterprise Labvantage LIMS Infrastructure</h3>
+                <div class="project-client-name">Johnson &amp; Johnson (via Insight Enterprises)</div>
+                <p class="project-summary">
+                  Designed scalable multi-AZ AWS and Azure infrastructure for J&amp;J's regulated Labvantage LIMS platform. Deployed Oracle WebLogic and Network Load Balancers fronting 10+ servers.
+                </p>
+                <ul class="project-achievements">
+                  <li>Single-handedly delivered AWS architecture with zero-downtime cutover</li>
+                  <li>Migrated databases with AWS MGN &amp; AWS DMS replication</li>
+                  <li>Enforced strict compliance using IAM, AWS WAF, and Shield</li>
+                </ul>
+              </div>
+              <div class="project-footer">
+                <div class="pillar-tags">
+                  <span class="tech-chip">AWS EC2</span>
+                  <span class="tech-chip">Oracle WebLogic</span>
+                  <span class="tech-chip">RDS Multi-AZ</span>
+                </div>
+                <button class="btn-inspect-modal" data-project-id="jnj">
+                  <span>Blueprint</span>
+                  <span>🔍</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- 2. Dhani -->
+            <div class="project-card reveal reveal-delay-1" data-category="finops enterprise">
+              <div>
+                <div class="project-top">
+                  <div class="client-logo-box">
+                    <img src="assets/images/logos/dhani.svg" alt="Dhani">
+                  </div>
+                  <span class="impact-badge" style="background: rgba(16, 185, 129, 0.15); color: #34d399;">$28,000 / Month Saved</span>
+                </div>
+                <h3 class="project-title">Enterprise Cloud FinOps Transformation</h3>
+                <div class="project-client-name">Dhani Financial Services</div>
+                <p class="project-summary">
+                  Spearheaded an exhaustive FinOps optimization initiative across 100+ EC2 instances, eliminating idle resources, purchasing Savings Plans, and re-architecting storage tiers.
+                </p>
+                <ul class="project-achievements">
+                  <li>Delivered $28,000/mo in recurring cloud cost reduction</li>
+                  <li>Right-sized 100+ overprovisioned EC2 compute instances</li>
+                  <li>Implemented automated dev/test stop-start schedules</li>
+                </ul>
+              </div>
+              <div class="project-footer">
+                <div class="pillar-tags">
+                  <span class="tech-chip">Cost Explorer</span>
+                  <span class="tech-chip">Savings Plans</span>
+                  <span class="tech-chip">S3 Glacier</span>
+                </div>
+                <button class="btn-inspect-modal" data-project-id="dhani">
+                  <span>Blueprint</span>
+                  <span>🔍</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- 3. LoanTap -->
+            <div class="project-card reveal reveal-delay-2" data-category="finops ha migration">
+              <div>
+                <div class="project-top">
+                  <div class="client-logo-box">
+                    <img src="assets/images/logos/loantap.svg" alt="LoanTap">
+                  </div>
+                  <span class="impact-badge">Employee of Quarter Award</span>
+                </div>
+                <h3 class="project-title">Fintech AWS Cloud Footprint &amp; CI/CD</h3>
+                <div class="project-client-name">LoanTap Financial Technology</div>
+                <p class="project-summary">
+                  Built AWS infrastructure from scratch for a high-growth financial technology platform. Configured Nginx, Redis, MySQL, Cloudflare CDN, and automated CI/CD deployment pipelines.
+                </p>
+                <ul class="project-achievements">
+                  <li>🏆 Awarded Employee of the Quarter (April 2022)</li>
+                  <li>Saved $2,000/month through rightsizing and billing governance</li>
+                  <li>Hardened security with AWS WAF, ALB rules, and Route 53</li>
+                </ul>
+              </div>
+              <div class="project-footer">
+                <div class="pillar-tags">
+                  <span class="tech-chip">AWS RDS</span>
+                  <span class="tech-chip">Redis</span>
+                  <span class="tech-chip">Jenkins CI/CD</span>
+                </div>
+                <button class="btn-inspect-modal" data-project-id="loantap">
+                  <span>Blueprint</span>
+                  <span>🔍</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- 4. ISRO -->
+            <div class="project-card reveal" data-category="enterprise ha">
+              <div>
+                <div class="project-top">
+                  <div class="client-logo-box">
+                    <img src="assets/images/logos/isro.png" alt="ISRO">
+                  </div>
+                  <span class="impact-badge">100-Seat Air-Gapped VDI</span>
+                </div>
+                <h3 class="project-title">Air-Gapped VMware VDI Infrastructure</h3>
+                <div class="project-client-name">ISRO — Satish Dhawan Space Centre (SHAR)</div>
+                <p class="project-summary">
+                  Built an isolated, non-internet connected Virtual Desktop Infrastructure (VDI) using VMware ESXi, vCenter, and VMware Horizon View for 100 space research engineers.
+                </p>
+                <ul class="project-achievements">
+                  <li>Constructed 100-seat isolated, secure workspace environment</li>
+                  <li>Connected Dell Wyse thin clients with centralized profile management</li>
+                  <li>Configured failover clustering with zero single points of failure</li>
+                </ul>
+              </div>
+              <div class="project-footer">
+                <div class="pillar-tags">
+                  <span class="tech-chip">VMware Horizon</span>
+                  <span class="tech-chip">vCenter</span>
+                  <span class="tech-chip">Dell Wyse</span>
+                </div>
+                <button class="btn-inspect-modal" data-project-id="isro">
+                  <span>Blueprint</span>
+                  <span>🔍</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- 5. Indian Air Force -->
+            <div class="project-card reveal reveal-delay-1" data-category="enterprise ha">
+              <div>
+                <div class="project-top">
+                  <div class="client-logo-box">
+                    <img src="assets/images/logos/IAF.png" alt="Indian Air Force">
+                  </div>
+                  <span class="impact-badge">Defense Data Center</span>
+                </div>
+                <h3 class="project-title">Mission-Critical Mini Data Center</h3>
+                <div class="project-client-name">Indian Air Force (IAF, Bengaluru)</div>
+                <p class="project-summary">
+                  Installed and configured an on-premises mini data center with Fujitsu Primergy servers, hardware RAID-5 arrays, Windows Server 2012 R2, and Hyper-V failover clustering.
+                </p>
+                <ul class="project-achievements">
+                  <li>Assembled 45U defense rack servers with redundant power</li>
+                  <li>Configured Active Directory DS and group policy security</li>
+                  <li>Implemented hardware RAID-5 fault tolerance</li>
+                </ul>
+              </div>
+              <div class="project-footer">
+                <div class="pillar-tags">
+                  <span class="tech-chip">Windows Server</span>
+                  <span class="tech-chip">Hyper-V</span>
+                  <span class="tech-chip">RAID-5</span>
+                </div>
+                <button class="btn-inspect-modal" data-project-id="iaf">
+                  <span>Blueprint</span>
+                  <span>🔍</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- 6. Biryani By Kilo -->
+            <div class="project-card reveal reveal-delay-2" data-category="ha enterprise">
+              <div>
+                <div class="project-top">
+                  <div class="client-logo-box">
+                    <img src="assets/images/logos/bbk.webp" alt="Biryani By Kilo">
+                  </div>
+                  <span class="impact-badge">50K+ Concurrent Orders</span>
+                </div>
+                <h3 class="project-title">High-Concurrency FoodTech Cloud Architecture</h3>
+                <div class="project-client-name">Biryani By Kilo (BBK)</div>
+                <p class="project-summary">
+                  Multi-account AWS architecture orchestrated via AWS Organizations. Auto Scaling Groups fronted by ALB, Amazon Aurora MySQL, S3 storage, and Route 53 low-latency routing.
+                </p>
+                <ul class="project-achievements">
+                  <li>100% uptime during peak holiday meal rushes &amp; flash sales</li>
+                  <li>Multi-account separation across dev, staging, and prod</li>
+                  <li>Automated auto-scaling responding in under 60 seconds</li>
+                </ul>
+              </div>
+              <div class="project-footer">
+                <div class="pillar-tags">
+                  <span class="tech-chip">AWS Aurora</span>
+                  <span class="tech-chip">Auto Scaling</span>
+                  <span class="tech-chip">Route 53</span>
+                </div>
+                <button class="btn-inspect-modal" data-project-id="bbk">
+                  <span>Blueprint</span>
+                  <span>🔍</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- 7. KSRSAC -->
+            <div class="project-card reveal" data-category="enterprise">
+              <div>
+                <div class="project-top">
+                  <div class="client-logo-box">
+                    <img src="assets/images/logos/ksrsac.jpg" alt="KSRSAC">
+                  </div>
+                  <span class="impact-badge">45U SAN Fabric</span>
+                </div>
+                <h3 class="project-title">45U Geospatial Enterprise Data Center</h3>
+                <div class="project-client-name">KSRSAC, Govt of Karnataka</div>
+                <p class="project-summary">
+                  Built state remote sensing agency data center with 9 drive enclosures connected to Fujitsu Eternus DX-500 SAN storage via SAS and 10G SFP fiber optical transceivers.
+                </p>
+                <ul class="project-achievements">
+                  <li>Delivered multi-terabyte storage fabric for satellite imagery</li>
+                  <li>Configured failover clustering with zero single points of failure</li>
+                  <li>Structured 10G fiber optic inter-rack cabling</li>
+                </ul>
+              </div>
+              <div class="project-footer">
+                <div class="pillar-tags">
+                  <span class="tech-chip">Fujitsu Eternus</span>
+                  <span class="tech-chip">10G Fiber</span>
+                  <span class="tech-chip">SAN Fabric</span>
+                </div>
+                <button class="btn-inspect-modal" data-project-id="ksrsac">
+                  <span>Blueprint</span>
+                  <span>🔍</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- 8. ServicePlus -->
+            <div class="project-card reveal reveal-delay-1" data-category="migration finops">
+              <div>
+                <div class="project-top">
+                  <div class="client-logo-box">
+                    <img src="assets/images/logos/serviceplus.svg" alt="ServicePlus">
+                  </div>
+                  <span class="impact-badge">Zero Data Loss DMS</span>
+                </div>
+                <h3 class="project-title">Rackspace to AWS RDS Database Migration</h3>
+                <div class="project-client-name">ServicePlus</div>
+                <p class="project-summary">
+                  Migrated production MySQL database from Rackspace to AWS RDS with continuous CDC replication via AWS DMS, achieving zero data loss and reducing hosting spend by $1,500/mo.
+                </p>
+                <ul class="project-achievements">
+                  <li>Full cutover completed in a 15-minute maintenance window</li>
+                  <li>$1,500/month recurring hosting cost reduction</li>
+                  <li>Automated snapshot backups &amp; point-in-time recovery</li>
+                </ul>
+              </div>
+              <div class="project-footer">
+                <div class="pillar-tags">
+                  <span class="tech-chip">AWS DMS</span>
+                  <span class="tech-chip">RDS MySQL</span>
+                  <span class="tech-chip">Multi-AZ</span>
+                </div>
+                <button class="btn-inspect-modal" data-project-id="serviceplus">
+                  <span>Blueprint</span>
+                  <span>🔍</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- 9. Navi -->
+            <div class="project-card reveal reveal-delay-2" data-category="migration enterprise">
+              <div>
+                <div class="project-top">
+                  <div class="client-logo-box">
+                    <img src="assets/images/logos/navi.svg" alt="Navi">
+                  </div>
+                  <span class="impact-badge">Landing Zone Assessment</span>
+                </div>
+                <h3 class="project-title">AWS Migration Hub Lift-and-Shift</h3>
+                <div class="project-client-name">Navi Technologies</div>
+                <p class="project-summary">
+                  Inventory discovery and dependency mapping across 40+ servers using AWS Migration Hub and Application Discovery Service. Provisioned secure AWS Landing Zone with GuardDuty.
+                </p>
+                <ul class="project-achievements">
+                  <li>Accurately discovered 40+ workload dependencies</li>
+                  <li>Configured landing zones adhering to Well-Architected Framework</li>
+                  <li>Automated server replication and rollback validation</li>
+                </ul>
+              </div>
+              <div class="project-footer">
+                <div class="pillar-tags">
+                  <span class="tech-chip">Migration Hub</span>
+                  <span class="tech-chip">VPC Landing Zone</span>
+                  <span class="tech-chip">GuardDuty</span>
+                </div>
+                <button class="btn-inspect-modal" data-project-id="navi">
+                  <span>Blueprint</span>
+                  <span>🔍</span>
+                </button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           6. Career Journey / Timeline
+           ==================================================================== -->
+      <section id="experience" class="section">
+        <div class="container">
+          <div class="section-header reveal">
+            <span class="section-tag tag-violet">Career Trajectory</span>
+            <h2 class="section-title">Professional Journey &amp; Milestones</h2>
+            <p class="section-desc">
+              9+ years of progressive technical leadership — from hardware data centers to modern multi-cloud architectures.
+            </p>
+          </div>
+
+          <div class="timeline-wrap">
+            <div class="timeline-line"></div>
+
+            <!-- Milestone 1 -->
+            <div class="timeline-item reveal">
+              <div class="timeline-node"></div>
+              <div class="timeline-card">
+                <div class="timeline-header">
+                  <h3 class="timeline-role">Cloud Solution Specialist</h3>
+                  <span class="timeline-date">Dec 2022 – Present &nbsp;|&nbsp; Delhi</span>
+                </div>
+                <div class="timeline-company">
+                  <img src="assets/images/logos/insight.png" alt="Insight Enterprises" style="height: 22px; object-fit: contain;">
+                  <span>Hanu Software (now part of Insight Enterprises) &nbsp;•&nbsp; Client: <strong>Johnson &amp; Johnson</strong></span>
+                </div>
+                <ul class="timeline-points">
+                  <li>Single-handedly designed and deployed enterprise AWS infrastructure for Johnson &amp; Johnson Labvantage LIMS application.</li>
+                  <li>Executed on-premises to AWS and Azure migrations using AWS MGN, AWS DMS, and Azure Migrate with zero downtime cutovers.</li>
+                  <li>Deployed Oracle WebLogic EAR application architectures; authored Bash scripts for routine operational automation.</li>
+                  <li>Enforced IAM least-privilege policies, WAF protection, and proactive CloudWatch alerting across all enterprise environments.</li>
+                </ul>
+                <div class="pillar-tags" style="margin-top: 14px;">
+                  <span class="tech-chip">AWS</span>
+                  <span class="tech-chip">Azure</span>
+                  <span class="tech-chip">Oracle WebLogic</span>
+                  <span class="tech-chip">RedHat</span>
+                  <span class="tech-chip">Terraform</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Milestone 2 -->
+            <div class="timeline-item reveal">
+              <div class="timeline-node"></div>
+              <div class="timeline-card">
+                <div class="timeline-header">
+                  <h3 class="timeline-role">Cloud Specialist</h3>
+                  <span class="timeline-date">Jan 2022 – Dec 2022 &nbsp;|&nbsp; Pune</span>
+                </div>
+                <div class="timeline-company">
+                  <img src="assets/images/logos/loantap.svg" alt="LoanTap" style="height: 22px; object-fit: contain;">
+                  <span>LoanTap Financial Technology Pvt Ltd</span>
+                </div>
+                <ul class="timeline-points">
+                  <li>Owned the entire AWS cloud footprint from architecture to cost governance, security, and continuous delivery.</li>
+                  <li>Built and deployed LAMP/LEMP stacks, WordPress, Redis-server, MySQL, Nginx, and Apache web servers.</li>
+                  <li>Managed Cloudflare DNS/CDN, ALB rules, and implemented automated CI/CD pipelines using GitHub and Jenkins.</li>
+                  <li><strong>Reduced cloud spend by $2,000/month</strong> and awarded <strong>Employee of the Quarter (April 2022)</strong>.</li>
+                </ul>
+                <div class="pillar-tags" style="margin-top: 14px;">
+                  <span class="tech-chip">AWS RDS</span>
+                  <span class="tech-chip">Cloudflare</span>
+                  <span class="tech-chip">Jenkins CI/CD</span>
+                  <span class="tech-chip">FinOps Savings</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Milestone 3 -->
+            <div class="timeline-item reveal">
+              <div class="timeline-node"></div>
+              <div class="timeline-card">
+                <div class="timeline-header">
+                  <h3 class="timeline-role">Team Lead – Cloud Operations</h3>
+                  <span class="timeline-date">Mar 2020 – Jan 2022 &nbsp;|&nbsp; Bengaluru</span>
+                </div>
+                <div class="timeline-company">
+                  <img src="assets/images/logos/rapyder.png" alt="Rapyder" style="height: 22px; object-fit: contain;">
+                  <span>Rapyder Cloud Solutions India Pvt Ltd</span>
+                </div>
+                <ul class="timeline-points">
+                  <li>Led a Managed Services engineering team overseeing 150+ client AWS accounts with 24/7 ITIL operational SLA standards.</li>
+                  <li><strong>Saved $30,000/month for Dhani</strong> through targeted AWS compute rightsizing, Savings Plans, and S3 lifecycle rules.</li>
+                  <li>Migrated 50+ enterprise servers from on-premises to AWS using CloudEndure with zero data loss.</li>
+                  <li>Designed multi-AZ VPC architectures, NAT Gateways, bastion hosts, and Site-to-Site VPN connections.</li>
+                </ul>
+                <div class="pillar-tags" style="margin-top: 14px;">
+                  <span class="tech-chip">150+ Accounts</span>
+                  <span class="tech-chip">FinOps Lead</span>
+                  <span class="tech-chip">CloudEndure</span>
+                  <span class="tech-chip">Systems Manager</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Milestone 4 -->
+            <div class="timeline-item reveal">
+              <div class="timeline-node"></div>
+              <div class="timeline-card">
+                <div class="timeline-header">
+                  <h3 class="timeline-role">System Engineer</h3>
+                  <span class="timeline-date">May 2017 – Mar 2020 &nbsp;|&nbsp; Bengaluru</span>
+                </div>
+                <div class="timeline-company">
+                  <img src="assets/images/logos/cerebra.png" alt="Cerebra" style="height: 22px; object-fit: contain;">
+                  <span>Cerebra Integrated Technologies Limited</span>
+                </div>
+                <ul class="timeline-points">
+                  <li>Constructed on-premises data centers and virtualization stacks for <strong>ISRO</strong>, <strong>Indian Air Force</strong>, and <strong>KSRSAC</strong>.</li>
+                  <li>Built 100-client air-gapped VMware Horizon VDI environment connected to Dell Wyse thin client hardware.</li>
+                  <li>Administered Windows Server 2012R2/2016, Active Directory DS, Group Policy, DNS, DHCP, and Hyper-V failover clusters.</li>
+                  <li>Hands-on with Cisco Nexus switches, ASA firewalls, Fujitsu Primergy servers, and Fujitsu Eternus-DX500 SAN storage.</li>
+                </ul>
+                <div class="pillar-tags" style="margin-top: 14px;">
+                  <span class="tech-chip">ISRO</span>
+                  <span class="tech-chip">Indian Air Force</span>
+                  <span class="tech-chip">VMware VDI</span>
+                  <span class="tech-chip">Fujitsu SAN</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           7. Multi-Cloud Skills Matrix
+           ==================================================================== -->
+      <section id="skills" class="section">
+        <div class="container">
+          <div class="section-header reveal">
+            <span class="section-tag tag-cyan">Technology Stack</span>
+            <h2 class="section-title">Multi-Cloud Capabilities Matrix</h2>
+            <p class="section-desc">
+              Comprehensive hands-on proficiency across cloud service providers, automation tooling, operating systems, and networking.
+            </p>
+          </div>
+
+          <!-- Skill Group Tabs -->
+          <div class="skills-nav reveal">
+            <button class="skill-tab-btn active" data-skill-group="all">All Stack</button>
+            <button class="skill-tab-btn" data-skill-group="aws">AWS Services</button>
+            <button class="skill-tab-btn" data-skill-group="azure">Microsoft Azure</button>
+            <button class="skill-tab-btn" data-skill-group="devops">DevOps &amp; IaC</button>
+            <button class="skill-tab-btn" data-skill-group="finops">FinOps &amp; Cost</button>
+            <button class="skill-tab-btn" data-skill-group="security">Security &amp; Network</button>
+            <button class="skill-tab-btn" data-skill-group="systems">Systems &amp; Web</button>
+          </div>
+
+          <!-- Skills Grid with Icons -->
+          <div class="skills-grid reveal">
+            
+            <!-- AWS Items -->
+            <div class="skill-item" data-group="aws">
+              <img src="assets/images/cloud-icons/EC2.svg" alt="AWS EC2" class="skill-icon-img">
+              <span class="skill-name">Amazon EC2</span>
+            </div>
+            <div class="skill-item" data-group="aws">
+              <img src="assets/images/cloud-icons/Simple-Storage-Service.svg" alt="AWS S3" class="skill-icon-img">
+              <span class="skill-name">Amazon S3</span>
+            </div>
+            <div class="skill-item" data-group="aws">
+              <img src="assets/images/cloud-icons/RDS.svg" alt="AWS RDS" class="skill-icon-img">
+              <span class="skill-name">AWS RDS / Aurora</span>
+            </div>
+            <div class="skill-item" data-group="aws">
+              <img src="assets/images/cloud-icons/Lambda.svg" alt="AWS Lambda" class="skill-icon-img">
+              <span class="skill-name">AWS Lambda</span>
+            </div>
+            <div class="skill-item" data-group="aws">
+              <img src="assets/images/cloud-icons/Virtual-Private-Cloud.svg" alt="AWS VPC" class="skill-icon-img">
+              <span class="skill-name">Amazon VPC</span>
+            </div>
+            <div class="skill-item" data-group="aws">
+              <img src="assets/images/cloud-icons/Elastic-Load-Balancing.svg" alt="AWS ELB" class="skill-icon-img">
+              <span class="skill-name">ALB / NLB / ELB</span>
+            </div>
+            <div class="skill-item" data-group="aws">
+              <img src="assets/images/cloud-icons/Route-53.svg" alt="AWS Route 53" class="skill-icon-img">
+              <span class="skill-name">Route 53</span>
+            </div>
+            <div class="skill-item" data-group="aws">
+              <img src="assets/images/cloud-icons/CloudFront.svg" alt="AWS CloudFront" class="skill-icon-img">
+              <span class="skill-name">CloudFront CDN</span>
+            </div>
+            <div class="skill-item" data-group="aws">
+              <img src="assets/images/cloud-icons/CloudWatch.svg" alt="AWS CloudWatch" class="skill-icon-img">
+              <span class="skill-name">CloudWatch</span>
+            </div>
+
+            <!-- Azure Items -->
+            <div class="skill-item" data-group="azure">
+              <img src="assets/images/cloud-icons/VM.svg" alt="Azure VM" class="skill-icon-img">
+              <span class="skill-name">Azure VMs</span>
+            </div>
+            <div class="skill-item" data-group="azure">
+              <img src="assets/images/cloud-icons/Storage-Account.svg" alt="Azure Storage" class="skill-icon-img">
+              <span class="skill-name">Blob Storage</span>
+            </div>
+            <div class="skill-item" data-group="azure">
+              <img src="assets/images/cloud-icons/Azure-Migrate.svg" alt="Azure Migrate" class="skill-icon-img">
+              <span class="skill-name">Azure Migrate</span>
+            </div>
+            <div class="skill-item" data-group="azure">
+              <img src="assets/images/cloud-icons/Monitor.svg" alt="Azure Monitor" class="skill-icon-img">
+              <span class="skill-name">Azure Monitor</span>
+            </div>
+            <div class="skill-item" data-group="azure">
+              <img src="assets/images/cloud-icons/Cost-Management.svg" alt="Azure Cost Management" class="skill-icon-img">
+              <span class="skill-name">Azure Cost Mgmt</span>
+            </div>
+
+            <!-- DevOps & IaC -->
+            <div class="skill-item" data-group="devops">
+              <img src="assets/images/cloud-icons/terraform.png" alt="Terraform" class="skill-icon-img">
+              <span class="skill-name">Terraform IaC</span>
+            </div>
+            <div class="skill-item" data-group="devops">
+              <img src="assets/images/cloud-icons/kubernetes.svg" alt="Kubernetes EKS" class="skill-icon-img">
+              <span class="skill-name">Kubernetes (EKS)</span>
+            </div>
+            <div class="skill-item" data-group="devops">
+              <img src="assets/images/cloud-icons/docker.svg" alt="Docker" class="skill-icon-img">
+              <span class="skill-name">Docker</span>
+            </div>
+            <div class="skill-item" data-group="devops">
+              <img src="assets/images/cloud-icons/jenkins.jpeg" alt="Jenkins" class="skill-icon-img">
+              <span class="skill-name">Jenkins CI/CD</span>
+            </div>
+            <div class="skill-item" data-group="devops">
+              <img src="assets/images/cloud-icons/github.png" alt="GitHub Actions" class="skill-icon-img">
+              <span class="skill-name">GitHub Actions</span>
+            </div>
+
+            <!-- FinOps -->
+            <div class="skill-item" data-group="finops">
+              <img src="assets/images/cloud-icons/Cost-Explorer.svg" alt="AWS Cost Explorer" class="skill-icon-img">
+              <span class="skill-name">Cost Explorer</span>
+            </div>
+            <div class="skill-item" data-group="finops">
+              <img src="assets/images/cloud-icons/Cost-Management.svg" alt="Savings Plans" class="skill-icon-img">
+              <span class="skill-name">Savings Plans &amp; RI</span>
+            </div>
+
+            <!-- Security & Network -->
+            <div class="skill-item" data-group="security">
+              <img src="assets/images/cloud-icons/WAF.svg" alt="AWS WAF" class="skill-icon-img">
+              <span class="skill-name">AWS WAF &amp; Shield</span>
+            </div>
+            <div class="skill-item" data-group="security">
+              <img src="assets/images/cloud-icons/GuardDuty.svg" alt="AWS GuardDuty" class="skill-icon-img">
+              <span class="skill-name">AWS GuardDuty</span>
+            </div>
+            <div class="skill-item" data-group="security">
+              <img src="assets/images/cloud-icons/active-directory.svg" alt="Entra ID" class="skill-icon-img">
+              <span class="skill-name">Entra ID / IAM</span>
+            </div>
+
+            <!-- Systems & Web -->
+            <div class="skill-item" data-group="systems">
+              <img src="assets/images/cloud-icons/linux.png" alt="Linux" class="skill-icon-img">
+              <span class="skill-name">RedHat / Ubuntu</span>
+            </div>
+            <div class="skill-item" data-group="systems">
+              <img src="assets/images/cloud-icons/windows-server.png" alt="Windows Server" class="skill-icon-img">
+              <span class="skill-name">Windows Server</span>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           8. Visual Perspective & Architectural Story Gallery
+              (Utilizing 14img.png, CF21E488, 19img.png)
+           ==================================================================== -->
+      <section id="gallery" class="section">
+        <div class="container">
+          <div class="section-header reveal">
+            <span class="section-tag tag-amber">Perspective &amp; Mindset</span>
+            <h2 class="section-title">Architectural Mindset &amp; Vision</h2>
+            <p class="section-desc">
+              Designing infrastructure that operates at massive scale requires more than code — it demands perspective, precision, and relentless curiosity.
+            </p>
+          </div>
+
+          <div class="story-grid">
+            
+            <!-- Photo 1: 14img.png (Cliff & Waterfall Panoramic) -->
+            <div class="story-card reveal">
+              <div class="story-img-wrap">
+                <span class="story-badge-top">Summit Vision</span>
+                <picture>
+                  <source srcset="assets/images/profile/14img_web.jpg" type="image/jpeg">
+                  <img src="assets/images/profile/14img.png" alt="Perspective from the Summit — Dilip Kumar" class="story-img" loading="lazy">
+                </picture>
+              </div>
+              <div class="story-content">
+                <h3 class="story-title">Perspective from the Summit</h3>
+                <p class="story-text">
+                  "Viewing infrastructure from 30,000 feet: true architecture begins by understanding the complete landscape. By zooming out to map application dependencies, traffic flows, and budget parameters, we eliminate blind spots and engineer systems that thrive under extreme load."
+                </p>
+              </div>
+            </div>
+
+            <!-- Photo 2: CF21E488-4BE6-4940-B3E0-8AC41C6A729C.PNG (Heritage Palace Gateway) -->
+            <div class="story-card reveal reveal-delay-1">
+              <div class="story-img-wrap">
+                <span class="story-badge-top">Enduring Precision</span>
+                <img src="assets/images/profile/CF21E488-4BE6-4940-B3E0-8AC41C6A729C.PNG" alt="Built to Endure — Dilip Kumar" class="story-img" loading="lazy">
+              </div>
+              <div class="story-content">
+                <h3 class="story-title">Built to Endure</h3>
+                <p class="story-text">
+                  "Like historic monuments that withstand centuries of weather and change, cloud architecture must be engineered with rock-solid foundations. Least-privilege IAM, automated backups, compliance governance, and disaster recovery protect businesses through every unforeseen storm."
+                </p>
+              </div>
+            </div>
+
+            <!-- Photo 3: 19img.png (Mountain Waterfall Profile) -->
+            <div class="story-card reveal reveal-delay-2">
+              <div class="story-img-wrap">
+                <span class="story-badge-top">Continuous Mastery</span>
+                <picture>
+                  <source srcset="assets/images/profile/19img_web.jpg" type="image/jpeg">
+                  <img src="assets/images/profile/19img.png" alt="Relentless Evolution — Dilip Kumar" class="story-img" loading="lazy">
+                </picture>
+              </div>
+              <div class="story-content">
+                <h3 class="story-title">Continuous Evolution</h3>
+                <p class="story-text">
+                  "The cloud ecosystem never stands still, and neither do we. Whether orchestrating Kubernetes containers on EKS, fine-tuning Terraform modules, or pioneering AI-era FinOps automation, the drive to build cleaner, faster, and more cost-effective solutions never stops."
+                </p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           9. Verified Credentials, Certifications & Honors
+           ==================================================================== -->
+      <section id="certifications" class="section">
+        <div class="container">
+          <div class="section-header reveal">
+            <span class="section-tag tag-cyan">Verified Credentials</span>
+            <h2 class="section-title">Industry Certifications &amp; Accolades</h2>
+            <p class="section-desc">
+              Officially recognized multi-cloud credentials validated by Amazon Web Services and Microsoft.
+            </p>
+          </div>
+
+          <!-- 5 Official Certifications -->
+          <div class="certs-grid">
+            
+            <div class="cert-card reveal">
+              <div>
+                <img src="assets/images/badges/awssa.png" alt="AWS Solutions Architect Associate" class="cert-badge-img">
+                <div class="cert-vendor">Amazon Web Services</div>
+                <h3 class="cert-name">Solutions Architect – Associate</h3>
+              </div>
+              <span class="cert-verified">✓ Verified Credential</span>
+            </div>
+
+            <div class="cert-card reveal reveal-delay-1">
+              <div>
+                <img src="assets/images/badges/awssys.png" alt="AWS SysOps Administrator Associate" class="cert-badge-img">
+                <div class="cert-vendor">Amazon Web Services</div>
+                <h3 class="cert-name">SysOps Administrator – Associate</h3>
+              </div>
+              <span class="cert-verified">✓ Verified Credential</span>
+            </div>
+
+            <div class="cert-card reveal reveal-delay-2">
+              <div>
+                <img src="assets/images/badges/azureaa.png" alt="Azure Administrator Associate AZ-104" class="cert-badge-img">
+                <div class="cert-vendor">Microsoft Azure</div>
+                <h3 class="cert-name">Azure Administrator (AZ-104)</h3>
+              </div>
+              <span class="cert-verified">✓ Verified Credential</span>
+            </div>
+
+            <div class="cert-card reveal reveal-delay-3">
+              <div>
+                <img src="assets/images/badges/azurene.png" alt="Azure Network Engineer Associate AZ-700" class="cert-badge-img">
+                <div class="cert-vendor">Microsoft Azure</div>
+                <h3 class="cert-name">Azure Network Engineer (AZ-700)</h3>
+              </div>
+              <span class="cert-verified">✓ Verified Credential</span>
+            </div>
+
+            <div class="cert-card reveal reveal-delay-4">
+              <div>
+                <img src="assets/images/badges/MCSA.png" alt="MCSA Windows Server 2016" class="cert-badge-img">
+                <div class="cert-vendor">Microsoft Certified</div>
+                <h3 class="cert-name">MCSA: Windows Server 2016</h3>
+              </div>
+              <span class="cert-verified">✓ Verified Credential</span>
+            </div>
+
+          </div>
+
+          <!-- Honors & Education Grid -->
+          <div class="honors-edu-grid reveal">
+            
+            <!-- Honors Card -->
+            <div class="honors-card">
+              <div class="honors-header">
+                <span>🏆</span>
+                <span>Honors &amp; Recognition</span>
+              </div>
+
+              <div class="award-item">
+                <h4 class="award-title">Employee of the Quarter</h4>
+                <div class="award-org">LoanTap Financial Technology Pvt Ltd</div>
+                <div class="award-date">April 2022 &nbsp;|&nbsp; Pune, India</div>
+                <p style="font-size: 0.9rem; color: var(--text-secondary); margin-top: 8px;">
+                  Recognized for exceptional cloud architecture, zero-downtime application deployments, and achieving over $2,000/month in continuous AWS cost reduction.
+                </p>
+              </div>
+
+              <div class="award-item">
+                <h4 class="award-title">Engineering Excellence &amp; Zero-Loss Migration</h4>
+                <div class="award-org">Rapyder Cloud Solutions</div>
+                <div class="award-date">2021 &nbsp;|&nbsp; Bengaluru, India</div>
+                <p style="font-size: 0.9rem; color: var(--text-secondary); margin-top: 8px;">
+                  Led high-stakes on-premises to AWS migrations across 50+ enterprise servers with 100% data integrity and zero SLA breach.
+                </p>
+              </div>
+            </div>
+
+            <!-- Education Card -->
+            <div class="edu-card">
+              <div class="edu-header">
+                <span>🎓</span>
+                <span>Academic Education</span>
+              </div>
+
+              <div class="edu-item">
+                <h4 class="edu-title">Master of Computer Applications (MCA)</h4>
+                <div class="edu-org">Annamalai University</div>
+                <div class="edu-date">2020 – 2022</div>
+              </div>
+
+              <div class="edu-item">
+                <h4 class="edu-title">Bachelor of Computer Applications (BCA)</h4>
+                <div class="edu-org">Annamalai University</div>
+                <div class="edu-date">2018 – 2020</div>
+              </div>
+
+              <div class="edu-item">
+                <h4 class="edu-title">Diploma in Computer Science Engineering</h4>
+                <div class="edu-org">BSF Institute of Technology &nbsp;|&nbsp; DTE Karnataka</div>
+                <div class="edu-date">2013 – 2017</div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           10. Direct Connect & Contact Section
+           ==================================================================== -->
+      <section id="contact" class="section">
+        <div class="container">
+          <div class="section-header reveal">
+            <span class="section-tag tag-mint">Direct Connect</span>
+            <h2 class="section-title">Let's Build Something Exceptional</h2>
+            <p class="section-desc">
+              Whether you need to architect a resilient multi-cloud platform, audit &amp; slash cloud expenditure, migrate legacy servers, or hire an experienced Cloud Specialist — let's connect.
+            </p>
+          </div>
+
+          <div class="contact-grid">
+            
+            <!-- Left: Contact Details Card -->
+            <div class="contact-info-card reveal">
+              <span class="hero-pill-badge" style="background: #10b981; color: #070b13;">● AVAILABLE NOW</span>
+              <h3 style="font-size: 1.6rem; margin-top: 14px; margin-bottom: 8px;">Have a Cloud Challenge?</h3>
+              <p style="font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 24px;">
+                I respond promptly to enterprise inquiries, architecture audits, consulting requests, and career opportunities.
+              </p>
+
+              <div class="contact-channels">
+                
+                <!-- Email with 1-click copy -->
+                <div class="channel-item">
+                  <div class="channel-left">
+                    <div class="channel-icon">✉️</div>
+                    <div class="channel-meta">
+                      <small>Email Address</small>
+                      <strong>dilipsook@gmail.com</strong>
+                    </div>
+                  </div>
+                  <button class="btn-copy-email" id="copyEmailBtn">Copy Email</button>
+                </div>
+
+                <!-- Phone -->
+                <div class="channel-item">
+                  <div class="channel-left">
+                    <div class="channel-icon">📞</div>
+                    <div class="channel-meta">
+                      <small>Phone / WhatsApp</small>
+                      <strong>+91-8050898731 / 7760220801</strong>
+                    </div>
+                  </div>
+                  <a href="tel:+918050898731" class="btn-copy-email">Call</a>
+                </div>
+
+                <!-- LinkedIn -->
+                <div class="channel-item">
+                  <div class="channel-left">
+                    <div class="channel-icon">💼</div>
+                    <div class="channel-meta">
+                      <small>LinkedIn Network</small>
+                      <strong>linkedin.com/in/dilipsookk</strong>
+                    </div>
+                  </div>
+                  <a href="https://linkedin.com/in/dilipsookk" target="_blank" rel="noopener" class="btn-copy-email">Connect</a>
+                </div>
+
+                <!-- GitHub -->
+                <div class="channel-item">
+                  <div class="channel-left">
+                    <div class="channel-icon">🐙</div>
+                    <div class="channel-meta">
+                      <small>GitHub Repositories</small>
+                      <strong>github.com/dilipsook</strong>
+                    </div>
+                  </div>
+                  <a href="https://github.com/dilipsook" target="_blank" rel="noopener" class="btn-copy-email">Follow</a>
+                </div>
+
+              </div>
+
+              <div style="margin-top: 24px; padding: 16px; background: rgba(56, 189, 248, 0.05); border: 1px solid rgba(56, 189, 248, 0.2); border-radius: 12px; display: flex; align-items: center; justify-content: space-between;">
+                <div>
+                  <div style="font-size: 0.8rem; text-transform: uppercase; color: var(--text-muted); font-family: var(--font-mono);">Current Base</div>
+                  <div style="font-size: 0.95rem; font-weight: 700; color: #fff;">New Delhi, India (IST, UTC+5:30)</div>
+                </div>
+                <a href="resume.html" class="btn-secondary" style="padding: 8px 16px; font-size: 0.84rem;">
+                  <span>Full Resume ↗</span>
+                </a>
+              </div>
+            </div>
+
+            <!-- Right: Interactive Message Transmission Form -->
+            <div class="contact-form-card reveal reveal-delay-1">
+              <h3 style="font-size: 1.5rem; margin-bottom: 6px;">Transmit Direct Message</h3>
+              <p style="font-size: 0.92rem; color: var(--text-secondary); margin-bottom: 24px;">
+                Fill out the quick briefing form below and I will get back to you within 24 hours.
+              </p>
+
+              <form id="contactForm">
+                <div class="form-group">
+                  <label class="form-label" for="contactName">Your Name / Organization *</label>
+                  <input type="text" id="contactName" class="form-input" placeholder="e.g. Sarah Connor / Acme Enterprise" required>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="contactEmail">Your Work Email *</label>
+                  <input type="email" id="contactEmail" class="form-input" placeholder="name@company.com" required>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="contactSubject">Project Focus / Opportunity *</label>
+                  <select id="contactSubject" class="form-select" required>
+                    <option value="" disabled selected>Select Area of Interest...</option>
+                    <option value="cloud-architecture">Multi-Cloud Architecture &amp; Delivery</option>
+                    <option value="finops-audit">FinOps Cost Optimization Audit</option>
+                    <option value="migration">Server / Database Cloud Migration</option>
+                    <option value="fulltime-role">Full-Time / Contract Leadership Opportunity</option>
+                    <option value="other">General Technical Discussion</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label class="form-label" for="contactMessage">Project Details &amp; Requirements *</label>
+                  <textarea id="contactMessage" class="form-textarea" placeholder="Briefly describe your environment, timeline, cloud stack, or goals..." required></textarea>
+                </div>
+
+                <div id="formFeedback" style="display: none; padding: 14px; border-radius: 8px; background: rgba(16, 185, 129, 0.15); border: 1px solid #10b981; color: #a7f3d0; margin-bottom: 16px; font-size: 0.9rem;"></div>
+
+                <button type="submit" class="btn-primary" style="width: 100%; justify-content: center;">
+                  <span>Send Message</span>
+                  <span>🚀</span>
+                </button>
+              </form>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- ====================================================================
+         11. Footer
+         ==================================================================== -->
+    <footer class="footer">
+      <div class="container footer-container">
+        <div class="footer-meta">
+          <div>&copy; 2026 Dilip Kumar. Crafted for resilient multi-cloud performance.</div>
+          <div style="font-size: 0.78rem; margin-top: 4px; color: var(--text-dim);">
+            AWS Certified Solutions Architect &amp; Microsoft Certified Azure Administrator
+          </div>
+        </div>
+
+        <div style="display: flex; align-items: center; gap: 20px;">
+          <a href="#overview" class="nav-link" style="font-size: 0.85rem;">↑ Back to Top</a>
+          <a href="resume.html" class="nav-link" style="font-size: 0.85rem;">Executive Resume</a>
+          <a href="mailto:dilipsook@gmail.com" class="nav-link" style="font-size: 0.85rem;">Email Dilip</a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- ====================================================================
+         12. Deep-Dive Project Architecture Blueprint Modal
+         ==================================================================== -->
+    <div id="projectModal" class="modal-backdrop" aria-modal="true" role="dialog" aria-hidden="true">
+      <div class="modal-container">
+        <button class="modal-close-btn" id="modalCloseBtn" aria-label="Close modal">&times;</button>
+        
+        <span class="section-tag tag-cyan" style="margin-bottom: 12px;" id="modalImpact">Architectural Blueprint</span>
+        <h2 id="modalTitle" style="font-size: 1.8rem; margin-bottom: 6px; color: #fff;">Project Title</h2>
+        <div id="modalClient" style="font-size: 0.95rem; font-weight: 600; color: var(--azure-cyan); margin-bottom: 24px;">Client Name</div>
+
+        <div style="margin-bottom: 20px;">
+          <h4 style="font-size: 1rem; color: #fbbf24; text-transform: uppercase; font-family: var(--font-mono); margin-bottom: 8px;">1. The Challenge &amp; Requirements</h4>
+          <p id="modalProblem" style="font-size: 0.94rem; color: #cbd5e1; line-height: 1.65;"></p>
+        </div>
+
+        <div style="margin-bottom: 20px;">
+          <h4 style="font-size: 1rem; color: #38bdf8; text-transform: uppercase; font-family: var(--font-mono); margin-bottom: 8px;">2. Engineered Architecture &amp; Delivery</h4>
+          <p id="modalSolution" style="font-size: 0.94rem; color: #cbd5e1; line-height: 1.65;"></p>
+        </div>
+
+        <div style="margin-bottom: 24px;">
+          <h4 style="font-size: 1rem; color: #34d399; text-transform: uppercase; font-family: var(--font-mono); margin-bottom: 8px;">3. Quantified Outcomes &amp; Impact</h4>
+          <ul id="modalOutcomes" class="project-achievements" style="margin: 0;"></ul>
+        </div>
+
+        <div>
+          <h4 style="font-size: 0.85rem; color: var(--text-muted); text-transform: uppercase; font-family: var(--font-mono); margin-bottom: 8px;">Technology Stack</h4>
+          <div id="modalStack" class="pillar-tags"></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Scripts -->
+  <script src="assets/js/canvas-network.js"></script>
+  <script src="assets/js/finops-calculator.js"></script>
+  <script src="assets/js/counter-animations.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
