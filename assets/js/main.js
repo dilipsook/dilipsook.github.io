@@ -346,33 +346,87 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 8. Interactive Contact Form Simulated Send
+  // 8. Real Direct Message Transmission (FormSubmit.co + mailto fallback)
   const contactForm = document.getElementById('contactForm');
   const formFeedback = document.getElementById('formFeedback');
 
-  contactForm?.addEventListener('submit', (e) => {
+  contactForm?.addEventListener('submit', async (e) => {
     e.preventDefault();
     const submitBtn = contactForm.querySelector('button[type="submit"]');
-    if (submitBtn) {
-      submitBtn.disabled = true;
-      submitBtn.textContent = 'Transmitting Message...';
+
+    const name = document.getElementById('contactName')?.value.trim();
+    const email = document.getElementById('contactEmail')?.value.trim();
+    const subjectSelect = document.getElementById('contactSubject');
+    const subjectText = subjectSelect?.options[subjectSelect.selectedIndex]?.text || 'Enterprise Inquiry';
+    const message = document.getElementById('contactMessage')?.value.trim();
+
+    if (!name || !email || !message) {
+      alert('Please fill out all required fields.');
+      return;
     }
 
-    setTimeout(() => {
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = '<span>Transmitting to Dilip...</span> <span>⏳</span>';
+    }
+
+    try {
+      const response = await fetch('https://formsubmit.co/ajax/dilipsook@gmail.com', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          name: name,
+          email: email,
+          subject: `Portfolio Inquiry: ${subjectText}`,
+          message: message,
+          _subject: `[Portfolio] ${subjectText} — from ${name}`,
+          _template: 'table'
+        })
+      });
+
+      const data = await response.json();
+
+      if (response.ok || data.success === 'true' || data.success === true) {
+        if (formFeedback) {
+          formFeedback.style.display = 'block';
+          formFeedback.style.background = 'rgba(16, 185, 129, 0.15)';
+          formFeedback.style.border = '1px solid #10b981';
+          formFeedback.style.color = '#a7f3d0';
+          formFeedback.innerHTML = '<strong>Message Sent Successfully!</strong> Your inquiry has been forwarded directly to Dilip at <code>dilipsook@gmail.com</code>. I will review and reply within 24 hours.';
+        }
+        contactForm.reset();
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = '<span>Message Dispatched ✓</span>';
+          setTimeout(() => {
+            submitBtn.innerHTML = '<span>Send Message</span> <span>🚀</span>';
+            if (formFeedback) formFeedback.style.display = 'none';
+          }, 8000);
+        }
+      } else {
+        throw new Error(data.message || 'Submission failed');
+      }
+    } catch (err) {
+      console.warn('FormSubmit AJAX fallback to mailto:', err);
+      // Seamless mailto fallback
+      const mailtoUrl = `mailto:dilipsook@gmail.com?subject=${encodeURIComponent('Inquiry from Portfolio: ' + subjectText)}&body=${encodeURIComponent('Name / Org: ' + name + '\nEmail: ' + email + '\nFocus Area: ' + subjectText + '\n\nMessage:\n' + message)}`;
+      window.location.href = mailtoUrl;
+
       if (formFeedback) {
         formFeedback.style.display = 'block';
-        formFeedback.innerHTML = '<strong>Message Received!</strong> Thank you for reaching out, Dilip will reply to your email shortly.';
+        formFeedback.style.background = 'rgba(56, 189, 248, 0.15)';
+        formFeedback.style.border = '1px solid #38bdf8';
+        formFeedback.style.color = '#bae6fd';
+        formFeedback.innerHTML = '<strong>Opening your email client...</strong> If it does not launch automatically, please email Dilip directly at <a href="mailto:dilipsook@gmail.com" style="color:#38bdf8; text-decoration:underline;">dilipsook@gmail.com</a>.';
       }
-      contactForm.reset();
       if (submitBtn) {
         submitBtn.disabled = false;
-        submitBtn.textContent = 'Message Sent Successfully ✓';
-        setTimeout(() => {
-          submitBtn.textContent = 'Send Message';
-          if (formFeedback) formFeedback.style.display = 'none';
-        }, 5000);
+        submitBtn.innerHTML = '<span>Send Message</span> <span>🚀</span>';
       }
-    }, 900);
+    }
   });
 
   // 9. Scroll Reveal with Intersection Observer

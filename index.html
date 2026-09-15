@@ -1317,19 +1317,22 @@
               </p>
 
               <form id="contactForm">
+                <!-- Anti-spam honeypot -->
+                <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+
                 <div class="form-group">
                   <label class="form-label" for="contactName">Your Name / Organization *</label>
-                  <input type="text" id="contactName" class="form-input" placeholder="e.g. Sarah Connor / Acme Enterprise" required>
+                  <input type="text" id="contactName" name="name" class="form-input" placeholder="e.g. Sarah Connor / Acme Enterprise" required>
                 </div>
 
                 <div class="form-group">
                   <label class="form-label" for="contactEmail">Your Work Email *</label>
-                  <input type="email" id="contactEmail" class="form-input" placeholder="name@company.com" required>
+                  <input type="email" id="contactEmail" name="email" class="form-input" placeholder="name@company.com" required>
                 </div>
 
                 <div class="form-group">
                   <label class="form-label" for="contactSubject">Project Focus / Opportunity *</label>
-                  <select id="contactSubject" class="form-select" required>
+                  <select id="contactSubject" name="subject" class="form-select" required>
                     <option value="" disabled selected>Select Area of Interest...</option>
                     <option value="cloud-architecture">Multi-Cloud Architecture &amp; Delivery</option>
                     <option value="finops-audit">FinOps Cost Optimization Audit</option>
@@ -1341,10 +1344,10 @@
 
                 <div class="form-group">
                   <label class="form-label" for="contactMessage">Project Details &amp; Requirements *</label>
-                  <textarea id="contactMessage" class="form-textarea" placeholder="Briefly describe your environment, timeline, cloud stack, or goals..." required></textarea>
+                  <textarea id="contactMessage" name="message" class="form-textarea" placeholder="Briefly describe your environment, timeline, cloud stack, or goals..." required></textarea>
                 </div>
 
-                <div id="formFeedback" style="display: none; padding: 14px; border-radius: 8px; background: rgba(16, 185, 129, 0.15); border: 1px solid #10b981; color: #a7f3d0; margin-bottom: 16px; font-size: 0.9rem;"></div>
+                <div id="formFeedback" style="display: none; padding: 14px; border-radius: 8px; margin-bottom: 16px; font-size: 0.9rem; line-height: 1.5;"></div>
 
                 <button type="submit" class="btn-primary" style="width: 100%; justify-content: center;">
                   <span>Send Message</span>
