@@ -343,6 +343,55 @@
 
           </div>
 
+          <!-- ================================================================
+               4B. Interactive Multi-Cloud Architecture Topology Visualizer
+               ================================================================ -->
+          <div class="arch-visualizer-box reveal" style="margin-top: 60px; margin-bottom: 60px;">
+            <div class="arch-controls-bar">
+              <div>
+                <span class="section-tag tag-cyan" id="archBadge">HEALTHCARE COMPLIANT · MULTI-AZ HIGH AVAILABILITY</span>
+                <h3 id="archHeaderTitle" style="font-size: 1.35rem; margin-top: 6px; color: #fff;">
+                  Johnson &amp; Johnson: Enterprise Multi-AZ LIMS Platform (AWS)
+                </h3>
+              </div>
+              <div class="arch-tabs-group" id="archTabs">
+                <!-- Dynamically populated by architecture-visualizer.js -->
+              </div>
+            </div>
+
+            <div class="arch-stage-grid">
+              <!-- Left: Interactive Topology Canvas & Node Cards -->
+              <div class="arch-topology-canvas-wrap">
+                <canvas id="archCanvas"></canvas>
+                <div class="arch-nodes-grid" id="archNodesGrid">
+                  <!-- Dynamically populated by architecture-visualizer.js -->
+                </div>
+              </div>
+
+              <!-- Right: Real-time Telemetry & Metric Inspector -->
+              <div class="arch-inspector-panel">
+                <div class="inspector-header">
+                  <div class="inspector-type" id="inspectorType">Network Ingress</div>
+                  <h4 class="inspector-title" id="inspectorTitle">Route 53 &amp; Anycast DNS</h4>
+                  <div class="inspector-sub" id="inspectorSubtitle">Global Edge Ingress</div>
+                </div>
+
+                <div class="telemetry-metrics-grid" id="inspectorMetrics">
+                  <!-- Metrics injected by JS -->
+                </div>
+
+                <div class="inspector-details-box" id="inspectorDetails">
+                  <!-- Details injected by JS -->
+                </div>
+
+                <div class="inspector-sla-badge">
+                  <span>SLA Target</span>
+                  <strong id="inspectorSla">100% SLA</strong>
+                </div>
+              </div>
+            </div>
+          </div>
+
           <!-- FinOps ROI Calculator Widget -->
           <div id="finops" class="finops-calculator-wrap reveal">
             <div class="finops-grid">
@@ -1415,12 +1464,68 @@
       </div>
     </div>
 
+    <!-- ====================================================================
+         Interactive Cloud CLI Developer Terminal Modal (dilip-cli v2.4.0)
+         ==================================================================== -->
+    <div id="terminalModal" class="terminal-modal-backdrop" aria-modal="true" role="dialog" aria-hidden="true">
+      <div class="terminal-window">
+        <div class="terminal-header">
+          <div class="terminal-dots">
+            <span class="dot dot-red"></span>
+            <span class="dot dot-yellow"></span>
+            <span class="dot dot-green"></span>
+          </div>
+          <div class="terminal-title">dilip-cli v2.4.0 — bash (x86_64-pc-cloud)</div>
+          <button class="terminal-close" id="closeTerminalBtn" aria-label="Close terminal">&times;</button>
+        </div>
+
+        <div class="terminal-chips-bar">
+          <span style="font-size: 0.72rem; color: var(--text-dim); margin-right: 4px; align-self: center;">Quick Run:</span>
+          <button class="term-chip" data-cmd="finops">⚡ finops audit</button>
+          <button class="term-chip" data-cmd="migrate">🚀 migrate check</button>
+          <button class="term-chip" data-cmd="certs">🏆 certs verify</button>
+          <button class="term-chip" data-cmd="whoami">👤 whoami</button>
+          <button class="term-chip" data-cmd="skills">🛠️ skills</button>
+          <button class="term-chip" data-cmd="help">❓ help</button>
+          <button class="term-chip" data-cmd="clear">🧹 clear</button>
+        </div>
+
+        <div class="terminal-body" id="terminalOutput">
+          <div class="term-info">WELCOME TO DILIP KUMAR'S CLOUD ARCHITECTURE SHELL [v2.4.0]</div>
+          <div class="term-response">Type <span class="term-highlight">"help"</span> or click any quick command chip above to simulate real-time cloud operations.</div>
+        </div>
+
+        <div class="terminal-input-line">
+          <span class="term-prompt">dilip@cloud-arch:~$</span>
+          <input type="text" id="terminalInput" class="terminal-input" placeholder="Type a command (e.g. finops, migrate, certs, whoami)..." autocomplete="off" spellcheck="false">
+        </div>
+      </div>
+    </div>
+
+    <!-- Floating Cloud CLI Trigger -->
+    <button class="floating-cli-trigger" id="openTerminalBtn" title="Launch Interactive Cloud CLI Terminal">
+      <span>💻</span>
+      <span>&gt;_ Cloud CLI</span>
+    </button>
+
+    <!-- Floating Back to Top Button with Circular Scroll Progress Ring -->
+    <button class="scroll-top-btn" id="scrollTopBtn" aria-label="Scroll back to top" title="Scroll back to top">
+      <svg class="progress-ring-svg" viewBox="0 0 52 52">
+        <circle class="progress-ring-circle" id="scrollProgressCircle" cx="26" cy="26" r="23"></circle>
+      </svg>
+      <span>↑</span>
+    </button>
+
   </div>
 
   <!-- Scripts -->
   <script src="assets/js/canvas-network.js"></script>
   <script src="assets/js/finops-calculator.js"></script>
   <script src="assets/js/counter-animations.js"></script>
+  <script src="assets/js/card-tilt.js"></script>
+  <script src="assets/js/architecture-visualizer.js"></script>
+  <script src="assets/js/cloud-terminal.js"></script>
+  <script src="assets/js/scroll-progress.js"></script>
   <script src="assets/js/main.js"></script>
 </body>
 </html>
