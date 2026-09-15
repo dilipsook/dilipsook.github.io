@@ -388,14 +388,27 @@ document.addEventListener('DOMContentLoaded', () => {
       });
 
       const data = await response.json();
+      console.log('FormSubmit response:', data);
 
-      if (response.ok || data.success === 'true' || data.success === true) {
+      if (data.message && data.message.toLowerCase().includes('activation')) {
+        if (formFeedback) {
+          formFeedback.style.display = 'block';
+          formFeedback.style.background = 'rgba(245, 158, 11, 0.15)';
+          formFeedback.style.border = '1px solid #f59e0b';
+          formFeedback.style.color = '#fde68a';
+          formFeedback.innerHTML = '<strong>⚠️ Activation Required:</strong> FormSubmit has sent a 1-time activation link to <code>dilipsook@gmail.com</code>.<br>Please check your inbox (or Spam folder) and click <strong>Activate Form</strong>. After clicking it once, all future submissions will arrive directly in your inbox.';
+        }
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = '<span>Check Email to Activate</span> <span>📬</span>';
+        }
+      } else if (response.ok || data.success === 'true' || data.success === true) {
         if (formFeedback) {
           formFeedback.style.display = 'block';
           formFeedback.style.background = 'rgba(16, 185, 129, 0.15)';
           formFeedback.style.border = '1px solid #10b981';
           formFeedback.style.color = '#a7f3d0';
-          formFeedback.innerHTML = '<strong>Message Sent Successfully!</strong> Your inquiry has been forwarded directly to Dilip at <code>dilipsook@gmail.com</code>. I will review and reply within 24 hours.';
+          formFeedback.innerHTML = '<strong>Message Sent Successfully!</strong> Your inquiry has been dispatched directly to Dilip at <code>dilipsook@gmail.com</code>. I will review and reply within 24 hours.';
         }
         contactForm.reset();
         if (submitBtn) {
@@ -413,14 +426,13 @@ document.addEventListener('DOMContentLoaded', () => {
       console.warn('FormSubmit AJAX fallback to mailto:', err);
       // Seamless mailto fallback
       const mailtoUrl = `mailto:dilipsook@gmail.com?subject=${encodeURIComponent('Inquiry from Portfolio: ' + subjectText)}&body=${encodeURIComponent('Name / Org: ' + name + '\nEmail: ' + email + '\nFocus Area: ' + subjectText + '\n\nMessage:\n' + message)}`;
-      window.location.href = mailtoUrl;
-
+      
       if (formFeedback) {
         formFeedback.style.display = 'block';
         formFeedback.style.background = 'rgba(56, 189, 248, 0.15)';
         formFeedback.style.border = '1px solid #38bdf8';
         formFeedback.style.color = '#bae6fd';
-        formFeedback.innerHTML = '<strong>Opening your email client...</strong> If it does not launch automatically, please email Dilip directly at <a href="mailto:dilipsook@gmail.com" style="color:#38bdf8; text-decoration:underline;">dilipsook@gmail.com</a>.';
+        formFeedback.innerHTML = `<strong>Direct Email:</strong> Click below to send directly from your email client:<br><a href="${mailtoUrl}" class="btn-secondary" style="display:inline-block; margin-top:8px; padding:6px 14px; font-size:0.85rem;">Open Email Client (${email}) ✉️</a>`;
       }
       if (submitBtn) {
         submitBtn.disabled = false;
