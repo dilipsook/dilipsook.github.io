@@ -310,6 +310,11 @@ document.addEventListener('DOMContentLoaded', () => {
         modalStack.appendChild(span);
       });
 
+      // Render Dedicated Architecture Topology Blueprint Diagram
+      if (window.DilipBlueprint && window.DilipBlueprint.render) {
+        window.DilipBlueprint.render(projId);
+      }
+
       modalBackdrop.classList.add('open');
       document.body.style.overflow = 'hidden';
     });

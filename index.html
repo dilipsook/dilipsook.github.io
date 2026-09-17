@@ -152,20 +152,62 @@
               </a>
             </div>
 
-            <!-- Social Links -->
-            <div class="hero-socials">
-              <a href="https://linkedin.com/in/dilipsookk" target="_blank" rel="noopener" class="hero-social-link" title="LinkedIn Profile">
-                <span>in</span>
-              </a>
-              <a href="https://github.com/dilipsook" target="_blank" rel="noopener" class="hero-social-link" title="GitHub Profile">
-                <span>git</span>
-              </a>
-              <a href="http://stackoverflow.com/users/19229599/dilip-kumar" target="_blank" rel="noopener" class="hero-social-link" title="Stack Overflow">
-                <span>so</span>
-              </a>
-              <a href="mailto:dilipsook@gmail.com" class="hero-social-link" title="Direct Email">
-                <span>@</span>
-              </a>
+            <!-- Interactive Hero Dock: Social Links + 3D Cloud Core -->
+            <div class="hero-interactive-dock">
+              <div class="hero-socials" style="margin-top: 0;">
+                <a href="https://linkedin.com/in/dilipsookk" target="_blank" rel="noopener" class="hero-social-link" title="LinkedIn Profile">
+                  <span>in</span>
+                </a>
+                <a href="https://github.com/dilipsook" target="_blank" rel="noopener" class="hero-social-link" title="GitHub Profile">
+                  <span>git</span>
+                </a>
+                <a href="http://stackoverflow.com/users/19229599/dilip-kumar" target="_blank" rel="noopener" class="hero-social-link" title="Stack Overflow">
+                  <span>so</span>
+                </a>
+                <a href="mailto:dilipsook@gmail.com" class="hero-social-link" title="Direct Email">
+                  <span>@</span>
+                </a>
+              </div>
+
+              <div class="hero-3d-cube-container" title="Interactive 3D Multi-Cloud Core — Hover to rotate in 3D">
+                <div class="cube-3d-scene">
+                  <div class="cube-3d" id="cloudCube3D">
+                    <div class="cube-face cube-front">
+                      <span class="cube-face-icon">☁️</span>
+                      <span class="cube-face-title">AWS</span>
+                      <span class="cube-face-sub">Multi-AZ</span>
+                    </div>
+                    <div class="cube-face cube-back">
+                      <span class="cube-face-icon">🔷</span>
+                      <span class="cube-face-title">Azure</span>
+                      <span class="cube-face-sub">Enterprise</span>
+                    </div>
+                    <div class="cube-face cube-right">
+                      <span class="cube-face-icon">💰</span>
+                      <span class="cube-face-title">FinOps</span>
+                      <span class="cube-face-sub">$60K+/mo</span>
+                    </div>
+                    <div class="cube-face cube-left">
+                      <span class="cube-face-icon">⚡</span>
+                      <span class="cube-face-title">IaC</span>
+                      <span class="cube-face-sub">Terraform</span>
+                    </div>
+                    <div class="cube-face cube-top">
+                      <span class="cube-face-icon">☸️</span>
+                      <span class="cube-face-title">K8s</span>
+                      <span class="cube-face-sub">Containers</span>
+                    </div>
+                    <div class="cube-face cube-bottom">
+                      <span class="cube-face-icon">🚀</span>
+                      <span class="cube-face-title">Zero Loss</span>
+                      <span class="cube-face-sub">1000+ VMs</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="cube-3d-caption">
+                  <span class="cube-pulse-dot"></span> 3D Cloud Core
+                </div>
+              </div>
             </div>
           </div>
 
@@ -1432,6 +1474,9 @@
     </footer>
 
     <!-- ====================================================================
+         Interactive Cloud CLI Developer Terminal Modal (dilip-cli v2.4.0)
+         ==================================================================== -->
+    <!-- ====================================================================
          12. Deep-Dive Project Architecture Blueprint Modal
          ==================================================================== -->
     <div id="projectModal" class="modal-backdrop" aria-modal="true" role="dialog" aria-hidden="true">
@@ -1452,6 +1497,44 @@
           <p id="modalSolution" style="font-size: 0.94rem; color: #cbd5e1; line-height: 1.65;"></p>
         </div>
 
+        <!-- Dedicated Architectural Topology Blueprint Diagram -->
+        <div class="blueprint-diagram-section">
+          <div class="blueprint-diagram-header">
+            <div class="blueprint-diagram-title-wrap">
+              <span class="blueprint-live-dot"></span>
+              <div>
+                <h4 class="blueprint-diagram-title">System Architecture Topology &amp; Data Pipeline</h4>
+                <div class="blueprint-diagram-subtitle" id="blueprintDiagramSubtitle">Multi-AZ Infrastructure Schematic</div>
+              </div>
+            </div>
+            
+            <div class="blueprint-view-controls">
+              <button type="button" class="blueprint-mode-btn active" id="blueprint2DBtn" title="View 2D Schematic Flow">
+                ⚡ 2D Schematic
+              </button>
+              <button type="button" class="blueprint-mode-btn" id="blueprint3DBtn" title="View 3D Isometric Topology">
+                🧊 3D Isometric View
+              </button>
+            </div>
+          </div>
+
+          <!-- Diagram Stage Viewport -->
+          <div class="blueprint-stage-viewport" id="blueprintStage">
+            <div class="blueprint-stage-grid-bg"></div>
+            <div class="blueprint-tiers-container" id="blueprintTiersContainer">
+              <!-- Tier Nodes injected dynamically by blueprint-diagrams.js -->
+            </div>
+            
+            <!-- Interactive Node Telemetry Detail Bar -->
+            <div class="blueprint-node-detail-bar" id="blueprintNodeDetailBar">
+              <span class="node-detail-type" id="nodeDetailType">Ingress</span>
+              <strong class="node-detail-title" id="nodeDetailTitle">Route 53 DNS</strong>
+              <span class="node-detail-desc" id="nodeDetailDesc">Global low-latency DNS resolution with active health checks</span>
+              <span class="node-detail-spec" id="nodeDetailSpec">Port 443 / TLS 1.3</span>
+            </div>
+          </div>
+        </div>
+
         <div style="margin-bottom: 24px;">
           <h4 style="font-size: 1rem; color: #34d399; text-transform: uppercase; font-family: var(--font-mono); margin-bottom: 8px;">3. Quantified Outcomes &amp; Impact</h4>
           <ul id="modalOutcomes" class="project-achievements" style="margin: 0;"></ul>
@@ -1464,9 +1547,6 @@
       </div>
     </div>
 
-    <!-- ====================================================================
-         Interactive Cloud CLI Developer Terminal Modal (dilip-cli v2.4.0)
-         ==================================================================== -->
     <div id="terminalModal" class="terminal-modal-backdrop" aria-modal="true" role="dialog" aria-hidden="true">
       <div class="terminal-window">
         <div class="terminal-header">
@@ -1526,6 +1606,7 @@
   <script src="assets/js/architecture-visualizer.js"></script>
   <script src="assets/js/cloud-terminal.js"></script>
   <script src="assets/js/scroll-progress.js"></script>
+  <script src="assets/js/blueprint-diagrams.js"></script>
   <script src="assets/js/main.js"></script>
 </body>
 </html>

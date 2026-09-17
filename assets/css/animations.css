@@ -98,3 +98,70 @@
 .subtle-float {
   animation: subtleFloat 5s ease-in-out infinite;
 }
+
+
+/* ==========================================================================
+   3D PERSPECTIVE & KEYFRAME ANIMATIONS
+   ========================================================================== */
+
+/* 3D Holographic Cube Rotation */
+@keyframes rotate3dCube {
+  0% {
+    transform: rotateX(15deg) rotateY(0deg) rotateZ(0deg);
+  }
+  50% {
+    transform: rotateX(25deg) rotateY(180deg) rotateZ(10deg);
+  }
+  100% {
+    transform: rotateX(15deg) rotateY(360deg) rotateZ(0deg);
+  }
+}
+
+/* 3D Floating Levitation */
+@keyframes levitate3d {
+  0%, 100% {
+    transform: translateY(0px) translateZ(30px) rotateX(0deg);
+  }
+  50% {
+    transform: translateY(-8px) translateZ(45px) rotateX(3deg);
+  }
+}
+
+/* Data Flow Pulse Arrow Animation */
+@keyframes flowPulseArrow {
+  0% {
+    transform: translateX(-4px);
+    opacity: 0.3;
+  }
+  50% {
+    transform: translateX(0px);
+    opacity: 1;
+    filter: drop-shadow(0 0 6px #38bdf8);
+  }
+  100% {
+    transform: translateX(4px);
+    opacity: 0.3;
+  }
+}
+
+/* 3D Grid Horizon Scanline */
+@keyframes gridHorizonFlow {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 0 30px;
+  }
+}
+
+/* Glowing Pulse Dot */
+@keyframes pulseDotGlow {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(56, 189, 248, 0.7);
+  }
+  50% {
+    transform: scale(1.15);
+    box-shadow: 0 0 0 6px rgba(56, 189, 248, 0);
+  }
+}

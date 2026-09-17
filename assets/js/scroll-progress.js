@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const radius = progressCircle.r.baseVal.value;
   const circumference = 2 * Math.PI * radius;
-  progressCircle.style.strokeDasharray = ${circumference} ;
+  progressCircle.style.strokeDasharray = circumference + ' ' + circumference;
   progressCircle.style.strokeDashoffset = circumference;
 
   function updateProgress() {
