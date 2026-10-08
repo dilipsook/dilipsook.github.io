@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     'jnj': {
       title: 'Johnson & Johnson: Enterprise Multi-AZ LIMS Platform (AWS)',
       badge: 'HEALTHCARE COMPLIANT · MULTI-AZ HIGH AVAILABILITY',
-      themeColor: '#0284c7',
+      themeColor: '#38bdf8',
       nodes: [
         {
           id: 'jnj-dns',
@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
     'dhani': {
       title: 'Dhani Financial Services: FinOps Optimization Pipeline (AWS)',
       badge: 'FINOPS EXCELLENCE · $28,000/MONTH DOCUMENTED SAVINGS',
-      themeColor: '#059669',
+      themeColor: '#10b981',
       nodes: [
         {
           id: 'dhani-telemetry',
@@ -132,7 +132,7 @@ document.addEventListener('DOMContentLoaded', () => {
     'isro': {
       title: 'ISRO (SDSC SHAR): High-Security Isolated VDI Infrastructure',
       badge: 'AEROSPACE ENCLAVE · 100-SEAT AIR-GAPPED VDI',
-      themeColor: '#d97706',
+      themeColor: '#f59e0b',
       nodes: [
         {
           id: 'isro-terminals',
@@ -365,7 +365,7 @@ document.addEventListener('DOMContentLoaded', () => {
       ctx.beginPath();
       ctx.moveTo(p1.x, p1.y);
       ctx.lineTo(p2.x, p2.y);
-      ctx.strokeStyle = 'rgba(2, 132, 199, 0.22)';
+      ctx.strokeStyle = 'rgba(56, 189, 248, 0.25)';
       ctx.lineWidth = 2;
       ctx.setLineDash([4, 6]);
       ctx.stroke();

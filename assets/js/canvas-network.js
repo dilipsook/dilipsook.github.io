@@ -16,9 +16,9 @@
   let mouse = { x: -9999, y: -9999, radius: 140 };
 
   const COLORS = {
-    azure: { r: 2, g: 132, b: 199 },
-    aws: { r: 217, g: 119, b: 6 },
-    finops: { r: 5, g: 150, b: 105 }
+    azure: { r: 56, g: 189, b: 248 },
+    aws: { r: 255, g: 153, b: 0 },
+    finops: { r: 16, g: 185, b: 129 }
   };
 
   const COLOR_KEYS = ['azure', 'aws', 'finops'];
