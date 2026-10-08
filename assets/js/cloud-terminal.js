@@ -36,29 +36,29 @@ document.addEventListener('DOMContentLoaded', () => {
   const commands = {
     'help': () => `
 <div class="term-info">AVAILABLE COMMANDS IN DILIP-CLI v2.4.0:</div>
-  <span class="term-cmd">finops</span>     - Run enterprise FinOps cost audit simulation ($60K/mo)
+  <span class="term-cmd">finops</span>     - Run enterprise FinOps governance & optimization model
   <span class="term-cmd">migrate</span>    - Run zero-downtime AWS server cutover health check
   <span class="term-cmd">certs</span>      - Verify AWS and Microsoft Azure certifications
   <span class="term-cmd">whoami</span>     - Output multi-cloud architect profile JSON
   <span class="term-cmd">skills</span>     - List core multi-cloud engineering stack
-  <span class="term-cmd">contact</span>    - Show direct contact channels
+  <span class="term-cmd">contact</span>    - Show professional contact channels
   <span class="term-cmd">clear</span>      - Clear terminal window
 `,
     'finops': () => `
-<div class="term-highlight">INITIATING FINOPS AUDIT ACROSS AWS & AZURE ACCOUNTS...</div>
+<div class="term-highlight">RUNNING FINOPS OPTIMIZATION TELEMETRY (AWS & AZURE)...</div>
 [✓] Querying AWS Cost Explorer API (30-day trailing metric)...
 [✓] Evaluating 150+ EC2 & Azure VM utilization baselines...
 [!] Found 42 instances eligible for Graviton/AMD rightsizing.
 [!] Identified 14 unattached EBS volumes (gp2) -> Deleted.
 [✓] Simulating 3-Year Compute Savings Plans commitment...
 ------------------------------------------------------------
-<span class="term-success">MONTHLY AUDIT SUMMARY:</span>
+<span class="term-success">MONTHLY OPTIMIZATION SUMMARY:</span>
   • Compute Rightsizing:        +$12,000 / month
   • Savings Plans & RIs:        +$10,500 / month
   • S3 Intelligent-Tiering:     +$5,500 / month
   ----------------------------------------------------------
-  <span class="term-highlight">TOTAL DOCUMENTED SAVINGS:   $28,000 / month ($336,000 / yr)</span>
-  [STATUS: 100% RECURRENT ROI VERIFIED]
+  <span class="term-highlight">TOTAL DOCUMENTED IMPACT:     $28,000 / month ($336,000 / yr)</span>
+  [STATUS: 100% RECURRENT EFFICIENCY VERIFIED]
 `,
     'migrate': () => `
 <div class="term-highlight">RUNNING CLOUD MIGRATION ORCHESTRATION CHECK (AWS MGN / DMS)...</div>
@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', () => {
 ------------------------------------------------------------
 <span class="term-success">MIGRATION STATUS: READY FOR ZERO-DOWNTIME CUTOVER</span>
   • Total Servers Migrated Career: 1,000+
-  • Client Outages Incurred:        0
+  • Production Outages Incurred:    0
 `,
     'certs': () => `
 <div class="term-highlight">VERIFYING ACTIVE CLOUD CERTIFICATIONS:</div>
@@ -83,12 +83,12 @@ document.addEventListener('DOMContentLoaded', () => {
     'whoami': () => `
 <pre class="term-json">{
   "name": "Dilip Kumar",
-  "role": "Cloud Solution Specialist",
+  "role": "Multi-Cloud & FinOps Architect",
   "experience": "9+ Years",
   "certifications": ["AWS SAA", "AWS SysOps", "AZ-104", "AZ-700", "MCSA 2016"],
   "specialties": ["Multi-Cloud AWS & Azure", "FinOps ($60K/mo Saved)", "Zero-Downtime Migrations"],
-  "keyClients": ["Johnson & Johnson", "LoanTap", "ISRO (SDSC SHAR)", "Indian Air Force", "Dhani"],
-  "status": "Available for High-Impact Enterprise Roles"
+  "enterpriseEnvironments": ["Johnson & Johnson", "LoanTap", "ISRO (SDSC SHAR)", "Indian Air Force", "Dhani"],
+  "focus": "Enterprise Multi-Cloud Architecture & FinOps Governance"
 }</pre>
 `,
     'skills': () => `

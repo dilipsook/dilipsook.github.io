@@ -260,7 +260,7 @@ document.addEventListener('DOMContentLoaded', () => {
       solution: 'Migrated production MySQL databases from Rackspace to AWS RDS using AWS Database Migration Service (AWS DMS) with ongoing replication (CDC) to eliminate downtime. Configured automated snapshots, multi-AZ failover, and rightsized DB instance tiers.',
       outcomes: [
         'Completed full database cutover with zero data loss and less than 15 minutes scheduled window.',
-        'Saved client $1,500/month on managed hosting bills.',
+        'Reduced hosting expenditure by $1,500/month.',
         'Implemented automated backup retention and point-in-time recovery (PITR).'
       ],
       stack: ['AWS DMS', 'AWS RDS MySQL', 'Rackspace', 'CloudWatch', 'Route 53']
@@ -418,9 +418,9 @@ document.addEventListener('DOMContentLoaded', () => {
         contactForm.reset();
         if (submitBtn) {
           submitBtn.disabled = false;
-          submitBtn.innerHTML = '<span>Message Dispatched ✓</span>';
+          submitBtn.innerHTML = '<span>Note Dispatched ✓</span>';
           setTimeout(() => {
-            submitBtn.innerHTML = '<span>Send Message</span> <span>🚀</span>';
+            submitBtn.innerHTML = '<span>Send Note</span> <span>✉️</span>';
             if (formFeedback) formFeedback.style.display = 'none';
           }, 8000);
         }
@@ -430,18 +430,18 @@ document.addEventListener('DOMContentLoaded', () => {
     } catch (err) {
       console.warn('FormSubmit AJAX fallback to mailto:', err);
       // Seamless mailto fallback
-      const mailtoUrl = `mailto:dilipsook@gmail.com?subject=${encodeURIComponent('Inquiry from Portfolio: ' + subjectText)}&body=${encodeURIComponent('Name / Org: ' + name + '\nEmail: ' + email + '\nFocus Area: ' + subjectText + '\n\nMessage:\n' + message)}`;
+      const mailtoUrl = `mailto:dilipsook@gmail.com?subject=${encodeURIComponent('Note from Portfolio: ' + subjectText)}&body=${encodeURIComponent('Name: ' + name + '\nEmail: ' + email + '\nTopic: ' + subjectText + '\n\nMessage:\n' + message)}`;
       
       if (formFeedback) {
         formFeedback.style.display = 'block';
         formFeedback.style.background = 'rgba(56, 189, 248, 0.15)';
         formFeedback.style.border = '1px solid #38bdf8';
         formFeedback.style.color = '#bae6fd';
-        formFeedback.innerHTML = `<strong>Direct Email:</strong> Click below to send directly from your email client:<br><a href="${mailtoUrl}" class="btn-secondary" style="display:inline-block; margin-top:8px; padding:6px 14px; font-size:0.85rem;">Open Email Client (${email}) ✉️</a>`;
+        formFeedback.innerHTML = `<strong>Direct Email:</strong> Click below to send directly from your email app:<br><a href="${mailtoUrl}" class="btn-secondary" style="display:inline-block; margin-top:8px; padding:6px 14px; font-size:0.85rem;">Open Email Client (${email}) ✉️</a>`;
       }
       if (submitBtn) {
         submitBtn.disabled = false;
-        submitBtn.innerHTML = '<span>Send Message</span> <span>🚀</span>';
+        submitBtn.innerHTML = '<span>Send Note</span> <span>✉️</span>';
       }
     }
   });

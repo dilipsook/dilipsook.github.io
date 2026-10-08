@@ -78,10 +78,10 @@ document.addEventListener('DOMContentLoaded', () => {
           subtitle: 'Telemetry & Workload Profiling',
           icon: '📊',
           type: 'Governance Engine',
-          sla: 'Continuous Audit',
+          sla: 'Continuous Governance',
           status: 'ANALYZING',
-          metrics: { 'Fleet Audited': '150+ EC2 Instances', 'Overprovisioned': '42% Flagged', 'Sampling': '14-Day Baseline' },
-          details: 'Initiated deep architectural audit across Dhani multi-account footprint using AWS Cost Explorer and ML-driven AWS Compute Optimizer recommendations.'
+          metrics: { 'Fleet Analyzed': '150+ EC2 Instances', 'Overprovisioned': '42% Flagged', 'Sampling': '14-Day Baseline' },
+          details: 'Initiated deep architectural assessment across Dhani multi-account footprint using AWS Cost Explorer and ML-driven AWS Compute Optimizer recommendations.'
         },
         {
           id: 'dhani-rightsize',
@@ -125,7 +125,7 @@ document.addEventListener('DOMContentLoaded', () => {
           sla: 'Recurrent Monthly Impact',
           status: 'VERIFIED',
           metrics: { 'Monthly Saved': '$28,000 / month', 'Annual Impact': '$336,000 / year', 'ROI Realized': '3.8x Target' },
-          details: 'Delivered an audited recurring savings of $28,000 every single month with zero application latency regression, earning praise from executive leadership.'
+          details: 'Delivered documented recurring savings of $28,000 every single month with zero application latency regression, earning praise from executive leadership.'
         }
       ]
     },
