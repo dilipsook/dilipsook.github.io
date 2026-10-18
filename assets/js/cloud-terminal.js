@@ -83,21 +83,23 @@ document.addEventListener('DOMContentLoaded', () => {
     'whoami': () => `
 <pre class="term-json">{
   "name": "Dilip Kumar",
-  "role": "Multi-Cloud & FinOps Architect",
-  "experience": "9+ Years",
+  "role": "Manager Project & Multi-Cloud Architect",
+  "company": "Cognizant (ISG LSMG Labware Practice)",
+  "experience": "10+ Years",
   "certifications": ["AWS SAA", "AWS SysOps", "AZ-104", "AZ-700", "MCSA 2016"],
-  "specialties": ["Multi-Cloud AWS & Azure", "FinOps ($60K/mo Saved)", "Zero-Downtime Migrations"],
-  "enterpriseEnvironments": ["Johnson & Johnson", "LoanTap", "ISRO (SDSC SHAR)", "Indian Air Force", "Dhani"],
-  "focus": "Enterprise Multi-Cloud Architecture & FinOps Governance"
+  "specialties": ["Multi-Cloud AWS & Azure", "FinOps ($60K/mo Saved)", "Zero-Downtime Migrations", "Life Sciences LIMS/ELN Cloud"],
+  "enterpriseEnvironments": ["Cognizant", "Johnson & Johnson", "LoanTap", "ISRO (SDSC SHAR)", "Indian Air Force", "Dhani"],
+  "focus": "Enterprise Multi-Cloud Architecture, FinOps Governance & Life Sciences LabWare Practice"
 }</pre>
 `,
     'skills': () => `
 <div class="term-info">PRIMARY CLOUD TECHNOLOGY DOMAINS:</div>
-  • AWS:        EC2, S3, RDS, Aurora, Lambda, VPC, NLB/ALB, ASG, Route 53, CloudFront, DMS, MGN, EKS, IAM
-  • Azure:      VMs, VNets, NSGs, Azure SQL, Blob, Azure Migrate, Cost Management, Entra ID
-  • FinOps:     Cost Explorer, Compute Optimizer, Savings Plans, Reserved Instances, S3 Lifecycle
-  • DevOps/IaC: Terraform, CloudFormation, Jenkins, GitHub Actions, Docker, Kubernetes, Bash
-  • Systems:    Linux (RHEL/Ubuntu), Windows Server 2016, AD DS, VMware ESXi/Horizon, SAN Storage
+  • AWS:           EC2, S3, RDS, Aurora, Lambda, VPC, NLB/ALB, ASG, Route 53, CloudFront, DMS, MGN, EKS, IAM
+  • Azure:         VMs, VNets, NSGs, Azure SQL, Blob, Azure Migrate, Cost Management, Entra ID
+  • Life Sciences: LabWare LIMS & ELN, Labvantage LIMS, GxP & CSV Compliance, 21 CFR Part 11
+  • FinOps:        Cost Explorer, Compute Optimizer, Savings Plans, Reserved Instances, S3 Lifecycle
+  • DevOps/IaC:    Terraform, CloudFormation, Jenkins, GitHub Actions, Docker, Kubernetes, Bash
+  • Systems:       Linux (RHEL/Ubuntu), Windows Server 2016, AD DS, VMware ESXi/Horizon, SAN Storage
 `,
     'contact': () => `
 <div class="term-highlight">DIRECT CHANNELS:</div>

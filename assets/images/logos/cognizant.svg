@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 60" width="240" height="60">
+  <!-- Cognizant Geometric Icon -->
+  <g transform="translate(10, 8)">
+    <path d="M 22 2 L 40 12 L 40 32 L 22 22 Z" fill="#0033a0"/>
+    <path d="M 22 22 L 40 32 L 22 42 L 4 32 Z" fill="#00a3e0"/>
+    <path d="M 4 12 L 22 2 L 22 22 L 4 32 Z" fill="#000048"/>
+    <path d="M 22 22 L 32 16 L 22 10 Z" fill="#ffffff" opacity="0.9"/>
+  </g>
+  <!-- Cognizant Wordmark -->
+  <text x="65" y="38" font-family="'Inter', 'Segoe UI', -apple-system, sans-serif" font-size="24" font-weight="700" fill="#00a3e0" letter-spacing="-0.5">cognizant</text>
+</svg>

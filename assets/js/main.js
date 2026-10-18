@@ -4,6 +4,31 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
+  // Theme Toggle (Dark / Light Mode)
+  const themeToggleBtn = document.getElementById('themeToggleBtn');
+  const savedTheme = localStorage.getItem('dilip-theme') || 'dark';
+
+  function setTheme(theme) {
+    if (theme === 'light') {
+      document.documentElement.setAttribute('data-theme', 'light');
+      if (themeToggleBtn) themeToggleBtn.textContent = '🌙';
+      localStorage.setItem('dilip-theme', 'light');
+    } else {
+      document.documentElement.removeAttribute('data-theme');
+      if (themeToggleBtn) themeToggleBtn.textContent = '☀️';
+      localStorage.setItem('dilip-theme', 'dark');
+    }
+  }
+
+  // Initialize theme
+  setTheme(savedTheme);
+
+  themeToggleBtn?.addEventListener('click', () => {
+    const currentTheme = document.documentElement.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
+    setTheme(currentTheme === 'light' ? 'dark' : 'light');
+  });
+
+
   // 1. Sticky Navbar & Active Section Observer
   const navbar = document.querySelector('.navbar');
   const navLinks = document.querySelectorAll('.nav-link');
@@ -60,10 +85,11 @@ document.addEventListener('DOMContentLoaded', () => {
   if (typewriterElement) {
     const phrases = [
       'Multi-Cloud Architect & FinOps Leader',
+      'Manager Project — LabWare Practice @ Cognizant',
       'Dual Certified: AWS & Microsoft Azure',
       '$60K+/Mo Saved in Documented FinOps',
-      '1,000+ Zero-Downtime Server Migrations',
-      'Trusted by Johnson & Johnson, ISRO & IAF'
+      'Life Sciences LIMS & ELN Cloud Migrations',
+      'Trusted by Cognizant, Johnson & Johnson, ISRO & IAF'
     ];
 
     let phraseIndex = 0;
@@ -457,6 +483,12 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }, { threshold: 0.1 });
 
-  revealElements.forEach(el => revealObserver.observe(el));
+  revealElements.forEach(el => {
+    revealObserver.observe(el);
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight) {
+      el.classList.add('revealed');
+    }
+  });
 
 });
