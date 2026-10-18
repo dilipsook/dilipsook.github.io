@@ -570,53 +570,621 @@
     if (specEl) specEl.textContent = node.spec;
   }
 
-  // 2D / 3D Isometric View Mode Toggle
+  // ========================================================================
+  // ARCHITECTURAL DECISION RECORDS (ADR) & TERRAFORM IaC FOR ALL 9 PROJECTS
+  // ========================================================================
+  let currentActiveProjectId = 'jnj';
+
+  const projectADRs = {
+    'jnj': {
+      docId: 'ADR-001-JNJ-LIMS',
+      status: 'Accepted & In Production',
+      title: 'Enterprise Multi-AZ Healthcare LIMS Infrastructure & Zero-Downtime CDC Cutover',
+      context: 'Johnson & Johnson required migrating and modernizing their mission-critical Labvantage LIMS application from legacy on-premises infrastructure into AWS with 100% SLA compliance, zero data loss, and strict GxP / 21 CFR Part 11 audit validation.',
+      decisions: [
+        {
+          dimension: 'Database Architecture',
+          evaluated: 'Single-AZ RDS with snapshot backups (High RTO: 2-4h, data loss risk on failure)',
+          chosen: 'Multi-AZ Amazon RDS (Oracle) with synchronous standby replica & automated failover (RPO: 0, RTO < 60s)',
+          rationale: 'Mandated by healthcare regulatory compliance and critical laboratory SLA requirements.'
+        },
+        {
+          dimension: 'Migration Cutover Strategy',
+          evaluated: 'Cold offline database export/import over weekend maintenance window (Estimated 8-12h downtime)',
+          chosen: 'Continuous Change Data Capture (CDC) via AWS DMS & AWS MGN with target landing zone sync',
+          rationale: 'Enabled 15-minute cutover window with sub-second replication lag and zero production disruption.'
+        },
+        {
+          dimension: 'Ingress & Traffic Inspection',
+          evaluated: 'Standard public Application Load Balancer directly exposing app tier',
+          chosen: 'AWS WAF + Network Load Balancer (NLB) fronting private subnet Oracle WebLogic cluster',
+          rationale: 'Guaranteed OWASP Top 10 mitigation, rate limiting, and sub-millisecond Layer 4 throughput.'
+        }
+      ]
+    },
+    'dhani': {
+      docId: 'ADR-002-DHANI-FINOPS',
+      status: 'Accepted ($28,000/mo Documented Impact)',
+      title: 'Enterprise Cloud FinOps Governance, Rightsizing & Automated Storage Lifecycles',
+      context: 'Rapid financial platform expansion generated massive compute sprawl, 150+ overprovisioned EC2 instances, unattached storage volumes, and untamed multi-tier data costs exceeding budget boundaries.',
+      decisions: [
+        {
+          dimension: 'Compute Optimization',
+          evaluated: '100% On-Demand EC2 instances without commitment planning (Maximum expense)',
+          chosen: 'AWS Compute Optimizer rightsizing + 3-Year Compute Savings Plans & Graviton migration',
+          rationale: 'Immediate 38% reduction in baseline compute spend while elevating application performance.'
+        },
+        {
+          dimension: 'Storage Archival Lifecycle',
+          evaluated: 'Default S3 Standard storage for all historical transaction logs and ledger snapshots',
+          chosen: 'S3 Intelligent-Tiering transitioning after 90 days to S3 Glacier Deep Archive with WORM compliance',
+          rationale: 'Slashed storage costs from $0.023/GB to $0.00099/GB, saving $5,500/month recurring.'
+        },
+        {
+          dimension: 'Non-Prod Governance',
+          evaluated: '24/7 running dev/test/staging environments without automated shutdown',
+          chosen: 'Automated EventBridge & AWS Lambda off-hours start/stop scheduling',
+          rationale: 'Directly eliminated 45% of non-production compute hours across 60+ instances.'
+        }
+      ]
+    },
+    'loantap': {
+      docId: 'ADR-003-LOANTAP-FINTECH',
+      status: 'Accepted (Employee of Quarter Impact)',
+      title: 'Fintech Microservices Decoupling, WAF Perimeter Hardening & Automated CI/CD',
+      context: 'Fast-scaling consumer fintech application required resilient AWS infrastructure, low-latency API response, PCI-DSS compliance posture, and automated zero-touch continuous deployment.',
+      decisions: [
+        {
+          dimension: 'Perimeter Security',
+          evaluated: 'Basic security groups with direct EC2 exposure to internet',
+          chosen: 'Cloudflare Enterprise CDN & DNS + AWS WAF Layer-7 inspection rules & ALB routing',
+          rationale: 'Thwarted credential stuffing and DDoS attacks while offloading 65% of static traffic to edge.'
+        },
+        {
+          dimension: 'Caching Architecture',
+          evaluated: 'Direct MySQL database queries for every user credit scoring check',
+          chosen: 'Distributed Redis Cluster cache fronting AWS RDS Multi-AZ',
+          rationale: 'Slashed database query load by 70% and dropped credit check API response from 620ms to 85ms.'
+        }
+      ]
+    },
+    'isro': {
+      docId: 'ADR-004-ISRO-AIRGAP',
+      status: 'Accepted & In Production (Zero Outages)',
+      title: 'Air-Gapped VMware VDI Infrastructure for Space Research Enclaves',
+      context: 'ISRO Satish Dhawan Space Centre required an isolated, strictly air-gapped Virtual Desktop Infrastructure for 100 space research engineers with zero internet connectivity and centralized telemetry.',
+      decisions: [
+        {
+          dimension: 'Workspace Isolation',
+          evaluated: 'Individual physical engineering desktops (High hardware failure & physical data leak risk)',
+          chosen: 'Air-gapped VMware Horizon VDI cluster on Dell PowerEdge with Wyse thin client hardware',
+          rationale: 'Centralized all scientific imagery inside protected SAN storage with immutable USB blocking.'
+        },
+        {
+          dimension: 'Storage Fabric',
+          evaluated: 'Direct Attached Storage (DAS) per server node',
+          chosen: 'Dual-controller SAN Storage fabric with SAS & 10G optical failover paths',
+          rationale: 'Eliminated single points of failure across the entire scientific compute platform.'
+        }
+      ]
+    },
+    'iaf': {
+      docId: 'ADR-005-IAF-DEFENSE',
+      status: 'Accepted (100% Mission Availability)',
+      title: '300+ Node High-Availability Enterprise Infrastructure for Defense Base',
+      context: 'Critical defense base operations required robust Active Directory Domain Services, clustered virtualization, and secure air-gapped workstation connectivity across 300+ defense nodes.',
+      decisions: [
+        {
+          dimension: 'Identity & Authentication',
+          evaluated: 'Single primary Domain Controller with manual backups',
+          chosen: 'Multi-site redundant AD DS Domain Controllers with automated SYSVOL & Active Directory replication',
+          rationale: 'Guaranteed uninterrupted authentication even during localized hardware maintenance.'
+        }
+      ]
+    },
+    'serviceplus': {
+      docId: 'ADR-006-SERVICEPLUS-DMS',
+      status: 'Accepted ($1,500/mo Saved & Zero Data Loss)',
+      title: 'Heterogeneous Database Migration: Rackspace to AWS RDS with AWS DMS CDC',
+      context: 'Production MySQL database hosting on Rackspace was experiencing scalability bottlenecks and high operational overhead.',
+      decisions: [
+        {
+          dimension: 'Database Cutover',
+          evaluated: 'Offline mysqldump / mysqlrestore with 6-hour application outage',
+          chosen: 'AWS DMS Continuous CDC with Multi-AZ RDS MySQL and weighted Route 53 DNS switchover',
+          rationale: 'Reduced cutover downtime to under 15 minutes with verified zero transaction loss.'
+        }
+      ]
+    },
+    'navi': {
+      docId: 'ADR-007-NAVI-LANDINGZONE',
+      status: 'Accepted & Production Ready',
+      title: 'AWS Migration Hub Discovery & Well-Architected Multi-Account Landing Zone',
+      context: 'Discovery, dependency analysis, and secure landing zone provisioning for 40+ enterprise server workloads.',
+      decisions: [
+        {
+          dimension: 'Workload Discovery',
+          evaluated: 'Manual spreadsheet inventory compilation (Prone to missing unseen service dependencies)',
+          chosen: 'AWS Migration Hub + Application Discovery Agent telemetry mapping',
+          rationale: 'Discovered 42 hidden cross-service dependencies and network ports prior to cutover planning.'
+        }
+      ]
+    },
+    'bbk': {
+      docId: 'ADR-008-BBK-SCALE',
+      status: 'Accepted (10x Flash-Sale Throughput)',
+      title: 'Amazon Aurora Multi-AZ & Auto-Scaling Compute for Flash-Sale Traffic Surges',
+      context: 'Food delivery and logistics operations experienced sudden 10x traffic spikes during promotional events.',
+      decisions: [
+        {
+          dimension: 'Database Scalability',
+          evaluated: 'Vertically scaled monolithic MySQL instance with read locks during peak load',
+          chosen: 'Amazon Aurora Multi-AZ cluster with auto-scaling Aurora Read Replicas and connection pooling',
+          rationale: 'Auto-scaled read capacity in under 60 seconds with zero connection drops during flash sales.'
+        }
+      ]
+    },
+    'ksrsac': {
+      docId: 'ADR-009-KSRSAC-SAN',
+      status: 'Accepted & Operational',
+      title: '45U Geospatial Enterprise Data Center & Fujitsu Eternus SAN Storage Fabric',
+      context: 'Karnataka State Remote Sensing Applications Centre needed multi-terabyte storage fabric for satellite imagery.',
+      decisions: [
+        {
+          dimension: 'Storage Interconnect',
+          evaluated: '1GbE copper network attached storage (NAS)',
+          chosen: 'Fujitsu Eternus DX-500 SAN with dual controllers, 10G SFP fiber optical transceivers & SAS enclosures',
+          rationale: 'Provided multi-gigabit throughput required for high-resolution satellite raster processing.'
+        }
+      ]
+    }
+  };
+
+  const projectTerraform = {
+    'jnj': `# ==============================================================================
+# TERRAFORM: Johnson & Johnson Multi-AZ WebLogic & RDS Foundation
+# Provider: AWS | Infrastructure as Code (IaC) Module
+# ==============================================================================
+
+module "vpc" {
+  source  = "terraform-aws-modules/vpc/aws"
+  version = "5.1.0"
+
+  name = "jnj-lims-prod-vpc"
+  cidr = "10.100.0.0/16"
+
+  azs             = ["us-east-1a", "us-east-1b"]
+  private_subnets = ["10.100.1.0/24", "10.100.2.0/24"]
+  database_subnets= ["10.100.10.0/24", "10.100.20.0/24"]
+
+  enable_nat_gateway   = true
+  single_nat_gateway   = false
+  enable_dns_hostnames = true
+
+  tags = {
+    Environment = "Production"
+    Application = "Labvantage LIMS"
+    Compliance  = "GxP / 21 CFR Part 11"
+  }
+}
+
+resource "aws_db_instance" "lims_oracle" {
+  identifier           = "jnj-lims-db-multi-az"
+  engine               = "oracle-se2"
+  engine_version       = "19"
+  instance_class       = "db.m5.2xlarge"
+  allocated_storage    = 1000
+  max_allocated_storage= 3000
+
+  multi_az             = true
+  storage_encrypted    = true
+  kms_key_id           = aws_kms_key.lims_kms.arn
+
+  db_subnet_group_name = module.vpc.database_subnet_group_name
+  vpc_security_group_ids = [aws_security_group.db_sg.id]
+
+  backup_retention_period = 35
+  deletion_protection  = true
+  auto_minor_version_upgrade = false
+
+  tags = {
+    Name = "JNJ-LIMS-MultiAZ-Oracle"
+  }
+}
+
+resource "aws_lb" "lims_nlb" {
+  name               = "jnj-lims-prod-nlb"
+  internal           = false
+  load_balancer_type = "network"
+  subnets            = module.vpc.public_subnets
+
+  enable_cross_zone_load_balancing = true
+}`,
+
+    'dhani': `# ==============================================================================
+# TERRAFORM: Dhani FinOps Cost Governance & S3 Cold Archival
+# Provider: AWS | Automated Storage Tiering & Compute Savings Policy
+# ==============================================================================
+
+resource "aws_s3_bucket" "financial_lake" {
+  bucket = "dhani-financial-ledger-lake-prod"
+
+  server_side_encryption_configuration {
+    rule {
+      apply_server_side_encryption_by_default {
+        sse_algorithm     = "aws:kms"
+        kms_master_key_id = aws_kms_key.finops_kms.arn
+      }
+    }
+  }
+}
+
+resource "aws_s3_bucket_lifecycle_configuration" "finops_tiering" {
+  bucket = aws_s3_bucket.financial_lake.id
+
+  rule {
+    id     = "finops-glacier-deep-archive-rule"
+    status = "Enabled"
+
+    transition {
+      days          = 30
+      storage_class = "INTELLIGENT_TIERING"
+    }
+
+    transition {
+      days          = 90
+      storage_class = "GLACIER"
+    }
+
+    transition {
+      days          = 180
+      storage_class = "DEEP_ARCHIVE"
+    }
+
+    noncurrent_version_expiration {
+      noncurrent_days = 365
+    }
+  }
+}
+
+resource "aws_budgets_budget" "finops_cost_guard" {
+  name              = "dhani-monthly-cloud-ceiling"
+  budget_type       = "COST"
+  limit_amount      = "45000"
+  limit_unit        = "USD"
+  time_unit         = "MONTHLY"
+
+  notification {
+    comparison_operator        = "GREATER_THAN"
+    threshold                  = 85
+    threshold_type             = "PERCENTAGE"
+    notification_type          = "ACTUAL"
+    subscriber_email_addresses = ["dilipsook@gmail.com"]
+  }
+}`,
+
+    'loantap': `# ==============================================================================
+# TERRAFORM: LoanTap Fintech Ingress WAF, ALB & Redis Cache
+# Provider: AWS | High Availability Microservices Footprint
+# ==============================================================================
+
+resource "aws_wafv2_web_acl" "fintech_waf" {
+  name        = "loantap-production-waf"
+  description = "OWASP Top 10 + Rate Limiting Guard for Fintech APIs"
+  scope       = "REGIONAL"
+
+  default_action {
+    allow {}
+  }
+
+  rule {
+    name     = "RateLimit1000Per5Min"
+    priority = 1
+
+    action {
+      block {}
+    }
+
+    statement {
+      rate_based_statement {
+        limit              = 1000
+        aggregate_key_type = "IP"
+      }
+    }
+
+    visibility_config {
+      cloudwatch_metrics_enabled = true
+      metric_name                = "RateLimitExceeded"
+      sampled_requests_enabled   = true
+    }
+  }
+
+  visibility_config {
+    cloudwatch_metrics_enabled = true
+    metric_name                = "LoanTapWAFMetrics"
+    sampled_requests_enabled   = true
+  }
+}`,
+
+    'isro': `# ==============================================================================
+# POWERCLI / TERRAFORM: ISRO Air-Gapped VDI Host Cluster
+# Provider: VMware vSphere | Isolated Engineering Enclave
+# ==============================================================================
+
+resource "vsphere_compute_cluster" "isro_vdi_cluster" {
+  name            = "SDSC-SHAR-VDI-Cluster"
+  datacenter_id   = data.vsphere_datacenter.dc.id
+  host_system_ids = [data.vsphere_host.host1.id, data.vsphere_host.host2.id]
+
+  drs_enabled          = true
+  drs_automation_level = "fullyAutomated"
+
+  ha_enabled = true
+  ha_host_monitoring = "enabled"
+  ha_admission_control_policy = "slotPolicy"
+}`,
+
+    'serviceplus': `# ==============================================================================
+# TERRAFORM: AWS DMS Zero-Downtime Replication Instance
+# Provider: AWS | Continuous CDC Migration Pipeline
+# ==============================================================================
+
+resource "aws_dms_replication_instance" "dms_worker" {
+  replication_instance_id     = "serviceplus-dms-cdc-instance"
+  replication_instance_class  = "dms.c5.xlarge"
+  allocated_storage           = 100
+  multi_az                    = true
+  publicly_accessible        = false
+  vpc_security_group_ids      = [aws_security_group.dms_sg.id]
+  replication_subnet_group_id = aws_dms_replication_subnet_group.dms_subnets.id
+
+  tags = {
+    Workload = "Database-Cutover"
+    Target   = "AWS-RDS-MySQL"
+  }
+}`,
+
+    'navi': `# ==============================================================================
+# TERRAFORM: AWS Well-Architected Landing Zone Foundation
+# Provider: AWS | GuardDuty, IAM Least-Privilege & VPC Peering
+# ==============================================================================
+
+resource "aws_guardduty_detector" "primary_detector" {
+  enable = true
+
+  datasources {
+    s3_logs {
+      enable = true
+    }
+    kubernetes {
+      audit_logs {
+        enable = true
+      }
+    }
+  }
+}`,
+
+    'bbk': `# ==============================================================================
+# TERRAFORM: Amazon Aurora Multi-AZ Auto-Scaling Cluster
+# Provider: AWS | Flash-Sale Resilience Engine
+# ==============================================================================
+
+resource "aws_rds_cluster" "aurora_cluster" {
+  cluster_identifier      = "bbk-delivery-aurora-cluster"
+  engine                  = "aurora-mysql"
+  engine_version          = "8.0.mysql_aurora.3.04.0"
+  database_name           = "bbkorders"
+  master_username         = "bbkadmin"
+  master_password         = var.db_password
+  backup_retention_period = 14
+  preferred_backup_window = "02:00-03:00"
+  storage_encrypted       = true
+}`,
+
+    'ksrsac': `# ==============================================================================
+# TERRAFORM / SAN: KSRSAC 45U Geospatial Storage Fabric
+# Provider: Fujitsu Eternus SAN / SAS Transceiver Fabric
+# ==============================================================================
+
+# Fujitsu Eternus DX-500 Dual Controller Storage Zoning
+# Fiber Channel Fabric Configuration: 10Gbps SFP+ Transceivers
+# Multi-terabyte LUN allocations for Satellite Raster Telemetry`,
+
+    'iaf': `# ==============================================================================
+# TERRAFORM: IAF Air-Gapped Defense Redundant Domain Controllers
+# Provider: Microsoft Windows Server AD DS Infrastructure
+# ==============================================================================
+
+# Active Directory Domain Services (AD DS) Dual-Site Forest
+# Automated SYSVOL & Kerberos Replication across 300+ Defense Base Nodes`
+  };
+
+  function renderADR(projId) {
+    const adr = projectADRs[projId] || projectADRs['jnj'];
+    const container = document.getElementById('blueprintADRStage');
+    if (!container) return;
+
+    let rowsHtml = '';
+    adr.decisions.forEach(d => {
+      rowsHtml += `
+        <tr>
+          <td><span class="adr-dim-badge">${d.dimension}</span></td>
+          <td style="color: #94a3b8; font-size: 0.8rem;">${d.evaluated}</td>
+          <td><span class="adr-chosen-tag">✓ Chosen:</span> <strong>${d.chosen}</strong></td>
+          <td style="font-size: 0.8rem; color: #a7f3d0;">${d.rationale}</td>
+        </tr>
+      `;
+    });
+
+    container.innerHTML = `
+      <div class="adr-meta-banner">
+        <div>
+          <span style="color: #38bdf8; font-weight: 700;">${adr.docId}:</span>
+          <strong style="color: #fff; margin-left: 6px;">${adr.title}</strong>
+        </div>
+        <div>
+          <span class="adr-status-pill">● ${adr.status}</span>
+        </div>
+      </div>
+      <p style="font-size: 0.88rem; color: var(--text-secondary); margin-bottom: 16px; line-height: 1.6;">
+        <strong style="color: #cbd5e1;">Context &amp; Architectural Drivers:</strong> ${adr.context}
+      </p>
+      <div class="adr-table-wrap">
+        <table class="adr-table">
+          <thead>
+            <tr>
+              <th style="width: 18%;">Architectural Dimension</th>
+              <th style="width: 27%;">Alternative Option Evaluated</th>
+              <th style="width: 32%;">Engineered Solution (Chosen)</th>
+              <th style="width: 23%;">Architecture Justification</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${rowsHtml}
+          </tbody>
+        </table>
+      </div>
+    `;
+  }
+
+  function renderIaC(projId) {
+    const code = projectTerraform[projId] || projectTerraform['jnj'];
+    const container = document.getElementById('blueprintIaCStage');
+    if (!container) return;
+
+    const fileName = `${projId}-infrastructure.tf`;
+
+    container.innerHTML = `
+      <div class="iac-toolbar">
+        <div class="iac-filename">
+          <span>📄</span>
+          <code>${fileName}</code>
+          <span style="color: #10b981; font-size: 0.7rem; margin-left: 8px;">● Production Ready</span>
+        </div>
+        <button type="button" class="btn-copy-iac" id="copyIaCBtn" title="Copy Terraform HCL Code">
+          <span>Copy HCL Code</span>
+          <span>📋</span>
+        </button>
+      </div>
+      <pre class="iac-code-pre"><code>${escapeHtml(code)}</code></pre>
+    `;
+
+    const copyBtn = document.getElementById('copyIaCBtn');
+    copyBtn?.addEventListener('click', () => {
+      navigator.clipboard.writeText(code);
+      copyBtn.innerHTML = '<span>Copied ✓</span>';
+      copyBtn.style.borderColor = '#10b981';
+      copyBtn.style.color = '#10b981';
+      if (window.DilipAudio) window.DilipAudio.playClick();
+      setTimeout(() => {
+        copyBtn.innerHTML = '<span>Copy HCL Code</span> <span>📋</span>';
+        copyBtn.style.borderColor = '';
+        copyBtn.style.color = '';
+      }, 2000);
+    });
+  }
+
+  function escapeHtml(str) {
+    return str
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#039;');
+  }
+
+  // View Mode Controls: 2D, 3D, ADR, IaC
   function initViewControls() {
     const btn2D = document.getElementById('blueprint2DBtn');
     const btn3D = document.getElementById('blueprint3DBtn');
-    const stage = document.getElementById('blueprintStage');
+    const btnADR = document.getElementById('blueprintADRBtn');
+    const btnIaC = document.getElementById('blueprintIaCBtn');
 
-    if (!btn2D || !btn3D || !stage) return;
+    const stageTopology = document.getElementById('blueprintStage');
+    const stageADR = document.getElementById('blueprintADRStage');
+    const stageIaC = document.getElementById('blueprintIaCStage');
 
-    btn2D.addEventListener('click', () => {
+    if (!btn2D || !stageTopology) return;
+
+    function resetViews() {
+      [btn2D, btn3D, btnADR, btnIaC].forEach(b => b?.classList.remove('active'));
+      if (stageTopology) stageTopology.style.display = 'none';
+      if (stageADR) stageADR.style.display = 'none';
+      if (stageIaC) stageIaC.style.display = 'none';
+    }
+
+    btn2D?.addEventListener('click', () => {
+      resetViews();
       btn2D.classList.add('active');
-      btn3D.classList.remove('active');
-      stage.classList.remove('view-mode-3d');
+      stageTopology.style.display = 'block';
+      stageTopology.classList.remove('view-mode-3d');
       is3DMode = false;
-      stage.style.transform = '';
+      stageTopology.style.transform = '';
+      if (window.DilipAudio) window.DilipAudio.playClick();
     });
 
-    btn3D.addEventListener('click', () => {
+    btn3D?.addEventListener('click', () => {
+      resetViews();
       btn3D.classList.add('active');
-      btn2D.classList.remove('active');
-      stage.classList.add('view-mode-3d');
+      stageTopology.style.display = 'block';
+      stageTopology.classList.add('view-mode-3d');
       is3DMode = true;
+      if (window.DilipAudio) window.DilipAudio.playClick();
+    });
+
+    btnADR?.addEventListener('click', () => {
+      resetViews();
+      btnADR.classList.add('active');
+      if (stageADR) stageADR.style.display = 'block';
+      renderADR(currentActiveProjectId);
+      if (window.DilipAudio) window.DilipAudio.playClick();
+    });
+
+    btnIaC?.addEventListener('click', () => {
+      resetViews();
+      btnIaC.classList.add('active');
+      if (stageIaC) stageIaC.style.display = 'block';
+      renderIaC(currentActiveProjectId);
+      if (window.DilipAudio) window.DilipAudio.playClick();
     });
 
     // Dynamic 3D Isometric Mouse Tilt
-    stage.addEventListener('mousemove', (e) => {
+    stageTopology.addEventListener('mousemove', (e) => {
       if (!is3DMode) return;
-      const rect = stage.getBoundingClientRect();
+      const rect = stageTopology.getBoundingClientRect();
       const sX = (e.clientX - (rect.left + rect.width / 2)) / (rect.width / 2);
       const sY = (e.clientY - (rect.top + rect.height / 2)) / (rect.height / 2);
 
       const rotX = 45 + (-sY * 12);
       const rotZ = -20 + (sX * 12);
 
-      stage.style.transform = 'perspective(1100px) rotateX(' + rotX.toFixed(2) + 'deg) rotateZ(' + rotZ.toFixed(2) + 'deg) scale(0.92)';
+      stageTopology.style.transform = 'perspective(1100px) rotateX(' + rotX.toFixed(2) + 'deg) rotateZ(' + rotZ.toFixed(2) + 'deg) scale(0.92)';
     });
 
-    stage.addEventListener('mouseleave', () => {
+    stageTopology.addEventListener('mouseleave', () => {
       if (!is3DMode) return;
-      stage.style.transform = 'perspective(1100px) rotateX(45deg) rotateZ(-20deg) scale(0.92)';
+      stageTopology.style.transform = 'perspective(1100px) rotateX(45deg) rotateZ(-20deg) scale(0.92)';
     });
+  }
+
+  // Hook into render to store currentActiveProjectId
+  const originalRender = renderBlueprintDiagram;
+  function renderBlueprintWithADR(projectId) {
+    currentActiveProjectId = projectId;
+    originalRender(projectId);
+    // Reset to 2D tab active by default
+    const btn2D = document.getElementById('blueprint2DBtn');
+    if (btn2D) btn2D.click();
   }
 
   // Export globally for main.js to call on blueprint button click
   window.DilipBlueprint = {
-    render: renderBlueprintDiagram,
-    topologies: projectArchitectures
+    render: renderBlueprintWithADR,
+    topologies: projectArchitectures,
+    adrs: projectADRs,
+    terraform: projectTerraform
   };
 
   document.addEventListener('DOMContentLoaded', initViewControls);
 })();
+

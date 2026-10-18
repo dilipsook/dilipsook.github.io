@@ -97,7 +97,7 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: calc(var(--nav-height) + 24px);
+  scroll-padding-top: calc(var(--nav-height) + 36px + 20px);
   color-scheme: dark;
 }
 

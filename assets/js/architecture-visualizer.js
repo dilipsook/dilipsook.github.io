@@ -408,6 +408,37 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  // Interactive Live Traffic Spike Simulator
+  let isTrafficSpike = false;
+  const spikeBtn = document.getElementById('simulateTrafficBtn');
+  spikeBtn?.addEventListener('click', () => {
+    isTrafficSpike = !isTrafficSpike;
+    spikeBtn.classList.toggle('active', isTrafficSpike);
+    spikeBtn.innerHTML = isTrafficSpike
+      ? '<span>🔥 15,400 Req/s Surge Active!</span>'
+      : '<span>⚡ Simulate 15K Req/s Traffic Surge</span>';
+
+    if (window.DilipAudio) {
+      if (isTrafficSpike) window.DilipAudio.playPing();
+      else window.DilipAudio.playClick();
+    }
+
+    if (isTrafficSpike) {
+      packets.forEach(p => { p.speed *= 2.8; p.size = 5; });
+      if (inspectorMetrics) {
+        const surgeBadge = document.createElement('div');
+        surgeBadge.className = 'telemetry-metric-item';
+        surgeBadge.style.background = 'rgba(239, 68, 68, 0.15)';
+        surgeBadge.style.border = '1px solid #ef4444';
+        surgeBadge.innerHTML = '<span class="metric-label" style="color:#fca5a5;">LIVE SURGE</span><span class="metric-value" style="color:#f87171;">15,420 RPS</span>';
+        inspectorMetrics.prepend(surgeBadge);
+      }
+    } else {
+      initPackets();
+      inspectNode(activeNodeIndex);
+    }
+  });
+
   document.addEventListener('visibilitychange', () => {
     if (!document.hidden) {
       cancelAnimationFrame(animId);
