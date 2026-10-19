@@ -6,25 +6,25 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=JetBrains+Mono:wght@400;500;600&display=swap');
 
 :root {
-  /* Color Palette - Deep Obsidian & Cyber Multi-Cloud */
-  --bg-primary: #070b13;
-  --bg-secondary: #0b1120;
-  --bg-tertiary: #10192e;
-  --bg-card: rgba(16, 25, 46, 0.72);
-  --bg-card-hover: rgba(23, 37, 68, 0.85);
-  --bg-glass: rgba(11, 17, 32, 0.65);
+  /* Color Palette - Deep Executive Obsidian & Quiet Luxury */
+  --bg-primary: #05070e;
+  --bg-secondary: #090e18;
+  --bg-tertiary: #0f1627;
+  --bg-card: rgba(12, 19, 34, 0.75);
+  --bg-card-hover: rgba(18, 28, 50, 0.9);
+  --bg-glass: rgba(9, 14, 26, 0.82);
   --border-subtle: rgba(255, 255, 255, 0.08);
   --border-focus: rgba(56, 189, 248, 0.4);
-  --border-card: rgba(148, 163, 184, 0.12);
+  --border-card: rgba(255, 255, 255, 0.08);
 
-  /* Accents & Brand Tones */
+  /* Accents & Brand Tones (Refined, Desaturated Luxury) */
   --aws-gold: #ff9900;
   --aws-amber: #f59e0b;
-  --aws-gradient: linear-gradient(135deg, #ff9900 0%, #fbbf24 100%);
+  --aws-gradient: linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%);
 
-  --azure-cyan: #0ea5e9;
-  --azure-blue: #0078d4;
-  --azure-gradient: linear-gradient(135deg, #0078d4 0%, #38bdf8 100%);
+  --azure-cyan: #38bdf8;
+  --azure-blue: #0284c7;
+  --azure-gradient: linear-gradient(135deg, #0284c7 0%, #38bdf8 100%);
 
   --finops-mint: #10b981;
   --finops-emerald: #059669;
@@ -44,34 +44,24 @@
   --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
 
-  /* Shadows & Glows */
-  --glow-aws: 0 0 35px rgba(245, 158, 11, 0.22);
-  --glow-azure: 0 0 35px rgba(14, 165, 233, 0.22);
-  --glow-finops: 0 0 35px rgba(16, 185, 129, 0.22);
-  --glow-cyan: 0 0 30px rgba(56, 189, 248, 0.25);
-  --card-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.6);
+  /* Shadows & Subtle Luxury Sheen */
+  --glow-aws: 0 0 35px rgba(245, 158, 11, 0.15);
+  --glow-azure: 0 0 35px rgba(56, 189, 248, 0.15);
+  --glow-finops: 0 0 35px rgba(16, 185, 129, 0.15);
+  --card-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.7), inset 0 1px 0 0 rgba(255, 255, 255, 0.08);
 
   /* Layout Constants */
-  --nav-height: 72px;
-  --max-width: 1280px;
+  --nav-height: 68px;
+  --max-width: 1240px;
   --radius-sm: 8px;
   --radius-md: 14px;
   --radius-lg: 20px;
-  --radius-xl: 28px;
+  --radius-xl: 26px;
   --radius-full: 9999px;
 
-  /* Cyber High-Tech Sci-Fi Palette */
-  --cyber-cyan: #00f0ff;
-  --cyber-cyan-glow: rgba(0, 240, 255, 0.45);
-  --cyber-matrix: #10b981;
-  --cyber-amber: #ffb700;
-  --cyber-magenta: #ff007f;
-  --cyber-border: rgba(0, 240, 255, 0.25);
-  --cyber-surface: rgba(8, 14, 26, 0.88);
-
   /* Transitions */
-  --transition-fast: 0.18s cubic-bezier(0.4, 0, 0.2, 1);
-  --transition-base: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-fast: 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-base: 0.28s cubic-bezier(0.16, 1, 0.3, 1);
   --transition-smooth: 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -82,25 +72,17 @@
   --bg-tertiary: #e2e8f0;
   --bg-card: rgba(255, 255, 255, 0.95);
   --bg-card-hover: rgba(255, 255, 255, 1);
-  --bg-glass: rgba(255, 255, 255, 0.88);
+  --bg-glass: rgba(255, 255, 255, 0.9);
   --border-subtle: rgba(15, 23, 42, 0.08);
   --border-focus: rgba(2, 132, 199, 0.4);
-  --border-card: rgba(148, 163, 184, 0.25);
+  --border-card: rgba(148, 163, 184, 0.2);
 
   --text-primary: #0f172a;
   --text-secondary: #334155;
   --text-muted: #64748b;
   --text-dim: #94a3b8;
 
-  --card-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.08);
-
-  --cyber-cyan: #0284c7;
-  --cyber-cyan-glow: rgba(2, 132, 199, 0.25);
-  --cyber-matrix: #059669;
-  --cyber-amber: #d97706;
-  --cyber-magenta: #c026d3;
-  --cyber-border: rgba(2, 132, 199, 0.25);
-  --cyber-surface: rgba(248, 250, 252, 0.95);
+  --card-shadow: 0 15px 35px -10px rgba(15, 23, 42, 0.08), inset 0 1px 0 0 rgba(255, 255, 255, 0.8);
 }
 
 /* ==========================================================================
@@ -114,7 +96,7 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: calc(var(--nav-height) + 36px + 20px);
+  scroll-padding-top: calc(var(--nav-height) + 24px);
   color-scheme: dark;
 }
 
@@ -318,6 +300,12 @@ img {
 /* Text Gradients */
 .gradient-text {
   background: linear-gradient(135deg, #ffffff 30%, #94a3b8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.gradient-luxury {
+  background: linear-gradient(180deg, #ffffff 15%, #cbd5e1 60%, #94a3b8 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }

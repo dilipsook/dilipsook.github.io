@@ -167,65 +167,23 @@
 }
 
 /* ==========================================================================
-   CYBER SCI-FI HUD & HOLOGRAPHIC SCANNER KEYFRAMES
+   QUIET LUXURY KEYFRAMES
    ========================================================================== */
 
-/* Holographic Biometric Laser Scanline */
-@keyframes cyberLaserScan {
-  0% {
-    top: 0%;
-    opacity: 0;
-  }
-  15% {
-    opacity: 1;
-  }
-  85% {
-    opacity: 1;
-  }
-  100% {
-    top: 100%;
-    opacity: 0;
-  }
-}
-
-/* Tactical Corner Bracket Breathing Glow */
-@keyframes cyberCornerPulse {
+/* Subtle Executive Live Pulse */
+@keyframes pulseSubtleLive {
   0%, 100% {
-    opacity: 0.5;
-    filter: drop-shadow(0 0 2px var(--azure-cyan));
+    opacity: 1;
+    transform: scale(1);
   }
   50% {
-    opacity: 1;
-    filter: drop-shadow(0 0 8px #00f0ff);
+    opacity: 0.6;
+    transform: scale(1.15);
   }
 }
 
-/* Cyber Badge Beacon Glow */
-@keyframes cyberBeaconPulse {
-  0%, 100% {
-    box-shadow: 0 0 0 0 rgba(0, 240, 255, 0.6);
-  }
-  50% {
-    box-shadow: 0 0 0 7px rgba(0, 240, 255, 0);
-  }
-}
-
-/* Floating Cyber Action Dock Pulse */
-@keyframes cyberDockFloat {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-4px);
-  }
-}
-
-/* High-Tech Radar Sweep */
-@keyframes radarSweep {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Subtle Card Hover Floating Effect */
+@keyframes luxuryFloat {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-4px); }
 }

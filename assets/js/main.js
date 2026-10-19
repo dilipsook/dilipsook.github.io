@@ -491,31 +491,4 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // 10. Floating Cyber Action Dock Wiring
-  const dockTerminalBtn = document.getElementById('dockTerminalBtn');
-  const dockProbeBtn = document.getElementById('dockProbeBtn');
-  const dockPaletteBtn = document.getElementById('dockPaletteBtn');
-
-  dockTerminalBtn?.addEventListener('click', () => {
-    const trigger = document.getElementById('openTerminalBtn');
-    if (trigger) trigger.click();
-  });
-
-  dockProbeBtn?.addEventListener('click', () => {
-    const trigger = document.getElementById('hudPingBtn');
-    if (trigger) trigger.click();
-  });
-
-  dockPaletteBtn?.addEventListener('click', () => {
-    const trigger = document.getElementById('hudPalettePill');
-    if (trigger) {
-      trigger.click();
-    } else {
-      const paletteModal = document.getElementById('commandPaletteModal');
-      const paletteInput = document.getElementById('paletteSearchInput');
-      paletteModal?.classList.add('open');
-      paletteInput?.focus();
-    }
-  });
-
 });

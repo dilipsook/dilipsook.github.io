@@ -41,73 +41,59 @@
   <div class="page-wrapper">
 
     <!-- ====================================================================
-         0. Global Multi-Cloud Telemetry & Latency HUD Bar
+         1. Single Unified Luxury Header & Navigation
          ==================================================================== -->
-    <div class="cloud-telemetry-hud" id="telemetryHud">
-      <div class="container hud-container">
-        <div class="hud-left">
-          <span class="hud-pulse-dot"></span>
-          <span class="hud-label">INFRASTRUCTURE SLA:</span>
-          <span class="hud-status-badge">99.999% OPERATIONAL</span>
-          <span class="hud-divider">|</span>
-          <span class="hud-ticker" id="globalRegionTicker"><strong>AWS ap-south-1:</strong> 11.2ms (0% Loss)</span>
-        </div>
-        <div class="hud-right">
-          <span class="hud-clock" id="hudClock">16:45:20 UTC</span>
-          <button class="hud-btn hud-ping-btn" id="hudPingBtn" title="Run Live Global Edge Latency Probe">
-            <span>⚡ Latency Probe</span>
-          </button>
-          <button class="hud-btn hud-audio-btn" id="hudAudioBtn" title="Toggle Tech Audio FX (Web Audio)">
-            <span id="audioIcon">🔇</span>
-          </button>
-          <button class="hud-cmd-pill" id="openCommandPaletteBtn" title="Command Palette (Cmd+K / Ctrl+K)">
-            <kbd class="hud-kbd">⌘K</kbd>
-            <span class="hud-cmd-text">Search</span>
-          </button>
-        </div>
-      </div>
-    </div>
-
-    <!-- ====================================================================
-         1. Header & Navigation
-         ==================================================================== -->
-    <header class="navbar">
+    <header class="navbar" id="mainNavbar">
       <div class="container nav-container">
         <a href="#overview" class="nav-brand" aria-label="Dilip Kumar Home">
-          <div class="brand-icon">☁️</div>
+          <div class="brand-monogram">DK</div>
           <div class="brand-meta">
             <span class="brand-name">DILIP KUMAR</span>
-            <span class="brand-role">Cloud Architect · FinOps</span>
+            <span class="brand-role">Multi-Cloud &amp; FinOps Architect</span>
           </div>
         </a>
 
-        <!-- Live Status Pill -->
-        <div class="nav-status">
-          <span class="status-dot"></span>
-          <span>Multi-Cloud &amp; FinOps Architect</span>
-        </div>
-
         <!-- Desktop Navigation Links -->
-        <ul class="nav-links">
-          <li><a href="#overview" class="nav-link active">Overview</a></li>
-          <li><a href="#architecture" class="nav-link">Architecture</a></li>
-          <li><a href="#projects" class="nav-link">Projects</a></li>
-          <li><a href="#experience" class="nav-link">Experience</a></li>
-          <li><a href="#skills" class="nav-link">Skills</a></li>
-          <li><a href="#gallery" class="nav-link">Perspective</a></li>
-          <li><a href="#contact" class="nav-link">Contact</a></li>
-        </ul>
+        <nav class="nav-center" aria-label="Main Navigation">
+          <ul class="nav-links">
+            <li><a href="#overview" class="nav-link active">Overview</a></li>
+            <li><a href="#architecture" class="nav-link">Pillars</a></li>
+            <li><a href="#projects" class="nav-link">Case Studies</a></li>
+            <li><a href="#finops" class="nav-link">FinOps</a></li>
+            <li><a href="#experience" class="nav-link">Journey</a></li>
+            <li><a href="#skills" class="nav-link">Skills</a></li>
+            <li><a href="#contact" class="nav-link">Contact</a></li>
+          </ul>
+        </nav>
 
-        <!-- Action Buttons -->
+        <!-- Right Luxury Action Hub -->
         <div class="nav-actions">
-          <button class="hud-cmd-pill open-palette-btn" title="Command Palette (Cmd+K / Ctrl+K)" style="margin-right: 6px;">
-            <kbd class="hud-kbd">⌘K</kbd>
+          <!-- Live Telemetry Status Pill -->
+          <button class="nav-telemetry-pill" id="hudPingBtn" title="Live Cloud Latency Probe (Click to inspect)">
+            <span class="telemetry-live-dot"></span>
+            <span class="telemetry-label" id="globalRegionTicker">SLA 99.999% · 11ms</span>
           </button>
-          <button id="themeToggleBtn" class="theme-toggle-btn" aria-label="Toggle Dark/Light Mode" title="Toggle Theme">☀️</button>
-          <a href="Dilip_Kumar_Resume.pdf" target="_blank" class="btn-nav-resume" title="Download Resume (PDF)">
-            <span>📄</span>
-            <span>Resume (PDF)</span>
+
+          <!-- Command Palette Trigger -->
+          <button class="nav-icon-btn open-palette-btn" id="openCommandPaletteBtn" title="Search Everything (Cmd+K / Ctrl+K)">
+            <kbd class="nav-kbd">⌘K</kbd>
+          </button>
+
+          <!-- Audio FX Toggle -->
+          <button class="nav-icon-btn" id="hudAudioBtn" title="Toggle UI Sound FX">
+            <span id="audioIcon">🔇</span>
+          </button>
+
+          <!-- Theme Toggle -->
+          <button id="themeToggleBtn" class="nav-icon-btn" aria-label="Toggle Dark/Light Mode" title="Toggle Theme">☀️</button>
+
+          <!-- Executive Resume CTA -->
+          <a href="Dilip_Kumar_Resume.pdf" target="_blank" class="btn-executive-resume" title="Download Verified Executive Resume (PDF)">
+            <span>Resume</span>
+            <span class="arrow-up-right">↗</span>
           </a>
+
+          <!-- Mobile Burger Toggle -->
           <button class="burger-btn" id="burgerBtn" aria-label="Toggle navigation menu">
             <span class="burger-line"></span>
             <span class="burger-line"></span>
@@ -150,151 +136,82 @@
           
           <!-- Hero Text Content -->
           <div class="hero-content">
-            <div class="hero-pill">
-              <span class="hero-pill-badge">10+ YEARS EXP</span>
-              <span>Cloud Architect &amp; FinOps Specialist</span>
+            <div class="executive-pill-badge">
+              <span class="pill-badge-dot"></span>
+              <span class="pill-badge-text">COGNIZANT ISG · LABWARE PRACTICE</span>
+              <span class="pill-badge-sep">•</span>
+              <span class="pill-badge-sub">MULTI-CLOUD &amp; FINOPS ARCHITECT</span>
             </div>
 
-            <span class="hero-name-badge">DILIP KUMAR</span>
             <h1 class="hero-title">
-              Architecting <span class="gradient-cloud">Resilient</span> Cloud Systems.
+              Architecting High-Scale Cloud Resilience &amp; <span class="gradient-luxury">Financial Precision.</span>
             </h1>
 
             <div class="hero-subtitle">
-              <span>I specialize in </span>
+              <span>Specializing in </span>
               <span class="typewriter-text" id="typewriterText"></span>
             </div>
 
             <p class="hero-description">
-              Manager Project (ISG LSMG Labware Practice at <strong>Cognizant</strong>) &amp; Multi-Cloud Solutions Specialist with over <strong>10+ years of progressive infrastructure engineering leadership</strong> across AWS, Microsoft Azure, and Life Sciences cloud modernization. Over <strong>$60,000/month</strong> in documented FinOps savings and <strong>1,000+ zero-downtime server migrations</strong> for global enterprises including <strong>Cognizant</strong>, <strong>Johnson &amp; Johnson</strong>, <strong>LoanTap</strong>, <strong>ISRO</strong>, and <strong>Indian Air Force</strong>.
+              Manager Project at <strong>Cognizant</strong> with over <strong>10+ years of progressive infrastructure engineering leadership</strong> across AWS, Microsoft Azure, and Life Sciences cloud systems. Documented <strong>$60,000+/month</strong> in FinOps capital optimization and orchestrated <strong>1,000+ zero-downtime server migrations</strong> for global enterprises including <strong>Cognizant</strong>, <strong>Johnson &amp; Johnson</strong>, <strong>LoanTap</strong>, <strong>ISRO</strong>, and <strong>Indian Air Force</strong>.
             </p>
 
             <!-- CTA Action Buttons -->
             <div class="hero-cta-group">
-              <a href="#projects" class="btn-primary">
+              <a href="#projects" class="btn-luxury-primary">
                 <span>Explore Case Studies</span>
-                <span>→</span>
+                <span class="btn-arrow">→</span>
               </a>
-              <a href="Dilip_Kumar_Resume.pdf" target="_blank" class="btn-secondary">
-                <span>📄 Download Resume (PDF)</span>
+              <a href="Dilip_Kumar_Resume.pdf" target="_blank" class="btn-luxury-secondary">
+                <span>Executive Resume</span>
+                <span class="btn-icon">📄</span>
               </a>
-              <a href="#finops" class="btn-finops-chip">
-                <span>📊 FinOps Framework</span>
+              <a href="#finops" class="btn-luxury-ghost">
+                <span>FinOps Calculator</span>
+                <span class="btn-icon">📊</span>
               </a>
             </div>
 
-            <!-- Interactive Hero Dock: Social Links + 3D Cloud Core -->
-            <div class="hero-interactive-dock">
-              <div class="hero-socials" style="margin-top: 0;">
-                <a href="https://linkedin.com/in/dilipsookk" target="_blank" rel="noopener" class="hero-social-link" title="LinkedIn Profile">
-                  <span>in</span>
-                </a>
-                <a href="https://github.com/dilipsook" target="_blank" rel="noopener" class="hero-social-link" title="GitHub Profile">
-                  <span>git</span>
-                </a>
-                <a href="http://stackoverflow.com/users/19229599/dilip-kumar" target="_blank" rel="noopener" class="hero-social-link" title="Stack Overflow">
-                  <span>so</span>
-                </a>
-                <a href="mailto:dilipsook@gmail.com" class="hero-social-link" title="Direct Email">
-                  <span>@</span>
-                </a>
+            <!-- Trust Bar / Core Domains & Direct Links -->
+            <div class="hero-trust-bar">
+              <div class="trust-tags-row">
+                <span class="trust-chip">AWS Cloud</span>
+                <span class="trust-chip">Microsoft Azure</span>
+                <span class="trust-chip">FinOps ($60K+/mo)</span>
+                <span class="trust-chip">Terraform IaC</span>
+                <span class="trust-chip">Kubernetes</span>
+                <span class="trust-chip">Life Sciences LIMS</span>
               </div>
-
-              <div class="hero-3d-cube-container" title="Interactive 3D Multi-Cloud Core — Hover to rotate in 3D">
-                <div class="cube-3d-scene">
-                  <div class="cube-3d" id="cloudCube3D">
-                    <div class="cube-face cube-front">
-                      <span class="cube-face-icon">☁️</span>
-                      <span class="cube-face-title">AWS</span>
-                      <span class="cube-face-sub">Multi-AZ</span>
-                    </div>
-                    <div class="cube-face cube-back">
-                      <span class="cube-face-icon">🔷</span>
-                      <span class="cube-face-title">Azure</span>
-                      <span class="cube-face-sub">Enterprise</span>
-                    </div>
-                    <div class="cube-face cube-right">
-                      <span class="cube-face-icon">💰</span>
-                      <span class="cube-face-title">FinOps</span>
-                      <span class="cube-face-sub">$60K+/mo</span>
-                    </div>
-                    <div class="cube-face cube-left">
-                      <span class="cube-face-icon">⚡</span>
-                      <span class="cube-face-title">IaC</span>
-                      <span class="cube-face-sub">Terraform</span>
-                    </div>
-                    <div class="cube-face cube-top">
-                      <span class="cube-face-icon">☸️</span>
-                      <span class="cube-face-title">K8s</span>
-                      <span class="cube-face-sub">Containers</span>
-                    </div>
-                    <div class="cube-face cube-bottom">
-                      <span class="cube-face-icon">🚀</span>
-                      <span class="cube-face-title">Zero Loss</span>
-                      <span class="cube-face-sub">1000+ VMs</span>
-                    </div>
-                  </div>
-                </div>
-                <div class="cube-3d-caption">
-                  <span class="cube-pulse-dot"></span> 3D Cloud Core
-                </div>
+              <div class="hero-socials">
+                <a href="https://linkedin.com/in/dilipsookk" target="_blank" rel="noopener" class="hero-social-link" title="LinkedIn Profile">in</a>
+                <a href="https://github.com/dilipsook" target="_blank" rel="noopener" class="hero-social-link" title="GitHub Profile">git</a>
+                <a href="http://stackoverflow.com/users/19229599/dilip-kumar" target="_blank" rel="noopener" class="hero-social-link" title="Stack Overflow">so</a>
+                <a href="mailto:dilipsook@gmail.com" class="hero-social-link" title="Direct Email">@</a>
               </div>
             </div>
           </div>
 
-          <!-- Hero Visual: Main Picture DSC_0004.jpg -->
+          <!-- Hero Visual: Executive Editorial Portrait Frame -->
           <div class="hero-visual">
-            <div class="portrait-container">
-              <div class="portrait-glow"></div>
+            <div class="executive-portrait-container">
+              <div class="portrait-ambient-aura"></div>
               
-              <!-- Cyber Holographic Biometric Overlays -->
-              <div class="cyber-bracket bracket-tl"></div>
-              <div class="cyber-bracket bracket-tr"></div>
-              <div class="cyber-bracket bracket-bl"></div>
-              <div class="cyber-bracket bracket-br"></div>
-
-              <div class="cyber-bio-badge">
-                <span><span class="bio-dot"></span>BIO_ID: DK-9481 // CLEARANCE: L5</span>
-                <span class="bio-status">AUTH: 100%</span>
-              </div>
-              <div class="cyber-laser-scanner"></div>
-
-              <div class="portrait-frame">
+              <div class="executive-portrait-frame">
                 <picture>
                   <source srcset="assets/images/profile/DSC_0004_portrait.jpg" type="image/jpeg">
-                  <img src="assets/images/profile/DSC_0004_web.jpg" alt="Dilip Kumar — Cloud Architect" class="portrait-img" fetchpriority="high">
+                  <img src="assets/images/profile/DSC_0004_web.jpg" alt="Dilip Kumar — Multi-Cloud &amp; FinOps Architect" class="portrait-img" fetchpriority="high">
                 </picture>
-                <div class="portrait-vignette"></div>
+                <div class="portrait-subtle-gradient"></div>
               </div>
 
-              <div class="cyber-bio-footer">
-                <span>LAT 28.6139° N · LON 77.2090° E</span>
-                <span class="bio-verified">● VERIFIED ARCHITECT</span>
-              </div>
-
-              <!-- Floating Metric Badges -->
-              <div class="float-card float-card-1">
-                <div class="float-icon" style="background: rgba(255, 153, 0, 0.15); color: #ff9900;">☁️</div>
-                <div>
-                  <div class="float-val">10+ Years</div>
-                  <div class="float-lbl">Enterprise Cloud &amp; LIMS</div>
+              <!-- Executive Floating Glass Capsule -->
+              <div class="executive-status-pill">
+                <span class="status-indicator-dot"></span>
+                <div class="status-pill-info">
+                  <span class="status-pill-name">Dilip Kumar</span>
+                  <span class="status-pill-role">Manager Project · Cognizant</span>
                 </div>
-              </div>
-
-              <div class="float-card float-card-2">
-                <div class="float-icon" style="background: rgba(14, 165, 233, 0.15); color: #38bdf8;">🏆</div>
-                <div>
-                  <div class="float-val">5x Certified</div>
-                  <div class="float-lbl">AWS &amp; Azure Credentialed</div>
-                </div>
-              </div>
-
-              <div class="float-card float-card-3">
-                <div class="float-icon" style="background: rgba(16, 185, 129, 0.15); color: #34d399;">💰</div>
-                <div>
-                  <div class="float-val">$60K+/mo</div>
-                  <div class="float-lbl">Documented FinOps Saved</div>
-                </div>
+                <span class="status-pill-badge">10+ YRS SCALE</span>
               </div>
             </div>
           </div>
@@ -602,10 +519,6 @@
             <!-- 1. Johnson & Johnson -->
             <div class="project-card reveal" data-category="migration enterprise ha">
               <div>
-                <div class="dossier-header-bar">
-                  <span class="dossier-id"><span class="terminal-prompt-sym">#</span> MISSION // JNJ-01</span>
-                  <span class="dossier-classification">RESTRICTED ENTERPRISE</span>
-                </div>
                 <div class="project-top">
                   <div class="client-logo-box">
                     <img src="assets/images/logos/johnson.svg" alt="Johnson &amp; Johnson">
@@ -639,10 +552,6 @@
             <!-- 2. Dhani -->
             <div class="project-card reveal reveal-delay-1" data-category="finops enterprise">
               <div>
-                <div class="dossier-header-bar">
-                  <span class="dossier-id"><span class="terminal-prompt-sym">#</span> MISSION // DHANI-02</span>
-                  <span class="dossier-classification">FINOPS CORE</span>
-                </div>
                 <div class="project-top">
                   <div class="client-logo-box">
                     <img src="assets/images/logos/dhani.svg" alt="Dhani">
@@ -676,10 +585,6 @@
             <!-- 3. LoanTap -->
             <div class="project-card reveal reveal-delay-2" data-category="finops ha migration">
               <div>
-                <div class="dossier-header-bar">
-                  <span class="dossier-id"><span class="terminal-prompt-sym">#</span> MISSION // LT-03</span>
-                  <span class="dossier-classification">FINTECH SCALE</span>
-                </div>
                 <div class="project-top">
                   <div class="client-logo-box">
                     <img src="assets/images/logos/loantap.svg" alt="LoanTap">
@@ -713,10 +618,6 @@
             <!-- 4. ISRO -->
             <div class="project-card reveal" data-category="enterprise ha">
               <div>
-                <div class="dossier-header-bar">
-                  <span class="dossier-id"><span class="terminal-prompt-sym">#</span> MISSION // ISRO-04</span>
-                  <span class="dossier-classification">DEFENSE AIR-GAPPED</span>
-                </div>
                 <div class="project-top">
                   <div class="client-logo-box">
                     <img src="assets/images/logos/isro.png" alt="ISRO">
@@ -750,10 +651,6 @@
             <!-- 5. Indian Air Force -->
             <div class="project-card reveal reveal-delay-1" data-category="enterprise ha">
               <div>
-                <div class="dossier-header-bar">
-                  <span class="dossier-id"><span class="terminal-prompt-sym">#</span> MISSION // IAF-05</span>
-                  <span class="dossier-classification">CRITICAL INFRA</span>
-                </div>
                 <div class="project-top">
                   <div class="client-logo-box">
                     <img src="assets/images/logos/IAF.png" alt="Indian Air Force">
@@ -787,10 +684,6 @@
             <!-- 6. Biryani By Kilo -->
             <div class="project-card reveal reveal-delay-2" data-category="ha enterprise">
               <div>
-                <div class="dossier-header-bar">
-                  <span class="dossier-id"><span class="terminal-prompt-sym">#</span> MISSION // BBK-06</span>
-                  <span class="dossier-classification">FOODTECH CONCURRENCY</span>
-                </div>
                 <div class="project-top">
                   <div class="client-logo-box">
                     <img src="assets/images/logos/bbk.webp" alt="Biryani By Kilo">
@@ -824,10 +717,6 @@
             <!-- 7. KSRSAC -->
             <div class="project-card reveal" data-category="enterprise">
               <div>
-                <div class="dossier-header-bar">
-                  <span class="dossier-id"><span class="terminal-prompt-sym">#</span> MISSION // KSRSAC-07</span>
-                  <span class="dossier-classification">GEOSPATIAL STORAGE</span>
-                </div>
                 <div class="project-top">
                   <div class="client-logo-box">
                     <img src="assets/images/logos/ksrsac.jpg" alt="KSRSAC">
@@ -861,10 +750,6 @@
             <!-- 8. ServicePlus -->
             <div class="project-card reveal reveal-delay-1" data-category="migration finops">
               <div>
-                <div class="dossier-header-bar">
-                  <span class="dossier-id"><span class="terminal-prompt-sym">#</span> MISSION // SP-08</span>
-                  <span class="dossier-classification">DATABASE DMS</span>
-                </div>
                 <div class="project-top">
                   <div class="client-logo-box">
                     <img src="assets/images/logos/serviceplus.svg" alt="ServicePlus">
@@ -898,10 +783,6 @@
             <!-- 9. Navi -->
             <div class="project-card reveal reveal-delay-2" data-category="migration enterprise">
               <div>
-                <div class="dossier-header-bar">
-                  <span class="dossier-id"><span class="terminal-prompt-sym">#</span> MISSION // NAVI-09</span>
-                  <span class="dossier-classification">LANDING ZONE</span>
-                </div>
                 <div class="project-top">
                   <div class="client-logo-box">
                     <img src="assets/images/logos/navi.svg" alt="Navi">
@@ -1849,31 +1730,6 @@
         </div>
       </div>
     </div>
-
-    <!-- ====================================================================
-         FLOATING CYBER ACTION DOCK
-         ==================================================================== -->
-    <nav class="floating-cyber-dock" id="floatingCyberDock" aria-label="Quick System Controls">
-      <button class="dock-item dock-item-highlight" id="dockTerminalBtn" title="Launch Interactive Cloud CLI Terminal">
-        <span class="dock-icon">&gt;_</span>
-        <span class="dock-text">Terminal</span>
-      </button>
-      <button class="dock-item" id="dockProbeBtn" title="Run Multi-Cloud Latency Probe">
-        <span class="dock-icon">⚡</span>
-        <span class="dock-text">Probe</span>
-      </button>
-      <button class="dock-item open-palette-btn" id="dockPaletteBtn" title="Search Everything (Cmd+K)">
-        <span class="dock-icon">🔍</span>
-        <span class="dock-text">Search</span>
-      </button>
-      <a href="Dilip_Kumar_Resume.pdf" target="_blank" rel="noopener" class="dock-item" title="Download Verified Resume PDF">
-        <span class="dock-icon">📄</span>
-        <span class="dock-text">Resume</span>
-      </a>
-      <button class="dock-item" id="dockAudioBtn" title="Toggle UI Audio Effects">
-        <span class="dock-icon" id="dockAudioIcon">🔇</span>
-      </button>
-    </nav>
 
   </div>
 
