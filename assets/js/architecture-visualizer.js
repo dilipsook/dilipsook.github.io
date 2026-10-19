@@ -251,10 +251,10 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function resizeCanvas() {
-    if (!canvas || !nodesContainer) return;
-    const rect = nodesContainer.getBoundingClientRect();
-    canvas.width = rect.width;
-    canvas.height = rect.height;
+    if (!canvas || !canvas.parentElement) return;
+    const parent = canvas.parentElement;
+    canvas.width = parent.clientWidth;
+    canvas.height = parent.clientHeight;
   }
 
   window.addEventListener('resize', resizeCanvas);
@@ -343,14 +343,14 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    const containerRect = nodesContainer.getBoundingClientRect();
+    const parentRect = canvas.parentElement.getBoundingClientRect();
     const centers = [];
 
     nodeCards.forEach(card => {
       const r = card.getBoundingClientRect();
       centers.push({
-        x: (r.left + r.width / 2) - containerRect.left,
-        y: (r.top + r.height / 2) - containerRect.top
+        x: (r.left + r.width / 2) - parentRect.left,
+        y: (r.top + r.height / 2) - parentRect.top
       });
     });
 

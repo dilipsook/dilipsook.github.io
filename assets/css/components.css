@@ -4042,22 +4042,910 @@
   background: #0f172a;
 }
 
-/* Mobile HUD Layout */
-@media (max-width: 768px) {
-  .hud-ticker {
-    display: none;
+/* ==========================================================================
+   CYBER SCI-FI HUD & TACTICAL OPERATIONAL STYLING
+   ========================================================================== */
+
+/* Tactical Corner Brackets for High-Tech Cards */
+.pillar-card,
+.project-card,
+.metric-card,
+.timeline-card,
+.contact-info-card,
+.contact-form-card,
+.story-card,
+.cert-card,
+.arch-visualizer-box,
+.finops-calculator-wrap {
+  position: relative;
+}
+
+.pillar-card::before,
+.project-card::before,
+.timeline-card::before,
+.contact-info-card::before,
+.contact-form-card::before,
+.arch-visualizer-box::before {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  width: 12px;
+  height: 12px;
+  border-top: 2px solid var(--cyber-cyan);
+  border-left: 2px solid var(--cyber-cyan);
+  border-top-left-radius: 4px;
+  pointer-events: none;
+  z-index: 3;
+  transition: all 0.3s ease;
+}
+
+.pillar-card::after,
+.project-card::after,
+.timeline-card::after,
+.contact-info-card::after,
+.contact-form-card::after,
+.arch-visualizer-box::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  right: -1px;
+  width: 12px;
+  height: 12px;
+  border-bottom: 2px solid var(--cyber-cyan);
+  border-right: 2px solid var(--cyber-cyan);
+  border-bottom-right-radius: 4px;
+  pointer-events: none;
+  z-index: 3;
+  transition: all 0.3s ease;
+}
+
+.pillar-card:hover::before,
+.pillar-card:hover::after,
+.project-card:hover::before,
+.project-card:hover::after,
+.timeline-card:hover::before,
+.timeline-card:hover::after {
+  width: 20px;
+  height: 20px;
+  border-color: #00f0ff;
+  filter: drop-shadow(0 0 6px rgba(0, 240, 255, 0.8));
+}
+
+/* Tactical Mission Dossier Header on Project Cards */
+.dossier-header-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #64748b;
+  padding-bottom: 12px;
+  margin-bottom: 16px;
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.08);
+}
+
+.dossier-id {
+  color: var(--cyber-cyan);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.dossier-classification {
+  color: #cbd5e1;
+  padding: 2px 7px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 4px;
+  font-size: 0.62rem;
+}
+
+/* Hero Holographic Biometric Scanner & Telemetry */
+.cyber-bio-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  right: 12px;
+  z-index: 6;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 12px;
+  background: rgba(5, 10, 22, 0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(0, 240, 255, 0.35);
+  border-radius: 6px;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: #cbd5e1;
+  letter-spacing: 0.04em;
+}
+
+.bio-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #10b981;
+  box-shadow: 0 0 8px #10b981;
+  animation: cyberBeaconPulse 2s infinite;
+  display: inline-block;
+  margin-right: 6px;
+}
+
+.bio-status {
+  color: var(--cyber-cyan);
+  font-weight: 700;
+}
+
+.cyber-laser-scanner {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, transparent 0%, #00f0ff 50%, transparent 100%);
+  box-shadow: 0 0 16px #00f0ff, 0 0 32px rgba(0, 240, 255, 0.6);
+  z-index: 5;
+  pointer-events: none;
+  animation: cyberLaserScan 5s ease-in-out infinite;
+}
+
+.cyber-bracket {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  z-index: 6;
+  pointer-events: none;
+  border-color: var(--cyber-cyan);
+  animation: cyberCornerPulse 4s infinite ease-in-out;
+}
+
+.bracket-tl { top: 6px; left: 6px; border-top: 2px solid; border-left: 2px solid; }
+.bracket-tr { top: 6px; right: 6px; border-top: 2px solid; border-right: 2px solid; }
+.bracket-bl { bottom: 6px; left: 6px; border-bottom: 2px solid; border-left: 2px solid; }
+.bracket-br { bottom: 6px; right: 6px; border-bottom: 2px solid; border-right: 2px solid; }
+
+.cyber-bio-footer {
+  position: absolute;
+  bottom: 12px;
+  left: 12px;
+  right: 12px;
+  z-index: 6;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5px 10px;
+  background: rgba(5, 10, 22, 0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(0, 240, 255, 0.28);
+  border-radius: 6px;
+  font-family: var(--font-mono);
+  font-size: 0.64rem;
+  color: #94a3b8;
+}
+
+.bio-verified {
+  color: #34d399;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* High-Tech Tactical Chamfered Buttons */
+.btn-primary,
+.btn-secondary,
+.btn-finops-chip,
+.btn-inspect-modal {
+  clip-path: polygon(7px 0, 100% 0, 100% calc(100% - 7px), calc(100% - 7px) 100%, 0 100%, 0 7px);
+  letter-spacing: 0.02em;
+}
+
+/* Floating Cyber Action Dock */
+.floating-cyber-dock {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 95;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  background: rgba(8, 14, 26, 0.94);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(0, 240, 255, 0.35);
+  border-radius: var(--radius-full);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.75), 0 0 25px rgba(0, 240, 255, 0.2);
+  animation: cyberDockFloat 4s ease-in-out infinite;
+}
+
+.dock-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--text-secondary);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  white-space: nowrap;
+}
+
+.dock-item:hover,
+.dock-item:focus {
+  background: rgba(0, 240, 255, 0.18);
+  border-color: #00f0ff;
+  color: #fff;
+  box-shadow: 0 0 16px rgba(0, 240, 255, 0.4);
+  transform: translateY(-2px);
+}
+
+.dock-item-highlight {
+  background: linear-gradient(135deg, rgba(2, 132, 199, 0.3) 0%, rgba(0, 240, 255, 0.2) 100%);
+  border-color: var(--cyber-cyan);
+  color: #00f0ff;
+}
+
+[data-theme="light"] .floating-cyber-dock {
+  background: rgba(255, 255, 255, 0.94);
+  border-color: rgba(2, 132, 199, 0.35);
+  box-shadow: 0 15px 35px rgba(15, 23, 42, 0.15), 0 0 25px rgba(2, 132, 199, 0.15);
+}
+
+[data-theme="light"] .dock-item {
+  background: #f1f5f9;
+  border-color: #cbd5e1;
+  color: #334155;
+}
+
+[data-theme="light"] .dock-item:hover {
+  background: #e0f2fe;
+  border-color: #0284c7;
+  color: #0284c7;
+}
+
+/* ==========================================================================
+   COMPREHENSIVE MOBILE RESPONSIVE OVERHAUL (320px - 1024px)
+   ========================================================================== */
+
+@media (max-width: 1024px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+    text-align: center;
+    gap: 48px;
   }
-  .hud-divider {
-    display: none;
+  .hero-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
-  .hud-cmd-text {
-    display: none;
+  .hero-description {
+    margin-inline: auto;
   }
-  .cloud-telemetry-hud {
-    height: 32px;
-    font-size: 0.68rem;
+  .hero-cta-group {
+    justify-content: center;
   }
-  .navbar {
-    top: 32px;
+  .finops-grid {
+    grid-template-columns: 1fr;
+  }
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+  .honors-edu-grid {
+    grid-template-columns: 1fr;
+  }
+  .arch-stage-grid {
+    grid-template-columns: 1fr;
   }
 }
+
+@media (max-width: 768px) {
+  /* Zero horizontal overflow */
+  html, body {
+    overflow-x: hidden !important;
+    max-width: 100vw;
+  }
+
+  .page-wrapper {
+    overflow-x: hidden !important;
+    width: 100%;
+  }
+
+  .container {
+    padding-inline: 16px !important;
+    max-width: 100% !important;
+    box-sizing: border-box;
+  }
+
+  /* 0. Telemetry HUD Bar on Mobile */
+  .cloud-telemetry-hud {
+    height: 36px;
+    font-size: 0.68rem;
+  }
+
+  .hud-container {
+    padding-inline: 12px;
+    gap: 8px;
+  }
+
+  .hud-label,
+  .hud-divider,
+  .hud-clock,
+  .hud-cmd-text {
+    display: none !important;
+  }
+
+  .hud-ticker {
+    max-width: 140px;
+    font-size: 0.66rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .hud-status-badge {
+    font-size: 0.66rem;
+  }
+
+  .hud-btn {
+    padding: 3px 8px;
+    font-size: 0.68rem;
+  }
+
+  .hud-ping-btn span {
+    display: none;
+  }
+
+  .hud-ping-btn::after {
+    content: '⚡ Probe';
+  }
+
+  /* 1. Header & Navbar on Mobile */
+  .navbar {
+    top: 36px;
+    height: 60px;
+  }
+
+  .nav-container {
+    height: 60px;
+    padding-inline: 14px;
+  }
+
+  .nav-brand {
+    gap: 8px;
+  }
+
+  .brand-icon {
+    width: 32px;
+    height: 32px;
+    font-size: 1.1rem;
+  }
+
+  .brand-name {
+    font-size: 1.05rem;
+    letter-spacing: -0.01em;
+  }
+
+  .brand-role {
+    font-size: 0.66rem;
+  }
+
+  .nav-links,
+  .nav-status,
+  .btn-nav-resume {
+    display: none !important;
+  }
+
+  .burger-btn {
+    display: flex !important;
+  }
+
+  /* 2. Hero Section on Mobile */
+  .hero-section {
+    padding-top: calc(36px + 60px + 18px) !important;
+    padding-bottom: 36px !important;
+    min-height: auto;
+  }
+
+  .hero-grid {
+    gap: 32px !important;
+  }
+
+  .hero-title {
+    font-size: clamp(1.95rem, 7.5vw, 2.7rem) !important;
+    line-height: 1.18 !important;
+  }
+
+  .hero-subtitle {
+    font-size: 1.02rem !important;
+    justify-content: center;
+  }
+
+  .hero-description {
+    font-size: 0.92rem !important;
+    line-height: 1.62 !important;
+    text-align: left;
+  }
+
+  .hero-cta-group {
+    flex-direction: column;
+    width: 100%;
+    gap: 10px;
+  }
+
+  .hero-cta-group a {
+    width: 100%;
+    justify-content: center;
+    padding: 13px 20px !important;
+    font-size: 0.92rem !important;
+  }
+
+  .hero-interactive-dock {
+    flex-direction: column;
+    gap: 14px;
+    width: 100%;
+    align-items: center;
+  }
+
+  .hero-visual {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .portrait-container {
+    width: min(100%, 330px) !important;
+  }
+
+  /* Prevent floating cards from escaping viewport horizontally */
+  .float-card {
+    position: static !important;
+    animation: none !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    margin-top: 10px !important;
+    padding: 10px 14px !important;
+    border-radius: var(--radius-md) !important;
+  }
+
+  .float-card-1,
+  .float-card-2,
+  .float-card-3 {
+    left: auto !important;
+    right: auto !important;
+    top: auto !important;
+    bottom: auto !important;
+    border-left: 3px solid #ff9900 !important;
+    border-right: 1px solid var(--border-card) !important;
+    border-bottom: 1px solid var(--border-card) !important;
+  }
+
+  .float-card-2 { border-left-color: #0ea5e9 !important; }
+  .float-card-3 { border-left-color: #10b981 !important; }
+
+  /* 3. Metrics Ribbon on Mobile */
+  .metrics-section {
+    padding-block: 20px 40px !important;
+  }
+
+  .metrics-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 12px !important;
+  }
+
+  .metric-card {
+    padding: 18px 14px !important;
+    border-radius: var(--radius-md) !important;
+  }
+
+  .metric-number-wrap {
+    margin-bottom: 4px !important;
+  }
+
+  .metric-number {
+    font-size: 1.85rem !important;
+  }
+
+  .metric-suffix {
+    font-size: 1.35rem !important;
+  }
+
+  .metric-label {
+    font-size: 0.8rem !important;
+    line-height: 1.25 !important;
+    margin-bottom: 2px !important;
+  }
+
+  .metric-sub {
+    font-size: 0.68rem !important;
+    display: none;
+  }
+
+  /* 4. Architectural Pillars on Mobile */
+  .pillars-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+
+  .pillar-card {
+    padding: 24px 20px !important;
+  }
+
+  .pillar-title {
+    font-size: 1.22rem !important;
+  }
+
+  .pillar-desc {
+    font-size: 0.88rem !important;
+  }
+
+  /* 5. Architecture Visualizer on Mobile */
+  .arch-visualizer-box {
+    padding: 18px 14px !important;
+  }
+
+  .arch-controls-bar {
+    flex-direction: column;
+    align-items: stretch !important;
+    gap: 12px;
+  }
+
+  .arch-tabs-group {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 6px;
+  }
+
+  .arch-tab-btn {
+    width: 100%;
+    justify-content: center;
+    padding: 10px 14px !important;
+  }
+
+  .arch-topology-canvas-wrap {
+    padding: 16px 12px !important;
+    min-height: 400px !important;
+  }
+
+  .arch-node-card {
+    padding: 10px 12px !important;
+  }
+
+  .node-title {
+    font-size: 0.86rem !important;
+  }
+
+  .node-sub {
+    font-size: 0.72rem !important;
+  }
+
+  .arch-inspector-panel {
+    padding: 18px 14px !important;
+  }
+
+  /* 6. FinOps Calculator on Mobile */
+  .finops-calculator-wrap {
+    padding: 22px 16px !important;
+  }
+
+  .slider-label-row {
+    flex-direction: column;
+    align-items: flex-start !important;
+    gap: 6px;
+  }
+
+  .spend-slider {
+    height: 10px !important;
+  }
+
+  .spend-slider::-webkit-slider-thumb {
+    width: 28px !important;
+    height: 28px !important;
+  }
+
+  .savings-total-val {
+    font-size: 2.1rem !important;
+  }
+
+  .savings-annual {
+    font-size: 0.95rem !important;
+  }
+
+  .breakdown-row {
+    font-size: 0.82rem !important;
+  }
+
+  /* 7. Featured Projects (Mission Dossiers) on Mobile */
+  .project-filters {
+    gap: 6px !important;
+    margin-bottom: 24px !important;
+  }
+
+  .filter-btn {
+    padding: 6px 12px !important;
+    font-size: 0.76rem !important;
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr !important;
+    gap: 18px !important;
+  }
+
+  .project-card {
+    padding: 22px 18px !important;
+  }
+
+  .project-title {
+    font-size: 1.25rem !important;
+  }
+
+  .project-summary {
+    font-size: 0.88rem !important;
+  }
+
+  .project-achievements {
+    font-size: 0.82rem !important;
+  }
+
+  .project-footer {
+    flex-direction: column;
+    align-items: stretch !important;
+    gap: 12px;
+  }
+
+  .project-footer .btn-inspect-modal {
+    width: 100%;
+    justify-content: center;
+    padding: 11px 18px !important;
+  }
+
+  /* 8. Career Timeline on Mobile */
+  .timeline-wrap {
+    padding-left: 18px !important;
+  }
+
+  .timeline-line {
+    left: 5px !important;
+  }
+
+  .timeline-node {
+    left: -19px !important;
+    width: 12px !important;
+    height: 12px !important;
+    top: 6px !important;
+  }
+
+  .timeline-card {
+    padding: 20px 16px !important;
+  }
+
+  .timeline-header {
+    flex-direction: column;
+    align-items: flex-start !important;
+    gap: 4px;
+  }
+
+  .timeline-role {
+    font-size: 1.15rem !important;
+  }
+
+  .timeline-date {
+    font-size: 0.76rem !important;
+  }
+
+  .timeline-points {
+    padding-left: 16px !important;
+    font-size: 0.86rem !important;
+  }
+
+  /* 9. Skills Matrix on Mobile */
+  .skills-nav-tabs {
+    gap: 6px !important;
+  }
+
+  .skill-tab-btn {
+    padding: 7px 12px !important;
+    font-size: 0.76rem !important;
+  }
+
+  .skills-matrix-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 10px !important;
+  }
+
+  .skill-item {
+    padding: 12px 10px !important;
+  }
+
+  .skill-name {
+    font-size: 0.8rem !important;
+  }
+
+  /* 10. Perspective Gallery on Mobile */
+  .gallery-grid {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+
+  .story-img-wrap {
+    height: 240px !important;
+  }
+
+  /* 11. Honors & Education on Mobile */
+  .honors-edu-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+
+  .certs-list {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* 12. Contact Section on Mobile */
+  .contact-grid {
+    grid-template-columns: 1fr !important;
+    gap: 24px !important;
+  }
+
+  .contact-info-card,
+  .contact-form-card {
+    padding: 24px 18px !important;
+  }
+
+  .channel-item {
+    flex-direction: column;
+    align-items: flex-start !important;
+    gap: 10px;
+    padding: 12px 14px !important;
+  }
+
+  .channel-left {
+    width: 100%;
+  }
+
+  .channel-meta strong {
+    font-size: 0.86rem !important;
+    word-break: break-all;
+  }
+
+  .channel-item .btn-copy-email {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .form-input,
+  .form-select,
+  .form-textarea {
+    font-size: 16px !important; /* Prevents auto-zoom on mobile safari */
+    height: 48px;
+  }
+
+  .form-textarea {
+    height: 120px;
+  }
+
+  /* 13. Modals on Mobile */
+  .modal-container,
+  .probe-modal-container,
+  .terminal-window,
+  .palette-window {
+    width: 95vw !important;
+    max-width: 95vw !important;
+    padding: 20px 14px !important;
+    margin: 8px auto;
+    border-radius: var(--radius-md) !important;
+  }
+
+  .blueprint-view-controls {
+    width: 100%;
+    display: flex;
+    gap: 6px;
+  }
+
+  .blueprint-mode-btn {
+    flex: 1;
+    justify-content: center;
+    padding: 8px 10px !important;
+    font-size: 0.78rem !important;
+  }
+
+  .blueprint-stage-viewport {
+    padding: 16px 10px !important;
+    min-height: 220px !important;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .adr-table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .probe-stat-box {
+    padding: 10px 8px !important;
+  }
+
+  .probe-stat-num {
+    font-size: 1.25rem !important;
+  }
+
+  .probe-node-row {
+    flex-direction: column;
+    align-items: flex-start !important;
+    gap: 8px;
+  }
+
+  .terminal-window {
+    height: 80vh !important;
+  }
+
+  .terminal-chips-bar {
+    overflow-x: auto;
+    white-space: nowrap;
+    padding-bottom: 6px;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* 14. Floating Cyber Action Dock on Mobile */
+  .floating-cyber-dock {
+    bottom: 12px !important;
+    width: calc(100vw - 24px);
+    max-width: 440px;
+    justify-content: space-around;
+    padding: 6px 8px !important;
+  }
+
+  .dock-item {
+    padding: 6px 10px !important;
+    font-size: 0.7rem !important;
+  }
+
+  .dock-text {
+    display: none;
+  }
+
+  .dock-item-highlight .dock-text {
+    display: inline;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 2.1rem !important;
+  }
+  .hud-ticker {
+    display: none !important;
+  }
+  .metrics-grid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 8px !important;
+  }
+  .metric-card {
+    padding: 14px 10px !important;
+  }
+  .metric-number {
+    font-size: 1.6rem !important;
+  }
+  .metric-suffix {
+    font-size: 1.2rem !important;
+  }
+  .skills-matrix-grid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 8px !important;
+  }
+}
+

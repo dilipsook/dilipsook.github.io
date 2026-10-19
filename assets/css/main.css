@@ -60,6 +60,15 @@
   --radius-xl: 28px;
   --radius-full: 9999px;
 
+  /* Cyber High-Tech Sci-Fi Palette */
+  --cyber-cyan: #00f0ff;
+  --cyber-cyan-glow: rgba(0, 240, 255, 0.45);
+  --cyber-matrix: #10b981;
+  --cyber-amber: #ffb700;
+  --cyber-magenta: #ff007f;
+  --cyber-border: rgba(0, 240, 255, 0.25);
+  --cyber-surface: rgba(8, 14, 26, 0.88);
+
   /* Transitions */
   --transition-fast: 0.18s cubic-bezier(0.4, 0, 0.2, 1);
   --transition-base: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -84,6 +93,14 @@
   --text-dim: #94a3b8;
 
   --card-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.08);
+
+  --cyber-cyan: #0284c7;
+  --cyber-cyan-glow: rgba(2, 132, 199, 0.25);
+  --cyber-matrix: #059669;
+  --cyber-amber: #d97706;
+  --cyber-magenta: #c026d3;
+  --cyber-border: rgba(2, 132, 199, 0.25);
+  --cyber-surface: rgba(248, 250, 252, 0.95);
 }
 
 /* ==========================================================================

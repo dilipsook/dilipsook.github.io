@@ -102,8 +102,12 @@
     localStorage.setItem('dilip-audio-muted', muted);
     const audioBtn = document.getElementById('hudAudioBtn');
     const audioIcon = document.getElementById('audioIcon');
+    const dockAudioBtn = document.getElementById('dockAudioBtn');
+    const dockAudioIcon = document.getElementById('dockAudioIcon');
     if (audioIcon) audioIcon.textContent = isMuted ? '🔇' : '🔊';
+    if (dockAudioIcon) dockAudioIcon.textContent = isMuted ? '🔇' : '🔊';
     if (audioBtn) audioBtn.setAttribute('title', isMuted ? 'Unmute Tech Audio' : 'Mute Tech Audio');
+    if (dockAudioBtn) dockAudioBtn.setAttribute('title', isMuted ? 'Unmute Tech Audio' : 'Mute Tech Audio');
   }
 
   function toggleMute() {
@@ -122,13 +126,15 @@
 
   document.addEventListener('DOMContentLoaded', () => {
     const audioBtn = document.getElementById('hudAudioBtn');
+    const dockAudioBtn = document.getElementById('dockAudioBtn');
     setMuted(isMuted);
     audioBtn?.addEventListener('click', toggleMute);
+    dockAudioBtn?.addEventListener('click', toggleMute);
 
     // Attach subtle audio feedback to interactive controls
     document.addEventListener('click', (e) => {
-      const target = e.target.closest('button, .btn-primary, .btn-secondary, .nav-link, .filter-btn, .term-chip, .skill-tab-btn, .blueprint-mode-btn');
-      if (target && target.id !== 'hudAudioBtn') {
+      const target = e.target.closest('button, .btn-primary, .btn-secondary, .nav-link, .filter-btn, .term-chip, .skill-tab-btn, .blueprint-mode-btn, .dock-item');
+      if (target && target.id !== 'hudAudioBtn' && target.id !== 'dockAudioBtn') {
         playClick();
       }
     });
