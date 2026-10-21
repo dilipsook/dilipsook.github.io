@@ -74,19 +74,22 @@
   --bg-primary: #f8fafc;
   --bg-secondary: #f1f5f9;
   --bg-tertiary: #e2e8f0;
-  --bg-card: rgba(255, 255, 255, 0.95);
-  --bg-card-hover: rgba(255, 255, 255, 1);
-  --bg-glass: rgba(255, 255, 255, 0.9);
+  --bg-card: rgba(255, 255, 255, 0.96);
+  --bg-card-hover: #ffffff;
+  --bg-glass: rgba(255, 255, 255, 0.92);
   --border-subtle: rgba(15, 23, 42, 0.08);
-  --border-focus: rgba(2, 132, 199, 0.4);
-  --border-card: rgba(148, 163, 184, 0.2);
+  --border-focus: rgba(2, 132, 199, 0.5);
+  --border-card: rgba(148, 163, 184, 0.28);
+
+  --gradient-cinema: linear-gradient(135deg, #0f172a 0%, #0369a1 40%, #2563eb 70%, #7c3aed 100%);
+  --gradient-pill: linear-gradient(135deg, rgba(15, 23, 42, 0.06) 0%, rgba(15, 23, 42, 0.02) 100%);
 
   --text-primary: #0f172a;
   --text-secondary: #334155;
-  --text-muted: #64748b;
-  --text-dim: #94a3b8;
+  --text-muted: #475569;
+  --text-dim: #64748b;
 
-  --card-shadow: 0 15px 35px -10px rgba(15, 23, 42, 0.08), inset 0 1px 0 0 rgba(255, 255, 255, 0.8);
+  --card-shadow: 0 20px 35px -12px rgba(15, 23, 42, 0.09), 0 1px 3px rgba(15, 23, 42, 0.04);
 }
 
 /* ==========================================================================
@@ -204,12 +207,17 @@ body {
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
   font-weight: 700;
-  color: #fff;
+  color: var(--text-primary);
   line-height: 1.2;
 }
 
 p {
   color: var(--text-secondary);
+}
+
+strong, b {
+  color: var(--text-primary);
+  font-weight: 600;
 }
 
 a {

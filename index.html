@@ -191,20 +191,52 @@
             </div>
           </div>
 
-          <!-- Hero Visual: Cinematic Editorial Holographic Showcase -->
+          <!-- Hero Visual: Holographic 3D Cyber Face & Interactive Skills Reel -->
           <div class="hero-visual">
-            <div class="cinema-portrait-card executive-portrait-container">
-              <div class="portrait-aurora-glow portrait-ambient-aura"></div>
+            <div class="holo-pod-deck">
               
-              <div class="portrait-glass-frame executive-portrait-frame">
-                <picture>
-                  <source srcset="assets/images/profile/DSC_0004_portrait.jpg" type="image/jpeg">
-                  <img src="assets/images/profile/DSC_0004_web.jpg" alt="Dilip Kumar — Multi-Cloud &amp; FinOps Architect" class="portrait-img" fetchpriority="high">
-                </picture>
-                <div class="portrait-shadow-gradient portrait-subtle-gradient"></div>
+              <!-- Ambient 3D Rotating Gyro Rings -->
+              <div class="cyber-orbit-ring cyber-ring-1" aria-hidden="true"></div>
+              <div class="cyber-orbit-ring cyber-ring-2" aria-hidden="true"></div>
+
+              <!-- Universe Cosmic Motion Backdrop -->
+              <div class="holo-video-backdrop" aria-hidden="true">
+                <video autoplay loop muted playsinline poster="assets/media/universe.jpg" class="holo-universe-video">
+                  <source src="assets/media/universe.mp4" type="video/mp4">
+                </video>
+                <div class="holo-video-mask"></div>
               </div>
 
-              <!-- Floating Keynote Chips -->
+              <!-- Executive Portrait Holographic Frame -->
+              <div class="holo-portrait-frame tilt-3d">
+                <!-- Laser Scanning Line -->
+                <div class="hud-laser-sweep" aria-hidden="true"></div>
+
+                <!-- Biometric Targeting Reticles -->
+                <span class="hud-reticle hud-reticle-tl" aria-hidden="true"></span>
+                <span class="hud-reticle hud-reticle-tr" aria-hidden="true"></span>
+                <span class="hud-reticle hud-reticle-bl" aria-hidden="true"></span>
+                <span class="hud-reticle hud-reticle-br" aria-hidden="true"></span>
+
+                <!-- HUD Status Badge -->
+                <div class="hud-status-badge">
+                  <span class="live-beacon"></span>
+                  <span>AI ARCHITECT REEL &bull; COGNIZANT ISG</span>
+                </div>
+
+                <!-- Portrait Image -->
+                <picture>
+                  <source srcset="assets/images/profile/DSC_0004_portrait.jpg" type="image/jpeg">
+                  <img src="assets/images/profile/DSC_0004_web.jpg" alt="Dilip Kumar - Multi-Cloud &amp; FinOps Architect" class="portrait-img" fetchpriority="high">
+                </picture>
+
+                <!-- Live Audio Spectrum Waveform -->
+                <div class="hud-waveform-wrap">
+                  <canvas id="heroVoiceVisualizer" class="hud-waveform-canvas" width="340" height="38" title="Live Audio Spectrum Visualizer"></canvas>
+                </div>
+              </div>
+
+              <!-- Floating 3D Perspective Keynote Badges -->
               <div class="hero-floating-chip chip-top-right">
                 <span class="chip-pulse-dot"></span>
                 <div class="chip-text">
@@ -214,7 +246,7 @@
               </div>
 
               <div class="hero-floating-chip chip-left">
-                <span style="font-size: 1.1rem;">☁️</span>
+                <span style="font-size: 1.1rem; color: #38bdf8;">⚡</span>
                 <div class="chip-text">
                   <span class="chip-val">AWS &amp; Azure</span>
                   <span class="chip-lbl">Certified Architect</span>
@@ -229,15 +261,37 @@
                 </div>
               </div>
 
-              <!-- Executive Floating Glass Capsule -->
-              <div class="executive-status-pill">
-                <span class="status-indicator-dot"></span>
-                <div class="status-pill-info">
-                  <span class="status-pill-name">Dilip Kumar</span>
-                  <span class="status-pill-role">Manager Project · Cognizant ISG</span>
+              <!-- Interactive Skills Reel Player Deck -->
+              <div class="skills-reel-deck" id="skillsReelDeck">
+                <button id="btnPlaySkillsReel" class="btn-skills-reel-play" aria-label="Play 60s Architect Skills Briefing">
+                  <span class="play-icon-triangle">▶</span>
+                  <span class="play-btn-label">PLAY ARCHITECT BRIEFING (60s)</span>
+                  <span class="audio-waves-mini"><span></span><span></span><span></span><span></span><span></span></span>
+                </button>
+
+                <!-- Chapter Scrub Bar -->
+                <div class="reel-chapters-strip">
+                  <button class="chapter-pill active" data-chapter="0">01 Cloud Arch</button>
+                  <button class="chapter-pill" data-chapter="1">02 FinOps</button>
+                  <button class="chapter-pill" data-chapter="2">03 Migrations</button>
+                  <button class="chapter-pill" data-chapter="3">04 IaC &amp; GxP</button>
                 </div>
-                <span class="status-pill-badge">10+ YRS SCALE</span>
+
+                <!-- Synchronized Subtitle / Transcript Output -->
+                <div class="reel-subtitle-box">
+                  <div class="subtitle-header">
+                    <span class="subtitle-chapter-label" id="reelChapterLabel">CHAPTER 01 &bull; MULTI-CLOUD ENGINEERING</span>
+                    <span class="subtitle-timer" id="reelTimer">0:00 / 1:00</span>
+                  </div>
+                  <div class="subtitle-body" id="reelSubtitleText">Click Play to begin the 60-second interactive executive skills briefing narrated by Dilip's digital twin.</div>
+                  <div class="subtitle-controls">
+                    <button id="btnMuteNarration" class="btn-reel-control" title="Toggle Narration Audio">🔊 Voice ON</button>
+                    <button id="btnRestartReel" class="btn-reel-control" title="Restart Briefing">↺ Replay</button>
+                    <button id="btnExpandTheater" class="btn-reel-control" title="Theater Mode">⛶ Focus</button>
+                  </div>
+                </div>
               </div>
+
             </div>
           </div>
 
@@ -1771,6 +1825,7 @@
   <script src="assets/js/cloud-terminal.js"></script>
   <script src="assets/js/scroll-progress.js"></script>
   <script src="assets/js/blueprint-diagrams.js"></script>
+  <script src="assets/js/skills-reel.js"></script>
   <script src="assets/js/main.js"></script>
 </body>
 </html>
