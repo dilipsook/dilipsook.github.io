@@ -213,55 +213,42 @@
                 <div class="holo-video-mask"></div>
               </div>
 
-              <!-- Executive Portrait Holographic Frame -->
-              <div class="holo-portrait-frame tilt-3d">
-                <!-- Laser Scanning Line -->
-                <div class="hud-laser-sweep" aria-hidden="true"></div>
-
-                <!-- Biometric Targeting Reticles -->
-                <span class="hud-reticle hud-reticle-tl" aria-hidden="true"></span>
-                <span class="hud-reticle hud-reticle-tr" aria-hidden="true"></span>
-                <span class="hud-reticle hud-reticle-bl" aria-hidden="true"></span>
-                <span class="hud-reticle hud-reticle-br" aria-hidden="true"></span>
-
-                <!-- HUD Status Badge -->
-                <div class="hud-status-badge">
-                  <span class="live-beacon"></span>
-                  <span>AI ARCHITECT REEL &bull; COGNIZANT ISG</span>
+              <!-- Clean Executive Portrait Frame with Symmetrical Keynote Badges -->
+              <div class="hero-portrait-wrapper">
+                <div class="hero-floating-chip chip-left">
+                  <span style="font-size: 1.1rem; color: #38bdf8;">⚡</span>
+                  <div class="chip-text">
+                    <span class="chip-val">AWS &amp; Azure</span>
+                    <span class="chip-lbl">Certified Architect</span>
+                  </div>
                 </div>
 
-                <!-- Portrait Image -->
-                <picture>
-                  <source srcset="assets/images/profile/DSC_0004_portrait.jpg" type="image/jpeg">
-                  <img src="assets/images/profile/DSC_0004_web.jpg" alt="Dilip Kumar - Multi-Cloud &amp; FinOps Architect" class="portrait-img" fetchpriority="high">
-                </picture>
+                <div class="hero-floating-chip chip-bottom-right">
+                  <span style="font-size: 1.15rem; color: #34d399; font-weight: 800;">$</span>
+                  <div class="chip-text">
+                    <span class="chip-val" style="color: #34d399;">$60K+/mo Saved</span>
+                    <span class="chip-lbl">FinOps Governance</span>
+                  </div>
+                </div>
 
-                <!-- Live Audio Spectrum Waveform -->
-                <div class="hud-waveform-wrap">
-                  <canvas id="heroVoiceVisualizer" class="hud-waveform-canvas" width="340" height="38" title="Live Audio Spectrum Visualizer"></canvas>
+                <div class="holo-portrait-frame tilt-3d">
+                  <picture>
+                    <source srcset="assets/images/profile/DSC_0004_portrait.jpg" type="image/jpeg">
+                    <img src="assets/images/profile/DSC_0004_web.jpg" alt="Dilip Kumar - Multi-Cloud &amp; FinOps Architect" class="portrait-img" fetchpriority="high">
+                  </picture>
                 </div>
               </div>
 
-              <!-- Floating 3D Perspective Keynote Badges -->
-
-              <div class="hero-floating-chip chip-left">
-                <span style="font-size: 1.1rem; color: #38bdf8;">⚡</span>
-                <div class="chip-text">
-                  <span class="chip-val">AWS &amp; Azure</span>
-                  <span class="chip-lbl">Certified Architect</span>
-                </div>
-              </div>
-
-              <div class="hero-floating-chip chip-bottom-right">
-                <span style="font-size: 1.15rem; color: #34d399; font-weight: 800;">$</span>
-                <div class="chip-text">
-                  <span class="chip-val" style="color: #34d399;">$60K+/mo Saved</span>
-                  <span class="chip-lbl">FinOps Governance</span>
-                </div>
-              </div>
-
-              <!-- Interactive Skills Reel Player Deck -->
+              <!-- Interactive Skills Reel Player Deck (Proper Location for Briefing Badge & Audio Waveform) -->
               <div class="skills-reel-deck" id="skillsReelDeck">
+                <div class="skills-reel-top-row">
+                  <div class="reel-badge-pill">
+                    <span class="live-beacon"></span>
+                    <span>AI ARCHITECT REEL &bull; COGNIZANT ISG</span>
+                  </div>
+                  <canvas id="heroVoiceVisualizer" class="hud-waveform-canvas" width="140" height="24" title="Live Audio Spectrum Visualizer"></canvas>
+                </div>
+
                 <button id="btnPlaySkillsReel" class="btn-skills-reel-play" aria-label="Play 60s Architect Skills Briefing">
                   <span class="play-icon-triangle">▶</span>
                   <span class="play-btn-label">PLAY ARCHITECT BRIEFING (60s)</span>

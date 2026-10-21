@@ -6017,3 +6017,70 @@
   color: #059669 !important;
   font-weight: 700 !important;
 }
+
+/* Hero Portrait Wrapper & Skills Reel Header Alignment */
+.hero-portrait-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.hero-portrait-wrapper .chip-left {
+  top: 24px;
+  left: -20px;
+}
+
+.hero-portrait-wrapper .chip-bottom-right {
+  bottom: 24px;
+  right: -20px;
+}
+
+.skills-reel-top-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+
+.reel-badge-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 12px;
+  border-radius: var(--radius-full);
+  background: rgba(4, 9, 22, 0.7);
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.05em;
+  color: #38bdf8;
+  font-weight: 700;
+}
+
+.hud-waveform-canvas {
+  width: 140px;
+  height: 24px;
+  display: block;
+}
+
+[data-theme="light"] .reel-badge-pill {
+  background: #f0f9ff !important;
+  border: 1px solid #bae6fd !important;
+  color: #0284c7 !important;
+}
+
+[data-theme="light"] .holo-portrait-frame {
+  background: #ffffff !important;
+  border: 1px solid #cbd5e1 !important;
+  box-shadow: 0 20px 45px -10px rgba(15, 23, 42, 0.12), 0 4px 12px rgba(15, 23, 42, 0.05) !important;
+}
+
+[data-theme="light"] .holo-portrait-frame:hover {
+  border-color: #0284c7 !important;
+  box-shadow: 0 25px 55px -10px rgba(2, 132, 199, 0.22) !important;
+}
+
+[data-theme="light"] .holo-video-backdrop {
+  opacity: 0.08 !important;
+}
