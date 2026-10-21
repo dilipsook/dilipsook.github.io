@@ -239,7 +239,7 @@
     }
 
     function highlightChips(tags) {
-      const allChips = document.querySelectorAll('.hero-floating-chip');
+      const allChips = document.querySelectorAll('.hero-floating-chip, .hero-sla-pill');
       allChips.forEach(chip => {
         const text = chip.textContent;
         const matches = tags.some(t => text.toLowerCase().includes(t.toLowerCase().substring(0, 8)));
