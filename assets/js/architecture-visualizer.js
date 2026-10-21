@@ -365,7 +365,8 @@ document.addEventListener('DOMContentLoaded', () => {
       ctx.beginPath();
       ctx.moveTo(p1.x, p1.y);
       ctx.lineTo(p2.x, p2.y);
-      ctx.strokeStyle = 'rgba(56, 189, 248, 0.25)';
+      const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+      ctx.strokeStyle = isLight ? 'rgba(2, 132, 199, 0.4)' : 'rgba(56, 189, 248, 0.25)';
       ctx.lineWidth = 2;
       ctx.setLineDash([4, 6]);
       ctx.stroke();
@@ -383,8 +384,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         ctx.save();
         ctx.shadowColor = color;
-        ctx.shadowBlur = 8;
-        ctx.fillStyle = '#ffffff';
+        ctx.shadowBlur = isLight ? 4 : 8;
+        ctx.fillStyle = isLight ? color : '#ffffff';
         ctx.beginPath();
         ctx.arc(curX, curY, p.size, 0, Math.PI * 2);
         ctx.fill();

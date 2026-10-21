@@ -435,7 +435,7 @@
             <div class="arch-controls-bar">
               <div>
                 <span class="section-tag tag-cyan" id="archBadge">HEALTHCARE COMPLIANT · MULTI-AZ HIGH AVAILABILITY</span>
-                <h3 id="archHeaderTitle" style="font-size: 1.35rem; margin-top: 6px; color: #fff;">
+                <h3 id="archHeaderTitle" style="font-size: 1.35rem; margin-top: 6px;">
                   Johnson &amp; Johnson: Enterprise Multi-AZ LIMS Platform (AWS)
                 </h3>
               </div>
@@ -496,7 +496,7 @@
 
                 <div class="slider-group">
                   <div class="slider-label-row">
-                    <span style="font-weight: 600; color: #e2e8f0;">Monthly Multi-Cloud Baseline Spend:</span>
+                    <span class="calc-baseline-label">Monthly Multi-Cloud Baseline Spend:</span>
                     <span class="spend-display" id="spendDisplay">$35,000</span>
                   </div>
                   <input type="range" class="spend-slider" id="spendSlider" min="5000" max="200000" step="2500" value="35000">
@@ -1518,7 +1518,7 @@
               <div style="margin-top: 24px; padding: 16px; background: rgba(56, 189, 248, 0.05); border: 1px solid rgba(56, 189, 248, 0.2); border-radius: 12px; display: flex; align-items: center; justify-content: space-between;">
                 <div>
                   <div style="font-size: 0.8rem; text-transform: uppercase; color: var(--text-muted); font-family: var(--font-mono);">Current Base</div>
-                  <div style="font-size: 0.95rem; font-weight: 700; color: #fff;">New Delhi, India (IST, UTC+5:30)</div>
+                  <div style="font-size: 0.95rem; font-weight: 700; color: var(--text-primary);">New Delhi, India (IST, UTC+5:30)</div>
                 </div>
                 <a href="Dilip_Kumar_Resume.pdf" target="_blank" class="btn-secondary" style="padding: 8px 16px; font-size: 0.84rem;">
                   <span>Resume (PDF) ↗</span>
@@ -1610,17 +1610,17 @@
         <button class="modal-close-btn" id="modalCloseBtn" aria-label="Close modal">&times;</button>
         
         <span class="section-tag tag-cyan" style="margin-bottom: 12px;" id="modalImpact">Architectural Blueprint</span>
-        <h2 id="modalTitle" style="font-size: 1.8rem; margin-bottom: 6px; color: #fff;">Project Title</h2>
+        <h2 id="modalTitle" style="font-size: 1.8rem; margin-bottom: 6px;">Project Title</h2>
         <div id="modalClient" style="font-size: 0.95rem; font-weight: 600; color: var(--azure-cyan); margin-bottom: 24px;">Enterprise Environment</div>
 
         <div style="margin-bottom: 20px;">
           <h4 style="font-size: 1rem; color: #fbbf24; text-transform: uppercase; font-family: var(--font-mono); margin-bottom: 8px;">1. Engineering Challenge &amp; Scope</h4>
-          <p id="modalProblem" style="font-size: 0.94rem; color: #cbd5e1; line-height: 1.65;"></p>
+          <p id="modalProblem" class="modal-challenge-text"></p>
         </div>
 
         <div style="margin-bottom: 20px;">
           <h4 style="font-size: 1rem; color: #38bdf8; text-transform: uppercase; font-family: var(--font-mono); margin-bottom: 8px;">2. Engineered Architecture &amp; Delivery</h4>
-          <p id="modalSolution" style="font-size: 0.94rem; color: #cbd5e1; line-height: 1.65;"></p>
+          <p id="modalSolution" class="modal-challenge-text"></p>
         </div>
 
         <!-- Dedicated Architectural Topology Blueprint Diagram -->
