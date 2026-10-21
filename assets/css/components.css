@@ -413,28 +413,30 @@
   font-family: var(--font-mono);
   font-size: 0.74rem;
   font-weight: 700;
-  letter-spacing: 0.06em;
-  color: #f1f5f9;
+  letter-spacing: 0.05em;
+  color: #38bdf8;
 }
 
 .pill-badge-practice {
   font-family: var(--font-mono);
   font-size: 0.72rem;
-  font-weight: 600;
-  color: #38bdf8;
+  font-weight: 700;
+  color: #34d399;
   letter-spacing: 0.04em;
 }
 
 .pill-badge-sep {
-  color: rgba(255, 255, 255, 0.25);
-  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.35);
+  font-size: 0.72rem;
+  font-weight: 600;
+  margin-inline: 2px;
 }
 
 .pill-badge-role {
   font-family: var(--font-mono);
-  font-size: 0.7rem;
-  font-weight: 600;
-  color: var(--text-tertiary);
+  font-size: 0.71rem;
+  font-weight: 700;
+  color: #c084fc;
   letter-spacing: 0.04em;
 }
 
@@ -3428,15 +3430,23 @@
 }
 
 [data-theme="light"] .pill-badge-company {
-  color: #0284c7 !important;
+  color: #0284c7 !important; /* Deep Azure Blue */
+  font-weight: 700 !important;
 }
 
 [data-theme="light"] .pill-badge-practice {
-  color: #059669 !important;
+  color: #059669 !important; /* Rich Emerald Green */
+  font-weight: 700 !important;
+}
+
+[data-theme="light"] .pill-badge-sep {
+  color: #94a3b8 !important; /* Slate Separator */
+  font-weight: 600 !important;
 }
 
 [data-theme="light"] .pill-badge-role {
-  color: #0f172a !important;
+  color: #7c3aed !important; /* Royal Amethyst Purple */
+  font-weight: 700 !important;
 }
 
 [data-theme="light"] .hero-title {
