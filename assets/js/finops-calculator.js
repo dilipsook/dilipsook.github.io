@@ -31,7 +31,9 @@
     const pct = ((val - min) / (max - min)) * 100;
     const isLight = document.documentElement.getAttribute('data-theme') === 'light';
     const emptyTrack = isLight ? '#cbd5e1' : 'rgba(255, 255, 255, 0.18)';
-    slider.style.background = 'linear-gradient(to right, #10b981 0%, #10b981 ' + pct + '%, ' + emptyTrack + ' ' + pct + '%, ' + emptyTrack + ' 100%)';
+    const fillGradient = 'linear-gradient(to right, #10b981 0%, #10b981 ' + pct + '%, ' + emptyTrack + ' ' + pct + '%, ' + emptyTrack + ' 100%)';
+    slider.style.setProperty('background', fillGradient, 'important');
+    slider.style.setProperty('--slider-pct', pct + '%');
   }
 
   function updateCalculator() {
