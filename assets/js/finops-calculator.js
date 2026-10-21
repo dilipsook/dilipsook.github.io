@@ -24,6 +24,16 @@
     return '$' + Math.round(val).toLocaleString();
   }
 
+  function updateSliderTrack() {
+    const min = parseFloat(slider.min) || 5000;
+    const max = parseFloat(slider.max) || 200000;
+    const val = parseFloat(slider.value) || 35000;
+    const pct = ((val - min) / (max - min)) * 100;
+    const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+    const emptyTrack = isLight ? '#cbd5e1' : 'rgba(255, 255, 255, 0.18)';
+    slider.style.background = 'linear-gradient(to right, #10b981 0%, #10b981 ' + pct + '%, ' + emptyTrack + ' ' + pct + '%, ' + emptyTrack + ' 100%)';
+  }
+
   function updateCalculator() {
     const monthlySpend = parseFloat(slider.value) || 35000;
     spendDisplay.textContent = formatCurrency(monthlySpend);
@@ -55,8 +65,14 @@
     if (barRI) barRI.style.width = Math.min((riSavings / maxPart) * 100, 100) + '%';
     if (barIdle) barIdle.style.width = Math.min((idleSavings / maxPart) * 100, 100) + '%';
     if (barStorage) barStorage.style.width = Math.min((storageSavings / maxPart) * 100, 100) + '%';
+
+    updateSliderTrack();
   }
 
   slider.addEventListener('input', updateCalculator);
+  document.getElementById('themeToggleBtn')?.addEventListener('click', () => {
+    setTimeout(updateSliderTrack, 60);
+  });
+
   updateCalculator();
 })();
