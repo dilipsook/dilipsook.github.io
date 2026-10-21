@@ -72,7 +72,11 @@
         const x = i * (barWidth + 3) + 2;
         const y = canvas.height - b.height;
         ctx.beginPath();
-        ctx.roundRect(x, y, barWidth, b.height, [2, 2, 0, 0]);
+        if (ctx.roundRect) {
+          ctx.roundRect(x, y, barWidth, b.height, [2, 2, 0, 0]);
+        } else {
+          ctx.rect(x, y, barWidth, b.height);
+        }
         ctx.fill();
       }
 
