@@ -56,6 +56,12 @@ export function initFinOpsCalculator() {
     const annualSavings = totalMonthlySavings * 12;
 
     savingsDisplay.textContent = formatCurrency(totalMonthlySavings);
+    savingsDisplay.style.textShadow = '0 0 20px rgba(52, 211, 153, 0.7)';
+    if (window._finopsTimer) clearTimeout(window._finopsTimer);
+    window._finopsTimer = setTimeout(() => {
+      savingsDisplay.style.textShadow = 'none';
+    }, 300);
+
     if (annualSavingsDisplay) {
       annualSavingsDisplay.textContent = formatCurrency(annualSavings);
     }

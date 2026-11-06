@@ -1,0 +1,505 @@
+/* ===================================================================
+   ANTIGRAVITY LUXURY MOTION & ANIMATION SYSTEM (v2)
+   High-performance GPU-accelerated motion choreography
+   Matches modern editorial tech portfolios (Linear / Touquir / Stripe)
+   =================================================================== */
+
+/* -------------------------------------------------------------------
+   1. SCROLL-TRIGGERED REVEALS (IntersectionObserver)
+   ------------------------------------------------------------------- */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(28px);
+  filter: blur(4px);
+  transition: opacity 0.8s var(--ease-out-expo, cubic-bezier(0.16, 1, 0.3, 1)),
+              transform 0.8s var(--ease-out-expo, cubic-bezier(0.16, 1, 0.3, 1)),
+              filter 0.8s var(--ease-out-expo, cubic-bezier(0.16, 1, 0.3, 1));
+  will-change: opacity, transform, filter;
+}
+
+.reveal-on-scroll.is-revealed {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+  filter: blur(0) !important;
+}
+
+/* Stagger Delays for Grid Cascades */
+.stagger-1 { transition-delay: 70ms !important; }
+.stagger-2 { transition-delay: 140ms !important; }
+.stagger-3 { transition-delay: 210ms !important; }
+.stagger-4 { transition-delay: 280ms !important; }
+.stagger-5 { transition-delay: 350ms !important; }
+.stagger-6 { transition-delay: 420ms !important; }
+
+/* -------------------------------------------------------------------
+   2. INTERACTIVE CARD SPOTLIGHT / FLASHLIGHT
+   ------------------------------------------------------------------- */
+.spotlight-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.spotlight-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    480px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    rgba(227, 43, 60, 0.15),
+    transparent 65%
+  );
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s ease;
+  z-index: 2;
+  mix-blend-mode: screen;
+}
+
+.spotlight-card:hover::after {
+  opacity: 1;
+}
+
+/* Spotlight Variations */
+.spotlight-card.spotlight-cyan::after {
+  background: radial-gradient(
+    480px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    rgba(0, 240, 255, 0.14),
+    transparent 65%
+  );
+}
+
+.spotlight-card.spotlight-emerald::after {
+  background: radial-gradient(
+    480px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    rgba(16, 185, 129, 0.15),
+    transparent 65%
+  );
+}
+
+/* -------------------------------------------------------------------
+   3. 3D INTERACTIVE CARD PERSPECTIVE TILT
+   ------------------------------------------------------------------- */
+.tilt-card {
+  transform-style: preserve-3d;
+  transition: transform 0.5s var(--ease-out-expo, cubic-bezier(0.16, 1, 0.3, 1)),
+              box-shadow 0.5s var(--ease-out-expo, cubic-bezier(0.16, 1, 0.3, 1));
+  will-change: transform;
+}
+
+.tilt-card:hover {
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.85), 
+              0 0 35px rgba(227, 43, 60, 0.22);
+}
+
+/* -------------------------------------------------------------------
+   4. MAGNETIC BUTTON PHYSICS
+   ------------------------------------------------------------------- */
+.magnetic-btn {
+  display: inline-flex;
+  transition: transform 0.28s cubic-bezier(0.2, 0, 0.2, 1),
+              box-shadow 0.28s ease;
+  will-change: transform;
+}
+
+/* -------------------------------------------------------------------
+   5. SHIMMER REFLECTION SHEEN SWEEP
+   ------------------------------------------------------------------- */
+@keyframes shimmerSweep {
+  0% {
+    transform: translateX(-160%) skewX(-22deg);
+  }
+  30%, 100% {
+    transform: translateX(260%) skewX(-22deg);
+  }
+}
+
+.btn-primary-dispatch,
+.btn-executive-resume,
+.hero-name-pill,
+.btn-skills-reel-play {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary-dispatch::before,
+.btn-executive-resume::before,
+.btn-skills-reel-play::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 45%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.28) 50%,
+    transparent 100%
+  );
+  transform: translateX(-160%) skewX(-22deg);
+  animation: shimmerSweep 4.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.hero-name-pill::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 40%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.35) 50%,
+    transparent 100%
+  );
+  transform: translateX(-160%) skewX(-22deg);
+  animation: shimmerSweep 5.5s cubic-bezier(0.4, 0, 0.2, 1) infinite 1.5s;
+  pointer-events: none;
+}
+
+/* -------------------------------------------------------------------
+   6. RADAR SONAR BEACON EXPANSION WAVES
+   ------------------------------------------------------------------- */
+@keyframes sonarWave {
+  0% {
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.75);
+  }
+  65% {
+    box-shadow: 0 0 0 10px rgba(16, 185, 129, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+  }
+}
+
+@keyframes sonarWaveCrimson {
+  0% {
+    box-shadow: 0 0 0 0 rgba(227, 43, 60, 0.85);
+  }
+  65% {
+    box-shadow: 0 0 0 10px rgba(227, 43, 60, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(227, 43, 60, 0);
+  }
+}
+
+.live-beacon,
+.telemetry-live-dot,
+.probe-live-dot {
+  animation: sonarWave 2.2s cubic-bezier(0, 0, 0.2, 1) infinite !important;
+}
+
+.kicker-dot {
+  animation: sonarWaveCrimson 2.5s cubic-bezier(0, 0, 0.2, 1) infinite !important;
+}
+
+/* -------------------------------------------------------------------
+   7. FLOATING LEVITATION FOR CERTIFICATION BADGES
+   ------------------------------------------------------------------- */
+@keyframes floatBadgeSoft {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-6px) rotate(0.8deg);
+  }
+}
+
+.cert-card {
+  animation: floatBadgeSoft 4.8s ease-in-out infinite;
+  transform-origin: center center;
+}
+
+.cert-card:nth-child(2) { animation-delay: 0.9s; }
+.cert-card:nth-child(3) { animation-delay: 1.8s; }
+.cert-card:nth-child(4) { animation-delay: 2.7s; }
+.cert-card:nth-child(5) { animation-delay: 3.6s; }
+
+.cert-card:hover {
+  animation-play-state: paused;
+  transform: translateY(-8px) scale(1.02);
+  border-color: rgba(0, 240, 255, 0.5) !important;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.8), 0 0 24px rgba(0, 240, 255, 0.25) !important;
+}
+
+/* -------------------------------------------------------------------
+   8. CONTINUOUS INFINITE TICKER / MARQUEE
+   ------------------------------------------------------------------- */
+.marquee-wrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  margin-top: 20px;
+  mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 8%, black 92%, transparent 100%);
+}
+
+.marquee-track {
+  display: flex;
+  gap: 12px;
+  width: max-content;
+  animation: marqueeGlideLeft 34s linear infinite;
+  will-change: transform;
+}
+
+.marquee-track.track-reverse {
+  animation: marqueeGlideRight 38s linear infinite;
+  margin-top: 10px;
+}
+
+.marquee-wrapper:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+.client-chip {
+  white-space: nowrap !important;
+  flex-shrink: 0 !important;
+}
+
+@keyframes marqueeGlideLeft {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes marqueeGlideRight {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+
+/* -------------------------------------------------------------------
+   9. BREATHING AMBIENT ATMOSPHERE GLOW
+   ------------------------------------------------------------------- */
+@keyframes breatheAmbient {
+  0%, 100% {
+    opacity: 0.12;
+    transform: scale(1) translate(0, 0);
+  }
+  50% {
+    opacity: 0.20;
+    transform: scale(1.12) translate(18px, -14px);
+  }
+}
+
+.ambient-glow {
+  animation: breatheAmbient 11s ease-in-out infinite alternate !important;
+  will-change: transform, opacity;
+}
+
+.ambient-glow-bottom {
+  animation: breatheAmbient 15s ease-in-out infinite alternate-reverse !important;
+  will-change: transform, opacity;
+}
+
+/* -------------------------------------------------------------------
+   10. HERO WATERMARK SUBTLE DRIFT
+   ------------------------------------------------------------------- */
+@keyframes watermarkFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.hero-giant-watermark {
+  animation: watermarkFloat 9s ease-in-out infinite !important;
+}
+
+/* -------------------------------------------------------------------
+   11. METRIC NUMBER ODOMETER FINISH GLOW
+   ------------------------------------------------------------------- */
+@keyframes metricGlowFinish {
+  0% {
+    text-shadow: 0 0 0 rgba(227, 43, 60, 0);
+    transform: scale(1);
+  }
+  50% {
+    text-shadow: 0 0 20px rgba(227, 43, 60, 0.9), 0 0 35px rgba(227, 43, 60, 0.5);
+    transform: scale(1.04);
+  }
+  100% {
+    text-shadow: 0 0 0 rgba(227, 43, 60, 0);
+    transform: scale(1);
+  }
+}
+
+.metric-finished-glow {
+  animation: metricGlowFinish 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* -------------------------------------------------------------------
+   12. TIMELINE ANIMATED PULSE BEAM
+   ------------------------------------------------------------------- */
+@keyframes timelinePulseBeam {
+  0% {
+    top: 0%;
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  85% {
+    opacity: 1;
+  }
+  100% {
+    top: 100%;
+    opacity: 0;
+  }
+}
+
+.timeline-wrap {
+  position: relative;
+}
+
+.timeline-wrap::before {
+  content: '';
+  position: absolute;
+  left: 20px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: rgba(255, 255, 255, 0.08);
+  pointer-events: none;
+}
+
+.timeline-wrap::after {
+  content: '';
+  position: absolute;
+  left: 19px;
+  width: 4px;
+  height: 80px;
+  background: linear-gradient(180deg, transparent, var(--accent, #e32b3c), transparent);
+  border-radius: 2px;
+  box-shadow: 0 0 12px var(--accent, #e32b3c);
+  animation: timelinePulseBeam 5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* -------------------------------------------------------------------
+   13. CARD HOVER MICRO-INTERACTIONS & CHIP BOUNCES
+   ------------------------------------------------------------------- */
+.feature-card,
+.flagship-sub-card,
+.project-card,
+.matrix-card,
+.story-card,
+.tech-spec-card,
+.contact-info-card,
+.contact-form-card,
+.skill-item-card {
+  transition: transform 0.38s var(--ease-out-expo, cubic-bezier(0.16, 1, 0.3, 1)),
+              box-shadow 0.38s var(--ease-out-expo, cubic-bezier(0.16, 1, 0.3, 1)),
+              border-color 0.38s var(--ease-out-expo, cubic-bezier(0.16, 1, 0.3, 1)) !important;
+}
+
+.feature-card:hover,
+.flagship-sub-card:hover,
+.project-card:hover,
+.matrix-card:hover,
+.tech-spec-card:hover {
+  transform: translateY(-6px) !important;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.8), 0 0 26px rgba(227, 43, 60, 0.18) !important;
+  border-color: rgba(227, 43, 60, 0.45) !important;
+}
+
+.story-card:hover {
+  transform: translateY(-6px) scale(1.01) !important;
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.85), 0 0 30px rgba(227, 43, 60, 0.22) !important;
+}
+
+.story-card img {
+  transition: transform 0.6s cubic-bezier(0.2, 1, 0.3, 1) !important;
+}
+
+.story-card:hover img {
+  transform: scale(1.05) !important;
+}
+
+.project-card .project-tag,
+.matrix-card .matrix-tag,
+.tech-spec-chip {
+  transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+}
+
+.project-card .project-tag:hover,
+.matrix-card .matrix-tag:hover,
+.tech-spec-chip:hover {
+  transform: translateY(-2px) scale(1.05);
+  background: rgba(227, 43, 60, 0.25) !important;
+  color: #ffffff !important;
+}
+
+/* -------------------------------------------------------------------
+   14. FINOPS BAR PROGRESS SHIMMER
+   ------------------------------------------------------------------- */
+@keyframes barGlowShimmer {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.breakdown-bar-fill {
+  background: linear-gradient(90deg, #10b981, #00f0ff, #10b981) !important;
+  background-size: 200% 100% !important;
+  animation: barGlowShimmer 4s ease infinite !important;
+  transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  box-shadow: 0 0 12px rgba(16, 185, 129, 0.45) !important;
+}
+
+/* -------------------------------------------------------------------
+   15. AUDIO NAVBAR AURA & MOTION BUTTON STAR
+   ------------------------------------------------------------------- */
+@keyframes audioGlowPulse {
+  0%, 100% {
+    box-shadow: 0 0 10px rgba(227, 43, 60, 0.4), inset 0 0 6px rgba(227, 43, 60, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(227, 43, 60, 0.8), inset 0 0 12px rgba(227, 43, 60, 0.4);
+  }
+}
+
+.nav-audio-active {
+  animation: audioGlowPulse 2.5s ease-in-out infinite !important;
+}
+
+@keyframes starSpin {
+  0% { transform: rotate(0deg) scale(1); }
+  50% { transform: rotate(180deg) scale(1.15); }
+  100% { transform: rotate(360deg) scale(1); }
+}
+
+.btn-motion:hover .nav-motion-icon {
+  animation: starSpin 3s linear infinite;
+  color: var(--accent);
+}
+
+/* -------------------------------------------------------------------
+   16. ACCESSIBILITY OVERRIDE (prefers-reduced-motion)
+   ------------------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .reveal-on-scroll {
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
+    transition: none !important;
+  }
+  .cert-card,
+  .ambient-glow,
+  .ambient-glow-bottom,
+  .hero-giant-watermark,
+  .btn-primary-dispatch::before,
+  .btn-executive-resume::before,
+  .hero-name-pill::after,
+  .marquee-track,
+  .timeline-wrap::after,
+  .breakdown-bar-fill,
+  .nav-audio-active {
+    animation: none !important;
+  }
+}

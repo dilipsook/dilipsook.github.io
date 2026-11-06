@@ -382,17 +382,18 @@ export function initVisualizer() {
         const curX = p1.x + (p2.x - p1.x) * p.progress;
         const curY = p1.y + (p2.y - p1.y) * p.progress;
 
+        const pulseColor = p.color || color;
         ctx.save();
-        ctx.shadowColor = color;
-        ctx.shadowBlur = 8;
+        ctx.shadowColor = pulseColor;
+        ctx.shadowBlur = 12;
         ctx.fillStyle = '#ffffff';
         ctx.beginPath();
         ctx.arc(curX, curY, p.size, 0, Math.PI * 2);
         ctx.fill();
 
-        ctx.fillStyle = color;
+        ctx.fillStyle = pulseColor;
         ctx.beginPath();
-        ctx.arc(curX, curY, p.size * 0.6, 0, Math.PI * 2);
+        ctx.arc(curX, curY, p.size * 0.65, 0, Math.PI * 2);
         ctx.fill();
         ctx.restore();
       }
@@ -420,13 +421,24 @@ export function initVisualizer() {
       : '<span>⚡ Simulate 15K Req/s Traffic Surge</span>';
 
     if (isTrafficSpike) {
-      packets.forEach(p => { p.speed *= 2.8; p.size = 5; });
+      packets = [];
+      const colors = ['#00f0ff', '#38bdf8', '#ff3344', '#10b981', '#f59e0b'];
+      for (let i = 0; i < 28; i++) {
+        packets.push({
+          from: Math.floor(Math.random() * (centers.length - 1)),
+          progress: Math.random(),
+          speed: 0.012 + Math.random() * 0.022,
+          size: 4 + Math.random() * 3,
+          color: colors[i % colors.length]
+        });
+      }
       if (inspectorMetrics) {
         const surgeBadge = document.createElement('div');
         surgeBadge.className = 'telemetry-metric-item';
         surgeBadge.style.background = 'rgba(239, 68, 68, 0.15)';
         surgeBadge.style.border = '1px solid #ef4444';
-        surgeBadge.innerHTML = '<span class="metric-label" style="color:#fca5a5;">LIVE SURGE</span><span class="metric-value" style="color:#f87171;">15,420 RPS</span>';
+        surgeBadge.style.animation = 'pulseSpike 0.8s infinite';
+        surgeBadge.innerHTML = '<span class="metric-label" style="color:#fca5a5;">LIVE SURGE</span><span class="metric-value" style="color:#f87171; font-weight:800;">15,420 RPS ⚡</span>';
         inspectorMetrics.prepend(surgeBadge);
       }
     } else {

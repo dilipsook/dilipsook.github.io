@@ -19,6 +19,7 @@ import { renderCertificationsModule } from './modules/certifications.js';
 import { initContactActions } from './modules/contact.js';
 import { initSwarm, toggleSwarm } from './modules/swarm.js';
 import { initNavbar } from './modules/navbar.js';
+import { initAnimations } from './modules/animations.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   // 1. Populate Hero Content & Verified Metrics
@@ -65,6 +66,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 12. Initialize Floating Luxury Pill Navbar & Action Hub
   initNavbar();
+
+  // 13. Initialize Antigravity Motion & Animation Systems
+  initAnimations();
 });
 
 function populateHero() {

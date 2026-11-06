@@ -17,6 +17,9 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
+  min-width: 0;
+  max-width: 100%;
+  overflow: hidden;
 }
 
 .philosophy-text {
@@ -165,6 +168,9 @@
   margin-top: 36px;
   padding-top: 24px;
   border-top: 1px solid var(--divider);
+  width: 100%;
+  max-width: 100%;
+  overflow: hidden;
 }
 
 .clients-kicker {
