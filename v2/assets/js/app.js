@@ -1,11 +1,13 @@
 /**
- * MASTER APPLICATION ENTRY POINT
+ * MASTER APPLICATION ENTRY POINT (v2)
  * Noir & Crimson Editorial Architecture System
  * Matches reference video 1:1 and integrates all career details from root index.html.
  */
 
 import { siteConfig } from './config/site.js';
 import { clientLogos } from './data/experience.js';
+import { initSkillsReel } from './modules/reel.js';
+import { initVisualizer } from './modules/visualizer.js';
 import { renderDeployments } from './modules/deployments.js';
 import { renderExperience } from './modules/experience.js';
 import { initProjectsModule } from './modules/projects.js';
@@ -13,6 +15,7 @@ import { renderSystemsMatrix } from './modules/matrix.js';
 import { renderSkillsModule } from './modules/skills.js';
 import { renderGalleryModule } from './modules/gallery.js';
 import { initFinOpsCalculator } from './modules/finops.js';
+import { renderCertificationsModule } from './modules/certifications.js';
 import { initContactActions } from './modules/contact.js';
 import { initSwarm, toggleSwarm } from './modules/swarm.js';
 
@@ -20,8 +23,14 @@ document.addEventListener('DOMContentLoaded', () => {
   // 1. Populate Hero Content & Verified Metrics
   populateHero();
 
-  // 2. Populate Philosophy, Technical Spec Cards & Certifications
+  // 1B. Initialize AI Architect Reel Briefing Deck (Matches Image 5)
+  initSkillsReel();
+
+  // 2. Populate Philosophy & Client Relationships
   populatePhilosophy();
+
+  // 2B. Initialize Interactive Multi-AZ Architecture Topology Visualizer (Matches Image 4)
+  initVisualizer();
 
   // 3. Render Flagship Deployments (1 Primary 7-Layer Stack Card + 3-Column Secondary Grid)
   renderDeployments('flagshipContainer');
@@ -38,19 +47,14 @@ document.addEventListener('DOMContentLoaded', () => {
   // 7. Render Multi-Cloud Capabilities Matrix (Skills Grid with Cloud Icons)
   renderSkillsModule('skillsNavBar', 'skillsGridContainer');
 
-  // 8. Render Architectural Mindset & Vision Photo Gallery (All 4 Cards)
+  // 8. Render Architectural Mindset & Vision Photo Gallery (All 4 Cards - Matches Image 2)
   renderGalleryModule('storyGridContainer');
 
-  // 9. Initialize Interactive FinOps ROI Calculator
-  initFinOpsCalculator(
-    'finopsSpendSlider',
-    'finopsSpendDisplay',
-    'finopsAnnualOutput',
-    'finopsMonthlyOutput',
-    'breakdownRightsizing',
-    'breakdownSP',
-    'breakdownWaste'
-  );
+  // 9. Initialize Interactive FinOps ROI Optimization Framework (Matches Image 1)
+  initFinOpsCalculator();
+
+  // 9B. Render Industry Certifications & Accolades (5 Verified Badges + Honors & Education - Matches Image 3)
+  renderCertificationsModule('certsContainer', 'honorsContainer', 'eduContainer');
 
   // 10. Initialize Direct Contact Actions & "Send a Note" Form
   initContactActions();
@@ -163,15 +167,6 @@ function populatePhilosophy() {
             <span class="tech-spec-chip">Audit Trails</span>
           </div>
         </div>
-      </div>
-
-      <!-- Industry Certifications Badges -->
-      <div class="cert-badges-strip">
-        ${siteConfig.certifications.map(c => `
-          <div class="cert-badge-wrap" title="${c.title} (${c.id})">
-            <img src="${c.badge}" alt="${c.title}" loading="lazy">
-          </div>
-        `).join('')}
       </div>
     `;
   }

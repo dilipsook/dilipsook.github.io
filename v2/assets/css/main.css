@@ -589,8 +589,12 @@ a {
 /* Right Hero Visual: Noir Portrait Frame */
 .hero-visual {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   position: relative;
+  width: 100%;
+  max-width: 420px;
+  margin-inline: auto;
 }
 
 .portrait-noir-card {

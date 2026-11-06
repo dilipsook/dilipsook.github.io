@@ -1,10 +1,10 @@
 /**
- * SWARM MULTIPLAYER CURSOR ANIMATION MODULE
+ * SWARM MULTIPLAYER CURSOR ANIMATION MODULE (v2)
  * Faithful implementation of the Swarm experience from the reference video:
  * - 20 colorful boids flocking using Craig Reynolds algorithm
  * - Blueprint bounding box inspection with technical corner brackets
  * - Autonomous smooth auto-scrolling tour across key sections
- * - Interactive element trigger simulations (clicking layer tabs)
+ * - Interactive element trigger simulations (visualizer tabs, traffic surge, finops slider)
  * - Video HUD bar: [🔴 🟡 🟢 🔵] 20 agents 117 / 252 layers — Touring 1x ⏸ ✕
  * - Tour completion banner: Rebuilt by 20 agents in 49.6s [ Go Live ] [ Replay ]
  */
@@ -259,12 +259,12 @@ class SwarmEngine {
     this.assignTarget();
     this.loop();
 
-    // Tour timer every 4.5 seconds
+    // Tour timer every 4.2 seconds
     this.tourInterval = setInterval(() => {
       if (!this.paused) {
         this.nextTarget();
       }
-    }, 4500);
+    }, 4200);
 
     const btn = document.getElementById('btnNavMotion');
     if (btn) btn.classList.add('active');
@@ -279,7 +279,6 @@ class SwarmEngine {
     this.hud.classList.remove('visible');
     this.targetBox.style.display = 'none';
 
-    // Clear boid elements
     for (let b of this.boids) {
       if (b.el && b.el.parentNode) b.el.parentNode.removeChild(b.el);
     }
@@ -309,18 +308,19 @@ class SwarmEngine {
     const candidates = [
       { sel: '.hero-name-pill', label: 'NAME: DILIP.' },
       { sel: '.portrait-noir-card', label: 'PORTRAIT: SOVEREIGN' },
+      { sel: '#skillsReelDeck', label: 'AI ARCHITECT REEL' },
       { sel: '.philosophy-quote-box', label: 'PHILOSOPHY' },
       { sel: '.tech-spec-cards-wrap', label: 'TECH SPECS' },
-      { sel: '#flagshipPrimaryCard', label: 'CORE ECOSYSTEM: LIMS' },
-      { sel: '#layerTabsContainer', label: '7-LAYER ARCHITECTURE' },
-      { sel: '#flagship-dhani', label: 'FINOPS ENGINE: $60K/MO' },
-      { sel: '#flagship-loantap', label: 'FINTECH PLATFORM' },
-      { sel: '#exp-cognizant', label: 'EXPERIENCE: COGNIZANT' },
-      { sel: '.matrix-grid', label: 'SYSTEMS MATRIX' },
-      { sel: '.skills-grid', label: 'CAPABILITIES STACK' },
-      { sel: '.story-grid', label: 'ARCHITECTURAL VISION' },
-      { sel: '.finops-calculator-deck', label: 'FINOPS CALCULATOR' },
-      { sel: '.contact-grid', label: 'DIRECT DISPATCH' }
+      { sel: '#visualizer', label: 'TOPOLOGY SIMULATOR: MULTI-AZ' },
+      { sel: '#flagshipContainer', label: 'FLAGSHIP DEPLOYMENTS' },
+      { sel: '#experience', label: 'CAREER TIMELINE' },
+      { sel: '#projects', label: 'ENTERPRISE MISSIONS' },
+      { sel: '#matrix', label: 'SYSTEMS MATRIX' },
+      { sel: '#skills', label: 'CAPABILITIES STACK' },
+      { sel: '#vision', label: 'ARCHITECTURAL VISION' },
+      { sel: '#finops', label: 'FINOPS FRAMEWORK: $134K' },
+      { sel: '#certifications', label: 'VERIFIED CREDENTIALS' },
+      { sel: '#contact', label: 'DIRECT DISPATCH' }
     ];
 
     this.targets = [];
@@ -335,7 +335,6 @@ class SwarmEngine {
   assignTarget() {
     if (!this.targets || this.targets.length === 0) return;
 
-    // Check if reached end of tour
     if (this.currentTargetIndex >= this.targets.length) {
       this.onTourComplete();
       return;
@@ -349,7 +348,7 @@ class SwarmEngine {
     const rect = el.getBoundingClientRect();
     const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
     const absoluteElementTop = rect.top + scrollTop;
-    const targetScrollY = Math.max(0, absoluteElementTop - window.innerHeight / 3);
+    const targetScrollY = Math.max(0, absoluteElementTop - window.innerHeight / 3.5);
 
     window.scrollTo({
       top: targetScrollY,
@@ -359,10 +358,33 @@ class SwarmEngine {
     // Update blueprint bounding box position
     this.updateTargetBoundingBox();
 
-    // If target is 7-layer architecture, simulate clicking through layers!
-    if (item.label.includes('7-LAYER')) {
-      const layerIdx = (this.currentTargetIndex % 7);
-      selectLayer(layerIdx);
+    // Interactive Trigger Simulations:
+    // 1. If at Visualizer, click traffic surge button after 1s!
+    if (item.label.includes('TOPOLOGY SIMULATOR')) {
+      setTimeout(() => {
+        const spikeBtn = document.getElementById('simulateTrafficBtn');
+        if (spikeBtn && !spikeBtn.classList.contains('active')) {
+          spikeBtn.click();
+          setTimeout(() => {
+            if (spikeBtn.classList.contains('active')) spikeBtn.click();
+          }, 2400);
+        }
+      }, 800);
+    }
+
+    // 2. If at FinOps, animate slider spend!
+    if (item.label.includes('FINOPS')) {
+      setTimeout(() => {
+        const slider = document.getElementById('spendSlider');
+        if (slider) {
+          slider.value = 65000;
+          slider.dispatchEvent(new Event('input'));
+          setTimeout(() => {
+            slider.value = 35000;
+            slider.dispatchEvent(new Event('input'));
+          }, 2000);
+        }
+      }, 700);
     }
 
     // Update HUD counters
@@ -394,8 +416,8 @@ class SwarmEngine {
 
     this.boids.forEach((boid, idx) => {
       const angle = (idx / this.boids.length) * Math.PI * 2;
-      const radiusX = Math.min(rect.width / 2 + 30, 200);
-      const radiusY = Math.min(rect.height / 2 + 30, 140);
+      const radiusX = Math.min(rect.width / 2 + 30, 220);
+      const radiusY = Math.min(rect.height / 2 + 30, 150);
       boid.target = {
         x: centerX + Math.cos(angle) * radiusX,
         y: centerY + Math.sin(angle) * radiusY
@@ -409,7 +431,6 @@ class SwarmEngine {
   }
 
   onTourComplete() {
-    // Show completion banner matching frame_054.0s.jpg
     const elapsedSeconds = ((Date.now() - this.startTime) / 1000).toFixed(1);
     const hudContent = document.getElementById('swarmHudContent');
     const compBanner = document.getElementById('swarmCompletionBanner');
@@ -419,7 +440,6 @@ class SwarmEngine {
     if (hudContent) hudContent.style.display = 'none';
     if (compBanner) compBanner.style.display = 'flex';
 
-    // Position boids in decorative formation around the contact card
     const contactCard = document.querySelector('.contact-info-card');
     if (contactCard) {
       const rect = contactCard.getBoundingClientRect();
@@ -436,10 +456,8 @@ class SwarmEngine {
   loop() {
     if (!this.active) return;
 
-    // Continuously align target box with scroll
     this.updateTargetBoundingBox();
 
-    // Update all boids
     for (let b of this.boids) {
       b.update(this.targets, this.boids, this.speed);
     }

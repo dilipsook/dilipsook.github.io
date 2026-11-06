@@ -1,12 +1,12 @@
 /**
- * ARCHITECTURAL MINDSET & VISION GALLERY DATA
- * High-altitude perspectives on enduring cloud scale, resilience, and evolution.
+ * ARCHITECTURAL MINDSET & VISION GALLERY DATA (v2)
+ * Exact match for Image 2 and production portfolio.
  */
 
 export const galleryData = [
   {
     id: "summit",
-    badge: "Summit Vision",
+    badge: "SUMMIT VISION",
     title: "Perspective from the Summit",
     image: "assets/images/profile/14img_web.jpg",
     alt: "Perspective from the Summit — Dilip Kumar",
@@ -14,26 +14,26 @@ export const galleryData = [
   },
   {
     id: "endure",
-    badge: "Enduring Precision",
+    badge: "ENDURING PRECISION",
     title: "Built to Endure",
     image: "assets/images/profile/CF21E488_web.jpg",
     alt: "Built to Endure — Dilip Kumar",
-    quote: "Like historic monuments that withstand centuries of weather and change, cloud architecture must be engineered with rock-solid foundations. Least-privilege IAM, automated backups, compliance governance, and disaster recovery protect businesses through every unforeseen storm."
+    quote: "Like historic monuments that withstand centuries of weather and change, cloud architecture must be engineered with rock-solid foundations. Least-privilege IAM, automated backups, immutable deployments, and zero-trust policies ensure systems outlast market cycles."
   },
   {
     id: "evolution",
-    badge: "Continuous Mastery",
+    badge: "CONTINUOUS MASTERY",
     title: "Continuous Evolution",
     image: "assets/images/profile/river_mountain_web.jpg",
     alt: "Continuous Evolution — Dilip Kumar",
-    quote: "The cloud ecosystem never stands still, and neither do we. Whether orchestrating Kubernetes containers on EKS, fine-tuning Terraform modules, or pioneering AI-era FinOps automation, the drive to build cleaner, faster, and more cost-effective solutions never stops."
+    quote: "The cloud ecosystem never stands still, and neither do we. Whether orchestrating Kubernetes containers on EKS, fine-tuning Terraform modules, or pioneering AI-era FinOps automation, the drive to master new paradigms is what turns engineering into impact."
   },
   {
     id: "resilience",
-    badge: "High-Altitude Strategy",
+    badge: "HIGH-ALTITUDE STRATEGY",
     title: "Boundless Horizons & Resilience",
     image: "assets/images/profile/DSC_mountain_web.jpg",
     alt: "Boundless Horizons & Resilience — Dilip Kumar",
-    quote: "Operating at enterprise scale is like navigating high alpine terrain: every ascent requires meticulous route planning, failover redundancies, and unwavering focus. From life sciences compliance to mission-critical space enclaves, architecting for the horizon means building systems engineered to endure."
+    quote: "Operating at enterprise scale is like navigating high alpine terrain: every ascent requires meticulous route planning, failover redundancies, and unwavering focus. From life sciences compliance to high-frequency fintech, resilience is non-negotiable."
   }
 ];
