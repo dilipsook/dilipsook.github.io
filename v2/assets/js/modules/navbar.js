@@ -319,10 +319,15 @@ export function initNavbar() {
   });
 
   // =========================================================================
-  // 5. Audio Briefing Voice Narration Toggle
+  // 5. Audio Briefing Voice Narration Toggle (Enabled by Default)
   // =========================================================================
-  let isAudioActive = false;
+  let isAudioActive = true;
   if (navAudioToggleBtn && navAudioIcon) {
+    // Initial state: sound enabled by default
+    navAudioIcon.textContent = '🔊';
+    navAudioToggleBtn.style.borderColor = 'var(--accent)';
+    navAudioToggleBtn.style.boxShadow = '0 0 16px rgba(227, 43, 60, 0.4)';
+
     navAudioToggleBtn.addEventListener('click', () => {
       isAudioActive = !isAudioActive;
       if (isAudioActive) {

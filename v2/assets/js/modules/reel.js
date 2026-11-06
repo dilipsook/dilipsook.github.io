@@ -106,6 +106,10 @@ export function initSkillsReel() {
   };
   window.addEventListener('click', unlockAudio, { once: true, capture: true });
   window.addEventListener('touchstart', unlockAudio, { once: true, capture: true, passive: true });
+  window.addEventListener('pointerdown', unlockAudio, { once: true, capture: true });
+  window.addEventListener('pointermove', unlockAudio, { once: true, passive: true });
+  window.addEventListener('scroll', unlockAudio, { once: true, passive: true });
+  window.addEventListener('wheel', unlockAudio, { once: true, passive: true });
 
   function playTone(freq, type = 'sine', duration = 0.15, volume = 0.08) {
     if (isMuted) return;

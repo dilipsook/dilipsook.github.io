@@ -3588,11 +3588,14 @@
       }, true);
       // browsers only let audio start after a click/keypress on the page
       on(window, "pointerdown", () => this.unlockSound(), true);
+      on(window, "pointermove", () => this.unlockSound(), { passive: true, once: true });
       on(window, "touchstart", () => this.unlockSound(), { passive: true, capture: true });
       on(window, "touchend", () => this.unlockSound(), { passive: true, capture: true });
       on(window, "mousedown", () => this.unlockSound(), true);
       on(window, "click", () => this.unlockSound(), true);
       on(window, "keydown", () => this.unlockSound(), true);
+      on(window, "wheel", () => this.unlockSound(), { passive: true, once: true });
+      on(window, "scroll", () => this.unlockSound(), { passive: true, once: true });
       if (!this.env.isRoot) {
         on(this.view.host, "wheel", (e) => {
           e.preventDefault();
@@ -3624,9 +3627,10 @@
     }
 
     unlockSound() {
-      if (this.dead || !this.sfx || !this.sfx.blocked) return;
+      if (this.dead || !this.sfx) return;
+      this.sfx.setOn(true);
       this.sfx.resume();
-      setTimeout(() => this.renderSoundBtn(), 80);
+      setTimeout(() => this.renderSoundBtn(), 60);
     }
 
     renderSoundBtn() {
