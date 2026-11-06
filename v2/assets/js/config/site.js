@@ -29,11 +29,11 @@ export const siteConfig = {
 
   contact: {
     email: "dilipsook@gmail.com",
-    phone: "",
-    whatsapp: "",
-    linkedin: "https://www.linkedin.com/in/dilipsook/",
+    phone: "+91-8050898731 / 7760220801",
+    whatsapp: "+918050898731",
+    linkedin: "https://www.linkedin.com/in/dilipsookk",
     github: "https://github.com/dilipsook",
-    location: "Bangalore, India"
+    location: "New Delhi / Bengaluru, India"
   },
 
   metrics: [

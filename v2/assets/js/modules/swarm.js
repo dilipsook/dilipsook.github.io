@@ -1,7 +1,15 @@
 /**
  * SWARM MULTIPLAYER CURSOR ANIMATION MODULE
- * Boids flocking simulation + DOM scanning + Tour mode (Exact Video Match)
+ * Faithful implementation of the Swarm experience from the reference video:
+ * - 20 colorful boids flocking using Craig Reynolds algorithm
+ * - Blueprint bounding box inspection with technical corner brackets
+ * - Autonomous smooth auto-scrolling tour across key sections
+ * - Interactive element trigger simulations (clicking layer tabs)
+ * - Video HUD bar: [🔴 🟡 🟢 🔵] 20 agents 117 / 252 layers — Touring 1x ⏸ ✕
+ * - Tour completion banner: Rebuilt by 20 agents in 49.6s [ Go Live ] [ Replay ]
  */
+
+import { selectLayer } from './deployments.js';
 
 const AGENT_COLORS = [
   '#00f0ff', // Electric Cyan
@@ -66,19 +74,19 @@ class Boid {
       const dx = this.target.x - this.x;
       const dy = this.target.y - this.y;
       const dist = Math.hypot(dx, dy);
-      if (dist > 10) {
+      if (dist > 8) {
         targetForce.x = (dx / dist) * this.maxSpeed - this.vx;
         targetForce.y = (dy / dist) * this.maxSpeed - this.vy;
       }
     }
 
-    // Flocking: Separation
+    // Separation
     let sep = { x: 0, y: 0 };
     let count = 0;
     for (let other of boids) {
       if (other !== this) {
         let d = Math.hypot(this.x - other.x, this.y - other.y);
-        if (d > 0 && d < 45) {
+        if (d > 0 && d < 42) {
           sep.x += (this.x - other.x) / d;
           sep.y += (this.y - other.y) / d;
           count++;
@@ -91,10 +99,10 @@ class Boid {
     }
 
     // Apply forces
-    this.vx += (targetForce.x * 0.08 + sep.x * 0.15) * speedFactor;
-    this.vy += (targetForce.y * 0.08 + sep.y * 0.15) * speedFactor;
+    this.vx += (targetForce.x * 0.09 + sep.x * 0.16) * speedFactor;
+    this.vy += (targetForce.y * 0.09 + sep.y * 0.16) * speedFactor;
 
-    // Limit speed
+    // Speed limits
     const spd = Math.hypot(this.vx, this.vy);
     const effMax = this.maxSpeed * speedFactor;
     if (spd > effMax) {
@@ -105,19 +113,19 @@ class Boid {
     this.x += this.vx;
     this.y += this.vy;
 
-    // Bounds wrap
-    const w = window.innerWidth;
-    const h = window.innerHeight;
-    if (this.x < -20) this.x = w + 20;
-    if (this.x > w + 20) this.x = -20;
-    if (this.y < -20) this.y = h + 20;
-    if (this.y > h + 20) this.y = -20;
+    // Keep on screen viewport
+    const pad = 30;
+    if (this.x < pad) this.vx += 0.5;
+    if (this.x > window.innerWidth - pad) this.vx -= 0.5;
+    if (this.y < pad) this.vy += 0.5;
+    if (this.y > window.innerHeight - pad) this.vy -= 0.5;
 
+    // Update DOM position
     this.el.style.transform = `translate3d(${this.x}px, ${this.y}px, 0)`;
   }
 }
 
-class SwarmSimulation {
+class SwarmEngine {
   constructor() {
     this.active = false;
     this.paused = false;
@@ -130,42 +138,57 @@ class SwarmSimulation {
     this.targetBox = null;
     this.rafId = null;
     this.tourInterval = null;
+    this.startTime = 0;
   }
 
   init() {
-    // Create container
+    // 1. Create Swarm Layer Container
     this.container = document.createElement('div');
     this.container.id = 'swarmCanvasContainer';
     document.body.appendChild(this.container);
 
-    // Target box
+    // 2. Blueprint Inspection Bounding Box
     this.targetBox = document.createElement('div');
     this.targetBox.className = 'swarm-target-box';
+    this.targetBox.innerHTML = `
+      <div class="target-corner top-left"></div>
+      <div class="target-corner top-right"></div>
+      <div class="target-corner bottom-left"></div>
+      <div class="target-corner bottom-right"></div>
+      <div class="target-badge-label" id="targetBadgeLabel">[ SCANNING: CORE ]</div>
+    `;
     this.container.appendChild(this.targetBox);
 
-    // Create HUD matching exact video styling
+    // 3. Create Video Matching HUD
     this.hud = document.createElement('div');
     this.hud.className = 'swarm-hud-bar';
     this.hud.innerHTML = `
-      <div class="swarm-hud-dots">
-        <span class="swarm-hud-dot" style="background:#ff3344;"></span>
-        <span class="swarm-hud-dot" style="background:#ffea00;"></span>
-        <span class="swarm-hud-dot" style="background:#00ff88;"></span>
-        <span class="swarm-hud-dot" style="background:#00f0ff;"></span>
+      <div class="swarm-hud-content" id="swarmHudContent">
+        <div class="swarm-hud-dots">
+          <span class="swarm-hud-dot" style="background:#ff3344;"></span>
+          <span class="swarm-hud-dot" style="background:#ffea00;"></span>
+          <span class="swarm-hud-dot" style="background:#00ff88;"></span>
+          <span class="swarm-hud-dot" style="background:#00f0ff;"></span>
+        </div>
+        <div class="swarm-hud-text">
+          <span class="swarm-hud-counter" id="swarmAgentCounter">20 agents</span>
+          <span class="swarm-hud-layers" id="swarmLayersCounter">117 / 252 layers</span>
+          <span class="swarm-hud-sep">&mdash;</span>
+          <span class="swarm-hud-status-badge" id="swarmStatusBadge">Touring</span>
+        </div>
+        <button class="swarm-hud-btn active" id="btnSwarmSpeed" title="Cycle speed">1x</button>
+        <button class="swarm-hud-btn" id="btnSwarmPause" title="Pause / Play">⏸</button>
+        <button class="swarm-hud-close" id="btnSwarmClose" title="Exit Motion">✕</button>
       </div>
-      <div class="swarm-hud-text">
-        <span class="swarm-hud-counter" id="swarmAgentCounter">20 agents</span>
-        <span class="swarm-hud-layers" id="swarmLayersCounter">117 / 252 layers</span>
-        <span class="swarm-hud-sep">&mdash;</span>
-        <span class="swarm-hud-status-badge" id="swarmStatusBadge">Touring</span>
+      <div class="swarm-completion-banner" id="swarmCompletionBanner" style="display: none;">
+        <span class="completion-text">Rebuilt by 20 agents in <span id="completionTime">49.6s</span></span>
+        <button class="btn-completion-action" id="btnCompletionGoLive">Go Live</button>
+        <button class="btn-completion-action highlight" id="btnCompletionReplay">Replay</button>
       </div>
-      <button class="swarm-hud-btn active" id="btnSwarmSpeed">1x</button>
-      <button class="swarm-hud-btn" id="btnSwarmPause" title="Pause / Play">⏸</button>
-      <button class="swarm-hud-close" id="btnSwarmClose" title="Exit Motion">✕</button>
     `;
     document.body.appendChild(this.hud);
 
-    // Event listeners for HUD
+    // HUD Listeners
     document.getElementById('btnSwarmSpeed').addEventListener('click', () => {
       this.speed = this.speed === 1.0 ? 2.0 : 1.0;
       document.getElementById('btnSwarmSpeed').textContent = `${this.speed}x`;
@@ -173,12 +196,28 @@ class SwarmSimulation {
     document.getElementById('btnSwarmPause').addEventListener('click', () => this.togglePause());
     document.getElementById('btnSwarmClose').addEventListener('click', () => this.stop());
 
-    // Keyboard shortcut Alt + Shift + S
+    // Completion Banner Listeners
+    document.getElementById('btnCompletionGoLive').addEventListener('click', () => this.stop());
+    document.getElementById('btnCompletionReplay').addEventListener('click', () => this.replay());
+
+    // Shortcut: Alt + Shift + S
     window.addEventListener('keydown', (e) => {
       if (e.altKey && e.shiftKey && (e.key === 'S' || e.key === 's')) {
         this.toggle();
       }
     });
+
+    // Handle Window Resize
+    window.addEventListener('resize', () => {
+      if (this.active) {
+        this.updateTargetBoundingBox();
+      }
+    });
+
+    // Auto-start swarm animation matching video presentation
+    setTimeout(() => {
+      this.start();
+    }, 600);
   }
 
   toggle() {
@@ -193,15 +232,20 @@ class SwarmSimulation {
     if (this.active) return;
     this.active = true;
     this.paused = false;
+    this.startTime = Date.now();
+    this.currentTargetIndex = 0;
+
     this.container.classList.add('active');
     this.hud.classList.add('visible');
+    document.getElementById('swarmHudContent').style.display = 'flex';
+    document.getElementById('swarmCompletionBanner').style.display = 'none';
 
     // Collect DOM target anchors
     this.collectTargets();
 
-    // Spawn 20 boids matching video
+    // Spawn 20 agents matching video
     this.boids = [];
-    const count = Math.min(20, AGENT_TAGS.length);
+    const count = 20;
     for (let i = 0; i < count; i++) {
       const color = AGENT_COLORS[i % AGENT_COLORS.length];
       const tag = AGENT_TAGS[i % AGENT_TAGS.length];
@@ -215,12 +259,12 @@ class SwarmSimulation {
     this.assignTarget();
     this.loop();
 
-    // Tour timer every 4 seconds
+    // Tour timer every 4.5 seconds
     this.tourInterval = setInterval(() => {
       if (!this.paused) {
         this.nextTarget();
       }
-    }, 4200);
+    }, 4500);
 
     const btn = document.getElementById('btnNavMotion');
     if (btn) btn.classList.add('active');
@@ -235,7 +279,7 @@ class SwarmSimulation {
     this.hud.classList.remove('visible');
     this.targetBox.style.display = 'none';
 
-    // Clear boid DOM elements
+    // Clear boid elements
     for (let b of this.boids) {
       if (b.el && b.el.parentNode) b.el.parentNode.removeChild(b.el);
     }
@@ -243,6 +287,14 @@ class SwarmSimulation {
 
     const btn = document.getElementById('btnNavMotion');
     if (btn) btn.classList.remove('active');
+  }
+
+  replay() {
+    this.stop();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    setTimeout(() => {
+      this.start();
+    }, 400);
   }
 
   togglePause() {
@@ -254,73 +306,160 @@ class SwarmSimulation {
   }
 
   collectTargets() {
-    const candidates = document.querySelectorAll(
-      '.hero-name-pill, .flagship-primary-card, .flagship-col-card, .matrix-card, .portrait-noir-card, .philosophy-quote-box, .finops-calculator-deck, .contact-email-bar'
-    );
-    this.targets = Array.from(candidates);
+    const candidates = [
+      { sel: '.hero-name-pill', label: 'NAME: DILIP.' },
+      { sel: '.portrait-noir-card', label: 'PORTRAIT: SOVEREIGN' },
+      { sel: '.philosophy-quote-box', label: 'PHILOSOPHY' },
+      { sel: '.tech-spec-cards-wrap', label: 'TECH SPECS' },
+      { sel: '#flagshipPrimaryCard', label: 'CORE ECOSYSTEM: LIMS' },
+      { sel: '#layerTabsContainer', label: '7-LAYER ARCHITECTURE' },
+      { sel: '#flagship-dhani', label: 'FINOPS ENGINE: $60K/MO' },
+      { sel: '#flagship-loantap', label: 'FINTECH PLATFORM' },
+      { sel: '#exp-cognizant', label: 'EXPERIENCE: COGNIZANT' },
+      { sel: '.matrix-grid', label: 'SYSTEMS MATRIX' },
+      { sel: '.skills-grid', label: 'CAPABILITIES STACK' },
+      { sel: '.story-grid', label: 'ARCHITECTURAL VISION' },
+      { sel: '.finops-calculator-deck', label: 'FINOPS CALCULATOR' },
+      { sel: '.contact-grid', label: 'DIRECT DISPATCH' }
+    ];
+
+    this.targets = [];
+    candidates.forEach(c => {
+      const el = document.querySelector(c.sel);
+      if (el) {
+        this.targets.push({ el, label: c.label });
+      }
+    });
   }
 
   assignTarget() {
     if (!this.targets || this.targets.length === 0) return;
-    const el = this.targets[this.currentTargetIndex % this.targets.length];
+
+    // Check if reached end of tour
+    if (this.currentTargetIndex >= this.targets.length) {
+      this.onTourComplete();
+      return;
+    }
+
+    const item = this.targets[this.currentTargetIndex];
+    const el = item.el;
+    if (!el) return;
+
+    // Smoothly scroll the browser window to follow the swarm tour!
+    const rect = el.getBoundingClientRect();
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    const absoluteElementTop = rect.top + scrollTop;
+    const targetScrollY = Math.max(0, absoluteElementTop - window.innerHeight / 3);
+
+    window.scrollTo({
+      top: targetScrollY,
+      behavior: 'smooth'
+    });
+
+    // Update blueprint bounding box position
+    this.updateTargetBoundingBox();
+
+    // If target is 7-layer architecture, simulate clicking through layers!
+    if (item.label.includes('7-LAYER')) {
+      const layerIdx = (this.currentTargetIndex % 7);
+      selectLayer(layerIdx);
+    }
+
+    // Update HUD counters
+    const layersVal = Math.min(252, Math.floor(40 + (this.currentTargetIndex / this.targets.length) * 212));
+    const layersEl = document.getElementById('swarmLayersCounter');
+    if (layersEl) layersEl.textContent = `${layersVal} / 252 layers`;
+  }
+
+  updateTargetBoundingBox() {
+    if (!this.targets || !this.targets[this.currentTargetIndex]) return;
+    const item = this.targets[this.currentTargetIndex];
+    const el = item.el;
     if (!el) return;
 
     const rect = el.getBoundingClientRect();
+
+    this.targetBox.style.display = 'block';
+    this.targetBox.style.left = `${Math.max(4, rect.left - 8)}px`;
+    this.targetBox.style.top = `${Math.max(4, rect.top - 8)}px`;
+    this.targetBox.style.width = `${Math.min(window.innerWidth - 8, rect.width + 16)}px`;
+    this.targetBox.style.height = `${rect.height + 16}px`;
+
+    const labelEl = document.getElementById('targetBadgeLabel');
+    if (labelEl) labelEl.textContent = `[ ${item.label} ]`;
+
+    // Assign flock target coordinates around element
     const centerX = rect.left + rect.width / 2;
     const centerY = rect.top + rect.height / 2;
 
-    // Highlight target bounding box
-    this.targetBox.style.display = 'block';
-    this.targetBox.style.left = `${rect.left - 6}px`;
-    this.targetBox.style.top = `${rect.top - 6}px`;
-    this.targetBox.style.width = `${rect.width + 12}px`;
-    this.targetBox.style.height = `${rect.height + 12}px`;
-
-    // Assign flock points around the element
     this.boids.forEach((boid, idx) => {
       const angle = (idx / this.boids.length) * Math.PI * 2;
-      const radius = Math.min(rect.width, rect.height) * 0.45 + 35;
+      const radiusX = Math.min(rect.width / 2 + 30, 200);
+      const radiusY = Math.min(rect.height / 2 + 30, 140);
       boid.target = {
-        x: centerX + Math.cos(angle) * radius,
-        y: centerY + Math.sin(angle) * radius
+        x: centerX + Math.cos(angle) * radiusX,
+        y: centerY + Math.sin(angle) * radiusY
       };
     });
-
-    const layerEl = document.getElementById('swarmLayersCounter');
-    if (layerEl) {
-      const layerNum = (this.currentTargetIndex + 1) * 36;
-      layerEl.textContent = `${layerNum} / 252 layers`;
-    }
   }
 
   nextTarget() {
     this.currentTargetIndex++;
-    this.collectTargets();
     this.assignTarget();
+  }
+
+  onTourComplete() {
+    // Show completion banner matching frame_054.0s.jpg
+    const elapsedSeconds = ((Date.now() - this.startTime) / 1000).toFixed(1);
+    const hudContent = document.getElementById('swarmHudContent');
+    const compBanner = document.getElementById('swarmCompletionBanner');
+    const compTime = document.getElementById('completionTime');
+
+    if (compTime) compTime.textContent = `${elapsedSeconds}s`;
+    if (hudContent) hudContent.style.display = 'none';
+    if (compBanner) compBanner.style.display = 'flex';
+
+    // Position boids in decorative formation around the contact card
+    const contactCard = document.querySelector('.contact-info-card');
+    if (contactCard) {
+      const rect = contactCard.getBoundingClientRect();
+      this.boids.forEach((boid, idx) => {
+        const offset = (idx - 10) * 16;
+        boid.target = {
+          x: Math.min(window.innerWidth - 60, rect.right + 40),
+          y: rect.top + rect.height / 2 + offset
+        };
+      });
+    }
   }
 
   loop() {
     if (!this.active) return;
-    if (!this.paused) {
-      for (let b of this.boids) {
-        b.update(this.targets, this.boids, this.speed);
-      }
+
+    // Continuously align target box with scroll
+    this.updateTargetBoundingBox();
+
+    // Update all boids
+    for (let b of this.boids) {
+      b.update(this.targets, this.boids, this.speed);
     }
+
     this.rafId = requestAnimationFrame(() => this.loop());
   }
 }
 
-let swarmInstance = null;
+let engineInstance = null;
 
 export function initSwarm() {
-  if (!swarmInstance) {
-    swarmInstance = new SwarmSimulation();
-    swarmInstance.init();
+  if (!engineInstance) {
+    engineInstance = new SwarmEngine();
+    engineInstance.init();
   }
-  return swarmInstance;
+  return engineInstance;
 }
 
 export function toggleSwarm() {
-  const swarm = initSwarm();
-  swarm.toggle();
+  if (engineInstance) {
+    engineInstance.toggle();
+  }
 }

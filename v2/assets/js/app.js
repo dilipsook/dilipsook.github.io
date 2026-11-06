@@ -1,30 +1,47 @@
 /**
- * MAIN CLIENT APPLICATION ENTRY POINT
- * Noir & Crimson Portfolio System (Exact Video Match)
+ * MASTER APPLICATION ENTRY POINT
+ * Noir & Crimson Editorial Architecture System
+ * Matches reference video 1:1 and integrates all career details from root index.html.
  */
 
 import { siteConfig } from './config/site.js';
 import { clientLogos } from './data/experience.js';
 import { renderDeployments } from './modules/deployments.js';
+import { renderExperience } from './modules/experience.js';
+import { initProjectsModule } from './modules/projects.js';
 import { renderSystemsMatrix } from './modules/matrix.js';
+import { renderSkillsModule } from './modules/skills.js';
+import { renderGalleryModule } from './modules/gallery.js';
 import { initFinOpsCalculator } from './modules/finops.js';
 import { initContactActions } from './modules/contact.js';
 import { initSwarm, toggleSwarm } from './modules/swarm.js';
 
 document.addEventListener('DOMContentLoaded', () => {
-  // 1. Populate Hero Content from siteConfig
+  // 1. Populate Hero Content & Verified Metrics
   populateHero();
 
-  // 2. Populate Philosophy, Technical Specs & Certifications
+  // 2. Populate Philosophy, Technical Spec Cards & Certifications
   populatePhilosophy();
 
-  // 3. Render Flagship Deployments (1 Primary Hero Card + 3-Column Grid)
+  // 3. Render Flagship Deployments (1 Primary 7-Layer Stack Card + 3-Column Secondary Grid)
   renderDeployments('flagshipContainer');
 
-  // 4. Render Systems Matrix & Modal (with arrow icons)
+  // 4. Render Professional Journey Timeline (All 5 Companies & Roles)
+  renderExperience('timelineContainer');
+
+  // 5. Render All 9 High-Impact Projects / Case Studies (Filters, Search, Blueprint Modal)
+  initProjectsModule('projectFiltersBar', 'projectsGridContainer', 'projectSearchInput', 'blueprintModalBackdrop');
+
+  // 6. Render Systems Matrix (6 Modular Architectures + Modal Inspector)
   renderSystemsMatrix('matrixFilterBar', 'matrixGridContainer', 'matrixModalBackdrop');
 
-  // 5. Initialize FinOps Calculator
+  // 7. Render Multi-Cloud Capabilities Matrix (Skills Grid with Cloud Icons)
+  renderSkillsModule('skillsNavBar', 'skillsGridContainer');
+
+  // 8. Render Architectural Mindset & Vision Photo Gallery (All 4 Cards)
+  renderGalleryModule('storyGridContainer');
+
+  // 9. Initialize Interactive FinOps ROI Calculator
   initFinOpsCalculator(
     'finopsSpendSlider',
     'finopsSpendDisplay',
@@ -35,10 +52,10 @@ document.addEventListener('DOMContentLoaded', () => {
     'breakdownWaste'
   );
 
-  // 6. Initialize Contact Actions
+  // 10. Initialize Direct Contact Actions & "Send a Note" Form
   initContactActions();
 
-  // 7. Initialize Swarm Motion Engine
+  // 11. Initialize Swarm Motion Engine (Flocking Boids, Blueprint Bounding Boxes & Auto-Tour)
   initSwarm();
   const motionBtn = document.getElementById('btnNavMotion');
   if (motionBtn) {
@@ -48,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 8. Navigation Active State & Mobile Menu
+  // 12. Active Navigation Scroll Spy & Mobile Menu
   setupNavigation();
 });
 
@@ -79,7 +96,7 @@ function populateHero() {
     portraitImg.src = cfg.portrait;
   }
 
-  // Metrics
+  // Metrics Counter Strip
   const metricsContainer = document.getElementById('heroMetricsContainer');
   if (metricsContainer && siteConfig.metrics) {
     metricsContainer.innerHTML = siteConfig.metrics.map(m => `
@@ -100,10 +117,10 @@ function populatePhilosophy() {
   const aboutEl = document.getElementById('philosophyAboutText');
   if (aboutEl) aboutEl.textContent = cfg.about;
 
-  // Right Column: Technical Spec Cards (matching frame_010.0s.jpg) + Certifications Strip
+  // Technical Spec Cards in About (Matching Video frame_006.0s.jpg & frame_010.0s.jpg)
   const certContainer = document.getElementById('philosophyCertContainer');
   if (certContainer) {
-    const techSpecsHtml = `
+    certContainer.innerHTML = `
       <div class="tech-spec-cards-wrap">
         <div class="tech-spec-card">
           <div class="tech-spec-header">
@@ -148,6 +165,7 @@ function populatePhilosophy() {
         </div>
       </div>
 
+      <!-- Industry Certifications Badges -->
       <div class="cert-badges-strip">
         ${siteConfig.certifications.map(c => `
           <div class="cert-badge-wrap" title="${c.title} (${c.id})">
@@ -156,10 +174,9 @@ function populatePhilosophy() {
         `).join('')}
       </div>
     `;
-    certContainer.innerHTML = techSpecsHtml;
   }
 
-  // Client Logos
+  // Client Logos Strip
   const clientContainer = document.getElementById('clientLogosContainer');
   if (clientContainer && clientLogos) {
     clientContainer.innerHTML = clientLogos.map(l => `
@@ -180,7 +197,7 @@ function setupNavigation() {
     const scrollY = window.pageYOffset;
 
     sections.forEach(sec => {
-      const secTop = sec.offsetTop - 120;
+      const secTop = sec.offsetTop - 140;
       const secHeight = sec.offsetHeight;
       if (scrollY >= secTop && scrollY < secTop + secHeight) {
         current = sec.getAttribute('id');
@@ -195,7 +212,7 @@ function setupNavigation() {
     });
   });
 
-  // Mobile toggle menu
+  // Mobile menu toggle
   const mobileToggle = document.getElementById('btnMobileToggle');
   const navLinksList = document.querySelector('.nav-links');
   if (mobileToggle && navLinksList) {
@@ -214,7 +231,6 @@ function setupNavigation() {
       }
     });
 
-    // Close on link click
     navLinksList.querySelectorAll('a').forEach(a => {
       a.addEventListener('click', () => {
         if (window.innerWidth <= 768) {
