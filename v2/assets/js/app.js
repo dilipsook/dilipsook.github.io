@@ -62,13 +62,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 11. Initialize Swarm Motion Engine (Flocking Boids, Blueprint Bounding Boxes & Auto-Tour)
   initSwarm();
-  const motionBtn = document.getElementById('btnNavMotion');
-  if (motionBtn) {
-    motionBtn.addEventListener('click', (e) => {
-      e.preventDefault();
-      toggleSwarm();
-    });
-  }
 
   // 12. Initialize Floating Luxury Pill Navbar & Action Hub
   initNavbar();
