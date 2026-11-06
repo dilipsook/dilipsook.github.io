@@ -1,0 +1,159 @@
+/* ===================================================================
+   SWARM MULTIPLAYER CURSOR ANIMATION SYSTEM
+   Standalone feature matching universal_portfolio_prompt.md & Swarm Rebuild
+   =================================================================== */
+
+#swarmCanvasContainer {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 999;
+  overflow: hidden;
+  display: none;
+}
+
+#swarmCanvasContainer.active {
+  display: block;
+}
+
+.swarm-cursor {
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 1000;
+  will-change: transform;
+  transition: opacity 0.3s ease;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.8));
+}
+
+.swarm-cursor-arrow {
+  width: 22px;
+  height: 22px;
+  transform-origin: top left;
+}
+
+.swarm-cursor-tag {
+  position: absolute;
+  top: 18px;
+  left: 14px;
+  padding: 2px 7px;
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  color: #050505;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.5);
+}
+
+/* Element Scan Highlighter Box */
+.swarm-target-box {
+  position: absolute;
+  border: 1.5px dashed var(--accent);
+  border-radius: 4px;
+  pointer-events: none;
+  z-index: 998;
+  background: rgba(227, 43, 60, 0.04);
+  box-shadow: 0 0 15px rgba(227, 43, 60, 0.2);
+  transition: all 0.35s ease;
+}
+
+/* Floating Bottom Controller HUD */
+.swarm-hud-bar {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%) translateY(100px);
+  background: rgba(14, 14, 14, 0.95);
+  border: 1px solid var(--border-medium);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  padding: 6px 14px;
+  border-radius: var(--radius-pill);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8), 0 0 20px rgba(227, 43, 60, 0.25);
+  z-index: 1005;
+  pointer-events: auto;
+  opacity: 0;
+  transition: all 0.4s var(--ease-out-expo);
+}
+
+.swarm-hud-bar.visible {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+}
+
+.swarm-hud-dots {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.swarm-hud-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.swarm-hud-text {
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 0.04em;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.swarm-hud-status-badge {
+  background: var(--accent);
+  color: #ffffff;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.7rem;
+}
+
+.swarm-hud-btn {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--border-subtle);
+  color: #ffffff;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.swarm-hud-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: #ffffff;
+}
+
+.swarm-hud-btn.active {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.swarm-hud-close {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0 4px;
+  line-height: 1;
+  transition: color 0.2s ease;
+}
+
+.swarm-hud-close:hover {
+  color: #ffffff;
+}

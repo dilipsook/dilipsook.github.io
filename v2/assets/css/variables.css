@@ -1,0 +1,83 @@
+/* ===================================================================
+   VARIABLES & DESIGN TOKENS
+   Noir & Crimson Theme (universal_portfolio_prompt.md specification)
+   =================================================================== */
+
+:root {
+  /* Color Palette */
+  --bg-base: #090909;
+  --bg-deep: #050505;
+  --bg-elevated: #111111;
+  --bg-card: #151515;
+  --bg-card-hover: #1c1c1c;
+  --bg-card-active: #222222;
+
+  /* Accent Colors */
+  --accent: #e32b3c;
+  --accent-bright: #ff3344;
+  --accent-dark: #b51c2a;
+  --accent-glow: rgba(227, 43, 60, 0.35);
+  --accent-glow-strong: rgba(227, 43, 60, 0.65);
+  --accent-subtle: rgba(227, 43, 60, 0.12);
+  --accent-border: rgba(227, 43, 60, 0.35);
+
+  /* Status Colors */
+  --status-emerald: #10b981;
+  --status-cyan: #06b6d4;
+  --status-amber: #f59e0b;
+
+  /* Typography Colors */
+  --text-primary: #f2efeb;
+  --text-pure: #ffffff;
+  --text-secondary: #a09c9a;
+  --text-muted: #6e6a68;
+  --text-dim: #444140;
+
+  /* Borders & Dividers */
+  --border-subtle: rgba(255, 255, 255, 0.07);
+  --border-medium: rgba(255, 255, 255, 0.14);
+  --border-strong: rgba(255, 255, 255, 0.25);
+  --divider: rgba(255, 255, 255, 0.08);
+
+  /* Typography Families */
+  --font-display: 'Anton', -apple-system, sans-serif;
+  --font-body: 'Manrope', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-accent: 'Caveat', cursive;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  /* Spacing & Layout */
+  --container-max: 1280px;
+  --section-pad-y: 100px;
+  --section-pad-mobile: 60px;
+  --header-height: 72px;
+
+  /* Shadows */
+  --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.6);
+  --shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.8);
+  --shadow-accent: 0 8px 30px rgba(227, 43, 60, 0.3);
+
+  /* Radii */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-pill: 9999px;
+
+  /* Transitions */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-smooth: cubic-bezier(0.22, 1, 0.36, 1);
+  --duration-fast: 0.2s;
+  --duration-normal: 0.35s;
+  --duration-slow: 0.6s;
+}
+
+/* Reduced Motion Override */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
