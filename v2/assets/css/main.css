@@ -14,6 +14,11 @@ html {
   font-size: 16px;
   background-color: var(--bg-base);
   color: var(--text-primary);
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 body {
@@ -22,6 +27,10 @@ body {
   color: var(--text-primary);
   line-height: 1.6;
   overflow-x: hidden;
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
   position: relative;
   min-height: 100vh;
   -webkit-font-smoothing: antialiased;
@@ -127,7 +136,7 @@ a {
   top: 14px;
   left: 0;
   width: 100%;
-  z-index: 1000;
+  z-index: 2147483646;
   pointer-events: none;
   display: flex;
   justify-content: center;
@@ -423,12 +432,20 @@ a {
   gap: 5px;
   width: 38px;
   height: 38px;
+  min-width: 38px;
+  min-height: 38px;
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 50%;
   cursor: pointer;
   padding: 0;
   transition: all 0.2s ease;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+  pointer-events: auto;
+  position: relative;
+  z-index: 10;
 }
 
 .burger-btn:hover {
@@ -454,16 +471,19 @@ a {
 .mobile-menu-backdrop {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.7);
+  background: rgba(0, 0, 0, 0.75);
   backdrop-filter: blur(8px);
-  z-index: 1050;
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 2147483648;
   opacity: 0;
+  visibility: hidden;
   pointer-events: none;
   transition: opacity 0.3s ease;
 }
 
 .mobile-menu-backdrop.open {
   opacity: 1;
+  visibility: visible !important;
   pointer-events: auto;
 }
 
@@ -472,21 +492,28 @@ a {
   top: 0;
   right: 0;
   bottom: 0;
-  width: min(340px, 85vw);
+  width: min(320px, 85vw);
+  max-width: 85vw;
   background: #0d0d12;
   border-left: 1px solid rgba(255, 255, 255, 0.12);
-  z-index: 1100;
+  z-index: 2147483649;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   padding: 24px 20px;
   transform: translateX(100%);
+  visibility: hidden;
+  pointer-events: none;
   transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   box-shadow: -10px 0 40px rgba(0, 0, 0, 0.8);
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .mobile-drawer.open {
-  transform: translateX(0);
+  transform: translateX(0) !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
 }
 
 .mobile-drawer-header {
@@ -634,6 +661,7 @@ a {
   letter-spacing: 0.03em;
 }
 
+.hero-kicker-tag,
 .hero-kicker-pill {
   display: inline-flex;
   align-items: center;
@@ -993,6 +1021,7 @@ a {
     top: 10px;
     padding-inline: 10px;
     width: 100%;
+    z-index: 2147483648;
   }
   .navbar-pill {
     width: 100%;
@@ -1025,8 +1054,10 @@ a {
   }
   .burger-btn {
     display: flex;
-    width: 34px;
-    height: 34px;
+    width: 36px;
+    height: 36px;
+    min-width: 36px;
+    min-height: 36px;
   }
   .section-wrapper {
     padding-top: var(--section-pad-mobile);
@@ -1035,36 +1066,42 @@ a {
   .hero-section {
     padding-top: calc(var(--header-height) + 16px);
     padding-bottom: 40px;
+    overflow-x: hidden;
   }
   .hero-giant-watermark {
     margin-bottom: -10px;
     overflow: hidden;
+    max-width: 100%;
   }
   .hero-giant-word {
-    font-size: clamp(2.5rem, 12.5vw, 4.2rem);
+    font-size: clamp(2.0rem, 11vw, 3.8rem);
     white-space: nowrap;
+    letter-spacing: 0.04em;
   }
   .hero-handwritten-intro {
     gap: 8px;
   }
   .hero-greeting {
-    font-size: 1.6rem;
+    font-size: 1.5rem;
   }
   .hero-name-pill {
-    font-size: clamp(1.9rem, 7vw, 2.4rem);
+    font-size: clamp(1.8rem, 7vw, 2.3rem);
     padding: 2px 12px;
   }
+  .hero-kicker-tag,
   .hero-kicker-pill {
     font-size: 0.68rem;
     padding: 5px 10px;
     line-height: 1.4;
     border-radius: 8px;
+    max-width: 100%;
+    word-break: break-word;
   }
   .hero-headline {
-    font-size: 1.65rem;
+    font-size: 1.55rem;
   }
   .hero-headline span {
-    font-size: 1.05rem;
+    font-size: 1.0rem;
   }
   .portrait-noir-card {
     max-width: 290px;
@@ -1094,12 +1131,37 @@ a {
 
 @media (max-width: 480px) {
   .hero-giant-word {
-    font-size: 3.2rem;
+    font-size: clamp(1.9rem, 10.5vw, 2.7rem);
+    letter-spacing: 0.03em;
+  }
+  .hero-name-pill {
+    font-size: 1.7rem;
+    padding: 2px 10px;
+  }
+  .hero-kicker-tag,
+  .hero-kicker-pill {
+    font-size: 0.62rem;
+    padding: 4px 8px;
+    letter-spacing: 0.02em;
+  }
+  .hero-headline {
+    font-size: 1.4rem;
+  }
+  .hero-headline span {
+    font-size: 0.92rem;
+  }
+  .hero-description {
+    font-size: 0.88rem;
+    line-height: 1.6;
   }
   .portrait-noir-card {
     max-width: 260px;
   }
   .hero-metrics-strip {
     grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .metric-number {
+    font-size: 1.5rem;
   }
 }

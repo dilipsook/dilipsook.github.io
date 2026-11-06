@@ -88,19 +88,31 @@ export function initSkillsReel() {
   function getAudioContext() {
     if (!audioCtx) {
       const AudioContext = window.AudioContext || window.webkitAudioContext;
-      if (AudioContext) audioCtx = new AudioContext();
+      if (AudioContext) {
+        audioCtx = new AudioContext();
+      }
     }
     if (audioCtx && audioCtx.state === 'suspended') {
-      audioCtx.resume();
+      audioCtx.resume().catch(() => {});
     }
     return audioCtx;
   }
+
+  // Pre-unlock AudioContext on first user interaction (touch/click)
+  const unlockAudio = () => {
+    if (audioCtx && audioCtx.state === 'suspended') {
+      audioCtx.resume().catch(() => {});
+    }
+  };
+  window.addEventListener('click', unlockAudio, { once: true, capture: true });
+  window.addEventListener('touchstart', unlockAudio, { once: true, capture: true, passive: true });
 
   function playTone(freq, type = 'sine', duration = 0.15, volume = 0.08) {
     if (isMuted) return;
     try {
       const actx = getAudioContext();
       if (!actx) return;
+      if (actx.state === 'suspended') actx.resume().catch(() => {});
       const osc = actx.createOscillator();
       const gain = actx.createGain();
       osc.type = type;
@@ -153,34 +165,74 @@ export function initSkillsReel() {
   ];
 
   let synthUtterance = null;
+  let speechWatchdog = null;
 
   function speakText(text, onComplete) {
+    clearInterval(speechWatchdog);
     if (!('speechSynthesis' in window) || isMuted) {
-      const estDuration = Math.max(text.length * 75, 12000);
+      const estDuration = Math.max(text.length * 72, 10000);
       chapterTimer = setTimeout(() => {
         if (onComplete) onComplete();
       }, estDuration);
       return;
     }
 
-    window.speechSynthesis.cancel();
-    synthUtterance = new SpeechSynthesisUtterance(text);
-    synthUtterance.rate = 1.05;
-    synthUtterance.pitch = 0.98;
+    try {
+      window.speechSynthesis.cancel();
+    } catch (_) {}
 
-    const voices = window.speechSynthesis.getVoices();
-    const preferred = voices.find(v => v.lang.startsWith('en') && (v.name.includes('Google') || v.name.includes('Natural') || v.name.includes('Daniel') || v.name.includes('Alex')));
-    if (preferred) synthUtterance.voice = preferred;
+    // Allow cancel() to complete before queuing next utterance
+    setTimeout(() => {
+      if (!isPlaying || isMuted) return;
 
-    synthUtterance.onend = () => {
-      if (onComplete) onComplete();
-    };
+      synthUtterance = new SpeechSynthesisUtterance(text);
+      // Store globally to prevent garbage collection dropping speech mid-sentence
+      window.__activeUtterance = synthUtterance;
+      synthUtterance.rate = 1.02;
+      synthUtterance.pitch = 1.0;
 
-    synthUtterance.onerror = () => {
-      if (onComplete) onComplete();
-    };
+      const voices = window.speechSynthesis.getVoices() || [];
+      const preferred = voices.find(v => v.lang && v.lang.startsWith('en') && (v.name.includes('Natural') || v.name.includes('Google') || v.name.includes('Daniel') || v.name.includes('Alex') || v.name.includes('Samantha')));
+      if (preferred) synthUtterance.voice = preferred;
 
-    window.speechSynthesis.speak(synthUtterance);
+      let finished = false;
+      const done = () => {
+        if (finished) return;
+        finished = true;
+        clearInterval(speechWatchdog);
+        clearTimeout(chapterTimer);
+        window.__activeUtterance = null;
+        if (onComplete) onComplete();
+      };
+
+      synthUtterance.onend = done;
+      synthUtterance.onerror = (e) => {
+        console.warn('[speechSynthesis error]', e);
+        done();
+      };
+
+      // Watchdog: Chrome speech synthesis sometimes pauses after 15s; this unblocks it
+      speechWatchdog = setInterval(() => {
+        if (!window.speechSynthesis.speaking) {
+          clearInterval(speechWatchdog);
+        } else if (window.speechSynthesis.paused) {
+          window.speechSynthesis.resume();
+        }
+      }, 3500);
+
+      // Safety timeout: ensure chapter finishes even if mobile browser drops onend
+      const maxMs = Math.max(text.length * 90 + 4000, 14000);
+      chapterTimer = setTimeout(done, maxMs);
+
+      try {
+        window.speechSynthesis.speak(synthUtterance);
+        // Resume immediately in case browser started it paused
+        if (window.speechSynthesis.paused) window.speechSynthesis.resume();
+      } catch (err) {
+        console.warn('[speechSynthesis.speak error]', err);
+        done();
+      }
+    }, 60);
   }
 
   function typeSubtitle(fullText) {

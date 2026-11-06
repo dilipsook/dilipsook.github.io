@@ -330,7 +330,7 @@ export function initNavbar() {
         navAudioToggleBtn.style.borderColor = 'var(--accent)';
         navAudioToggleBtn.style.boxShadow = '0 0 16px rgba(227, 43, 60, 0.4)';
         // Trigger play on Skills Reel briefing if paused
-        const playBtn = document.getElementById('playBriefingBtn');
+        const playBtn = document.getElementById('btnPlaySkillsReel') || document.getElementById('playBriefingBtn');
         if (playBtn) playBtn.click();
       } else {
         navAudioIcon.textContent = '🔇';
@@ -342,28 +342,74 @@ export function initNavbar() {
   }
 
   // =========================================================================
-  // 6. Mobile Drawer Navigation
+  // 6. Mobile Drawer Navigation (Interactive Toggle with Touch & Click)
   // =========================================================================
   function openMobileDrawer() {
-    if (mobileDrawer) mobileDrawer.classList.add('open');
-    if (mobileMenuBackdrop) mobileMenuBackdrop.classList.add('open');
+    if (mobileDrawer) {
+      mobileDrawer.style.visibility = 'visible';
+      mobileDrawer.classList.add('open');
+    }
+    if (mobileMenuBackdrop) {
+      mobileMenuBackdrop.style.visibility = 'visible';
+      mobileMenuBackdrop.classList.add('open');
+    }
     document.body.style.overflow = 'hidden';
   }
 
   function closeMobileDrawer() {
-    if (mobileDrawer) mobileDrawer.classList.remove('open');
-    if (mobileMenuBackdrop) mobileMenuBackdrop.classList.remove('open');
+    if (mobileDrawer) {
+      mobileDrawer.classList.remove('open');
+      setTimeout(() => {
+        if (!mobileDrawer.classList.contains('open')) {
+          mobileDrawer.style.visibility = 'hidden';
+        }
+      }, 360);
+    }
+    if (mobileMenuBackdrop) {
+      mobileMenuBackdrop.classList.remove('open');
+      setTimeout(() => {
+        if (!mobileMenuBackdrop.classList.contains('open')) {
+          mobileMenuBackdrop.style.visibility = 'hidden';
+        }
+      }, 310);
+    }
     document.body.style.overflow = '';
   }
 
+  let lastMobileToggleTime = 0;
+  function toggleMobileDrawer(e) {
+    const now = Date.now();
+    if (now - lastMobileToggleTime < 280) return;
+    lastMobileToggleTime = now;
+    if (e && e.cancelable && e.type === 'touchend') e.preventDefault();
+
+    if (mobileDrawer && mobileDrawer.classList.contains('open')) {
+      closeMobileDrawer();
+    } else {
+      openMobileDrawer();
+    }
+  }
+
   if (btnMobileToggle) {
-    btnMobileToggle.addEventListener('click', openMobileDrawer);
+    btnMobileToggle.addEventListener('click', toggleMobileDrawer);
+    btnMobileToggle.addEventListener('touchend', toggleMobileDrawer, { passive: false });
   }
   if (mobileDrawerCloseBtn) {
-    mobileDrawerCloseBtn.addEventListener('click', closeMobileDrawer);
+    mobileDrawerCloseBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      closeMobileDrawer();
+    });
+    mobileDrawerCloseBtn.addEventListener('touchend', (e) => {
+      e.preventDefault();
+      closeMobileDrawer();
+    }, { passive: false });
   }
   if (mobileMenuBackdrop) {
     mobileMenuBackdrop.addEventListener('click', closeMobileDrawer);
+    mobileMenuBackdrop.addEventListener('touchend', (e) => {
+      e.preventDefault();
+      closeMobileDrawer();
+    }, { passive: false });
   }
 
   document.querySelectorAll('.mobile-nav-link').forEach(link => {

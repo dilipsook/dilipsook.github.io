@@ -3588,6 +3588,11 @@
       }, true);
       // browsers only let audio start after a click/keypress on the page
       on(window, "pointerdown", () => this.unlockSound(), true);
+      on(window, "touchstart", () => this.unlockSound(), { passive: true, capture: true });
+      on(window, "touchend", () => this.unlockSound(), { passive: true, capture: true });
+      on(window, "mousedown", () => this.unlockSound(), true);
+      on(window, "click", () => this.unlockSound(), true);
+      on(window, "keydown", () => this.unlockSound(), true);
       if (!this.env.isRoot) {
         on(this.view.host, "wheel", (e) => {
           e.preventDefault();
@@ -3844,9 +3849,11 @@ export function initSwarm() {
     });
   }
 
-  // Auto-start to match reference video 1:1 on initial load
+  // Auto-start only on desktop / non-touch screens to keep mobile view fast, responsive and touchable
   const urlParams = new URLSearchParams(window.location.search);
-  const shouldAutoStart = urlParams.get('motion') !== '0';
+  const motionParam = urlParams.get('motion');
+  const isMobile = window.innerWidth < 1024 || (window.matchMedia && window.matchMedia('(max-width: 1024px)').matches);
+  const shouldAutoStart = motionParam === '1' || (motionParam !== '0' && !isMobile);
   if (shouldAutoStart) {
     setTimeout(() => {
       if (window.__swarmRebuild) {
