@@ -1,6 +1,6 @@
 /**
  * SWARM MULTIPLAYER CURSOR ANIMATION MODULE
- * Boids flocking simulation + DOM scanning + Tour mode
+ * Boids flocking simulation + DOM scanning + Tour mode (Exact Video Match)
  */
 
 const AGENT_COLORS = [
@@ -30,7 +30,11 @@ const AGENT_TAGS = [
   'CSPM-SEC',
   'CUR-QUERY',
   'ZERO-TRUST',
-  'EKS-CORE'
+  'EKS-CORE',
+  'DIRECT-CONNECT',
+  'SAVINGS-PLAN',
+  'ATHENA-SQL',
+  'SOVEREIGN-NET'
 ];
 
 class Boid {
@@ -40,8 +44,7 @@ class Boid {
     this.y = y;
     this.vx = (Math.random() - 0.5) * 4;
     this.vy = (Math.random() - 0.5) * 4;
-    this.maxSpeed = 3.5;
-    this.maxForce = 0.12;
+    this.maxSpeed = 3.6;
     this.color = color;
     this.tag = tag;
     this.target = null;
@@ -140,29 +143,33 @@ class SwarmSimulation {
     this.targetBox.className = 'swarm-target-box';
     this.container.appendChild(this.targetBox);
 
-    // Create HUD
+    // Create HUD matching exact video styling
     this.hud = document.createElement('div');
     this.hud.className = 'swarm-hud-bar';
     this.hud.innerHTML = `
       <div class="swarm-hud-dots">
-        <span class="swarm-hud-dot" style="background:#00f0ff;"></span>
-        <span class="swarm-hud-dot" style="background:#ff3366;"></span>
+        <span class="swarm-hud-dot" style="background:#ff3344;"></span>
+        <span class="swarm-hud-dot" style="background:#ffea00;"></span>
         <span class="swarm-hud-dot" style="background:#00ff88;"></span>
+        <span class="swarm-hud-dot" style="background:#00f0ff;"></span>
       </div>
       <div class="swarm-hud-text">
-        <span class="swarm-hud-status-badge">SWARM ACTIVE</span>
-        <span id="swarmStatusLabel">Scanning Page...</span>
+        <span class="swarm-hud-counter" id="swarmAgentCounter">20 agents</span>
+        <span class="swarm-hud-layers" id="swarmLayersCounter">117 / 252 layers</span>
+        <span class="swarm-hud-sep">&mdash;</span>
+        <span class="swarm-hud-status-badge" id="swarmStatusBadge">Touring</span>
       </div>
-      <button class="swarm-hud-btn active" id="btnSwarmSpeed1">1x</button>
-      <button class="swarm-hud-btn" id="btnSwarmSpeed2">2x</button>
-      <button class="swarm-hud-btn" id="btnSwarmPause">Pause</button>
+      <button class="swarm-hud-btn active" id="btnSwarmSpeed">1x</button>
+      <button class="swarm-hud-btn" id="btnSwarmPause" title="Pause / Play">⏸</button>
       <button class="swarm-hud-close" id="btnSwarmClose" title="Exit Motion">✕</button>
     `;
     document.body.appendChild(this.hud);
 
     // Event listeners for HUD
-    document.getElementById('btnSwarmSpeed1').addEventListener('click', () => this.setSpeed(1.0));
-    document.getElementById('btnSwarmSpeed2').addEventListener('click', () => this.setSpeed(2.0));
+    document.getElementById('btnSwarmSpeed').addEventListener('click', () => {
+      this.speed = this.speed === 1.0 ? 2.0 : 1.0;
+      document.getElementById('btnSwarmSpeed').textContent = `${this.speed}x`;
+    });
     document.getElementById('btnSwarmPause').addEventListener('click', () => this.togglePause());
     document.getElementById('btnSwarmClose').addEventListener('click', () => this.stop());
 
@@ -192,9 +199,9 @@ class SwarmSimulation {
     // Collect DOM target anchors
     this.collectTargets();
 
-    // Spawn 16 boids
+    // Spawn 20 boids matching video
     this.boids = [];
-    const count = Math.min(16, AGENT_TAGS.length);
+    const count = Math.min(20, AGENT_TAGS.length);
     for (let i = 0; i < count; i++) {
       const color = AGENT_COLORS[i % AGENT_COLORS.length];
       const tag = AGENT_TAGS[i % AGENT_TAGS.length];
@@ -208,12 +215,12 @@ class SwarmSimulation {
     this.assignTarget();
     this.loop();
 
-    // Tour timer every 4 seconds to cycle through page sections
+    // Tour timer every 4 seconds
     this.tourInterval = setInterval(() => {
       if (!this.paused) {
         this.nextTarget();
       }
-    }, 4500);
+    }, 4200);
 
     const btn = document.getElementById('btnNavMotion');
     if (btn) btn.classList.add('active');
@@ -241,27 +248,14 @@ class SwarmSimulation {
   togglePause() {
     this.paused = !this.paused;
     const btn = document.getElementById('btnSwarmPause');
-    if (btn) btn.textContent = this.paused ? 'Play' : 'Pause';
-    const status = document.getElementById('swarmStatusLabel');
-    if (status) status.textContent = this.paused ? 'Paused' : 'Touring Page...';
-  }
-
-  setSpeed(s) {
-    this.speed = s;
-    const b1 = document.getElementById('btnSwarmSpeed1');
-    const b2 = document.getElementById('btnSwarmSpeed2');
-    if (s === 1.0) {
-      b1.classList.add('active');
-      b2.classList.remove('active');
-    } else {
-      b2.classList.add('active');
-      b1.classList.remove('active');
-    }
+    if (btn) btn.textContent = this.paused ? '▶' : '⏸';
+    const status = document.getElementById('swarmStatusBadge');
+    if (status) status.textContent = this.paused ? 'Paused' : 'Touring';
   }
 
   collectTargets() {
     const candidates = document.querySelectorAll(
-      '.hero-name-pill, .flagship-card, .matrix-card, .portrait-noir-card, .philosophy-quote-box, .finops-calculator-deck, .contact-email-bar'
+      '.hero-name-pill, .flagship-primary-card, .flagship-col-card, .matrix-card, .portrait-noir-card, .philosophy-quote-box, .finops-calculator-deck, .contact-email-bar'
     );
     this.targets = Array.from(candidates);
   }
@@ -285,16 +279,17 @@ class SwarmSimulation {
     // Assign flock points around the element
     this.boids.forEach((boid, idx) => {
       const angle = (idx / this.boids.length) * Math.PI * 2;
-      const radius = Math.min(rect.width, rect.height) * 0.45 + 30;
+      const radius = Math.min(rect.width, rect.height) * 0.45 + 35;
       boid.target = {
         x: centerX + Math.cos(angle) * radius,
         y: centerY + Math.sin(angle) * radius
       };
     });
 
-    const status = document.getElementById('swarmStatusLabel');
-    if (status) {
-      status.textContent = `Inspecting Layer [${this.currentTargetIndex + 1}/${this.targets.length}]`;
+    const layerEl = document.getElementById('swarmLayersCounter');
+    if (layerEl) {
+      const layerNum = (this.currentTargetIndex + 1) * 36;
+      layerEl.textContent = `${layerNum} / 252 layers`;
     }
   }
 

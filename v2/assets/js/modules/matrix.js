@@ -1,6 +1,6 @@
 /**
  * THE SYSTEMS MATRIX MODULE
- * Filterable architecture grid + detailed inspection modal
+ * Filterable architecture grid + detailed inspection modal (Matching Video)
  */
 import { systemsCategories, systemsMatrix } from '../data/matrix.js';
 
@@ -29,14 +29,17 @@ export function renderSystemsMatrix(filterContainerId, gridContainerId, modalBac
     });
   }
 
-  // Render cards
+  // Render cards (matching frame_044.0s.jpg with external link arrow)
   function renderCards(items) {
     gridContainer.innerHTML = items.map(sys => `
       <div class="matrix-card" data-sys-id="${sys.id}">
         <div>
           <div class="matrix-card-header">
             <span class="matrix-kicker-badge">${sys.kicker}</span>
-            <span class="matrix-id-tag">${sys.sysNumber}</span>
+            <div class="matrix-header-meta">
+              <span class="matrix-id-tag">${sys.sysNumber}</span>
+              <span class="matrix-arrow-icon">&nearr;</span>
+            </div>
           </div>
           <h4 class="matrix-card-title">${sys.title}</h4>
           <p class="matrix-card-summary">${sys.summary}</p>

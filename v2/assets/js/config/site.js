@@ -21,8 +21,8 @@ export const siteConfig = {
     intro: "Manager Project at Cognizant with 10+ years of infrastructure engineering leadership across AWS and Microsoft Azure. Documented $60,000+/month in FinOps capital optimization and orchestrated 1,000+ zero-downtime server migrations for global enterprises.",
     about: "Over a decade architecting high-availability cloud platforms, zero-trust security postures, and validated Life Sciences systems. My defining capabilities span multi-account AWS Organizations, Azure Enterprise Landing Zones, automated FinOps cost governance, container orchestration (EKS/AKS), and GxP/21 CFR Part 11 compliant infrastructure for global enterprises including Cognizant, Johnson & Johnson, LoanTap, ISRO, and the Indian Air Force.",
     philosophyQuote: "I design and deploy enterprise multi-cloud architectures that operate 24/7 with zero business downtime, continuous FinOps capital governance, and validated compliance.",
-    portrait: "assets/images/profile/DSC_0004_portrait.jpg",
-    portraitWeb: "assets/images/profile/DSC_0004_web.jpg",
+    portrait: "assets/images/profile/DSC_0004_duotone.jpg",
+    portraitWeb: "assets/images/profile/DSC_0004_duotone.jpg",
     resume: "Dilip_Kumar_Resume.pdf",
     favicon: "assets/images/badges/awssa.png"
   },
