@@ -3853,11 +3853,11 @@ export function initSwarm() {
     });
   }
 
-  // Auto-start only on desktop / non-touch screens to keep mobile view fast, responsive and touchable
+  // Default to live portfolio view so all pages, case studies, and content are immediately visible.
+  // Swarm rebuild runs on-demand when clicking the ✦ motion button, or if ?motion=1 is in the URL.
   const urlParams = new URLSearchParams(window.location.search);
   const motionParam = urlParams.get('motion');
-  const isMobile = window.innerWidth < 1024 || (window.matchMedia && window.matchMedia('(max-width: 1024px)').matches);
-  const shouldAutoStart = motionParam === '1' || (motionParam !== '0' && !isMobile);
+  const shouldAutoStart = motionParam === '1';
   if (shouldAutoStart) {
     setTimeout(() => {
       if (window.__swarmRebuild) {
