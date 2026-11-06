@@ -18,6 +18,7 @@ import { initFinOpsCalculator } from './modules/finops.js';
 import { renderCertificationsModule } from './modules/certifications.js';
 import { initContactActions } from './modules/contact.js';
 import { initSwarm, toggleSwarm } from './modules/swarm.js';
+import { initNavbar } from './modules/navbar.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   // 1. Populate Hero Content & Verified Metrics
@@ -69,8 +70,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 12. Active Navigation Scroll Spy & Mobile Menu
-  setupNavigation();
+  // 12. Initialize Floating Luxury Pill Navbar & Action Hub
+  initNavbar();
 });
 
 function populateHero() {
@@ -183,46 +184,4 @@ function populatePhilosophy() {
   }
 }
 
-function setupNavigation() {
-  const navLinks = document.querySelectorAll('.nav-link');
-  const sections = document.querySelectorAll('section[id]');
 
-  window.addEventListener('scroll', () => {
-    let current = '';
-    const scrollY = window.pageYOffset;
-
-    sections.forEach(sec => {
-      const secTop = sec.offsetTop - 140;
-      const secHeight = sec.offsetHeight;
-      if (scrollY >= secTop && scrollY < secTop + secHeight) {
-        current = sec.getAttribute('id');
-      }
-    });
-
-    navLinks.forEach(link => {
-      link.classList.remove('active');
-      if (link.getAttribute('href') === `#${current}`) {
-        link.classList.add('active');
-      }
-    });
-  });
-
-  // Mobile menu toggle
-  const mobileToggle = document.getElementById('btnMobileToggle');
-  const navContainer = document.querySelector('.nav-container');
-  if (mobileToggle && navContainer) {
-    mobileToggle.addEventListener('click', () => {
-      navContainer.classList.toggle('open');
-      mobileToggle.textContent = navContainer.classList.contains('open') ? '✕' : '☰';
-    });
-
-    navContainer.querySelectorAll('a').forEach(a => {
-      a.addEventListener('click', () => {
-        if (window.innerWidth <= 1080) {
-          navContainer.classList.remove('open');
-          mobileToggle.textContent = '☰';
-        }
-      });
-    });
-  }
-}

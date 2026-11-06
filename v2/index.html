@@ -33,61 +33,103 @@
 <body class="theme-noir">
 
   <!-- ====================================================================
-       1. STICKY EDITORIAL HEADER
+       1. FLOATING LUXURY PILL NAVBAR (Noir & Crimson Sovereign Theme)
+       Matches media_1793951678154_d1ae2fd3.png & original portfolio 1:1
        ==================================================================== -->
-  <header class="site-header" id="header">
-    <div class="header-inner container">
+  <header class="navbar-pill-wrapper" id="header">
+    <div class="navbar-pill" id="mainNavbar">
       
-      <!-- Brand Wordmark -->
-      <a href="#overview" class="brand-wordmark" aria-label="Dilip Kumar - Home">
-        <span class="brand-avatar">DK</span>
-        <span class="brand-title">DILIP<span class="brand-dot">.</span></span>
+      <!-- Brand Wordmark / Monogram -->
+      <a href="#overview" class="nav-brand" aria-label="Dilip Kumar - Overview">
+        <div class="brand-monogram">DK</div>
+        <div class="brand-meta">
+          <span class="brand-name">DILIP KUMAR</span>
+          <span class="brand-role">MULTI-CLOUD &amp; FINOPS ARCHITECT</span>
+        </div>
       </a>
 
-      <!-- Navigation Links -->
-      <nav class="nav-container" aria-label="Main Navigation">
+      <!-- Center Desktop Nav Links -->
+      <nav class="nav-center" aria-label="Main Navigation">
         <ul class="nav-links">
-          <li><a href="#about" class="nav-link">About</a></li>
-          <li><a href="#flagships" class="nav-link">Flagships</a></li>
-          <li><a href="#experience" class="nav-link">Experience</a></li>
-          <li><a href="#projects" class="nav-link">Missions</a></li>
-          <li><a href="#matrix" class="nav-link">Matrix</a></li>
-          <li><a href="#skills" class="nav-link">Skills</a></li>
-          <li><a href="#vision" class="nav-link">Vision</a></li>
+          <li><a href="#overview" class="nav-link active">Overview</a></li>
+          <li><a href="#matrix" class="nav-link">Pillars</a></li>
+          <li><a href="#projects" class="nav-link">Case Studies</a></li>
           <li><a href="#finops" class="nav-link">FinOps</a></li>
-          <li><a href="#certifications" class="nav-link">Certs</a></li>
+          <li><a href="#experience" class="nav-link">Journey</a></li>
+          <li><a href="#skills" class="nav-link">Skills</a></li>
           <li><a href="#contact" class="nav-link">Contact</a></li>
         </ul>
       </nav>
 
-      <!-- Action Cluster: Pinned to Top-Right Corner -->
+      <!-- Right Action Cluster -->
       <div class="nav-actions">
-        <div class="availability-chip" title="Active Multi-Cloud Architect">
-          <span class="live-beacon"></span>
-          <span>Available</span>
-        </div>
-
-        <!-- Download Resume Button for Recruiters -->
-        <a href="Dilip_Kumar_Resume.pdf" target="_blank" download="Dilip_Kumar_Resume.pdf" class="btn-nav-resume" title="Download Dilip Kumar Executive Resume (PDF)">
-          <span>📄 Resume</span>
-        </a>
-
-        <!-- Standalone Swarm Multiplayer Animation Trigger -->
-        <button class="btn-motion" id="btnNavMotion" title="Toggle Swarm Multiplayer Animation (Alt + Shift + S)">
-          <span class="btn-motion-icon">✦</span>
-          <span>Motion</span>
+        <!-- Live Telemetry Ping Badge -->
+        <button class="nav-telemetry-pill" id="navTelemetryBtn" title="Live Multi-Cloud Latency Probe (Click to inspect)">
+          <span class="telemetry-live-dot"></span>
+          <span class="telemetry-label" id="navRegionTicker">AWS ap-southeast-1 (Singapore): <span class="hud-ping-val">37.0ms</span> <em>(0% Loss)</em></span>
         </button>
 
-        <a href="#contact" class="btn-nav-dispatch">
-          <span>Dispatch &rarr;</span>
+        <!-- Command Palette Trigger (Cmd+K / Ctrl+K) -->
+        <button class="nav-circle-btn open-palette-btn" id="openCommandPaletteBtn" title="Search Blueprints, Skills & Projects (Cmd+K / Ctrl+K)">
+          <span class="nav-kbd-sym">⌘K</span>
+        </button>
+
+        <!-- Audio Briefing Voice Narration Toggle -->
+        <button class="nav-circle-btn" id="navAudioToggleBtn" title="Toggle Digital Twin Voice Briefing">
+          <span id="navAudioIcon">🔇</span>
+        </button>
+
+        <!-- Motion Swarm Animation Toggle -->
+        <button class="nav-circle-btn btn-motion" id="btnNavMotion" title="Toggle Swarm Multiplayer Animation (Alt + Shift + S)">
+          <span class="nav-motion-icon">✦</span>
+        </button>
+
+        <!-- Executive Resume CTA -->
+        <a href="Dilip_Kumar_Resume.pdf" target="_blank" download="Dilip_Kumar_Resume.pdf" class="btn-executive-resume" title="Download Verified Executive Resume (PDF)">
+          <span>Resume</span>
+          <span class="arrow-up-right">↗</span>
         </a>
 
-        <button class="btn-mobile-toggle" id="btnMobileToggle" aria-label="Toggle mobile menu">
-          ☰
+        <!-- Mobile Hamburger Button -->
+        <button class="burger-btn" id="btnMobileToggle" aria-label="Toggle navigation menu">
+          <span class="burger-line"></span>
+          <span class="burger-line"></span>
+          <span class="burger-line"></span>
         </button>
       </div>
     </div>
   </header>
+
+  <!-- Mobile Slideout Drawer Navigation -->
+  <div class="mobile-menu-backdrop" id="mobileMenuBackdrop"></div>
+  <nav class="mobile-drawer" id="mobileDrawer">
+    <div class="mobile-drawer-header">
+      <div class="nav-brand">
+        <div class="brand-monogram">DK</div>
+        <div class="brand-meta">
+          <span class="brand-name">DILIP KUMAR</span>
+          <span class="brand-role">MULTI-CLOUD &amp; FINOPS ARCHITECT</span>
+        </div>
+      </div>
+      <button class="mobile-close-btn" id="mobileDrawerCloseBtn" aria-label="Close menu">&times;</button>
+    </div>
+    <ul class="mobile-nav-links">
+      <li><a href="#overview" class="mobile-nav-link">Overview</a></li>
+      <li><a href="#matrix" class="mobile-nav-link">Architecture Pillars</a></li>
+      <li><a href="#projects" class="mobile-nav-link">Case Studies &amp; Missions</a></li>
+      <li><a href="#finops" class="mobile-nav-link">FinOps ROI Calculator</a></li>
+      <li><a href="#experience" class="mobile-nav-link">Career Journey</a></li>
+      <li><a href="#skills" class="mobile-nav-link">Skills Matrix</a></li>
+      <li><a href="#vision" class="mobile-nav-link">Architectural Vision</a></li>
+      <li><a href="#certifications" class="mobile-nav-link">Certifications &amp; Accolades</a></li>
+      <li><a href="#contact" class="mobile-nav-link">Contact</a></li>
+    </ul>
+    <div class="mobile-drawer-footer">
+      <a href="Dilip_Kumar_Resume.pdf" target="_blank" download="Dilip_Kumar_Resume.pdf" class="btn-primary" style="width: 100%; justify-content: center; padding: 12px 20px;">
+        <span>Download Resume (PDF) ↗</span>
+      </a>
+    </div>
+  </nav>
 
   <main>
     <!-- ====================================================================
@@ -734,6 +776,74 @@
         <button class="modal-close-btn" id="blueprintModalCloseBtn">&times;</button>
       </div>
       <div class="modal-body" id="blueprintModalBody"></div>
+    </div>
+  </div>
+
+  <!-- ====================================================================
+       15. GLOBAL MULTI-CLOUD EDGE LATENCY PROBE MODAL
+       ==================================================================== -->
+  <div id="latencyProbeModal" class="palette-modal-backdrop" aria-modal="true" role="dialog" aria-hidden="true">
+    <div class="probe-modal-container">
+      <div class="probe-modal-header">
+        <div class="probe-modal-title-wrap">
+          <span class="probe-live-dot"></span>
+          <div>
+            <h3 class="probe-modal-title">Live Global Multi-Cloud Edge Telemetry</h3>
+            <div class="probe-modal-subtitle">Synthetic ICMP Edge Probe across Tier-1 Cloud Data Centers</div>
+          </div>
+        </div>
+        <button class="modal-close-btn" id="closeProbeModalBtn" aria-label="Close Probe Modal">&times;</button>
+      </div>
+
+      <div class="probe-stats-bar">
+        <div class="probe-stat-box">
+          <span class="probe-stat-num">99.999%</span>
+          <span class="probe-stat-lbl">Global Mesh Availability</span>
+        </div>
+        <div class="probe-stat-box">
+          <span class="probe-stat-num">0.00%</span>
+          <span class="probe-stat-lbl">Aggregate Packet Loss</span>
+        </div>
+        <div class="probe-stat-box">
+          <span class="probe-stat-num" id="probeEdgeRtt">3.8 ms</span>
+          <span class="probe-stat-lbl">Anycast Edge RTT</span>
+        </div>
+        <div class="probe-stat-box">
+          <span class="probe-stat-num">6 Zones</span>
+          <span class="probe-stat-lbl">Monitored Cloud Regions</span>
+        </div>
+      </div>
+
+      <div class="probe-nodes-grid" id="probeNodesList"></div>
+
+      <div class="probe-modal-footer">
+        <span style="font-size: 0.8rem; color: #94a3b8; font-family: var(--font-mono);">Protocol: Anycast Edge TCP/ICMP RTT Telemetry</span>
+        <button class="btn-primary" id="runProbeActionBtn" style="padding: 8px 18px; font-size: 0.84rem;">
+          <span>Re-Probe Latency Now ⚡</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====================================================================
+       16. LINEAR-STYLE COMMAND PALETTE (Cmd+K / Ctrl+K) MODAL
+       ==================================================================== -->
+  <div id="commandPaletteModal" class="palette-modal-backdrop" aria-modal="true" role="dialog" aria-hidden="true">
+    <div class="palette-window">
+      <div class="palette-search-bar">
+        <span class="palette-search-icon">🔍</span>
+        <input type="text" id="paletteSearchInput" class="palette-search-input" placeholder="Type a command or search projects, blueprints, skills, certifications..." autocomplete="off" spellcheck="false">
+        <button class="palette-esc-badge" id="closePaletteBtn">ESC</button>
+      </div>
+      <div class="palette-results-list" id="paletteResults"></div>
+      <div class="palette-footer">
+        <div class="palette-footer-shortcuts">
+          <span><kbd>↑</kbd><kbd>↓</kbd> navigate</span>
+          <span><kbd>↵</kbd> select</span>
+          <span><kbd>esc</kbd> close</span>
+        </div>
+        <span>Dilip Kumar • Sovereign Cloud Systems</span>
+      </div>
     </div>
   </div>
 
