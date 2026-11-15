@@ -164,7 +164,7 @@ export function initSkillsReel() {
       id: 3,
       title: 'CHAPTER 04 • MODERN IAC & LIFE SCIENCES GXP',
       shortName: '04 IaC & GxP',
-      speech: "I automate mission-critical platforms using Terraform, Docker, and Kubernetes, enforcing strict 21 CFR Part 11 and GxP regulatory compliance for Cognizant's Life Sciences LabWare Practice."
+      speech: "I automate mission-critical platforms using Terraform, Docker, and Kubernetes, enforcing strict 21 CFR Part 11 and GxP regulatory compliance for Cognizant's Life Sciences LIMS Practice."
     }
   ];
 

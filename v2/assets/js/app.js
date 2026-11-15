@@ -157,9 +157,9 @@ function populatePhilosophy() {
             <span class="tech-spec-title">GxP &amp; 21 CFR Part 11</span>
             <span class="tech-spec-badge">Validated Practice</span>
           </div>
-          <p class="tech-spec-desc">Strict compliance framework for Life Sciences LabWare LIMS with S3 Object Lock immutable audit trail.</p>
+          <p class="tech-spec-desc">Strict compliance framework for Life Sciences LIMS with S3 Object Lock immutable audit trail.</p>
           <div class="tech-spec-chips">
-            <span class="tech-spec-chip">LabWare LIMS</span>
+            <span class="tech-spec-chip">LIMS</span>
             <span class="tech-spec-chip">S3 Object Lock</span>
             <span class="tech-spec-chip">CloudTrail Vault</span>
             <span class="tech-spec-chip">Audit Trails</span>

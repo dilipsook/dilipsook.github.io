@@ -86,7 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (typewriterElement) {
     const phrases = [
       'Multi-Cloud Architect & FinOps Leader',
-      'Manager Project — LabWare Practice @ Cognizant',
+      'Manager Project — LIMS Practice @ Cognizant',
       'Dual Certified: AWS & Microsoft Azure',
       '$60K+/Mo Saved in Documented FinOps',
       'Life Sciences LIMS & ELN Cloud Migrations',

@@ -54,7 +54,7 @@ export const skillsData = [
   { name: "Windows Server", group: "systems", icon: "assets/images/cloud-icons/windows-server.png", type: "img" },
 
   // Life Sciences & LIMS
-  { name: "LabWare LIMS & ELN", group: "lifesciences", icon: "🔬", type: "emoji" },
+  { name: "LIMS & ELN", group: "lifesciences", icon: "🔬", type: "emoji" },
   { name: "Labvantage LIMS", group: "lifesciences", icon: "🧪", type: "emoji" },
   { name: "GxP / 21 CFR Part 11", group: "lifesciences", icon: "📋", type: "emoji" },
   { name: "Oracle WebLogic", group: "lifesciences", icon: "⚙️", type: "emoji" }

@@ -4,13 +4,13 @@
  */
 
 export const primaryFlagship = {
-  id: "flagship-labware",
+  id: "flagship-lims",
   tag: "CORE ECOSYSTEM",
   hardwareTag: "INFRASTRUCTURE: AWS HYBRID DIRECTCONNECT • AZURE EXPRESSROUTE",
-  title: "Cognizant ISG LSMG — LabWare Cloud Transformation",
+  title: "Cognizant ISG LSMG — LIMS Cloud Transformation",
   client: "Cognizant / Global Pharmaceutical Client (Johnson & Johnson)",
   year: "2023 — Present",
-  summary: "A persistent, validated hybrid cloud modernization program migrating mission-critical LabWare Laboratory Information Management Systems (LIMS) across AWS and Microsoft Azure without business interruption.",
+  summary: "A persistent, validated hybrid cloud modernization program migrating mission-critical Laboratory Information Management Systems (LIMS) across AWS and Microsoft Azure without business interruption.",
   metrics: [
     { num: "1,000+", label: "SERVERS MIGRATED" },
     { num: "99.999%", label: "SYSTEM AVAILABILITY" },

@@ -339,7 +339,7 @@ function initInfiniteMarquee() {
     'HashiCorp Terraform',
     'Kubernetes (EKS / AKS)',
     'FinOps Capital Governance',
-    'LabWare LIMS & ELN',
+    'LIMS & ELN',
     'Oracle RAC Multi-Master',
     'GxP & 21 CFR Part 11',
     'Python & Bash Automation',

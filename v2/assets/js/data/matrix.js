@@ -42,9 +42,9 @@ export const systemsMatrix = [
     kicker: "Compliance & Life Sciences",
     category: "compliance",
     title: "GxP & 21 CFR Part 11 Validated Framework",
-    summary: "Regulated cloud architecture engineered specifically for global pharmaceutical and Life Sciences LabWare LIMS environments.",
+    summary: "Regulated cloud architecture engineered specifically for global pharmaceutical and Life Sciences LIMS environments.",
     details: "Features qualification documentation (IQ/OQ/PQ support), immutable cryptographic audit logging, automated disaster recovery testing, and segregated validation staging to meet FDA 21 CFR Part 11 and EU Annex 11 standards without compromise.",
-    tags: ["LabWare LIMS", "21 CFR Part 11", "GxP Validation", "AWS S3 Object Lock", "CloudTrail Vault"],
+    tags: ["LIMS", "21 CFR Part 11", "GxP Validation", "AWS S3 Object Lock", "CloudTrail Vault"],
     status: "GxP_VALIDATED",
     impact: "Zero Regulatory Findings across 1,000+ Servers"
   },

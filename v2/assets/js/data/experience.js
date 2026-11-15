@@ -6,7 +6,7 @@
 export const experienceData = [
   {
     id: "cognizant",
-    role: "Manager Project — ISG LSMG Labware Practice",
+    role: "Manager Project — ISG LSMG LIMS Practice",
     company: "Cognizant",
     division: "Life Sciences Practice",
     logo: "assets/images/logos/cognizant.svg",
@@ -14,12 +14,12 @@ export const experienceData = [
     location: "Gurugram · Hybrid",
     isCurrent: true,
     highlights: [
-      "Directing enterprise LabWare LIMS & ELN cloud deployments, secure migrations, and cloud modernization for global Life Sciences enterprises.",
+      "Directing enterprise LIMS & ELN cloud deployments, secure migrations, and cloud modernization for global Life Sciences enterprises.",
       "Orchestrating DevSecOps practices and automated infrastructure provisioning (AWS/Azure) while maintaining stringent cloud security, data integrity, and GxP / CSV regulatory compliance.",
       "Architecting high-availability multi-region cloud landing zones ensuring audit readiness, automated disaster recovery, and sub-minute RTO/RPO for mission-critical laboratory workflows.",
       "Leading cross-functional delivery across cloud architecture, security compliance, validation engineering, and client enterprise stakeholders."
     ],
-    tags: ["LabWare LIMS", "LabWare ELN", "AWS & Azure", "DevSecOps & CI/CD", "GxP / CSV", "Life Sciences"]
+    tags: ["LIMS", "ELN", "AWS & Azure", "DevSecOps & CI/CD", "GxP / CSV", "Life Sciences"]
   },
   {
     id: "insight",
