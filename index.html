@@ -40,6 +40,7 @@
   <link rel="stylesheet" href="assets/css/main.css">
   <link rel="stylesheet" href="assets/css/components.css">
   <link rel="stylesheet" href="assets/css/animations.css">
+  <link rel="stylesheet" href="assets/css/swarm.css">
 </head>
 <body>
 
@@ -88,6 +89,11 @@
           <button class="nav-telemetry-pill" id="hudPingBtn" title="Live Cloud Latency Probe (Click to inspect)">
             <span class="telemetry-live-dot"></span>
             <span class="telemetry-label" id="globalRegionTicker">SLA 99.999% · 11ms</span>
+          </button>
+
+                    <!-- Swarm Multiplayer Animation Trigger -->
+          <button class="nav-icon-btn btn-motion" id="btnNavMotion" title="Toggle Swarm Multiplayer Animation (Alt + Shift + S)">
+            <span style="font-size: 1.05rem; color: #38bdf8;">✦</span>
           </button>
 
           <!-- Command Palette Trigger -->
@@ -189,6 +195,10 @@
                 <span>FinOps Calculator</span>
                 <span class="btn-icon">📊</span>
               </a>
+              <button type="button" class="btn-motion-preview btn-luxury-ghost" id="heroSwarmBtn" title="Play Swarm Multiplayer Rebuild Animation">
+                <span style="color: #38bdf8;">✦</span>
+                <span>Play Swarm Rebuild</span>
+              </button>
             </div>
 
             <!-- Client Trust Strip / Core Domains & Direct Links -->
@@ -200,15 +210,49 @@
                   <span class="hero-sla-text"><strong>SLA 99.999%</strong> Production Reliability</span>
                 </div>
               </div>
-              <div class="trust-logos-row">
-                <span class="trust-logo-chip">Cognizant ISG</span>
-                <span class="trust-logo-chip">Johnson &amp; Johnson</span>
-                <span class="trust-logo-chip">LoanTap FinTech</span>
-                <span class="trust-logo-chip">ISRO</span>
-                <span class="trust-logo-chip">Indian Air Force</span>
-                <span class="trust-logo-chip">Dhani $60K/mo</span>
-                <span class="trust-logo-chip">BBK E-Commerce</span>
-                <span class="trust-logo-chip">Navi Cloud</span>
+              <div class="marquee-dual-wrap">
+                <div class="marquee-track marquee-track-left">
+                  <span class="trust-logo-chip">🏢 Cognizant ISG</span>
+                  <span class="trust-logo-chip">💊 Johnson &amp; Johnson</span>
+                  <span class="trust-logo-chip">💳 LoanTap FinTech</span>
+                  <span class="trust-logo-chip">🚀 ISRO SDSC</span>
+                  <span class="trust-logo-chip">✈️ Indian Air Force</span>
+                  <span class="trust-logo-chip">📉 Dhani $60K/mo</span>
+                  <span class="trust-logo-chip">🛍️ BBK E-Commerce</span>
+                  <span class="trust-logo-chip">☁️ Navi Cloud</span>
+                  <span class="trust-logo-chip">🏛️ ServicePlus NIC</span>
+                  <!-- Duplicated for seamless infinite loop -->
+                  <span class="trust-logo-chip">🏢 Cognizant ISG</span>
+                  <span class="trust-logo-chip">💊 Johnson &amp; Johnson</span>
+                  <span class="trust-logo-chip">💳 LoanTap FinTech</span>
+                  <span class="trust-logo-chip">🚀 ISRO SDSC</span>
+                  <span class="trust-logo-chip">✈️ Indian Air Force</span>
+                  <span class="trust-logo-chip">📉 Dhani $60K/mo</span>
+                  <span class="trust-logo-chip">🛍️ BBK E-Commerce</span>
+                  <span class="trust-logo-chip">☁️ Navi Cloud</span>
+                  <span class="trust-logo-chip">🏛️ ServicePlus NIC</span>
+                </div>
+                <div class="marquee-track marquee-track-right">
+                  <span class="trust-tech-chip">⚡ AWS Landing Zones</span>
+                  <span class="trust-tech-chip">🔷 Azure ExpressRoute</span>
+                  <span class="trust-tech-chip">🏗️ Terraform IaC</span>
+                  <span class="trust-tech-chip">☸️ Kubernetes &amp; EKS</span>
+                  <span class="trust-tech-chip">💰 Autonomous FinOps</span>
+                  <span class="trust-tech-chip">🧪 LabWare LIMS GxP</span>
+                  <span class="trust-tech-chip">🛡️ Zero-Trust IAM</span>
+                  <span class="trust-tech-chip">🗄️ Oracle RAC 19c</span>
+                  <span class="trust-tech-chip">🐍 Python Automation</span>
+                  <!-- Duplicated for seamless infinite loop -->
+                  <span class="trust-tech-chip">⚡ AWS Landing Zones</span>
+                  <span class="trust-tech-chip">🔷 Azure ExpressRoute</span>
+                  <span class="trust-tech-chip">🏗️ Terraform IaC</span>
+                  <span class="trust-tech-chip">☸️ Kubernetes &amp; EKS</span>
+                  <span class="trust-tech-chip">💰 Autonomous FinOps</span>
+                  <span class="trust-tech-chip">🧪 LabWare LIMS GxP</span>
+                  <span class="trust-tech-chip">🛡️ Zero-Trust IAM</span>
+                  <span class="trust-tech-chip">🗄️ Oracle RAC 19c</span>
+                  <span class="trust-tech-chip">🐍 Python Automation</span>
+                </div>
               </div>
             </div>
           </div>
@@ -1828,6 +1872,7 @@
   <script src="assets/js/scroll-progress.js"></script>
   <script src="assets/js/blueprint-diagrams.js"></script>
   <script src="assets/js/skills-reel.js"></script>
+  <script src="assets/js/swarm.js"></script>
   <script src="assets/js/main.js"></script>
 </body>
 </html>

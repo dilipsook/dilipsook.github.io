@@ -1,6 +1,6 @@
 /* ==========================================================================
    DILIP KUMAR PORTFOLIO — INTERACTIVE CLOUD NETWORK CONSTELLATION
-   High-performance 60fps HTML5 Canvas background
+   High-performance 60fps HTML5 Canvas background with Kinetic Shockwaves
    ========================================================================== */
 
 (function initNetworkCanvas() {
@@ -13,6 +13,7 @@
   let height = 0;
   let nodes = [];
   let packets = [];
+  let ripples = [];
   let mouse = { x: -9999, y: -9999, radius: 140 };
 
   const COLORS = {
@@ -66,14 +67,48 @@
     mouse.y = -9999;
   });
 
+  // Interactive Click Shockwave & Packet Burst
+  window.addEventListener('click', (e) => {
+    // Only react to valid coordinates inside window
+    if (e.clientX <= 0 && e.clientY <= 0) return;
+
+    const chosenColor = COLORS[COLOR_KEYS[Math.floor(Math.random() * COLOR_KEYS.length)]];
+    ripples.push({
+      x: e.clientX,
+      y: e.clientY,
+      radius: 6,
+      maxRadius: 220,
+      alpha: 0.85,
+      speed: 4.8,
+      color: chosenColor
+    });
+
+    // Spawn packets radiating outward from nearest nodes
+    const sorted = nodes.slice().sort((a, b) => {
+      const d1 = Math.hypot(a.x - e.clientX, a.y - e.clientY);
+      const d2 = Math.hypot(b.x - e.clientX, b.y - e.clientY);
+      return d1 - d2;
+    });
+
+    const nearest = sorted.slice(0, Math.min(5, sorted.length));
+    nearest.forEach((n1) => {
+      for (let j = 0; j < nodes.length; j++) {
+        const n2 = nodes[j];
+        if (n1 !== n2 && Math.hypot(n1.x - n2.x, n1.y - n2.y) < 170) {
+          spawnPacket(n1, n2, 0.035);
+        }
+      }
+    });
+  });
+
   // Sporadic data packets traversing the network
-  function spawnPacket(n1, n2) {
-    if (packets.length > 20) return;
+  function spawnPacket(n1, n2, customSpeed) {
+    if (packets.length > 35) return;
     packets.push({
       n1: n1,
       n2: n2,
       progress: 0,
-      speed: 0.015 + Math.random() * 0.02,
+      speed: customSpeed || (0.015 + Math.random() * 0.02),
       color: n1.color
     });
   }
@@ -83,6 +118,39 @@
   function render(time) {
     if (isPaused) return;
     ctx.clearRect(0, 0, width, height);
+
+    // Update and draw kinetic ripples
+    for (let r = ripples.length - 1; r >= 0; r--) {
+      const rip = ripples[r];
+      rip.radius += rip.speed;
+      rip.alpha *= 0.955;
+
+      if (rip.alpha <= 0.02 || rip.radius >= rip.maxRadius) {
+        ripples.splice(r, 1);
+        continue;
+      }
+
+      ctx.save();
+      ctx.beginPath();
+      ctx.arc(rip.x, rip.y, rip.radius, 0, Math.PI * 2);
+      ctx.strokeStyle = `rgba(${rip.color.r}, ${rip.color.g}, ${rip.color.b}, ${rip.alpha * 0.65})`;
+      ctx.lineWidth = 1.6;
+      ctx.shadowBlur = 10;
+      ctx.shadowColor = `rgba(${rip.color.r}, ${rip.color.g}, ${rip.color.b}, 0.5)`;
+      ctx.stroke();
+      ctx.restore();
+
+      // Elastic node repulsion along shockwave frontier
+      for (let i = 0; i < nodes.length; i++) {
+        const n = nodes[i];
+        const dist = Math.hypot(n.x - rip.x, n.y - rip.y);
+        if (Math.abs(dist - rip.radius) < 22) {
+          const angle = Math.atan2(n.y - rip.y, n.x - rip.x);
+          n.x += Math.cos(angle) * 1.8;
+          n.y += Math.sin(angle) * 1.8;
+        }
+      }
+    }
 
     // Update and draw nodes
     for (let i = 0; i < nodes.length; i++) {
