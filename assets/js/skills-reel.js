@@ -16,16 +16,19 @@
     const btnMute = document.getElementById('btnMuteNarration');
     const btnRestart = document.getElementById('btnRestartReel');
     const btnTheater = document.getElementById('btnExpandTheater');
+    const btnVoiceToggle = document.getElementById('btnVoiceToggle');
 
     if (!canvas || !btnPlay) return;
 
     // ------------------------------------------------------------------------
-    // 1. Audio Visualizer Canvas Setup
+    // 1. Audio Visualizer Canvas Setup & Studio Neural Audio Engine
     // ------------------------------------------------------------------------
     const ctx = canvas.getContext('2d');
     let animId = null;
     let isPlaying = false;
     let isMuted = false;
+    let currentVoice = 'siri'; // 'siri' (Apple Siri Natural) or 'human' (Executive Male)
+    const audioPlayer = new Audio();
     let currentChapter = 0;
     let chapterTimer = null;
     let tickerInterval = null;
@@ -160,37 +163,53 @@
       }
     ];
 
-    let synthUtterance = null;
-
-    function speakText(text, onComplete) {
-      if (!('speechSynthesis' in window) || isMuted) {
-        // Fallback timer when speech synthesis is disabled or muted
-        const estDuration = Math.max(text.length * 75, 12000);
+    // ------------------------------------------------------------------------
+    // Real Studio Neural Audio Engine (Apple Siri & Executive Human Narrator)
+    // ------------------------------------------------------------------------
+    function playChapterAudio(index, onComplete) {
+      if (isMuted) {
+        const estDuration = 12000;
         chapterTimer = setTimeout(() => {
           if (onComplete) onComplete();
         }, estDuration);
         return;
       }
 
+      const chNumber = index + 1;
+      const audioPath = `assets/audio/briefing/ch${chNumber}-${currentVoice}.mp3`;
+      audioPlayer.src = audioPath;
+      audioPlayer.currentTime = 0;
+      audioPlayer.muted = isMuted;
+
+      audioPlayer.onended = () => {
+        if (onComplete) onComplete();
+      };
+
+      audioPlayer.onerror = (err) => {
+        console.warn('Real audio file load issue, falling back to speech synthesis/timer:', err);
+        fallbackSpeech(CHAPTERS[index].speech, onComplete);
+      };
+
+      audioPlayer.play().catch(err => {
+        console.warn('Autoplay blocked or audio load error:', err);
+        fallbackSpeech(CHAPTERS[index].speech, onComplete);
+      });
+    }
+
+    function fallbackSpeech(text, onComplete) {
+      if (!('speechSynthesis' in window)) {
+        chapterTimer = setTimeout(() => {
+          if (onComplete) onComplete();
+        }, 12000);
+        return;
+      }
       window.speechSynthesis.cancel();
-      synthUtterance = new SpeechSynthesisUtterance(text);
-      synthUtterance.rate = 1.05;
-      synthUtterance.pitch = 0.98;
-
-      // Select high quality English voice if available
-      const voices = window.speechSynthesis.getVoices();
-      const preferred = voices.find(v => v.lang.startsWith('en') && (v.name.includes('Google') || v.name.includes('Natural') || v.name.includes('Daniel') || v.name.includes('Alex')));
-      if (preferred) synthUtterance.voice = preferred;
-
-      synthUtterance.onend = () => {
-        if (onComplete) onComplete();
-      };
-
-      synthUtterance.onerror = () => {
-        if (onComplete) onComplete();
-      };
-
-      window.speechSynthesis.speak(synthUtterance);
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.rate = 1.05;
+      utterance.pitch = 1.0;
+      utterance.onend = () => { if (onComplete) onComplete(); };
+      utterance.onerror = () => { if (onComplete) onComplete(); };
+      window.speechSynthesis.speak(utterance);
     }
 
     function typeSubtitle(fullText) {
@@ -206,7 +225,7 @@
         } else {
           clearInterval(tickerInterval);
         }
-      }, 35);
+      }, 40);
     }
 
     function playChapter(index) {
@@ -234,8 +253,8 @@
       // Highlight corresponding floating chip
       highlightChips(ch.chips);
 
-      // Start speaking
-      speakText(ch.speech, () => {
+      // Play real studio audio
+      playChapterAudio(index, () => {
         if (isPlaying) {
           playChapter(currentChapter + 1);
         }
@@ -293,6 +312,7 @@
         <span class="play-btn-label">RESUME BRIEFING</span>
         <span class="audio-waves-mini"><span></span><span></span><span></span><span></span><span></span></span>
       `;
+      audioPlayer.pause();
       if ('speechSynthesis' in window) {
         window.speechSynthesis.pause();
       }
@@ -301,12 +321,14 @@
 
     function stopReel() {
       isPlaying = false;
-      deck?.classList.remove('playing');
+      deck?.classList.remove('playing', 'active');
       btnPlay.innerHTML = `
         <span class="play-icon-triangle">▶</span>
         <span class="play-btn-label">PLAY ARCHITECT BRIEFING (60s)</span>
         <span class="audio-waves-mini"><span></span><span></span><span></span><span></span><span></span></span>
       `;
+      audioPlayer.pause();
+      audioPlayer.currentTime = 0;
       if ('speechSynthesis' in window) {
         window.speechSynthesis.cancel();
       }
@@ -322,8 +344,8 @@
       if (isPlaying) {
         pauseReel();
       } else {
-        if ('speechSynthesis' in window && window.speechSynthesis.paused) {
-          window.speechSynthesis.resume();
+        if (audioPlayer.src && audioPlayer.paused && secondsElapsed > 0 && secondsElapsed < totalSeconds) {
+          audioPlayer.play().catch(() => {});
           isPlaying = true;
           deck?.classList.add('playing');
           btnPlay.innerHTML = `
@@ -354,11 +376,20 @@
       startReel();
     });
 
+    btnVoiceToggle?.addEventListener('click', () => {
+      currentVoice = currentVoice === 'siri' ? 'human' : 'siri';
+      btnVoiceToggle.textContent = currentVoice === 'siri' ? '🎙️ Siri Voice' : '🎙️ Male Voice';
+      if (isPlaying) {
+        playChapter(currentChapter);
+      }
+    });
+
     btnMute?.addEventListener('click', () => {
       isMuted = !isMuted;
       btnMute.textContent = isMuted ? '🔇 Voice OFF' : '🔊 Voice ON';
-      if (isMuted && 'speechSynthesis' in window) {
-        window.speechSynthesis.cancel();
+      audioPlayer.muted = isMuted;
+      if (isMuted) {
+        if ('speechSynthesis' in window) window.speechSynthesis.cancel();
       } else if (!isMuted && isPlaying) {
         playChapter(currentChapter);
       }

@@ -512,6 +512,21 @@
    6. APPLE iOS GLASS INPUTS & TERMINAL MODAL
    ========================================================================== */
 
+.terminal-modal-backdrop {
+  z-index: 100002 !important;
+}
+
+.terminal-modal-backdrop.open {
+  display: flex !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+}
+
+.floating-cli-trigger {
+  display: none !important;
+}
+
 .contact-input,
 .form-input,
 .command-palette-input {
@@ -865,6 +880,22 @@
     font-size: 0.8rem !important;
     white-space: nowrap !important;
   }
+}
+
+/* Permanently remove floating CLI trigger from viewport */
+.floating-cli-trigger {
+  display: none !important;
+}
+
+#btnVoiceToggle {
+  color: #38bdf8 !important;
+  border-color: rgba(56, 189, 248, 0.35) !important;
+}
+
+#btnVoiceToggle:hover {
+  background: rgba(56, 189, 248, 0.18) !important;
+  color: #ffffff !important;
+  border-color: #38bdf8 !important;
 }
 
 /* ==========================================================================

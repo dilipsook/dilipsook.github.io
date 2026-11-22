@@ -314,7 +314,7 @@
                 <div class="skills-reel-top-row">
                   <div class="reel-badge-pill">
                     <span class="live-beacon"></span>
-                    <span>AI ARCHITECT REEL &bull; COGNIZANT ISG</span>
+                    <span>EXECUTIVE BRIEFING &bull; APPLE SIRI VOICE</span>
                   </div>
                   <canvas id="heroVoiceVisualizer" class="hud-waveform-canvas" width="140" height="24" title="Live Audio Spectrum Visualizer"></canvas>
                 </div>
@@ -339,9 +339,10 @@
                     <span class="subtitle-chapter-label" id="reelChapterLabel">CHAPTER 01 &bull; MULTI-CLOUD ENGINEERING</span>
                     <span class="subtitle-timer" id="reelTimer">0:00 / 1:00</span>
                   </div>
-                  <div class="subtitle-body" id="reelSubtitleText">Click Play to begin the 60-second interactive executive skills briefing narrated by Dilip's digital twin.</div>
+                  <div class="subtitle-body" id="reelSubtitleText">Click Play to begin the 60-second interactive executive skills briefing narrated with Apple Siri human studio voice.</div>
                   <div class="subtitle-controls">
                     <button id="btnMuteNarration" class="btn-reel-control" title="Toggle Narration Audio">🔊 Voice ON</button>
+                    <button id="btnVoiceToggle" class="btn-reel-control" title="Switch Voice: Siri or Executive Human Male">🎙️ Siri Voice</button>
                     <button id="btnRestartReel" class="btn-reel-control" title="Restart Briefing">↺ Replay</button>
                     <button id="btnExpandTheater" class="btn-reel-control" title="Theater Mode">⛶ Focus</button>
                   </div>
@@ -1650,6 +1651,9 @@
 
         <div style="display: flex; align-items: center; gap: 20px;">
           <a href="#overview" class="nav-link" style="font-size: 0.85rem;">↑ Back to Top</a>
+          <button id="openTerminalBtn" class="nav-link" style="background: none; border: none; font-size: 0.85rem; cursor: pointer; color: inherit; display: inline-flex; align-items: center; gap: 6px; padding: 0;">
+            <span>💻</span><span>Architecture CLI</span>
+          </button>
           <a href="Dilip_Kumar_Resume.pdf" target="_blank" class="nav-link" style="font-size: 0.85rem;">Resume (PDF)</a>
           <a href="mailto:dilipsook@gmail.com" class="nav-link" style="font-size: 0.85rem;">Email Dilip</a>
         </div>
@@ -1776,12 +1780,6 @@
         </div>
       </div>
     </div>
-
-    <!-- Floating Cloud CLI Trigger -->
-    <button class="floating-cli-trigger" id="openTerminalBtn" title="Launch Interactive Cloud CLI Terminal">
-      <span>💻</span>
-      <span>&gt;_ Cloud CLI</span>
-    </button>
 
     <!-- Floating Back to Top Button with Circular Scroll Progress Ring -->
     <button class="scroll-top-btn" id="scrollTopBtn" aria-label="Scroll back to top" title="Scroll back to top">

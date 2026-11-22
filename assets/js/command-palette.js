@@ -18,7 +18,7 @@
     const commandRegistry = [
       // Quick Actions
       { id: 'act-resume', category: 'Actions', icon: '📄', title: 'Download Executive Resume (PDF)', subtitle: 'Strictly 2-page verified PDF with Cognizant & Life Sciences', action: () => { window.open('Dilip_Kumar_Resume.pdf', '_blank'); } },
-      { id: 'act-cli', category: 'Actions', icon: '💻', title: 'Open Interactive Cloud CLI (dilip-cli)', subtitle: 'Simulate AWS/Azure migration checks, FinOps models & whoami', action: () => { document.getElementById('openTerminalBtn')?.click(); } },
+      { id: 'act-cli', category: 'Actions', icon: '💻', title: 'Open Interactive Cloud CLI (dilip-cli)', subtitle: 'Simulate AWS/Azure migration checks, FinOps models & whoami', action: () => { if (window.openTerminal) window.openTerminal(); else document.getElementById('openTerminalBtn')?.click(); } },
       { id: 'act-probe', category: 'Actions', icon: '⚡', title: 'Run Multi-Cloud Latency Probe', subtitle: 'Live edge ping telemetry across Mumbai, Virginia, Frankfurt, Singapore', action: () => { document.getElementById('hudPingBtn')?.click(); } },
       { id: 'act-calc', category: 'Actions', icon: '📊', title: 'Launch FinOps ROI Calculator', subtitle: 'Calculate cloud spend rightsizing, Savings Plans & S3 tiering', action: () => { document.getElementById('finops')?.scrollIntoView({ behavior: 'smooth' }); } },
       { id: 'act-theme', category: 'Actions', icon: '☀️/🌙', title: 'Toggle Light / Dark Obsidian Theme', subtitle: 'Switch between Deep Obsidian and Clean Executive Light mode', action: () => { document.getElementById('themeToggleBtn')?.click(); } },
