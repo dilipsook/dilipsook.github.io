@@ -4,24 +4,24 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    // Theme Toggle (Dark / Light Mode) - DEFAULT TO LIGHT MODE
+    // Theme Toggle (Dark / Light Mode) - DEFAULT TO DARK MODE
   const themeToggleBtn = document.getElementById('themeToggleBtn');
-  // Default strictly to light mode unless visitor explicitly toggles to dark
-  const savedTheme = localStorage.getItem('dilip-theme-v2') || 'light';
+  // Default strictly to dark mode across all visitor sessions
+  const savedTheme = localStorage.getItem('dilip-theme-v3') || 'dark';
 
   function setTheme(theme) {
-    if (theme === 'dark') {
-      document.documentElement.removeAttribute('data-theme');
-      if (themeToggleBtn) themeToggleBtn.textContent = '☀️';
-      localStorage.setItem('dilip-theme-v2', 'dark');
-    } else {
+    if (theme === 'light') {
       document.documentElement.setAttribute('data-theme', 'light');
       if (themeToggleBtn) themeToggleBtn.textContent = '🌙';
-      localStorage.setItem('dilip-theme-v2', 'light');
+      localStorage.setItem('dilip-theme-v3', 'light');
+    } else {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      if (themeToggleBtn) themeToggleBtn.textContent = '☀️';
+      localStorage.setItem('dilip-theme-v3', 'dark');
     }
   }
 
-  // Initialize theme with light mode default
+  // Initialize theme with dark mode default
   setTheme(savedTheme);
 
   themeToggleBtn?.addEventListener('click', () => {
