@@ -346,23 +346,81 @@ img {
   -webkit-text-fill-color: transparent;
 }
 
-/* Scrollbar Customization */
+/* ==========================================================================
+   FUTURISTIC LIQUID GLASS SCROLLBAR (MULTI-COLOR AURORA)
+   ========================================================================== */
+
+/* Firefox standard scrollbar properties */
+html {
+  scrollbar-width: thin;
+  scrollbar-color: #38bdf8 rgba(7, 12, 24, 0.85);
+}
+
+/* Chromium / Edge / Safari / Opera WebKit Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-button {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--bg-primary);
+  background: rgba(7, 12, 24, 0.8) !important;
+  border-left: 1px solid rgba(255, 255, 255, 0.08) !important;
 }
 
+[data-theme="light"] ::-webkit-scrollbar-track {
+  background: rgba(241, 245, 249, 0.85) !important;
+  border-left: 1px solid rgba(0, 0, 0, 0.06) !important;
+}
+
+/* Radiant Multi-Color Aurora Gradient Thumb with 1px specular glass rim */
 ::-webkit-scrollbar-thumb {
-  background: rgba(148, 163, 184, 0.25);
-  border-radius: 4px;
+  background: linear-gradient(180deg, #00f0ff 0%, #38bdf8 20%, #6366f1 55%, #a855f7 80%, #ec4899 100%) !important;
+  border-radius: 999px !important;
+  border: 2px solid rgba(7, 12, 24, 0.6) !important;
+  background-clip: padding-box !important;
+  box-shadow: 
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.8),
+    0 0 12px rgba(56, 189, 248, 0.65) !important;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
 }
 
+[data-theme="light"] ::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #0284c7 0%, #3b82f6 30%, #6366f1 70%, #a855f7 100%) !important;
+  border: 2px solid transparent !important;
+  background-clip: padding-box !important;
+  box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.8) !important;
+}
+
+/* Hover: Luminous Energy Glow with Electric Palette */
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(148, 163, 184, 0.45);
+  background: linear-gradient(180deg, #38bdf8 0%, #818cf8 35%, #c084fc 70%, #f43f5e 100%) !important;
+  border: 1.5px solid transparent !important;
+  background-clip: padding-box !important;
+  box-shadow: 
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.95),
+    0 0 18px rgba(56, 189, 248, 0.95),
+    0 0 32px rgba(168, 85, 247, 0.7) !important;
+}
+
+/* Active / Dragging State: Electric High-Voltage Aurora Glow */
+::-webkit-scrollbar-thumb:active {
+  background: linear-gradient(180deg, #f43f5e 0%, #ec4899 40%, #a855f7 70%, #00f0ff 100%) !important;
+  border: 1px solid transparent !important;
+  background-clip: padding-box !important;
+  box-shadow: 
+    inset 0 1px 1px 0 rgba(255, 255, 255, 1),
+    0 0 24px rgba(236, 72, 153, 0.95),
+    0 0 40px rgba(0, 240, 255, 0.8) !important;
+}
+
+::-webkit-scrollbar-corner {
+  background: transparent !important;
 }
 
 /* Utility for accessibility */

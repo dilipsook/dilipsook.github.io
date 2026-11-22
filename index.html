@@ -45,6 +45,9 @@
 </head>
 <body>
 
+  <!-- Top Aurora Scroll Progress Line -->
+  <div id="topScrollProgress" class="top-scroll-progress" aria-hidden="true"></div>
+
   <!-- Ambient Light Orbs & Grid Overlay -->
   <div class="ambient-glow" aria-hidden="true">
     <div class="glow-orb glow-orb-1"></div>
@@ -1787,6 +1790,31 @@
       </svg>
       <span>↑</span>
     </button>
+
+    <!-- Floating Side Scroll Indicator HUD Pill -->
+    <div id="sideScrollHud" class="side-scroll-hud" role="status" aria-label="Current scroll position" title="Click to scroll to next section">
+      <span class="hud-pulse-dot"></span>
+      <span class="hud-scroll-text" id="hudScrollText">0%</span>
+      <span class="hud-section-name" id="hudSectionName">Overview</span>
+    </div>
+
+    <!-- Animated Holographic Side Scroll Rail & Waypoints (Desktop) -->
+    <aside id="sideScrollRail" class="side-scroll-rail" aria-label="Page scroll position rail">
+      <div class="side-rail-track" id="sideRailTrack">
+        <div id="sideRailThumb" class="side-rail-thumb">
+          <div class="side-rail-glow"></div>
+        </div>
+        <div class="rail-waypoint" data-target="overview" title="Overview" style="top: 0%;"></div>
+        <div class="rail-waypoint" data-target="architecture" title="Architecture Pillars" style="top: 12%;"></div>
+        <div class="rail-waypoint" data-target="finops" title="FinOps ROI" style="top: 25%;"></div>
+        <div class="rail-waypoint" data-target="projects" title="Featured Projects" style="top: 38%;"></div>
+        <div class="rail-waypoint" data-target="experience" title="Career Experience" style="top: 52%;"></div>
+        <div class="rail-waypoint" data-target="skills" title="Skills Matrix" style="top: 66%;"></div>
+        <div class="rail-waypoint" data-target="gallery" title="Architectural Story" style="top: 78%;"></div>
+        <div class="rail-waypoint" data-target="certifications" title="Certifications" style="top: 89%;"></div>
+        <div class="rail-waypoint" data-target="contact" title="Get In Touch" style="top: 99%;"></div>
+      </div>
+    </aside>
 
     <!-- ====================================================================
          GLOBAL EDGE LATENCY PROBE MODAL

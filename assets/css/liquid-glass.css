@@ -866,3 +866,350 @@
     white-space: nowrap !important;
   }
 }
+
+/* ==========================================================================
+   7. ANIMATED AURORA SCROLLBAR & FLOATING SIDE SCROLL HUD
+   ========================================================================== */
+
+/* Top Aurora Scroll Progress Line */
+.top-scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3.5px;
+  width: 0%;
+  background: linear-gradient(90deg, #00f0ff 0%, #38bdf8 25%, #6366f1 50%, #d946ef 75%, #00f0ff 100%);
+  background-size: 200% 100%;
+  animation: auroraScrollFlow 3s linear infinite;
+  box-shadow: 0 0 12px rgba(56, 189, 248, 0.85), 0 0 24px rgba(217, 70, 239, 0.5);
+  z-index: 100005;
+  pointer-events: none;
+  transition: width 0.12s ease-out;
+}
+
+@keyframes auroraScrollFlow {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+
+/* Floating Side Scroll HUD Pill (Right-edge live scroll indicator) */
+.side-scroll-hud {
+  position: fixed;
+  top: 50%;
+  right: 18px;
+  transform: translateY(-50%) translateX(30px);
+  opacity: 0;
+  visibility: hidden;
+  background: var(--ios-glass-sheen), rgba(10, 16, 32, 0.82);
+  backdrop-filter: blur(24px) saturate(200%);
+  -webkit-backdrop-filter: blur(24px) saturate(200%);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: var(--radius-full);
+  padding: 6px 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: 
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.45),
+    0 10px 30px rgba(0, 0, 0, 0.65),
+    0 0 18px rgba(56, 189, 248, 0.35);
+  z-index: 99998;
+  cursor: pointer;
+  pointer-events: auto;
+  transition: opacity 0.35s cubic-bezier(0.16, 1, 0.3, 1), 
+              transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              visibility 0.35s;
+  user-select: none;
+}
+
+.side-scroll-hud.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(-50%) translateX(0);
+}
+
+.side-scroll-hud:hover {
+  transform: translateY(-50%) scale(1.05);
+  border-color: rgba(56, 189, 248, 0.6);
+  box-shadow: 
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.7),
+    0 12px 35px rgba(0, 0, 0, 0.75),
+    0 0 25px rgba(56, 189, 248, 0.7);
+}
+
+/* Pulsing Neon Beacon Dot inside Side Scroll HUD */
+.hud-pulse-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #00f0ff;
+  box-shadow: 0 0 10px #00f0ff;
+  animation: hudDotPulse 1.8s infinite ease-in-out;
+  flex-shrink: 0;
+}
+
+@keyframes hudDotPulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 6px #00f0ff;
+  }
+  50% {
+    transform: scale(1.4);
+    box-shadow: 0 0 14px #38bdf8, 0 0 22px #818cf8;
+  }
+}
+
+.hud-scroll-text {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 800;
+  color: #38bdf8;
+  letter-spacing: 0.04em;
+}
+
+.hud-section-name {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #f1f5f9;
+  letter-spacing: 0.02em;
+  padding-left: 6px;
+  border-left: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+[data-theme="light"] .side-scroll-hud {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: rgba(15, 23, 42, 0.15);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12), 0 0 16px rgba(56, 189, 248, 0.25);
+}
+
+[data-theme="light"] .hud-section-name {
+  color: #0f172a;
+  border-left-color: rgba(15, 23, 42, 0.15);
+}
+
+/* Enhanced Floating Back to Top Button */
+.scroll-top-btn {
+  background: var(--ios-glass-sheen), rgba(12, 18, 36, 0.88) !important;
+  backdrop-filter: blur(24px) saturate(200%) !important;
+  -webkit-backdrop-filter: blur(24px) saturate(200%) !important;
+  border: 1.5px solid rgba(56, 189, 248, 0.45) !important;
+  box-shadow: 
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.5),
+    0 10px 28px rgba(0, 0, 0, 0.65),
+    0 0 16px rgba(56, 189, 248, 0.4) !important;
+  animation: scrollBtnBreath 3.5s ease-in-out infinite alternate !important;
+}
+
+@keyframes scrollBtnBreath {
+  0% {
+    box-shadow: 
+      inset 0 1px 1px 0 rgba(255, 255, 255, 0.5),
+      0 10px 28px rgba(0, 0, 0, 0.65),
+      0 0 14px rgba(56, 189, 248, 0.35);
+    border-color: rgba(56, 189, 248, 0.45);
+  }
+  100% {
+    box-shadow: 
+      inset 0 1px 1px 0 rgba(255, 255, 255, 0.7),
+      0 14px 34px rgba(0, 0, 0, 0.75),
+      0 0 24px rgba(168, 85, 247, 0.65);
+    border-color: rgba(168, 85, 247, 0.65);
+  }
+}
+
+.scroll-top-btn:hover {
+  transform: translateY(-4px) scale(1.1) !important;
+  border-color: #00f0ff !important;
+  box-shadow: 
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.9),
+    0 16px 36px rgba(0, 0, 0, 0.8),
+    0 0 28px rgba(0, 240, 255, 0.85) !important;
+}
+
+.scroll-top-btn span {
+  font-size: 1.25rem !important;
+  font-weight: 800 !important;
+  background: linear-gradient(180deg, #00f0ff 0%, #38bdf8 50%, #c084fc 100%) !important;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+  transition: transform 0.2s ease !important;
+}
+
+.scroll-top-btn:hover span {
+  transform: translateY(-2px);
+}
+
+.progress-ring-circle {
+  stroke: #38bdf8 !important;
+  stroke-width: 3 !important;
+  filter: drop-shadow(0 0 5px rgba(56, 189, 248, 0.8));
+}
+
+@media (max-width: 768px) {
+  .side-scroll-hud {
+    right: 12px;
+    padding: 5px 10px;
+    transform: translateY(-50%) translateX(20px);
+  }
+  .hud-section-name {
+    display: none;
+  }
+}
+
+/* ==========================================================================
+   9. IN-PAGE ANIMATED SIDE SCROLL RAIL & WAYPOINTS
+   ========================================================================== */
+
+.side-scroll-rail {
+  position: fixed;
+  right: 14px;
+  top: 22%;
+  bottom: 22%;
+  width: 20px;
+  z-index: 99997;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: auto;
+  user-select: none;
+}
+
+.side-rail-track {
+  position: relative;
+  width: 3px;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 999px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.side-rail-thumb {
+  position: absolute;
+  top: 0%;
+  left: -3.5px;
+  width: 10px;
+  height: 38px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #00f0ff 0%, #38bdf8 30%, #6366f1 70%, #ec4899 100%);
+  box-shadow: 
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.9),
+    0 0 14px rgba(56, 189, 248, 0.9),
+    0 0 28px rgba(168, 85, 247, 0.6);
+  cursor: grab;
+  transition: top 0.08s linear, box-shadow 0.25s ease;
+  animation: railThumbAura 3s ease-in-out infinite alternate;
+}
+
+@keyframes railThumbAura {
+  0% {
+    box-shadow: 
+      inset 0 1px 1px 0 rgba(255, 255, 255, 0.9),
+      0 0 12px rgba(56, 189, 248, 0.8),
+      0 0 22px rgba(168, 85, 247, 0.5);
+  }
+  100% {
+    box-shadow: 
+      inset 0 1px 1px 0 rgba(255, 255, 255, 1),
+      0 0 20px rgba(0, 240, 255, 1),
+      0 0 36px rgba(236, 72, 153, 0.8);
+  }
+}
+
+.side-rail-thumb:hover {
+  transform: scale(1.18);
+}
+
+.rail-waypoint {
+  position: absolute;
+  left: -2.5px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.rail-waypoint:hover,
+.rail-waypoint.active {
+  background: #00f0ff;
+  border-color: #ffffff;
+  box-shadow: 0 0 10px #00f0ff, 0 0 18px #6366f1;
+  transform: scale(1.35);
+}
+
+@media (max-width: 1024px) {
+  .side-scroll-rail {
+    display: none !important;
+  }
+}
+
+/* ==========================================================================
+   8. RADIANT AURORA NATIVE SCROLLBAR
+   ========================================================================== */
+
+::-webkit-scrollbar {
+  width: 10px !important;
+  height: 10px !important;
+}
+
+::-webkit-scrollbar-button,
+::-webkit-scrollbar-button:single-button,
+::-webkit-scrollbar-button:vertical:decrement,
+::-webkit-scrollbar-button:vertical:increment,
+::-webkit-scrollbar-button:start,
+::-webkit-scrollbar-button:end {
+  display: none !important;
+  width: 0 !important;
+  height: 0 !important;
+}
+
+::-webkit-scrollbar-track,
+::-webkit-scrollbar-track-piece {
+  background: rgba(8, 14, 28, 0.85) !important;
+  border-left: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+[data-theme="light"] ::-webkit-scrollbar-track,
+[data-theme="light"] ::-webkit-scrollbar-track-piece {
+  background: rgba(241, 245, 249, 0.9) !important;
+  border-left: 1px solid rgba(0, 0, 0, 0.08) !important;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #00f0ff 0%, #38bdf8 25%, #6366f1 60%, #ec4899 100%) !important;
+  border-radius: 999px !important;
+  border: 2px solid rgba(8, 14, 28, 0.6) !important;
+  background-clip: padding-box !important;
+  box-shadow: 
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.8),
+    0 0 12px rgba(56, 189, 248, 0.65) !important;
+}
+
+[data-theme="light"] ::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #0284c7 0%, #3b82f6 30%, #6366f1 70%, #a855f7 100%) !important;
+  border: 2px solid rgba(241, 245, 249, 0.6) !important;
+  background-clip: padding-box !important;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #38bdf8 0%, #818cf8 35%, #c084fc 70%, #f43f5e 100%) !important;
+  border: 1.5px solid transparent !important;
+  background-clip: padding-box !important;
+  box-shadow: 
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.95),
+    0 0 20px rgba(56, 189, 248, 0.95),
+    0 0 32px rgba(168, 85, 247, 0.7) !important;
+}
+
+::-webkit-scrollbar-thumb:active {
+  background: linear-gradient(180deg, #f43f5e 0%, #ec4899 40%, #a855f7 70%, #00f0ff 100%) !important;
+  border: 1px solid transparent !important;
+  background-clip: padding-box !important;
+  box-shadow: 
+    inset 0 1px 1px 0 rgba(255, 255, 255, 1),
+    0 0 25px rgba(236, 72, 153, 1),
+    0 0 40px rgba(0, 240, 255, 0.85) !important;
+}
