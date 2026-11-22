@@ -63,6 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const burgerBtn = document.getElementById('burgerBtn');
   const mobileMenu = document.getElementById('mobileMenu');
   const menuBackdrop = document.getElementById('menuBackdrop');
+  const mobileCloseBtn = document.getElementById('mobileMenuCloseBtn');
   const mobileLinks = document.querySelectorAll('.mobile-nav-link');
 
   function toggleMenu() {
@@ -78,6 +79,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   burgerBtn?.addEventListener('click', toggleMenu);
+  mobileCloseBtn?.addEventListener('click', closeMenu);
   menuBackdrop?.addEventListener('click', closeMenu);
   mobileLinks.forEach(l => l.addEventListener('click', closeMenu));
 

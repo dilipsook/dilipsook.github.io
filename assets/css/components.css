@@ -5288,18 +5288,42 @@
   }
 
   .hero-cta-group {
-    flex-direction: column;
-    width: 100%;
-    gap: 10px;
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    width: 100% !important;
+    gap: 10px !important;
     margin-bottom: 24px !important;
   }
 
-  .hero-cta-group a,
-  .hero-cta-group button {
+  .hero-cta-group .btn-cinema-primary {
+    grid-column: 1 / -1 !important;
     width: 100% !important;
-    justify-content: center !important;
     height: 48px !important;
-    font-size: 0.92rem !important;
+    font-size: 0.95rem !important;
+    font-weight: 700 !important;
+    border-radius: var(--radius-full) !important;
+    justify-content: center !important;
+  }
+
+  .hero-cta-group .btn-cinema-secondary,
+  .hero-cta-group .btn-cinema-ghost {
+    width: 100% !important;
+    height: 44px !important;
+    font-size: 0.78rem !important;
+    font-weight: 700 !important;
+    padding: 0 8px !important;
+    border-radius: var(--radius-full) !important;
+    justify-content: center !important;
+  }
+
+  .hero-cta-group .btn-motion-preview {
+    grid-column: 1 / -1 !important;
+    width: 100% !important;
+    height: 42px !important;
+    font-size: 0.82rem !important;
+    font-weight: 700 !important;
+    border-radius: var(--radius-full) !important;
+    justify-content: center !important;
   }
 
   .hero-client-trust {

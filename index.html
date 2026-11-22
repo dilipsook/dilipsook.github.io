@@ -50,6 +50,7 @@
     <div class="glow-orb glow-orb-1"></div>
     <div class="glow-orb glow-orb-2"></div>
     <div class="glow-orb glow-orb-3"></div>
+    <div class="glow-orb glow-orb-4"></div>
   </div>
   <div class="bg-grid-overlay" aria-hidden="true"></div>
 
@@ -121,7 +122,14 @@
 
     <!-- Mobile Slideout Navigation -->
     <div class="menu-backdrop" id="menuBackdrop"></div>
-    <nav class="mobile-menu" id="mobileMenu">
+    <nav class="mobile-menu" id="mobileMenu" aria-label="Mobile Navigation">
+      <div class="mobile-menu-header">
+        <div class="nav-brand" style="gap: 8px;">
+          <div class="brand-monogram">DK</div>
+          <span style="font-weight: 800; font-size: 0.95rem; color: #ffffff; letter-spacing: 0.04em;">DILIP KUMAR</span>
+        </div>
+        <button class="mobile-menu-close-btn" id="mobileMenuCloseBtn" aria-label="Close navigation menu">✕</button>
+      </div>
       <div class="mobile-menu-top">
         <ul class="mobile-nav-links">
           <li><a href="#overview" class="mobile-nav-link">Overview</a></li>
@@ -136,9 +144,12 @@
         </ul>
       </div>
       <div class="mobile-menu-bottom">
-        <a href="Dilip_Kumar_Resume.pdf" target="_blank" class="btn-primary" style="width: 100%; justify-content: center;">
+        <a href="Dilip_Kumar_Resume.pdf" target="_blank" class="btn-primary" style="width: 100%; justify-content: center; margin-bottom: 8px;">
           <span>📄 Download Resume (PDF)</span>
         </a>
+        <button id="mobileMenuCliBtn" class="btn-secondary" style="width: 100%; justify-content: center;" onclick="document.getElementById('mobileMenuCloseBtn').click(); setTimeout(() => document.getElementById('openTerminalBtn').click(), 200);">
+          <span>💻 Launch Cloud CLI</span>
+        </button>
       </div>
     </nav>
 
