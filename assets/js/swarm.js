@@ -1542,7 +1542,12 @@
 .hud button.pri:hover{background:#2aa6ff}
 .hud button.on{background:rgba(13,153,255,.22);color:#8fd0ff}
 .hud button[hidden]{display:none}
-.hud .x{padding:7px 9px;color:#aaa}
+.hud .x{display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:8px;background:rgba(239,68,68,0.25);border:1px solid rgba(239,68,68,0.7);color:#ffffff;font:700 12px/1 Inter,system-ui,sans-serif;cursor:pointer;transition:all .2s ease}
+.hud .x:hover{background:rgba(239,68,68,0.55);border-color:#f87171;box-shadow:0 0 16px rgba(239,68,68,0.7);transform:scale(1.04)}
+.swarm-top-exit{position:fixed;top:16px;right:18px;z-index:999999;display:inline-flex;align-items:center;gap:8px;padding:8px 16px;border-radius:999px;background:rgba(15,23,42,0.92);border:1.5px solid rgba(239,68,68,0.75);box-shadow:0 8px 25px rgba(0,0,0,0.6),0 0 18px rgba(239,68,68,0.4);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);color:#ffffff;font:700 12px/1 Inter,system-ui,sans-serif;cursor:pointer;transition:all .2s ease;pointer-events:auto}
+.swarm-top-exit:hover{background:rgba(239,68,68,0.45);border-color:#f87171;box-shadow:0 10px 30px rgba(239,68,68,0.7);transform:scale(1.04)}
+.swarm-top-exit .top-stop-icon{color:#ef4444;font-size:12px}
+.swarm-top-exit .top-stop-kbd{padding:2px 6px;border-radius:4px;background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.25);font:700 10px/1 monospace;color:#cbd5e1}
 .hud button.snd{display:flex;align-items:center;gap:6px;padding:6px 8px}
 .hud button.snd.off{color:#8a8a8a}
 .hud button.snd.tap{background:#0D99FF;animation:hudpulse 1.6s ease-in-out infinite}
@@ -1627,7 +1632,7 @@
       for (const old of document.querySelectorAll("swarm-rebuild")) old.remove();
       const host = document.createElement("swarm-rebuild");
       host.style.cssText =
-        "all:initial !important;position:fixed !important;inset:0 !important;z-index:2147483647 !important;display:block !important;pointer-events:auto !important;opacity:1;transition:opacity .6s ease;";
+        "all:initial !important;position:fixed !important;inset:0 !important;z-index:99999 !important;display:block !important;pointer-events:auto !important;opacity:1;transition:opacity .6s ease;";
       env.host = host;
       this.host = host;
       const root = host.attachShadow({ mode: "open" });
@@ -1642,6 +1647,11 @@
 <div class="badges"></div>
 <div class="cursors"></div>
 <div class="rulers"></div>
+<button class="swarm-top-exit" data-a="close" title="Stop Swarm Rebuild &amp; Return to Portfolio (Esc)">
+  <span class="top-stop-icon">⏹</span>
+  <span>Stop Rebuild</span>
+  <kbd class="top-stop-kbd">Esc</kbd>
+</button>
 <div class="hud">
   <div class="dots"></div>
   <div class="txt"><span class="status">Scanning page…</span></div>
@@ -1651,7 +1661,10 @@
   <button data-a="sound" class="snd" title="Sound (M)"></button>
   <button data-a="live" class="pri" hidden title="Fade back to the real page">Go live</button>
   <button data-a="replay" hidden title="Wipe and rebuild again">Replay</button>
-  <button data-a="close" class="x" title="Exit (Esc)">✕</button>
+  <button data-a="close" class="x" title="Stop Swarm Rebuild (Esc)">
+    <span style="color:#ef4444;font-size:12px;line-height:1;">⏹</span>
+    <span>Stop Rebuild</span>
+  </button>
 </div>`;
       const $ = (s) => root.querySelector(s);
       this.bg = $(".bg");
@@ -3602,7 +3615,7 @@
           this.env.scroller.scrollBy({ top: e.deltaY, left: e.deltaX, behavior: "instant" });
         }, { passive: false });
       }
-      on(this.view.hud, "click", (e) => {
+      on(this.view.root, "click", (e) => {
         const b = e.target.closest("button");
         if (!b) return;
         const a = b.dataset.a;
@@ -3796,16 +3809,70 @@
   let app = null;
   let lastShot = null;
 
+  function updateSwarmButtons(isActive) {
+    try {
+      document.body.classList.toggle('swarm-is-active', isActive);
+
+      const navBtn = document.getElementById('btnNavMotion');
+      if (navBtn) {
+        if (isActive) {
+          navBtn.classList.add('is-running');
+          navBtn.setAttribute('aria-pressed', 'true');
+          navBtn.title = 'Stop Swarm Rebuild (Click to return to portfolio)';
+          navBtn.innerHTML = '<span class="stop-dot"></span><span class="btn-motion-text">⏹ Stop</span>';
+        } else {
+          navBtn.classList.remove('is-running');
+          navBtn.setAttribute('aria-pressed', 'false');
+          navBtn.title = 'Toggle Swarm Multiplayer Animation (Alt + Shift + S)';
+          navBtn.innerHTML = '<span style="font-size: 1.05rem; color: #38bdf8;">✦</span>';
+        }
+      }
+
+      const heroBtn = document.getElementById('heroSwarmBtn');
+      if (heroBtn) {
+        if (isActive) {
+          heroBtn.classList.add('is-running');
+          heroBtn.setAttribute('aria-pressed', 'true');
+          heroBtn.title = 'Stop Swarm Rebuild (Click to return to portfolio)';
+          heroBtn.innerHTML = '<span class="motion-dot" style="background:#ef4444;box-shadow:0 0 10px #ef4444;"></span><span>⏹ Stop Swarm Rebuild</span>';
+        } else {
+          heroBtn.classList.remove('is-running');
+          heroBtn.setAttribute('aria-pressed', 'false');
+          heroBtn.title = 'Play Swarm Multiplayer Rebuild Animation';
+          heroBtn.innerHTML = '<span class="motion-dot"></span><span>Play Swarm Rebuild</span>';
+        }
+      }
+
+      const rebuildBtn = document.getElementById('btnSwarmRebuild');
+      if (rebuildBtn) {
+        if (isActive) {
+          rebuildBtn.classList.add('is-running');
+          rebuildBtn.innerHTML = '<span>⏹ Stop Rebuild</span>';
+        } else {
+          rebuildBtn.classList.remove('is-running');
+          rebuildBtn.innerHTML = '<span>✦ Rebuild Live</span>';
+        }
+      }
+    } catch (e) {
+      console.warn('[swarm] updateSwarmButtons error', e);
+    }
+  }
+
   function start() {
     if (app) return;
     app = new App();
-    app.run().catch((err) => console.error("[swarm-rebuild]", err));
+    updateSwarmButtons(true);
+    app.run().catch((err) => {
+      console.error("[swarm-rebuild]", err);
+      updateSwarmButtons(false);
+    });
   }
 
   function stop(reveal) {
     if (!app) return;
     const a = app;
     app = null;
+    updateSwarmButtons(false);
     a.destroy(reveal);
   }
 

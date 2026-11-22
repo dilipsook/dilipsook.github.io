@@ -13,7 +13,7 @@
   transform: translateX(-50%);
   width: min(1200px, calc(100% - 32px));
   height: var(--nav-height);
-  z-index: 100;
+  z-index: 100000 !important;
   background: rgba(7, 12, 24, 0.78);
   backdrop-filter: blur(28px) saturate(190%);
   -webkit-backdrop-filter: blur(28px) saturate(190%);
@@ -770,6 +770,7 @@
   font-weight: 700;
   color: #ffffff;
   line-height: 1.15;
+  white-space: nowrap;
 }
 
 .chip-lbl {
@@ -777,6 +778,7 @@
   color: var(--text-secondary);
   font-family: var(--font-mono);
   line-height: 1.15;
+  white-space: nowrap;
 }
 
 .executive-status-pill {
@@ -6042,16 +6044,17 @@
 .hero-portrait-wrapper {
   position: relative;
   width: 100%;
+  overflow: visible;
 }
 
 .hero-portrait-wrapper .chip-left {
-  top: 24px;
-  left: -20px;
+  top: 18px;
+  left: 14px;
 }
 
 .hero-portrait-wrapper .chip-bottom-right {
-  bottom: 24px;
-  right: -20px;
+  bottom: 20px;
+  right: 14px;
 }
 
 .skills-reel-top-row {
