@@ -34,7 +34,10 @@ body {
 }
 
 .navbar {
-  transform: translateX(-50%) translateZ(0);
+  left: 0 !important;
+  right: 0 !important;
+  margin-inline: auto !important;
+  transform: translateZ(0) !important;
   backface-visibility: hidden;
 }
 
@@ -219,7 +222,13 @@ body {
 
 .navbar {
   position: fixed;
+  top: 14px !important;
+  left: 0 !important;
+  right: 0 !important;
+  margin-inline: auto !important;
+  width: min(1200px, calc(100% - 32px)) !important;
   z-index: 100000 !important;
+  transform: translateZ(0) !important;
   background: var(--ios-glass-sheen), var(--ios-glass-card-bg) !important;
   backdrop-filter: var(--ios-glass-blur) !important;
   -webkit-backdrop-filter: var(--ios-glass-blur) !important;
