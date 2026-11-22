@@ -1,6 +1,6 @@
 /* ==========================================================================
-   DYNAMIC MOUSE SPOTLIGHT BORDER & SURFACE GLOW (Linear / Aceternity Effect)
-   144Hz rAF throttled cursor coordinate tracking with cached element bounds
+   DYNAMIC MOUSE & TOUCH SPOTLIGHT BORDER & SURFACE GLOW (Linear / Aceternity Effect)
+   144Hz rAF throttled coordinate tracking with cached element bounds
    ========================================================================== */
 
 (function() {
@@ -27,33 +27,58 @@
       let clientX = 0;
       let clientY = 0;
 
-      card.addEventListener('mouseenter', () => {
-        cardRect = card.getBoundingClientRect();
-      }, { passive: true });
-
-      card.addEventListener('mousemove', (e) => {
-        clientX = e.clientX;
-        clientY = e.clientY;
+      function updateSpotlight(x, y) {
+        clientX = x;
+        clientY = y;
 
         if (!ticking) {
           ticking = true;
           requestAnimationFrame(() => {
             if (cardRect) {
-              const x = clientX - cardRect.left;
-              const y = clientY - cardRect.top;
-              card.style.setProperty('--mouse-x', `${x.toFixed(1)}px`);
-              card.style.setProperty('--mouse-y', `${y.toFixed(1)}px`);
+              const relX = clientX - cardRect.left;
+              const relY = clientY - cardRect.top;
+              card.style.setProperty('--mouse-x', `${relX.toFixed(1)}px`);
+              card.style.setProperty('--mouse-y', `${relY.toFixed(1)}px`);
             }
             ticking = false;
           });
         }
-      }, { passive: true });
+      }
 
-      card.addEventListener('mouseleave', () => {
+      function clearSpotlight() {
         cardRect = null;
         card.style.removeProperty('--mouse-x');
         card.style.removeProperty('--mouse-y');
+      }
+
+      // Mouse events
+      card.addEventListener('mouseenter', () => {
+        cardRect = card.getBoundingClientRect();
       }, { passive: true });
+
+      card.addEventListener('mousemove', (e) => {
+        updateSpotlight(e.clientX, e.clientY);
+      }, { passive: true });
+
+      card.addEventListener('mouseleave', clearSpotlight, { passive: true });
+
+      // Mobile Touch events
+      card.addEventListener('touchstart', (e) => {
+        cardRect = card.getBoundingClientRect();
+        if (e.touches && e.touches[0]) {
+          updateSpotlight(e.touches[0].clientX, e.touches[0].clientY);
+        }
+      }, { passive: true });
+
+      card.addEventListener('touchmove', (e) => {
+        if (!cardRect) cardRect = card.getBoundingClientRect();
+        if (e.touches && e.touches[0]) {
+          updateSpotlight(e.touches[0].clientX, e.touches[0].clientY);
+        }
+      }, { passive: true });
+
+      card.addEventListener('touchend', clearSpotlight, { passive: true });
+      card.addEventListener('touchcancel', clearSpotlight, { passive: true });
     });
 
     // Invalidate rect caches on window resize

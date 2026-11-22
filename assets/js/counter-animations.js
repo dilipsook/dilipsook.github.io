@@ -15,7 +15,7 @@
         animateAll();
       }
     });
-  }, { threshold: 0.2 });
+  }, { threshold: 0.08 });
 
   const metricsSection = document.querySelector('.metrics-section');
   if (metricsSection) {

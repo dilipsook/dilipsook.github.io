@@ -1,14 +1,13 @@
 /* ==========================================================================
    DILIP KUMAR PORTFOLIO - APPLE VISIONOS 3D CARD TILT & MAGNETIC INTERACTION
    Critically-damped 3D perspective transforms, holographic specular sheen,
-   counter-depth orbital badges, & iPadOS magnetic button attraction
+   counter-depth orbital badges, mobile touch & gyroscope parallax
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
   'use strict';
 
   const isFinePointer = window.matchMedia('(pointer: fine)').matches;
-  if (!isFinePointer) return;
 
   // ------------------------------------------------------------------------
   // 1. Multi-Layer 3D Tilt on Showcase Cards (Perspective & Specular Sheen)
@@ -22,6 +21,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let isHovering = false;
     let rafId = null;
 
+    // Desktop Mouse Handlers
     card.addEventListener('mouseenter', () => {
       bounds = card.getBoundingClientRect();
       isHovering = true;
@@ -35,6 +35,38 @@ document.addEventListener('DOMContentLoaded', () => {
       const mouseX = e.clientX - bounds.left;
       const mouseY = e.clientY - bounds.top;
 
+      applyTilt(mouseX, mouseY);
+    }, { passive: true });
+
+    card.addEventListener('mouseleave', () => {
+      resetTilt();
+    }, { passive: true });
+
+    // Mobile & Touch Handlers
+    card.addEventListener('touchstart', (e) => {
+      bounds = card.getBoundingClientRect();
+      isHovering = true;
+      card.classList.add('is-hovered');
+      card.style.transition = 'transform 0.15s ease-out, box-shadow 0.25s ease';
+      if (e.touches && e.touches[0]) {
+        applyTilt(e.touches[0].clientX - bounds.left, e.touches[0].clientY - bounds.top);
+      }
+    }, { passive: true });
+
+    card.addEventListener('touchmove', (e) => {
+      if (!isHovering || !bounds || !e.touches || !e.touches[0]) return;
+      applyTilt(e.touches[0].clientX - bounds.left, e.touches[0].clientY - bounds.top);
+    }, { passive: true });
+
+    card.addEventListener('touchend', () => {
+      resetTilt();
+    }, { passive: true });
+    card.addEventListener('touchcancel', () => {
+      resetTilt();
+    }, { passive: true });
+
+    function applyTilt(mouseX, mouseY) {
+      if (!bounds) return;
       card.style.setProperty('--mouse-x', `${mouseX.toFixed(1)}px`);
       card.style.setProperty('--mouse-y', `${mouseY.toFixed(1)}px`);
 
@@ -48,13 +80,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (!rafId) {
         rafId = requestAnimationFrame(() => {
-          card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(8px) scale3d(1.015, 1.015, 1.015)`;
+          card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(8px) scale3d(1.02, 1.02, 1.02)`;
           rafId = null;
         });
       }
-    }, { passive: true });
+    }
 
-    card.addEventListener('mouseleave', () => {
+    function resetTilt() {
       isHovering = false;
       bounds = null;
       if (rafId) {
@@ -64,7 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
       card.classList.remove('is-hovered');
       card.style.transition = 'transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease';
       card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateZ(0px) scale3d(1, 1, 1)';
-    }, { passive: true });
+    }
   });
 
   // ------------------------------------------------------------------------
@@ -90,9 +122,33 @@ document.addEventListener('DOMContentLoaded', () => {
 
     heroWrap.addEventListener('mousemove', (e) => {
       if (!heroHover || !heroBounds) return;
+      handleHeroMove(e.clientX, e.clientY);
+    }, { passive: true });
 
-      const hX = (e.clientX - (heroBounds.left + heroBounds.width / 2)) / (heroBounds.width / 2);
-      const hY = (e.clientY - (heroBounds.top + heroBounds.height / 2)) / (heroBounds.height / 2);
+    heroWrap.addEventListener('touchstart', (e) => {
+      heroBounds = heroWrap.getBoundingClientRect();
+      heroHover = true;
+      if (heroFrame) heroFrame.style.transition = 'transform 0.15s ease-out';
+      if (chipLeft) chipLeft.style.transition = 'transform 0.15s ease-out';
+      if (chipRight) chipRight.style.transition = 'transform 0.15s ease-out';
+      if (e.touches && e.touches[0]) {
+        handleHeroMove(e.touches[0].clientX, e.touches[0].clientY);
+      }
+    }, { passive: true });
+
+    heroWrap.addEventListener('touchmove', (e) => {
+      if (!heroHover || !heroBounds || !e.touches || !e.touches[0]) return;
+      handleHeroMove(e.touches[0].clientX, e.touches[0].clientY);
+    }, { passive: true });
+
+    heroWrap.addEventListener('mouseleave', () => resetHero());
+    heroWrap.addEventListener('touchend', () => resetHero());
+    heroWrap.addEventListener('touchcancel', () => resetHero());
+
+    function handleHeroMove(clientX, clientY) {
+      if (!heroBounds) return;
+      const hX = (clientX - (heroBounds.left + heroBounds.width / 2)) / (heroBounds.width / 2);
+      const hY = (clientY - (heroBounds.top + heroBounds.height / 2)) / (heroBounds.height / 2);
 
       const rotX = (-hY * 8.5).toFixed(2);
       const rotY = (hX * 8.5).toFixed(2);
@@ -118,9 +174,9 @@ document.addEventListener('DOMContentLoaded', () => {
           heroRaf = null;
         });
       }
-    }, { passive: true });
+    }
 
-    heroWrap.addEventListener('mouseleave', () => {
+    function resetHero() {
       heroHover = false;
       heroBounds = null;
       if (heroRaf) {
@@ -141,14 +197,40 @@ document.addEventListener('DOMContentLoaded', () => {
         chipRight.style.transition = resetEase;
         chipRight.style.transform = 'translate3d(0, 0, 0) scale(1)';
       }
-    }, { passive: true });
+    }
+
+    // Mobile Device Orientation (Gyroscope Parallax)
+    if (window.DeviceOrientationEvent) {
+      let gyroRaf = null;
+      window.addEventListener('deviceorientation', (e) => {
+        if (heroHover) return; // Touch overrides gyro
+        if (e.gamma === null || e.beta === null) return;
+        const tiltX = Math.max(-25, Math.min(25, e.gamma)) / 25; // Left/Right
+        const tiltY = Math.max(-25, Math.min(25, e.beta - 45)) / 25; // Front/Back
+
+        if (!gyroRaf) {
+          gyroRaf = requestAnimationFrame(() => {
+            if (heroFrame) {
+              heroFrame.style.transform = `perspective(1000px) rotateX(${(-tiltY * 6).toFixed(1)}deg) rotateY(${(tiltX * 6).toFixed(1)}deg) scale3d(1.01, 1.01, 1.01)`;
+            }
+            if (chipLeft) {
+              chipLeft.style.transform = `translate3d(${(-tiltX * 8).toFixed(1)}px, ${(-tiltY * 8).toFixed(1)}px, 30px)`;
+            }
+            if (chipRight) {
+              chipRight.style.transform = `translate3d(${(-tiltX * 12).toFixed(1)}px, ${(-tiltY * 12).toFixed(1)}px, 35px)`;
+            }
+            gyroRaf = null;
+          });
+        }
+      }, { passive: true });
+    }
   }
 
   // ------------------------------------------------------------------------
   // 3. iPadOS-Style Magnetic Attraction on Primary Buttons & Controls
   // ------------------------------------------------------------------------
   const magneticTargets = document.querySelectorAll(
-    '.btn-primary, .btn-glass, .brand-monogram, .theme-toggle, #btnPlaySkillsReel, .scroll-top-btn, .side-scroll-hud'
+    '.btn-primary, .btn-glass, .brand-monogram, .theme-toggle, #btnPlaySkillsReel, .scroll-top-btn, .side-scroll-hud, .btn-motion'
   );
 
   magneticTargets.forEach(el => {
@@ -172,6 +254,17 @@ document.addEventListener('DOMContentLoaded', () => {
     el.addEventListener('mouseleave', () => {
       rect = null;
       el.style.transition = 'transform 0.45s cubic-bezier(0.16, 1, 0.3, 1)';
+      el.style.transform = 'translate3d(0, 0, 0)';
+    }, { passive: true });
+
+    // Touch feedback on mobile buttons
+    el.addEventListener('touchstart', () => {
+      el.style.transition = 'transform 0.1s ease';
+      el.style.transform = 'scale(0.96)';
+    }, { passive: true });
+
+    el.addEventListener('touchend', () => {
+      el.style.transition = 'transform 0.4s cubic-bezier(0.16, 1, 0.3, 1)';
       el.style.transform = 'translate3d(0, 0, 0)';
     }, { passive: true });
   });

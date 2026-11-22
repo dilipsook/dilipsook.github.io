@@ -67,15 +67,35 @@
     mouse.y = -9999;
   });
 
-  // Interactive Click Shockwave & Packet Burst
-  window.addEventListener('click', (e) => {
-    // Only react to valid coordinates inside window
-    if (e.clientX <= 0 && e.clientY <= 0) return;
+  // Mobile Touch Support: Particle Repulsion & Kinetic Shockwaves
+  window.addEventListener('touchstart', (e) => {
+    if (e.touches && e.touches[0]) {
+      mouse.x = e.touches[0].clientX;
+      mouse.y = e.touches[0].clientY;
+      createRipple(e.touches[0].clientX, e.touches[0].clientY);
+    }
+  }, { passive: true });
+
+  window.addEventListener('touchmove', (e) => {
+    if (e.touches && e.touches[0]) {
+      mouse.x = e.touches[0].clientX;
+      mouse.y = e.touches[0].clientY;
+    }
+  }, { passive: true });
+
+  window.addEventListener('touchend', () => {
+    mouse.x = -9999;
+    mouse.y = -9999;
+  }, { passive: true });
+
+  // Interactive Click & Touch Shockwave & Packet Burst
+  function createRipple(clientX, clientY) {
+    if (clientX <= 0 && clientY <= 0) return;
 
     const chosenColor = COLORS[COLOR_KEYS[Math.floor(Math.random() * COLOR_KEYS.length)]];
     ripples.push({
-      x: e.clientX,
-      y: e.clientY,
+      x: clientX,
+      y: clientY,
       radius: 6,
       maxRadius: 220,
       alpha: 0.85,
@@ -85,14 +105,25 @@
 
     // Spawn packets radiating outward from nearest nodes
     const sorted = nodes.slice().sort((a, b) => {
-      const d1 = Math.hypot(a.x - e.clientX, a.y - e.clientY);
-      const d2 = Math.hypot(b.x - e.clientX, b.y - e.clientY);
+      const d1 = Math.hypot(a.x - clientX, a.y - clientY);
+      const d2 = Math.hypot(b.x - clientX, b.y - clientY);
       return d1 - d2;
     });
 
     const nearest = sorted.slice(0, Math.min(5, sorted.length));
     nearest.forEach((n1) => {
       for (let j = 0; j < nodes.length; j++) {
+        const n2 = nodes[j];
+        if (n1 !== n2 && Math.hypot(n1.x - n2.x, n1.y - n2.y) < 170) {
+          spawnPacket(n1, n2, 0.035);
+        }
+      }
+    });
+  }
+
+  window.addEventListener('click', (e) => {
+    createRipple(e.clientX, e.clientY);
+  });
         const n2 = nodes[j];
         if (n1 !== n2 && Math.hypot(n1.x - n2.x, n1.y - n2.y) < 170) {
           spawnPacket(n1, n2, 0.035);
