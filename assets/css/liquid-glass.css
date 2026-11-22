@@ -222,6 +222,13 @@
   font-weight: 900 !important;
 }
 
+[data-theme="light"] .brand-monogram {
+  background: #0f172a !important;
+  color: #ffffff !important;
+  border: 1px solid #1e293b !important;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.2) !important;
+}
+
 /* ==========================================================================
    3. APPLE iOS LIQUID GLASS CARDS & CONTAINERS
    ========================================================================== */
@@ -420,6 +427,56 @@
   color: #38bdf8 !important;
 }
 
+/* Light Mode Overrides for Hero Action Buttons */
+[data-theme="light"] .btn-cinema-secondary,
+[data-theme="light"] .btn-cinema-ghost,
+[data-theme="light"] .btn-luxury-ghost,
+[data-theme="light"] .btn-luxury-secondary,
+[data-theme="light"] .btn-motion-preview {
+  background: rgba(255, 255, 255, 0.94) !important;
+  border: 1px solid rgba(203, 213, 225, 0.9) !important;
+  color: #0f172a !important;
+  box-shadow: 
+    0 4px 14px rgba(15, 23, 42, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 1) !important;
+}
+
+[data-theme="light"] .btn-cinema-secondary span,
+[data-theme="light"] .btn-cinema-ghost span,
+[data-theme="light"] .btn-luxury-ghost span,
+[data-theme="light"] .btn-luxury-secondary span,
+[data-theme="light"] .btn-motion-preview span {
+  color: #0f172a !important;
+  font-weight: 700 !important;
+}
+
+[data-theme="light"] .btn-cinema-secondary .btn-icon,
+[data-theme="light"] .btn-cinema-ghost .btn-icon {
+  color: #0284c7 !important;
+}
+
+[data-theme="light"] .btn-cinema-secondary:hover,
+[data-theme="light"] .btn-cinema-ghost:hover,
+[data-theme="light"] .btn-luxury-ghost:hover,
+[data-theme="light"] .btn-luxury-secondary:hover,
+[data-theme="light"] .btn-motion-preview:hover {
+  background: #ffffff !important;
+  border-color: rgba(2, 132, 199, 0.6) !important;
+  color: #0284c7 !important;
+  box-shadow: 
+    0 8px 24px rgba(2, 132, 199, 0.18),
+    0 0 16px rgba(56, 189, 248, 0.2) !important;
+  transform: translateY(-2px) scale(1.02) !important;
+}
+
+[data-theme="light"] .btn-cinema-secondary:hover span,
+[data-theme="light"] .btn-cinema-ghost:hover span,
+[data-theme="light"] .btn-luxury-ghost:hover span,
+[data-theme="light"] .btn-luxury-secondary:hover span,
+[data-theme="light"] .btn-motion-preview:hover span {
+  color: #0284c7 !important;
+}
+
 /* Apple iOS Primary Vibrancy CTA Button */
 .btn-cinema-primary,
 .btn-luxury-primary {
@@ -506,6 +563,142 @@
 [data-theme="light"] .btn-executive-resume:hover span,
 [data-theme="light"] .btn-executive-resume:hover .arrow-up-right {
   color: #38bdf8 !important;
+}
+
+/* Section Tags High-Contrast Light Mode (Fixed Amber / Gold Washout) */
+[data-theme="light"] .section-tag {
+  background: rgba(2, 132, 199, 0.1) !important;
+  border-color: rgba(2, 132, 199, 0.35) !important;
+  color: #0369a1 !important;
+  font-weight: 700 !important;
+}
+
+[data-theme="light"] .section-tag.tag-amber {
+  background: rgba(245, 158, 11, 0.12) !important;
+  border-color: rgba(217, 119, 6, 0.4) !important;
+  color: #b45309 !important; /* Deep rich bronze/amber */
+  font-weight: 700 !important;
+}
+
+[data-theme="light"] .section-tag.tag-mint {
+  background: rgba(16, 185, 129, 0.12) !important;
+  border-color: rgba(5, 150, 105, 0.4) !important;
+  color: #047857 !important; /* Deep emerald */
+  font-weight: 700 !important;
+}
+
+[data-theme="light"] .section-tag.tag-violet {
+  background: rgba(139, 92, 246, 0.12) !important;
+  border-color: rgba(124, 58, 237, 0.4) !important;
+  color: #6d28d9 !important; /* Royal violet */
+  font-weight: 700 !important;
+}
+
+/* Audio Briefing Deck Light Mode Contrast */
+[data-theme="light"] .skills-reel-deck {
+  background: rgba(255, 255, 255, 0.9) !important;
+  border-color: rgba(203, 213, 225, 0.85) !important;
+  box-shadow: 0 16px 36px rgba(15, 23, 42, 0.08) !important;
+}
+
+[data-theme="light"] .reel-badge-pill {
+  background: rgba(2, 132, 199, 0.1) !important;
+  border-color: rgba(2, 132, 199, 0.35) !important;
+  color: #0369a1 !important;
+  font-weight: 700 !important;
+}
+
+[data-theme="light"] .chapter-pill {
+  background: rgba(241, 245, 249, 0.9) !important;
+  border-color: rgba(203, 213, 225, 0.8) !important;
+  color: #334155 !important;
+  font-weight: 600 !important;
+}
+
+[data-theme="light"] .chapter-pill.active {
+  background: #0284c7 !important;
+  border-color: #0284c7 !important;
+  color: #ffffff !important;
+}
+
+[data-theme="light"] .reel-subtitle-box {
+  background: rgba(248, 250, 252, 0.95) !important;
+  border-color: rgba(226, 232, 240, 0.9) !important;
+}
+
+[data-theme="light"] .subtitle-chapter-label {
+  color: #0284c7 !important;
+  font-weight: 700 !important;
+}
+
+[data-theme="light"] .subtitle-timer {
+  color: #64748b !important;
+}
+
+[data-theme="light"] .subtitle-body {
+  color: #1e293b !important;
+  font-weight: 500 !important;
+}
+
+[data-theme="light"] .btn-reel-control {
+  background: #ffffff !important;
+  border-color: rgba(203, 213, 225, 0.85) !important;
+  color: #0f172a !important;
+  font-weight: 600 !important;
+}
+
+[data-theme="light"] .btn-reel-control:hover {
+  background: #f0f9ff !important;
+  border-color: #0284c7 !important;
+  color: #0284c7 !important;
+}
+
+[data-theme="light"] #btnVoiceToggle {
+  color: #0284c7 !important;
+  border-color: rgba(2, 132, 199, 0.4) !important;
+}
+
+[data-theme="light"] #btnVoiceToggle:hover {
+  background: rgba(2, 132, 199, 0.1) !important;
+  color: #0369a1 !important;
+}
+
+/* Skills Matrix Light Mode Contrast */
+[data-theme="light"] .skill-item {
+  background: rgba(255, 255, 255, 0.95) !important;
+  border-color: rgba(226, 232, 240, 0.95) !important;
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.05) !important;
+}
+
+[data-theme="light"] .skill-item .skill-name {
+  color: #0f172a !important;
+  font-weight: 700 !important;
+}
+
+[data-theme="light"] .skill-item:hover {
+  background: #ffffff !important;
+  border-color: #0284c7 !important;
+  box-shadow: 0 8px 24px rgba(2, 132, 199, 0.18) !important;
+}
+
+[data-theme="light"] .skill-tab-btn {
+  background: rgba(255, 255, 255, 0.9) !important;
+  border-color: rgba(203, 213, 225, 0.85) !important;
+  color: #334155 !important;
+  font-weight: 600 !important;
+}
+
+[data-theme="light"] .skill-tab-btn:hover {
+  background: #ffffff !important;
+  border-color: #0284c7 !important;
+  color: #0284c7 !important;
+}
+
+[data-theme="light"] .skill-tab-btn.active {
+  background: #0284c7 !important;
+  border-color: #0284c7 !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 14px rgba(2, 132, 199, 0.3) !important;
 }
 
 /* ==========================================================================
