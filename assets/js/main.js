@@ -165,8 +165,8 @@ document.addEventListener('DOMContentLoaded', () => {
       const group = tab.getAttribute('data-skill-group') || 'all';
 
       skillItems.forEach(item => {
-        const itemGroup = item.getAttribute('data-group') || '';
-        if (group === 'all' || itemGroup === group) {
+        const itemGroups = (item.getAttribute('data-group') || '').split(/\s+/);
+        if (group === 'all' || itemGroups.includes(group)) {
           item.style.display = 'flex';
         } else {
           item.style.display = 'none';

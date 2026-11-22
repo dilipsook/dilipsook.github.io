@@ -1130,38 +1130,162 @@
           <!-- Skill Group Tabs -->
           <div class="skills-nav reveal">
             <button class="skill-tab-btn active" data-skill-group="all">All Stack</button>
+            <button class="skill-tab-btn" data-skill-group="lifesciences">Life Sciences &amp; LIMS</button>
+            <button class="skill-tab-btn" data-skill-group="security">Security &amp; Network</button>
             <button class="skill-tab-btn" data-skill-group="aws">AWS Services</button>
             <button class="skill-tab-btn" data-skill-group="azure">Microsoft Azure</button>
             <button class="skill-tab-btn" data-skill-group="devops">DevOps &amp; IaC</button>
             <button class="skill-tab-btn" data-skill-group="finops">FinOps &amp; Cost</button>
-            <button class="skill-tab-btn" data-skill-group="security">Security &amp; Network</button>
-            <button class="skill-tab-btn" data-skill-group="lifesciences">Life Sciences &amp; LIMS</button>
-            <button class="skill-tab-btn" data-skill-group="systems">Systems &amp; Web</button>
+            <button class="skill-tab-btn" data-skill-group="systems">Systems &amp; Middleware</button>
           </div>
 
           <!-- Skills Grid with Icons -->
           <div class="skills-grid reveal">
             
-            <!-- AWS Items -->
+            <!-- Life Sciences, LIMS & Regulated Middleware -->
+            <div class="skill-item" data-group="lifesciences">
+              <span class="skill-icon-emoji">🧪</span>
+              <span class="skill-name">LabVantage LIMS 8.x</span>
+            </div>
+            <div class="skill-item" data-group="lifesciences systems">
+              <span class="skill-icon-emoji">☕</span>
+              <span class="skill-name">Oracle WebLogic 12c/14c</span>
+            </div>
+            <div class="skill-item" data-group="lifesciences systems">
+              <span class="skill-icon-emoji">⚡</span>
+              <span class="skill-name">Red Hat JBoss EAP</span>
+            </div>
+            <div class="skill-item" data-group="lifesciences">
+              <span class="skill-icon-emoji">🔬</span>
+              <span class="skill-name">LIMS Core Platform</span>
+            </div>
+            <div class="skill-item" data-group="lifesciences">
+              <span class="skill-icon-emoji">📓</span>
+              <span class="skill-name">Electronic Lab Notebook (ELN)</span>
+            </div>
+            <div class="skill-item" data-group="lifesciences">
+              <span class="skill-icon-emoji">🧬</span>
+              <span class="skill-name">Scientific Data Mgmt (SDMS)</span>
+            </div>
+            <div class="skill-item" data-group="lifesciences">
+              <span class="skill-icon-emoji">📋</span>
+              <span class="skill-name">FDA 21 CFR Part 11</span>
+            </div>
+            <div class="skill-item" data-group="lifesciences">
+              <span class="skill-icon-emoji">📑</span>
+              <span class="skill-name">GxP CSV (IQ / OQ / PQ)</span>
+            </div>
+            <div class="skill-item" data-group="lifesciences">
+              <span class="skill-icon-emoji">🔍</span>
+              <span class="skill-name">Waters Empower CDS</span>
+            </div>
+            <div class="skill-item" data-group="lifesciences">
+              <span class="skill-icon-emoji">🔌</span>
+              <span class="skill-name">Instrument Interfacing (ASTM)</span>
+            </div>
+            <div class="skill-item" data-group="lifesciences security">
+              <span class="skill-icon-emoji">🔐</span>
+              <span class="skill-name">GxP Data Integrity (ALCOA+)</span>
+            </div>
+            <div class="skill-item" data-group="lifesciences systems">
+              <span class="skill-icon-emoji">🐱</span>
+              <span class="skill-name">Apache Tomcat Middleware</span>
+            </div>
+            <div class="skill-item" data-group="lifesciences aws">
+              <span class="skill-icon-emoji">☁️</span>
+              <span class="skill-name">Life Sciences AWS Cloud</span>
+            </div>
+            <div class="skill-item" data-group="lifesciences systems">
+              <span class="skill-icon-emoji">🗄️</span>
+              <span class="skill-name">Oracle RAC 19c for LIMS</span>
+            </div>
+
+            <!-- Security & Network Engineering -->
+            <div class="skill-item" data-group="security aws">
+              <img src="assets/images/cloud-icons/WAF.svg" alt="AWS WAF" class="skill-icon-img">
+              <span class="skill-name">AWS WAF &amp; Shield</span>
+            </div>
+            <div class="skill-item" data-group="security aws">
+              <img src="assets/images/cloud-icons/GuardDuty.svg" alt="AWS GuardDuty" class="skill-icon-img">
+              <span class="skill-name">AWS GuardDuty</span>
+            </div>
+            <div class="skill-item" data-group="security aws">
+              <span class="skill-icon-emoji">🔑</span>
+              <span class="skill-name">AWS KMS &amp; Encryption</span>
+            </div>
+            <div class="skill-item" data-group="security aws">
+              <span class="skill-icon-emoji">🔐</span>
+              <span class="skill-name">AWS Secrets Manager</span>
+            </div>
+            <div class="skill-item" data-group="security aws">
+              <span class="skill-icon-emoji">🛡️</span>
+              <span class="skill-name">AWS IAM &amp; SCP Governance</span>
+            </div>
+            <div class="skill-item" data-group="security">
+              <img src="assets/images/cloud-icons/active-directory.svg" alt="Entra ID" class="skill-icon-img">
+              <span class="skill-name">Entra ID (Azure AD) SSO</span>
+            </div>
+            <div class="skill-item" data-group="security devops">
+              <span class="skill-icon-emoji">🔒</span>
+              <span class="skill-name">HashiCorp Vault</span>
+            </div>
+            <div class="skill-item" data-group="security">
+              <span class="skill-icon-emoji">📜</span>
+              <span class="skill-name">SSL/TLS &amp; ACM PKI</span>
+            </div>
+            <div class="skill-item" data-group="security">
+              <span class="skill-icon-emoji">🎯</span>
+              <span class="skill-name">CIS Benchmarks &amp; Hardening</span>
+            </div>
+            <div class="skill-item" data-group="security aws">
+              <span class="skill-icon-emoji">🔀</span>
+              <span class="skill-name">AWS Transit Gateway</span>
+            </div>
+            <div class="skill-item" data-group="security aws azure">
+              <span class="skill-icon-emoji">⚡</span>
+              <span class="skill-name">Direct Connect &amp; ExpressRoute</span>
+            </div>
+            <div class="skill-item" data-group="security">
+              <span class="skill-icon-emoji">🌐</span>
+              <span class="skill-name">Site-to-Site IPSec VPN</span>
+            </div>
+            <div class="skill-item" data-group="security aws">
+              <span class="skill-icon-emoji">🔗</span>
+              <span class="skill-name">AWS PrivateLink &amp; VPC Peering</span>
+            </div>
+            <div class="skill-item" data-group="security">
+              <span class="skill-icon-emoji">🧱</span>
+              <span class="skill-name">Network Firewall &amp; IPS</span>
+            </div>
+            <div class="skill-item" data-group="security aws">
+              <span class="skill-icon-emoji">🧭</span>
+              <span class="skill-name">Route 53 Private Resolver</span>
+            </div>
+            <div class="skill-item" data-group="security aws">
+              <span class="skill-icon-emoji">📡</span>
+              <span class="skill-name">NAT Gateway &amp; Anycast IP</span>
+            </div>
+
+            <!-- AWS Cloud Services -->
             <div class="skill-item" data-group="aws">
               <img src="assets/images/cloud-icons/EC2.svg" alt="AWS EC2" class="skill-icon-img">
-              <span class="skill-name">Amazon EC2</span>
+              <span class="skill-name">Amazon EC2 &amp; Graviton</span>
             </div>
             <div class="skill-item" data-group="aws">
               <img src="assets/images/cloud-icons/Simple-Storage-Service.svg" alt="AWS S3" class="skill-icon-img">
-              <span class="skill-name">Amazon S3</span>
+              <span class="skill-name">Amazon S3 &amp; Glacier</span>
             </div>
             <div class="skill-item" data-group="aws">
               <img src="assets/images/cloud-icons/RDS.svg" alt="AWS RDS" class="skill-icon-img">
-              <span class="skill-name">AWS RDS / Aurora</span>
+              <span class="skill-name">AWS RDS &amp; Aurora Multi-AZ</span>
             </div>
             <div class="skill-item" data-group="aws">
               <img src="assets/images/cloud-icons/Lambda.svg" alt="AWS Lambda" class="skill-icon-img">
-              <span class="skill-name">AWS Lambda</span>
+              <span class="skill-name">AWS Lambda Serverless</span>
             </div>
             <div class="skill-item" data-group="aws">
               <img src="assets/images/cloud-icons/Virtual-Private-Cloud.svg" alt="AWS VPC" class="skill-icon-img">
-              <span class="skill-name">Amazon VPC</span>
+              <span class="skill-name">Amazon VPC Subnetting</span>
             </div>
             <div class="skill-item" data-group="aws">
               <img src="assets/images/cloud-icons/Elastic-Load-Balancing.svg" alt="AWS ELB" class="skill-icon-img">
@@ -1169,7 +1293,7 @@
             </div>
             <div class="skill-item" data-group="aws">
               <img src="assets/images/cloud-icons/Route-53.svg" alt="AWS Route 53" class="skill-icon-img">
-              <span class="skill-name">Route 53</span>
+              <span class="skill-name">Amazon Route 53</span>
             </div>
             <div class="skill-item" data-group="aws">
               <img src="assets/images/cloud-icons/CloudFront.svg" alt="AWS CloudFront" class="skill-icon-img">
@@ -1177,111 +1301,175 @@
             </div>
             <div class="skill-item" data-group="aws">
               <img src="assets/images/cloud-icons/CloudWatch.svg" alt="AWS CloudWatch" class="skill-icon-img">
-              <span class="skill-name">CloudWatch</span>
+              <span class="skill-name">Amazon CloudWatch</span>
+            </div>
+            <div class="skill-item" data-group="aws">
+              <span class="skill-icon-emoji">🔄</span>
+              <span class="skill-name">AWS Migration Hub &amp; MGN</span>
+            </div>
+            <div class="skill-item" data-group="aws">
+              <span class="skill-icon-emoji">🗄️</span>
+              <span class="skill-name">AWS DMS (CDC Replication)</span>
+            </div>
+            <div class="skill-item" data-group="aws">
+              <span class="skill-icon-emoji">📈</span>
+              <span class="skill-name">Auto Scaling &amp; Spot Fleets</span>
+            </div>
+            <div class="skill-item" data-group="aws devops">
+              <span class="skill-icon-emoji">🐳</span>
+              <span class="skill-name">Amazon ECS &amp; Fargate</span>
+            </div>
+            <div class="skill-item" data-group="aws">
+              <span class="skill-icon-emoji">🛠️</span>
+              <span class="skill-name">AWS Systems Manager (SSM)</span>
+            </div>
+            <div class="skill-item" data-group="aws">
+              <span class="skill-icon-emoji">⚡</span>
+              <span class="skill-name">Amazon DynamoDB NoSQL</span>
+            </div>
+            <div class="skill-item" data-group="aws">
+              <span class="skill-icon-emoji">📨</span>
+              <span class="skill-name">Amazon SQS &amp; SNS</span>
+            </div>
+            <div class="skill-item" data-group="aws">
+              <span class="skill-icon-emoji">🛡️</span>
+              <span class="skill-name">AWS Backup &amp; Cross-Region DR</span>
             </div>
 
-            <!-- Azure Items -->
+            <!-- Microsoft Azure -->
             <div class="skill-item" data-group="azure">
               <img src="assets/images/cloud-icons/VM.svg" alt="Azure VM" class="skill-icon-img">
-              <span class="skill-name">Azure VMs</span>
+              <span class="skill-name">Azure Virtual Machines</span>
             </div>
             <div class="skill-item" data-group="azure">
               <img src="assets/images/cloud-icons/Storage-Account.svg" alt="Azure Storage" class="skill-icon-img">
-              <span class="skill-name">Blob Storage</span>
+              <span class="skill-name">Azure Blob &amp; Data Lake</span>
             </div>
             <div class="skill-item" data-group="azure">
               <img src="assets/images/cloud-icons/Azure-Migrate.svg" alt="Azure Migrate" class="skill-icon-img">
-              <span class="skill-name">Azure Migrate</span>
+              <span class="skill-name">Azure Migrate &amp; ASR</span>
             </div>
             <div class="skill-item" data-group="azure">
               <img src="assets/images/cloud-icons/Monitor.svg" alt="Azure Monitor" class="skill-icon-img">
-              <span class="skill-name">Azure Monitor</span>
+              <span class="skill-name">Azure Monitor &amp; Log Analytics</span>
+            </div>
+            <div class="skill-item" data-group="azure finops">
+              <img src="assets/images/cloud-icons/Cost-Management.svg" alt="Azure Cost Management" class="skill-icon-img">
+              <span class="skill-name">Azure Cost Management</span>
             </div>
             <div class="skill-item" data-group="azure">
-              <img src="assets/images/cloud-icons/Cost-Management.svg" alt="Azure Cost Management" class="skill-icon-img">
-              <span class="skill-name">Azure Cost Mgmt</span>
+              <span class="skill-icon-emoji">🌐</span>
+              <span class="skill-name">Azure Virtual WAN &amp; VNet</span>
+            </div>
+            <div class="skill-item" data-group="azure security">
+              <span class="skill-icon-emoji">🛡️</span>
+              <span class="skill-name">Azure App Gateway &amp; WAF</span>
+            </div>
+            <div class="skill-item" data-group="azure">
+              <span class="skill-icon-emoji">🗄️</span>
+              <span class="skill-name">Azure SQL Managed Instance</span>
+            </div>
+            <div class="skill-item" data-group="azure security">
+              <span class="skill-icon-emoji">🏰</span>
+              <span class="skill-name">Azure Bastion &amp; NSGs</span>
             </div>
 
             <!-- DevOps & IaC -->
             <div class="skill-item" data-group="devops">
               <img src="assets/images/cloud-icons/terraform.png" alt="Terraform" class="skill-icon-img">
-              <span class="skill-name">Terraform IaC</span>
+              <span class="skill-name">Terraform Enterprise IaC</span>
             </div>
             <div class="skill-item" data-group="devops">
               <img src="assets/images/cloud-icons/kubernetes.svg" alt="Kubernetes EKS" class="skill-icon-img">
-              <span class="skill-name">Kubernetes (EKS)</span>
+              <span class="skill-name">Kubernetes (EKS &amp; AKS)</span>
             </div>
             <div class="skill-item" data-group="devops">
               <img src="assets/images/cloud-icons/docker.svg" alt="Docker" class="skill-icon-img">
-              <span class="skill-name">Docker</span>
+              <span class="skill-name">Docker Containerization</span>
             </div>
             <div class="skill-item" data-group="devops">
               <img src="assets/images/cloud-icons/jenkins.jpeg" alt="Jenkins" class="skill-icon-img">
-              <span class="skill-name">Jenkins CI/CD</span>
+              <span class="skill-name">Jenkins CI/CD Pipelines</span>
             </div>
             <div class="skill-item" data-group="devops">
               <img src="assets/images/cloud-icons/github.png" alt="GitHub Actions" class="skill-icon-img">
-              <span class="skill-name">GitHub Actions</span>
+              <span class="skill-name">GitHub Actions Workflows</span>
+            </div>
+            <div class="skill-item" data-group="devops">
+              <span class="skill-icon-emoji">📜</span>
+              <span class="skill-name">Ansible Playbook Automation</span>
+            </div>
+            <div class="skill-item" data-group="devops">
+              <span class="skill-icon-emoji">⛵</span>
+              <span class="skill-name">Helm Charts &amp; ArgoCD</span>
+            </div>
+            <div class="skill-item" data-group="devops">
+              <span class="skill-icon-emoji">🐍</span>
+              <span class="skill-name">Python &amp; Boto3 Scripting</span>
+            </div>
+            <div class="skill-item" data-group="devops">
+              <span class="skill-icon-emoji">💻</span>
+              <span class="skill-name">Bash &amp; PowerShell Core</span>
+            </div>
+            <div class="skill-item" data-group="devops">
+              <span class="skill-icon-emoji">📦</span>
+              <span class="skill-name">HashiCorp Packer Golden AMIs</span>
             </div>
 
-            <!-- FinOps -->
-            <div class="skill-item" data-group="finops">
+            <!-- FinOps & Cloud Economics -->
+            <div class="skill-item" data-group="finops aws">
               <img src="assets/images/cloud-icons/Cost-Explorer.svg" alt="AWS Cost Explorer" class="skill-icon-img">
-              <span class="skill-name">Cost Explorer</span>
+              <span class="skill-name">AWS Cost Explorer &amp; CUR</span>
+            </div>
+            <div class="skill-item" data-group="finops aws">
+              <img src="assets/images/cloud-icons/Cost-Management.svg" alt="Savings Plans" class="skill-icon-img">
+              <span class="skill-name">Savings Plans &amp; Reserved Instances</span>
+            </div>
+            <div class="skill-item" data-group="finops aws">
+              <span class="skill-icon-emoji">📊</span>
+              <span class="skill-name">AWS Compute Optimizer</span>
+            </div>
+            <div class="skill-item" data-group="finops aws">
+              <span class="skill-icon-emoji">🧊</span>
+              <span class="skill-name">S3 Intelligent-Tiering</span>
             </div>
             <div class="skill-item" data-group="finops">
-              <img src="assets/images/cloud-icons/Cost-Management.svg" alt="Savings Plans" class="skill-icon-img">
-              <span class="skill-name">Savings Plans &amp; RI</span>
+              <span class="skill-icon-emoji">💰</span>
+              <span class="skill-name">CloudHealth &amp; Spot.io</span>
+            </div>
+            <div class="skill-item" data-group="finops devops">
+              <span class="skill-icon-emoji">☸️</span>
+              <span class="skill-name">Kubecost Pod Allocation</span>
             </div>
 
-            <!-- Security & Network -->
-            <div class="skill-item" data-group="security">
-              <img src="assets/images/cloud-icons/WAF.svg" alt="AWS WAF" class="skill-icon-img">
-              <span class="skill-name">AWS WAF &amp; Shield</span>
-            </div>
-            <div class="skill-item" data-group="security">
-              <img src="assets/images/cloud-icons/GuardDuty.svg" alt="AWS GuardDuty" class="skill-icon-img">
-              <span class="skill-name">AWS GuardDuty</span>
-            </div>
-            <div class="skill-item" data-group="security">
-              <img src="assets/images/cloud-icons/active-directory.svg" alt="Entra ID" class="skill-icon-img">
-              <span class="skill-name">Entra ID / IAM</span>
-            </div>
-
-            <!-- Systems & Web -->
+            <!-- Systems & Middleware Infrastructure -->
             <div class="skill-item" data-group="systems">
               <img src="assets/images/cloud-icons/linux.png" alt="Linux" class="skill-icon-img">
-              <span class="skill-name">RedHat / Ubuntu</span>
+              <span class="skill-name">Red Hat Enterprise Linux (RHEL)</span>
             </div>
             <div class="skill-item" data-group="systems">
               <img src="assets/images/cloud-icons/windows-server.png" alt="Windows Server" class="skill-icon-img">
-              <span class="skill-name">Windows Server</span>
+              <span class="skill-name">Windows Server 2016-2022</span>
             </div>
-
-            <!-- Life Sciences & LIMS -->
-            <div class="skill-item" data-group="lifesciences">
-              <span class="skill-icon-emoji">🔬</span>
-              <span class="skill-name">LIMS &amp; ELN</span>
+            <div class="skill-item" data-group="systems">
+              <span class="skill-icon-emoji">🗄️</span>
+              <span class="skill-name">Oracle 19c &amp; Real Application Clusters</span>
             </div>
-            <div class="skill-item" data-group="lifesciences">
-              <span class="skill-icon-emoji">🧪</span>
-              <span class="skill-name">Labvantage LIMS</span>
+            <div class="skill-item" data-group="systems">
+              <span class="skill-icon-emoji">🐬</span>
+              <span class="skill-name">MySQL &amp; PostgreSQL Enterprise</span>
             </div>
-            <div class="skill-item" data-group="lifesciences">
-              <span class="skill-icon-emoji">📋</span>
-              <span class="skill-name">GxP &amp; CSV Compliance</span>
-            </div>
-            <div class="skill-item" data-group="lifesciences">
-              <span class="skill-icon-emoji">🧬</span>
-              <span class="skill-name">Life Sciences Cloud</span>
-            </div>
-            <div class="skill-item" data-group="lifesciences">
-              <span class="skill-icon-emoji">🔐</span>
-              <span class="skill-name">Data Integrity &amp; Audit</span>
-            </div>
-            <div class="skill-item" data-group="lifesciences">
+            <div class="skill-item" data-group="systems">
               <span class="skill-icon-emoji">🚀</span>
-              <span class="skill-name">DevSecOps &amp; CI/CD</span>
+              <span class="skill-name">Apache HTTP &amp; NGINX Reverse Proxy</span>
+            </div>
+            <div class="skill-item" data-group="systems">
+              <span class="skill-icon-emoji">🖥️</span>
+              <span class="skill-name">VMware vSphere &amp; Air-Gapped VDI</span>
+            </div>
+            <div class="skill-item" data-group="systems security">
+              <span class="skill-icon-emoji">🏢</span>
+              <span class="skill-name">Active Directory DS &amp; Group Policy</span>
             </div>
 
           </div>
