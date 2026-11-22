@@ -7,6 +7,7 @@
   const spendDisplay = document.getElementById('spendDisplay');
   const savingsDisplay = document.getElementById('savingsDisplay');
   const annualSavingsDisplay = document.getElementById('annualSavingsDisplay');
+  const netSpendDisplay = document.getElementById('netSpendDisplay');
 
   const computeVal = document.getElementById('valCompute');
   const riVal = document.getElementById('valRI');
@@ -55,6 +56,11 @@
 
     savingsDisplay.textContent = formatCurrency(totalMonthlySavings);
     annualSavingsDisplay.textContent = formatCurrency(annualSavings);
+
+    const netSpend = monthlySpend - totalMonthlySavings;
+    if (netSpendDisplay) {
+      netSpendDisplay.textContent = `${formatCurrency(netSpend)}/mo (32.0% Saved)`;
+    }
 
     if (computeVal) computeVal.textContent = formatCurrency(computeSavings) + '/mo';
     if (riVal) riVal.textContent = formatCurrency(riSavings) + '/mo';

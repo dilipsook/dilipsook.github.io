@@ -416,7 +416,7 @@ document.addEventListener('DOMContentLoaded', () => {
     isTrafficSpike = !isTrafficSpike;
     spikeBtn.classList.toggle('active', isTrafficSpike);
     spikeBtn.innerHTML = isTrafficSpike
-      ? '<span>🔥 15,400 Req/s Surge Active!</span>'
+      ? '<span>🔥 15,420 Req/s Surge Active!</span>'
       : '<span>⚡ Simulate 15K Req/s Traffic Surge</span>';
 
     if (window.DilipAudio) {
@@ -425,14 +425,31 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (isTrafficSpike) {
-      packets.forEach(p => { p.speed *= 2.8; p.size = 5; });
+      // Spawn high-density cinematic packet burst
+      packets = [];
+      for (let i = 0; i < 28; i++) {
+        packets.push({
+          from: Math.floor(Math.random() * 4),
+          progress: Math.random(),
+          speed: 0.016 + Math.random() * 0.018,
+          size: 4 + Math.random() * 2.5
+        });
+      }
       if (inspectorMetrics) {
         const surgeBadge = document.createElement('div');
         surgeBadge.className = 'telemetry-metric-item';
-        surgeBadge.style.background = 'rgba(239, 68, 68, 0.15)';
+        surgeBadge.style.background = 'rgba(239, 68, 68, 0.2)';
         surgeBadge.style.border = '1px solid #ef4444';
-        surgeBadge.innerHTML = '<span class="metric-label" style="color:#fca5a5;">LIVE SURGE</span><span class="metric-value" style="color:#f87171;">15,420 RPS</span>';
+        surgeBadge.style.boxShadow = '0 0 16px rgba(239, 68, 68, 0.4)';
+        surgeBadge.innerHTML = '<span class="metric-label" style="color:#fca5a5;">TRAFFIC SURGE</span><span class="metric-value" style="color:#f87171;">15,420 RPS</span>';
         inspectorMetrics.prepend(surgeBadge);
+
+        const scaleBadge = document.createElement('div');
+        scaleBadge.className = 'telemetry-metric-item';
+        scaleBadge.style.background = 'rgba(16, 185, 129, 0.15)';
+        scaleBadge.style.border = '1px solid #10b981';
+        scaleBadge.innerHTML = '<span class="metric-label" style="color:#6ee7b7;">ELASTIC SCALE</span><span class="metric-value" style="color:#34d399;">+8 EC2 Nodes</span>';
+        inspectorMetrics.appendChild(scaleBadge);
       }
     } else {
       initPackets();
