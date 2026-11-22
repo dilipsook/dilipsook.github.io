@@ -35,29 +35,38 @@ document.addEventListener('DOMContentLoaded', () => {
   const navLinks = document.querySelectorAll('.nav-link');
   const sections = document.querySelectorAll('section[id]');
 
+  let navTicking = false;
   window.addEventListener('scroll', () => {
-    if (window.scrollY > 30) {
-      navbar?.classList.add('scrolled');
-    } else {
-      navbar?.classList.remove('scrolled');
+    if (!navTicking) {
+      navTicking = true;
+      requestAnimationFrame(() => {
+        const scrollY = window.pageYOffset || document.documentElement.scrollTop;
+        if (scrollY > 30) {
+          navbar?.classList.add('scrolled');
+        } else {
+          navbar?.classList.remove('scrolled');
+        }
+
+        let current = '';
+        sections.forEach(section => {
+          const top = section.offsetTop - 120;
+          const height = section.offsetHeight;
+          if (scrollY >= top && scrollY < top + height) {
+            current = section.getAttribute('id');
+          }
+        });
+
+        navLinks.forEach(link => {
+          if (link.getAttribute('href') === `#${current}`) {
+            link.classList.add('active');
+          } else {
+            link.classList.remove('active');
+          }
+        });
+        navTicking = false;
+      });
     }
-
-    let current = '';
-    sections.forEach(section => {
-      const top = section.offsetTop - 120;
-      const height = section.offsetHeight;
-      if (window.scrollY >= top && window.scrollY < top + height) {
-        current = section.getAttribute('id');
-      }
-    });
-
-    navLinks.forEach(link => {
-      link.classList.remove('active');
-      if (link.getAttribute('href') === `#${current}`) {
-        link.classList.add('active');
-      }
-    });
-  });
+  }, { passive: true });
 
   // 2. Mobile Burger Menu
   const burgerBtn = document.getElementById('burgerBtn');

@@ -113,17 +113,28 @@
     });
   }
 
+  let lastFrameTime = 0;
   let lastPacketTime = 0;
 
   function render(time) {
     if (isPaused) return;
+
+    const now = time || performance.now();
+    if (!lastFrameTime) lastFrameTime = now;
+    const deltaMs = now - lastFrameTime;
+    lastFrameTime = now;
+
+    // Delta-time compensation factor normalized to 60fps (16.667ms).
+    // On 144Hz monitors, dt is ~0.416, maintaining identical real-time particle velocity.
+    const dt = Math.min(Math.max(deltaMs / 16.667, 0.1), 2.5);
+
     ctx.clearRect(0, 0, width, height);
 
     // Update and draw kinetic ripples
     for (let r = ripples.length - 1; r >= 0; r--) {
       const rip = ripples[r];
-      rip.radius += rip.speed;
-      rip.alpha *= 0.955;
+      rip.radius += rip.speed * dt;
+      rip.alpha *= Math.pow(0.955, dt);
 
       if (rip.alpha <= 0.02 || rip.radius >= rip.maxRadius) {
         ripples.splice(r, 1);
@@ -146,8 +157,8 @@
         const dist = Math.hypot(n.x - rip.x, n.y - rip.y);
         if (Math.abs(dist - rip.radius) < 22) {
           const angle = Math.atan2(n.y - rip.y, n.x - rip.x);
-          n.x += Math.cos(angle) * 1.8;
-          n.y += Math.sin(angle) * 1.8;
+          n.x += Math.cos(angle) * 1.8 * dt;
+          n.y += Math.sin(angle) * 1.8 * dt;
         }
       }
     }
@@ -157,8 +168,8 @@
       const node = nodes[i];
 
       // Movement
-      node.x += node.vx;
-      node.y += node.vy;
+      node.x += node.vx * dt;
+      node.y += node.vy * dt;
 
       if (node.x < 0 || node.x > width) node.vx *= -1;
       if (node.y < 0 || node.y > height) node.vy *= -1;
@@ -169,8 +180,8 @@
       const dist = Math.sqrt(dx * dx + dy * dy);
       if (dist < mouse.radius) {
         const force = (mouse.radius - dist) / mouse.radius;
-        node.x -= (dx / dist) * force * 2.5;
-        node.y -= (dy / dist) * force * 2.5;
+        node.x -= (dx / dist) * force * 2.5 * dt;
+        node.y -= (dy / dist) * force * 2.5 * dt;
       }
 
       // Draw Node
@@ -209,7 +220,7 @@
     // Render packets
     for (let p = packets.length - 1; p >= 0; p--) {
       const pkt = packets[p];
-      pkt.progress += pkt.speed;
+      pkt.progress += pkt.speed * dt;
 
       if (pkt.progress >= 1) {
         packets.splice(p, 1);

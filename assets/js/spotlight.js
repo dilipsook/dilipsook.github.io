@@ -1,6 +1,6 @@
 /* ==========================================================================
    DYNAMIC MOUSE SPOTLIGHT BORDER & SURFACE GLOW (Linear / Aceternity Effect)
-   Tracks cursor coordinates across interactive cards for realistic light reflection
+   144Hz rAF throttled cursor coordinate tracking with cached element bounds
    ========================================================================== */
 
 (function() {
@@ -22,19 +22,46 @@
     targetCards.forEach(card => {
       card.classList.add('spotlight-card');
 
-      card.addEventListener('mousemove', (e) => {
-        const rect = card.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
+      let cardRect = null;
+      let ticking = false;
+      let clientX = 0;
+      let clientY = 0;
 
-        card.style.setProperty('--mouse-x', `${x}px`);
-        card.style.setProperty('--mouse-y', `${y}px`);
-      });
+      card.addEventListener('mouseenter', () => {
+        cardRect = card.getBoundingClientRect();
+      }, { passive: true });
+
+      card.addEventListener('mousemove', (e) => {
+        clientX = e.clientX;
+        clientY = e.clientY;
+
+        if (!ticking) {
+          ticking = true;
+          requestAnimationFrame(() => {
+            if (cardRect) {
+              const x = clientX - cardRect.left;
+              const y = clientY - cardRect.top;
+              card.style.setProperty('--mouse-x', `${x.toFixed(1)}px`);
+              card.style.setProperty('--mouse-y', `${y.toFixed(1)}px`);
+            }
+            ticking = false;
+          });
+        }
+      }, { passive: true });
 
       card.addEventListener('mouseleave', () => {
+        cardRect = null;
+        card.style.removeProperty('--mouse-x');
+        card.style.removeProperty('--mouse-y');
+      }, { passive: true });
+    });
+
+    // Invalidate rect caches on window resize
+    window.addEventListener('resize', () => {
+      targetCards.forEach(card => {
         card.style.removeProperty('--mouse-x');
         card.style.removeProperty('--mouse-y');
       });
-    });
+    }, { passive: true });
   });
 })();

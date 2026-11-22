@@ -5,6 +5,35 @@
    and Pixel-Perfect Native Mobile Viewport Ergonomics.
    ========================================================================== */
 
+/* -------------------------------------------------------------------------
+   144Hz / HIGH-REFRESH HARDWARE-ACCELERATED VIEWPORT & SCROLL ENGINE TOKENS
+   Critically-damped subpixel transforms, compositor layer promotion, and zero-jank touch
+   ------------------------------------------------------------------------- */
+html {
+  scroll-behavior: auto !important;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  overscroll-behavior-y: none;
+}
+
+body {
+  touch-action: pan-y;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* GPU hardware layer promotion for fixed & interactive elements */
+.navbar,
+.side-scroll-hud,
+.scroll-top-btn,
+.side-scroll-rail,
+.top-scroll-progress,
+.mobile-audio-player-hud {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
 :root,
 [data-theme="dark"] {
   /* -------------------------------------------------------------------------
@@ -1095,20 +1124,23 @@
    7. ANIMATED AURORA SCROLLBAR & FLOATING SIDE SCROLL HUD
    ========================================================================== */
 
-/* Top Aurora Scroll Progress Line */
+/* Top Aurora Scroll Progress Line - GPU Composited 144Hz Transform */
 .top-scroll-progress {
   position: fixed;
   top: 0;
   left: 0;
   height: 3.5px;
-  width: 0%;
+  width: 100% !important;
+  transform-origin: left center !important;
+  transform: scaleX(0);
+  will-change: transform;
   background: linear-gradient(90deg, #00f0ff 0%, #38bdf8 25%, #6366f1 50%, #d946ef 75%, #00f0ff 100%);
   background-size: 200% 100%;
   animation: auroraScrollFlow 3s linear infinite;
   box-shadow: 0 0 12px rgba(56, 189, 248, 0.85), 0 0 24px rgba(217, 70, 239, 0.5);
   z-index: 100005;
   pointer-events: none;
-  transition: width 0.12s ease-out;
+  transition: none !important;
 }
 
 @keyframes auroraScrollFlow {
@@ -1310,7 +1342,7 @@
 
 .side-rail-thumb {
   position: absolute;
-  top: 0%;
+  top: 0 !important;
   left: -3.5px;
   width: 10px;
   height: 38px;
@@ -1321,7 +1353,9 @@
     0 0 14px rgba(56, 189, 248, 0.9),
     0 0 28px rgba(168, 85, 247, 0.6);
   cursor: grab;
-  transition: top 0.08s linear, box-shadow 0.25s ease;
+  will-change: transform !important;
+  transform: translate3d(0, 0, 0);
+  transition: box-shadow 0.25s ease !important;
   animation: railThumbAura 3s ease-in-out infinite alternate;
 }
 
