@@ -375,3 +375,42 @@
   box-shadow: 0 6px 25px rgba(0, 0, 0, 0.4), 0 0 25px rgba(56, 189, 248, 0.35);
   color: #38bdf8;
 }
+
+/* Mobile Responsive HUD & Swarm Controls */
+@media (max-width: 600px) {
+  .swarm-hud-bar {
+    bottom: 12px !important;
+    max-width: calc(100vw - 16px) !important;
+    width: auto !important;
+    padding: 5px 10px !important;
+    gap: 6px !important;
+  }
+  .swarm-hud-dots {
+    display: none !important;
+  }
+  .swarm-hud-text {
+    font-size: 0.65rem !important;
+    max-width: 120px !important;
+    white-space: nowrap !important;
+    overflow: hidden !important;
+    text-overflow: ellipsis !important;
+  }
+  .swarm-hud-badge {
+    padding: 1px 5px !important;
+    font-size: 0.6rem !important;
+  }
+  .swarm-hud-btn {
+    padding: 3px 6px !important;
+    font-size: 0.65rem !important;
+  }
+  .swarm-hud-close {
+    font-size: 0.9rem !important;
+    padding: 0 2px !important;
+  }
+  .target-badge-label {
+    font-size: 0.55rem !important;
+    padding: 0 4px !important;
+    top: -18px !important;
+  }
+}
+

@@ -121,134 +121,30 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ---------------------------------------------------------------------------
-  // 144Hz Delta-Time Compensated Momentum Physics Engine
+  // Native 144Hz Hardware-Accelerated Smooth Scrolling
   // ---------------------------------------------------------------------------
-  let currentY = window.pageYOffset || document.documentElement.scrollTop;
-  let targetY = currentY;
-  let isRunning = false;
-  let lastTime = 0;
-  let currentLambda = 0.108; // Critically-damped spring factor
-
-  function tickPhysics(now) {
-    if (!isRunning) return;
-
-    if (!lastTime) lastTime = now;
-    const elapsed = now - lastTime;
-    lastTime = now;
-
-    // Normalize delta time to 60fps (16.667ms reference).
-    // On 144Hz monitors, elapsed is ~6.94ms, so dt is ~0.416.
-    // Exponential formula: alpha = 1 - Math.exp(-lambda * dt) guarantees
-    // the exact same physical curve on 60Hz, 120Hz, 144Hz, and 240Hz screens.
-    const dt = Math.min(Math.max(elapsed / 16.667, 0.1), 3.0);
-    const alpha = 1 - Math.exp(-currentLambda * dt);
-
-    currentY += (targetY - currentY) * alpha;
-
-    if (Math.abs(targetY - currentY) < 0.35) {
-      currentY = targetY;
-      window.scrollTo({ top: currentY, behavior: 'auto' });
-      updateIndicators(currentY);
-      isRunning = false;
-      lastTime = 0;
-      return;
-    }
-
-    window.scrollTo({ top: currentY, behavior: 'auto' });
-    updateIndicators(currentY);
-    requestAnimationFrame(tickPhysics);
-  }
-
-  function smoothScrollTo(destY, stiffness = 0.115) {
+  function smoothScrollTo(destY) {
     const maxScroll = Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
-    targetY = Math.max(0, Math.min(destY, maxScroll));
-    currentLambda = stiffness;
-
-    if (!isRunning) {
-      isRunning = true;
-      lastTime = performance.now();
-      requestAnimationFrame(tickPhysics);
-    }
-  }
-
-  // Helper: check if pointer/event is inside an interactive scrollable container (modals, terminals)
-  function isInsideScrollable(el) {
-    if (!el || el === document.body || el === document.documentElement) return false;
-    if (el.closest && el.closest('#terminalModal.open, #commandPaletteModal.open, #projectModal.open, .modal-open, .terminal-modal.open, .cmd-modal.open, .finops-modal.open')) {
-      return true;
-    }
-    let cur = el;
-    while (cur && cur !== document.body && cur !== document.documentElement) {
-      const style = window.getComputedStyle(cur);
-      const ov = style.overflowY;
-      if ((ov === 'auto' || ov === 'scroll') && cur.scrollHeight > cur.clientHeight + 4) {
-        return true;
-      }
-      cur = cur.parentElement;
-    }
-    return false;
+    const clampedY = Math.max(0, Math.min(destY, maxScroll));
+    window.scrollTo({
+      top: clampedY,
+      behavior: 'smooth'
+    });
   }
 
   // Expose for modal hooks & debugging
-  window.isInsideScrollable = isInsideScrollable;
   window.smoothScrollTo = smoothScrollTo;
 
-  // ---------------------------------------------------------------------------
-  // Desktop Wheel Interception with Trackpad Auto-Detection
-  // ---------------------------------------------------------------------------
-  window.addEventListener('wheel', (e) => {
-    // Pass-through browser zoom (Ctrl + wheel)
-    if (e.ctrlKey) return;
-
-    // Do NOT intercept if hovering inside open modals or scrollable elements
-    if (isInsideScrollable(e.target)) return;
-
-    // Intercept standard wheel to apply 144Hz momentum smoothing
-    e.preventDefault();
-
-    // Trackpad emits small fractional deltaY values; stepped mouse wheels emit larger integer multiples (e.g. 100, 120)
-    const isTrackpad = Math.abs(e.deltaY) < 32 || (e.deltaY % 1 !== 0);
-    currentLambda = isTrackpad ? 0.28 : 0.108;
-
-    const maxScroll = Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
-    let delta = e.deltaY;
-    if (e.deltaMode === 1) delta *= 34; // Line mode
-    else if (e.deltaMode === 2) delta *= window.innerHeight; // Page mode
-    else if (!isTrackpad) delta *= 1.12; // Natural momentum curve for stepped wheels
-
-    targetY = Math.max(0, Math.min(targetY + delta, maxScroll));
-
-    if (!isRunning) {
-      isRunning = true;
-      lastTime = performance.now();
-      requestAnimationFrame(tickPhysics);
-    }
-  }, { passive: false });
-
-  // ---------------------------------------------------------------------------
-  // Touch Handling: Zero-Jank Mobile Compositor Pass-Through
-  // ---------------------------------------------------------------------------
-  window.addEventListener('touchstart', () => {
-    // Seamlessly hand off to native mobile GPU touch inertia on touch devices
-    if (isRunning) {
-      isRunning = false;
-      lastTime = 0;
-    }
-    currentY = targetY = window.pageYOffset || document.documentElement.scrollTop;
-  }, { passive: true });
-
-  // Native window scroll sync (runs during mobile touch flick, native scrollbar drag, etc.)
+  // Ultra-Lightweight 144Hz Compositor Scroll Observer (Passive, Zero Main-Thread Blocking)
   let scrollTicking = false;
   window.addEventListener('scroll', () => {
-    if (!isRunning) {
-      currentY = targetY = window.pageYOffset || document.documentElement.scrollTop;
-      if (!scrollTicking) {
-        scrollTicking = true;
-        requestAnimationFrame(() => {
-          updateIndicators(currentY);
-          scrollTicking = false;
-        });
-      }
+    if (!scrollTicking) {
+      scrollTicking = true;
+      requestAnimationFrame(() => {
+        const currentY = window.pageYOffset || document.documentElement.scrollTop;
+        updateIndicators(currentY);
+        scrollTicking = false;
+      });
     }
   }, { passive: true });
 
@@ -262,40 +158,41 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     if (isInsideScrollable(active)) return;
 
+    const curY = window.pageYOffset || document.documentElement.scrollTop;
     const maxScroll = Math.max(0, document.documentElement.scrollHeight - window.innerHeight);
     let handled = false;
 
     switch (e.key) {
       case 'ArrowDown':
-        smoothScrollTo(targetY + 110, 0.13);
+        smoothScrollTo(curY + 110);
         handled = true;
         break;
       case 'ArrowUp':
-        smoothScrollTo(targetY - 110, 0.13);
+        smoothScrollTo(curY - 110);
         handled = true;
         break;
       case 'PageDown':
-        smoothScrollTo(targetY + window.innerHeight * 0.85, 0.095);
+        smoothScrollTo(curY + window.innerHeight * 0.85);
         handled = true;
         break;
       case 'PageUp':
-        smoothScrollTo(targetY - window.innerHeight * 0.85, 0.095);
+        smoothScrollTo(curY - window.innerHeight * 0.85);
         handled = true;
         break;
       case ' ':
         if (e.shiftKey) {
-          smoothScrollTo(targetY - window.innerHeight * 0.85, 0.095);
+          smoothScrollTo(curY - window.innerHeight * 0.85);
         } else {
-          smoothScrollTo(targetY + window.innerHeight * 0.85, 0.095);
+          smoothScrollTo(curY + window.innerHeight * 0.85);
         }
         handled = true;
         break;
       case 'Home':
-        smoothScrollTo(0, 0.09);
+        smoothScrollTo(0);
         handled = true;
         break;
       case 'End':
-        smoothScrollTo(maxScroll, 0.09);
+        smoothScrollTo(maxScroll);
         handled = true;
         break;
     }

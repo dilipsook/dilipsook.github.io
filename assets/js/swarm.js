@@ -1552,6 +1552,29 @@
 .hud button.snd.off{color:#8a8a8a}
 .hud button.snd.tap{background:#0D99FF;animation:hudpulse 1.6s ease-in-out infinite}
 @keyframes hudpulse{50%{box-shadow:0 0 0 4px rgba(13,153,255,.28)}}
+@media (max-width: 600px) {
+  .hud {
+    bottom: 12px;
+    gap: 4px;
+    padding: 4px 6px;
+    max-width: calc(100vw - 16px);
+    box-sizing: border-box;
+    font-size: 11px;
+  }
+  .hud .dots { display: none; }
+  .hud .bar { width: 32px; }
+  .hud .txt { max-width: 110px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 10px; }
+  .hud button { padding: 5px 6px; font-size: 10px; }
+  .hud .x { padding: 5px 8px; font-size: 10px; gap: 4px; }
+  .swarm-top-exit {
+    top: 10px;
+    right: 10px;
+    padding: 6px 10px;
+    font-size: 10px;
+    gap: 4px;
+  }
+  .swarm-top-exit .top-stop-kbd { display: none; }
+}
 `;
 
   // -------------------------------------------------------------------- env
@@ -3853,6 +3876,17 @@
           rebuildBtn.innerHTML = '<span>✦ Rebuild Live</span>';
         }
       }
+
+      const mobBtn = document.getElementById('mobileMenuSwarmBtn');
+      if (mobBtn) {
+        if (isActive) {
+          mobBtn.classList.add('is-running');
+          mobBtn.innerHTML = '<span style="color:#ef4444;font-size:1.1rem;">⏹</span><span style="font-weight:700;">Stop Swarm Rebuild</span>';
+        } else {
+          mobBtn.classList.remove('is-running');
+          mobBtn.innerHTML = '<span style="color:#38bdf8;font-size:1.1rem;">✦</span><span style="font-weight:700;">Play Swarm Multiplayer Rebuild</span>';
+        }
+      }
     } catch (e) {
       console.warn('[swarm] updateSwarmButtons error', e);
     }
@@ -3912,7 +3946,7 @@ function initSwarm() {
     }
   });
 
-  ['btnNavMotion', 'heroSwarmBtn', 'btnSwarmRebuild'].forEach((id) => {
+  ['btnNavMotion', 'heroSwarmBtn', 'btnSwarmRebuild', 'mobileMenuSwarmBtn'].forEach((id) => {
     const btn = document.getElementById(id);
     if (btn) {
       btn.addEventListener('click', (e) => {
