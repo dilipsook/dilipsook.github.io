@@ -6,62 +6,70 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
 
 :root {
-  /* Color Palette - Deep Cinematic Obsidian & Aurora Noir */
-  --bg-primary: #030712;
-  --bg-secondary: #080d1a;
-  --bg-tertiary: #0e1629;
-  --bg-card: rgba(12, 19, 36, 0.72);
-  --bg-card-hover: rgba(18, 28, 54, 0.9);
-  --bg-glass: rgba(8, 13, 26, 0.82);
-  --border-subtle: rgba(255, 255, 255, 0.08);
-  --border-focus: rgba(56, 189, 248, 0.5);
-  --border-card: rgba(255, 255, 255, 0.09);
+  /* Color Palette - Apple Space Black & Pure Obsidian Keynote Palette */
+  --bg-primary: #000000;
+  --bg-secondary: #09090b;
+  --bg-tertiary: #121215;
+  --bg-card: rgba(22, 22, 26, 0.78);
+  --bg-card-hover: rgba(30, 30, 36, 0.9);
+  --bg-glass: rgba(12, 12, 14, 0.82);
+  --border-subtle: rgba(255, 255, 255, 0.1);
+  --border-focus: #0071e3;
+  --border-card: rgba(255, 255, 255, 0.12);
+
+  /* Apple Keynote Iconic Accents */
+  --apple-blue: #0071e3;
+  --apple-blue-glow: #2997ff;
+  --apple-emerald: #30d158;
+  --apple-amber: #ff9f0a;
+  --apple-purple: #bf5af2;
+  --apple-cyan: #38bdf8;
 
   /* Cinematic Aurora Multi-Tone Gradients */
-  --gradient-cinema: linear-gradient(135deg, #ffffff 0%, #e2e8f0 30%, #38bdf8 65%, #a855f7 100%);
-  --gradient-aurora: linear-gradient(135deg, #00f2fe 0%, #4facfe 50%, #7c3aed 100%);
-  --gradient-emerald: linear-gradient(135deg, #34d399 0%, #10b981 50%, #059669 100%);
-  --gradient-gold: linear-gradient(135deg, #fbbf24 0%, #f59e0b 50%, #d97706 100%);
-  --gradient-cta: linear-gradient(135deg, #0ea5e9 0%, #2563eb 50%, #7c3aed 100%);
-  --gradient-pill: linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.03) 100%);
-  --gradient-border-glow: linear-gradient(135deg, rgba(255, 255, 255, 0.25) 0%, rgba(56, 189, 248, 0.35) 50%, rgba(139, 92, 246, 0.15) 100%);
+  --gradient-cinema: linear-gradient(180deg, #ffffff 25%, #a1a1a6 100%);
+  --gradient-aurora: linear-gradient(135deg, #2997ff 0%, #0071e3 50%, #bf5af2 100%);
+  --gradient-emerald: linear-gradient(135deg, #30d158 0%, #28cd41 50%, #059669 100%);
+  --gradient-gold: linear-gradient(135deg, #ffd60a 0%, #ff9f0a 100%);
+  --gradient-cta: linear-gradient(180deg, #0077ed 0%, #0071e3 100%);
+  --gradient-pill: linear-gradient(135deg, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0.04) 100%);
+  --gradient-border-glow: linear-gradient(135deg, rgba(255, 255, 255, 0.28) 0%, rgba(41, 151, 255, 0.4) 50%, rgba(191, 90, 242, 0.2) 100%);
 
   /* Accents & Brand Tones */
-  --aws-gold: #ff9900;
+  --aws-gold: #ff9f0a;
   --aws-amber: #f59e0b;
-  --azure-cyan: #38bdf8;
-  --azure-blue: #0284c7;
-  --finops-mint: #10b981;
-  --finops-emerald: #059669;
-  --brand-violet: #8b5cf6;
-  --brand-indigo: #6366f1;
+  --azure-cyan: #2997ff;
+  --azure-blue: #0071e3;
+  --finops-mint: #30d158;
+  --finops-emerald: #28cd41;
+  --brand-violet: #bf5af2;
+  --brand-indigo: #5e5ce6;
 
-  /* Typography Colors */
-  --text-primary: #f8fafc;
-  --text-secondary: #94a3b8;
-  --text-muted: #64748b;
-  --text-dim: #475569;
+  /* Apple Pro Typography Colors */
+  --text-primary: #f5f5f7;
+  --text-secondary: #a1a1a6;
+  --text-muted: #6e6e73;
+  --text-dim: #48484a;
 
-  /* Fonts */
-  --font-heading: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-mono: 'JetBrains Mono', monospace;
+  /* Fonts - Apple San Francisco / Pro Display */
+  --font-heading: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro", "Outfit", system-ui, sans-serif;
+  --font-body: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro", "Plus Jakarta Sans", system-ui, sans-serif;
+  --font-mono: "SF Mono", "JetBrains Mono", Menlo, Consolas, monospace;
 
   /* Shadows & Luminous Glows */
-  --glow-aws: 0 0 35px rgba(245, 158, 11, 0.2);
-  --glow-azure: 0 0 35px rgba(56, 189, 248, 0.25);
-  --glow-finops: 0 0 35px rgba(16, 185, 129, 0.25);
-  --glow-cinema: 0 10px 40px -10px rgba(56, 189, 248, 0.45), 0 0 25px rgba(124, 58, 237, 0.25);
-  --card-shadow: 0 20px 45px -15px rgba(0, 0, 0, 0.75), inset 0 1px 0 0 rgba(255, 255, 255, 0.1);
+  --glow-aws: 0 0 35px rgba(255, 159, 10, 0.2);
+  --glow-azure: 0 0 35px rgba(41, 151, 255, 0.25);
+  --glow-finops: 0 0 35px rgba(48, 209, 88, 0.25);
+  --glow-cinema: 0 12px 40px -10px rgba(0, 113, 227, 0.45), 0 0 25px rgba(191, 90, 242, 0.25);
+  --card-shadow: 0 20px 48px -15px rgba(0, 0, 0, 0.8), inset 0 1px 0 0 rgba(255, 255, 255, 0.12);
 
   /* Layout Constants */
-  --nav-height: 64px;
+  --nav-height: 52px;
   --max-width: 1240px;
   --radius-sm: 8px;
   --radius-md: 14px;
-  --radius-lg: 20px;
-  --radius-xl: 28px;
-  --radius-full: 9999px;
+  --radius-lg: 24px;
+  --radius-xl: 32px;
+  --radius-full: 980px;
 
   /* Transitions */
   --transition-fast: 0.18s cubic-bezier(0.16, 1, 0.3, 1);
@@ -71,25 +79,25 @@
 
 [data-theme="light"] {
   color-scheme: light;
-  --bg-primary: #f8fafc;
-  --bg-secondary: #f1f5f9;
-  --bg-tertiary: #e2e8f0;
-  --bg-card: rgba(255, 255, 255, 0.96);
+  --bg-primary: #f5f5f7;
+  --bg-secondary: #ffffff;
+  --bg-tertiary: #e8e8ed;
+  --bg-card: rgba(255, 255, 255, 0.94);
   --bg-card-hover: #ffffff;
-  --bg-glass: rgba(255, 255, 255, 0.92);
-  --border-subtle: rgba(15, 23, 42, 0.08);
-  --border-focus: rgba(2, 132, 199, 0.5);
-  --border-card: rgba(148, 163, 184, 0.28);
+  --bg-glass: rgba(255, 255, 255, 0.88);
+  --border-subtle: rgba(0, 0, 0, 0.08);
+  --border-focus: #0071e3;
+  --border-card: rgba(0, 0, 0, 0.09);
 
-  --gradient-cinema: linear-gradient(135deg, #0f172a 0%, #0369a1 40%, #2563eb 70%, #7c3aed 100%);
-  --gradient-pill: linear-gradient(135deg, rgba(15, 23, 42, 0.06) 0%, rgba(15, 23, 42, 0.02) 100%);
+  --gradient-cinema: linear-gradient(180deg, #1d1d1f 30%, #515154 100%);
+  --gradient-pill: linear-gradient(135deg, rgba(0, 0, 0, 0.05) 0%, rgba(0, 0, 0, 0.02) 100%);
 
-  --text-primary: #0f172a;
-  --text-secondary: #334155;
-  --text-muted: #475569;
-  --text-dim: #64748b;
+  --text-primary: #1d1d1f;
+  --text-secondary: #515154;
+  --text-muted: #86868b;
+  --text-dim: #a1a1a6;
 
-  --card-shadow: 0 20px 35px -12px rgba(15, 23, 42, 0.09), 0 1px 3px rgba(15, 23, 42, 0.04);
+  --card-shadow: 0 16px 36px -10px rgba(0, 0, 0, 0.08), 0 1px 3px rgba(0, 0, 0, 0.03);
 }
 
 /* ==========================================================================
@@ -269,54 +277,63 @@ img {
   font-size: 0.78rem;
   font-weight: 600;
   letter-spacing: 0.08em;
+.section-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
-  padding: 6px 14px;
+  padding: 5px 14px;
   border-radius: var(--radius-full);
-  background: rgba(56, 189, 248, 0.08);
-  border: 1px solid rgba(56, 189, 248, 0.22);
-  color: #38bdf8;
+  background: rgba(41, 151, 255, 0.1);
+  border: 1px solid rgba(41, 151, 255, 0.25);
+  color: var(--apple-blue-glow, #2997ff);
   margin-bottom: 16px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
 }
 
 .section-tag.tag-amber {
-  background: rgba(245, 158, 11, 0.08);
-  border-color: rgba(245, 158, 11, 0.25);
-  color: #fbbf24;
+  background: rgba(255, 159, 10, 0.1);
+  border-color: rgba(255, 159, 10, 0.28);
+  color: var(--apple-amber, #ff9f0a);
 }
 
 .section-tag.tag-mint {
-  background: rgba(16, 185, 129, 0.08);
-  border-color: rgba(16, 185, 129, 0.25);
-  color: #34d399;
+  background: rgba(48, 209, 88, 0.1);
+  border-color: rgba(48, 209, 88, 0.28);
+  color: var(--apple-emerald, #30d158);
 }
 
 .section-tag.tag-violet {
-  background: rgba(139, 92, 246, 0.08);
-  border-color: rgba(139, 92, 246, 0.25);
-  color: #a78bfa;
+  background: rgba(191, 90, 242, 0.1);
+  border-color: rgba(191, 90, 242, 0.28);
+  color: var(--apple-purple, #bf5af2);
 }
 
 .section-title {
+  font-family: var(--font-heading);
   font-size: clamp(2.2rem, 4vw, 3.2rem);
-  font-weight: 800;
-  letter-spacing: -0.02em;
+  font-weight: 700;
+  letter-spacing: -0.03em;
   margin-bottom: 16px;
+  color: var(--text-primary);
 }
 
 .section-desc {
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   color: var(--text-secondary);
   line-height: 1.6;
+  letter-spacing: -0.01em;
 }
 
 /* Text Gradients */
-.gradient-text {
-  background: var(--gradient-cinema);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-
-.gradient-luxury {
+.gradient-text,
+.gradient-luxury,
+.gradient-cinema {
   background: var(--gradient-cinema);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
