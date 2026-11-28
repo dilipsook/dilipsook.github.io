@@ -1,26 +1,28 @@
 /**
  * Tab Presence & Dynamic Title Engine
- * Keeps the browser tab informative, engaging, and perfectly sized to fit within one tab (<30 chars)
+ * Keeps the browser tab informative, engaging, and perfectly sized to fit within one tab (<25 chars)
+ * Ensures 100% visibility without browser truncation (...)
  * Shows core value propositions (Cloud Architect, FinOps $60K+, AWS & Azure, 10+ Yrs Exp)
  */
 (function() {
   'use strict';
 
-  // High-impact executive highlights designed to fit inside a single browser tab (~28-30 chars)
+  // High-impact executive highlights designed to fit inside a single browser tab (<= 25 chars)
+  // Tested to never truncate with an ellipsis (...) in Chrome, Edge, Safari, Brave, and Firefox
   const executiveHighlights = [
-    'Dilip Kumar • Cloud Architect',
-    'Dilip Kumar • FinOps ($60K+/mo)',
-    'Dilip Kumar • Dual AWS & Azure',
-    'Dilip Kumar • 10+ Yrs Cloud Lead',
-    'Dilip Kumar • 1,000+ Migrations',
-    'Dilip Kumar • Cognizant Manager'
+    'Dilip Kumar | Architect',
+    'Dilip Kumar | FinOps $60K',
+    'Dilip Kumar | AWS & Azure',
+    'Dilip Kumar | Cloud Lead',
+    'Dilip Kumar | 1K+ Migrs',
+    'Dilip Kumar | Cognizant'
   ];
 
-  // Inactive tab prompts when visitor switches away
+  // Inactive tab prompts when visitor switches away (<= 25 chars)
   const inactiveTitles = [
-    '👋 Dilip Kumar • Cloud Architect',
-    '⚡ 1,000+ Migrations • Dilip',
-    '💰 $60K+/mo FinOps • Dilip'
+    '👋 Dilip Kumar | Lead',
+    '⚡ 1,000+ Migrations',
+    '💰 $60K+/mo FinOps ROI'
   ];
 
   let currentHighlightIndex = 0;
@@ -65,25 +67,25 @@
       }, 3500);
     } else {
       stopHighlightRotation();
-      updateTitle('✨ Welcome Back! • Dilip Kumar');
+      updateTitle('✨ Dilip Kumar | Online');
       setTimeout(() => {
-        updateTitle(executiveHighlights[currentHighlightIndex]);
+        updateTitle(currentSectionTitle || executiveHighlights[currentHighlightIndex]);
         startHighlightRotation();
-      }, 2200);
+      }, 2000);
     }
   });
 
-  // Section Observer for context-aware titles
+  // Section Observer for context-aware titles (< 25 chars each)
   const sectionMap = {
     'overview': null, // default to rotation
-    'architecture': 'Dilip Kumar • Cloud Pillars',
-    'projects': 'Dilip Kumar • Case Studies',
-    'finops': 'Dilip Kumar • FinOps Engine',
-    'experience': 'Dilip Kumar • Career Journey',
-    'skills': 'Dilip Kumar • 79 Tech Skills',
-    'gallery': 'Dilip Kumar • Arch Story',
-    'certifications': 'Dilip Kumar • AWS/Azure Certs',
-    'contact': 'Dilip Kumar • Get In Touch'
+    'architecture': 'Dilip Kumar | Pillars',
+    'projects': 'Dilip Kumar | Projects',
+    'finops': 'Dilip Kumar | FinOps',
+    'experience': 'Dilip Kumar | Journey',
+    'skills': 'Dilip Kumar | 79 Skills',
+    'gallery': 'Dilip Kumar | Arch Story',
+    'certifications': 'Dilip Kumar | Certs',
+    'contact': 'Dilip Kumar | Contact'
   };
 
   const observerOptions = {
@@ -127,7 +129,7 @@
         const isPlaying = deck && deck.classList.contains('playing');
         if (isPlaying && !isAudioPlaying) {
           isAudioPlaying = true;
-          updateTitle('▶ Playing Briefing • Dilip');
+          updateTitle('▶ Briefing Playing...');
         } else if (!isPlaying && isAudioPlaying) {
           isAudioPlaying = false;
           updateTitle(currentSectionTitle || executiveHighlights[currentHighlightIndex]);

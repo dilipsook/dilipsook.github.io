@@ -50,9 +50,18 @@
   const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
   const nextFrame = () => new Promise((r) => {
     let done = false;
-    const finish = () => { if (!done) { done = true; r(); } };
-    requestAnimationFrame(finish);
-    setTimeout(finish, 16);
+    let timerId = null;
+    let rafId = null;
+    const finish = () => {
+      if (!done) {
+        done = true;
+        if (timerId) clearTimeout(timerId);
+        if (rafId) cancelAnimationFrame(rafId);
+        r();
+      }
+    };
+    rafId = requestAnimationFrame(finish);
+    timerId = setTimeout(finish, 20);
   });
   const f1 = (n) => Math.round(n * 10) / 10;
 
@@ -1765,7 +1774,7 @@
 
     syncWorld() {
       const vp = this.vp;
-      this.world.style.transform = `translate(${-vp.sx}px,${-vp.sy}px)`;
+      this.world.style.transform = `translate3d(${-vp.sx}px,${-vp.sy}px,0)`;
     }
 
     mount(model) {
@@ -1861,7 +1870,7 @@
         n._st = setTimeout(() => n.classList.remove("settle"), 340);
       }
       if (it.kind === "line") {
-        n.style.transform = `translate(${it.dx}px,${it.dy}px)`;
+        n.style.transform = `translate3d(${it.dx}px,${it.dy}px,0)`;
         const pts = it.pts.slice(0, it.placed);
         const d = pts.map((p, i) => `${i ? "L" : "M"}${p.x} ${p.y}`).join(" ") + (it.shut ? " Z" : "");
         const path = n.firstChild.firstChild;
@@ -1874,7 +1883,7 @@
       }
       const w = it.draw ? it.draw.w : it.w;
       const h = it.draw ? it.draw.h : it.h;
-      let tf = `translate(${it.x + it.dx}px,${it.y + it.dy}px)`;
+      let tf = `translate3d(${it.x + it.dx}px,${it.y + it.dy}px,0)`;
       if (it.scale !== 1) tf += ` scale(${it.scale})`;
       n.style.transform = tf;
       n.style.width = w + "px";
@@ -1970,7 +1979,7 @@
         seen.add(c.id);
         const X = c.sticky ? c.x : c.x - vp.sx + vp.ox;
         const Y = c.sticky ? c.y : c.y - vp.sy + vp.oy;
-        el.style.transform = `translate(${f1(X)}px,${f1(Y)}px)`;
+        el.style.transform = `translate3d(${f1(X)}px,${f1(Y)}px,0)`;
         const svg = el.firstChild;
         if (el._shape !== c.shape) {
           svg.innerHTML = cursorSVG(c.shape, c.color);
@@ -2342,7 +2351,7 @@
       const sv = Math.abs(vp.sy - (this.lastScroll == null ? vp.sy : this.lastScroll)) / Math.max(dt, 0.001);
       this.lastScroll = vp.sy;
       this.vel = Math.max(this.vel * Math.exp(-dt * 1.2), this.vel * 0.7 + sv * 0.3);
-      if (this.started) this.frontier = Math.max(this.frontier, this.viewBot);
+      if (this.started) this.frontier = Math.max(this.frontier, this.viewBot + 750);
       const avail = this.started ? this.available() : [];
       this.tempo = clamp(2.1 + this.vel / 900 + (avail.length / Math.max(1, this.cursors.length)) * 0.5, 2.1, 4.5) * this.speed;
 
@@ -3705,14 +3714,26 @@
 
     scheduleNextFrame() {
       if (this.dead) return;
+      if (this.timerFallback) {
+        clearTimeout(this.timerFallback);
+        this.timerFallback = null;
+      }
+      if (this.raf) {
+        cancelAnimationFrame(this.raf);
+        this.raf = null;
+      }
       let fired = false;
-      const tick = () => {
+      const tick = (ts) => {
         if (fired || this.dead) return;
         fired = true;
-        this.frame(performance.now());
+        if (this.timerFallback) {
+          clearTimeout(this.timerFallback);
+          this.timerFallback = null;
+        }
+        this.frame(ts || performance.now());
       };
       this.raf = requestAnimationFrame(tick);
-      this.timerFallback = setTimeout(tick, 16);
+      this.timerFallback = setTimeout(tick, 50);
     }
 
     tourStep(dt) {
@@ -3726,8 +3747,10 @@
       }
       const crew = Math.max(MIN_AGENTS, E.cursors.filter((c) => !c.leaving).length);
       const backlog = E.backlog();
-      const target = backlog <= Math.max(4, crew * 0.6) ? 230 : backlog <= crew * 1.5 ? 80 : 0;
-      this.tourV += (target - this.tourV) * Math.min(1, dt * 2.5);
+      // Continuous fluid velocity: never drop to 0 between sections!
+      // When backlog is zero, glide smoothly forward (320px/s) to the next content block.
+      const target = backlog === 0 ? 320 : backlog <= Math.max(4, crew * 0.7) ? 220 : 85;
+      this.tourV += (target - this.tourV) * Math.min(1, dt * 4.0);
       this.tourAcc += this.tourV * dt;
       if (this.tourAcc >= 1) {
         const d = Math.floor(this.tourAcc);
