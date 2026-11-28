@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // 1. Multi-Layer 3D Tilt on Showcase Cards (Perspective & Specular Sheen)
   // ------------------------------------------------------------------------
   const tiltCards = document.querySelectorAll(
-    '.pillar-card, .project-card, .metric-card, .stat-card, .contact-info-card, .contact-form-card, .edu-card, .story-card, .cert-card, .timeline-card'
+    '.pillar-card, .project-card, .metric-card, .stat-card, .contact-info-card, .contact-form-card, .edu-card, .story-card, .cert-card, .timeline-card, .calc-results-card, .finops-calculator-wrap, .arch-visualizer-box'
   );
 
   tiltCards.forEach(card => {

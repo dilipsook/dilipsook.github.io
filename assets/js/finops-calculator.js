@@ -82,5 +82,36 @@
     setTimeout(updateSliderTrack, 60);
   });
 
+  // Smooth entrance count-up & slider glide when FinOps section comes into view
+  let animatedEntrance = false;
+  const finopsSection = document.getElementById('finops');
+  if (finopsSection && 'IntersectionObserver' in window) {
+    const entranceObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !animatedEntrance) {
+          animatedEntrance = true;
+          entranceObserver.disconnect();
+          const targetVal = 35000;
+          const startVal = 10000;
+          const startTime = performance.now();
+          const duration = 750;
+          function animateStep(now) {
+            const progress = Math.min((now - startTime) / duration, 1);
+            // Ease-out cubic
+            const ease = 1 - Math.pow(1 - progress, 3);
+            const currentVal = Math.round(startVal + (targetVal - startVal) * ease);
+            slider.value = currentVal;
+            updateCalculator();
+            if (progress < 1) {
+              requestAnimationFrame(animateStep);
+            }
+          }
+          requestAnimationFrame(animateStep);
+        }
+      });
+    }, { threshold: 0.15 });
+    entranceObserver.observe(finopsSection);
+  }
+
   updateCalculator();
 })();
