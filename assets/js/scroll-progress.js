@@ -326,5 +326,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // Initial draw
-  updateIndicators(currentY);
+  const initY = window.pageYOffset || document.documentElement.scrollTop;
+  updateIndicators(initY);
 });

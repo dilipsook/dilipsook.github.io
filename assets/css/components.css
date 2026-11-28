@@ -526,6 +526,30 @@
   white-space: nowrap;
   clip-path: none !important;
   cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-cinema-primary::after,
+.btn-luxury-primary::after,
+.btn-primary::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+  transform: skewX(-25deg);
+  pointer-events: none;
+  transition: none;
+}
+
+.btn-cinema-primary:hover::after,
+.btn-luxury-primary:hover::after,
+.btn-primary:hover::after {
+  left: 150%;
+  transition: all 0.65s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .btn-cinema-primary:hover,

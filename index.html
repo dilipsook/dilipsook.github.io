@@ -36,16 +36,24 @@
   <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png?v=20261122">
   <link rel="shortcut icon" href="assets/images/favicon.ico?v=20261122">
 
-  <!-- Google Fonts Preconnect -->
+  <!-- High-Speed CDN DNS Prefetch & Preconnect -->
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+  <link rel="dns-prefetch" href="https://fonts.gstatic.com">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
+  <!-- Preload Critical LCP Hero Image for Instant Paint -->
+  <link rel="preload" as="image" href="assets/images/profile/DSC_0004_web.jpg" type="image/jpeg" fetchpriority="high">
+
+  <!-- Google Fonts CDN: High-Speed Parallel Delivery with swap display -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=JetBrains+Mono:wght@400;500;600;700&display=swap">
+
   <!-- Stylesheets -->
-  <link rel="stylesheet" href="assets/css/main.css?v=20261123-apple-v1">
-  <link rel="stylesheet" href="assets/css/components.css?v=20261123-apple-v1">
-  <link rel="stylesheet" href="assets/css/animations.css?v=20261123-apple-v1">
-  <link rel="stylesheet" href="assets/css/swarm.css?v=20261123-apple-v1">
-  <link rel="stylesheet" href="assets/css/liquid-glass.css?v=20261123-apple-v1">
+  <link rel="stylesheet" href="assets/css/main.css?v=20261128-cdn-v1">
+  <link rel="stylesheet" href="assets/css/components.css?v=20261128-cdn-v1">
+  <link rel="stylesheet" href="assets/css/animations.css?v=20261128-cdn-v1">
+  <link rel="stylesheet" href="assets/css/swarm.css?v=20261128-cdn-v1">
+  <link rel="stylesheet" href="assets/css/liquid-glass.css?v=20261128-cdn-v1">
 </head>
 <body>
 
@@ -670,7 +678,7 @@
               <div>
                 <div class="project-top">
                   <div class="client-logo-box">
-                    <img src="assets/images/logos/johnson.svg" alt="Johnson &amp; Johnson">
+                    <img src="assets/images/logos/johnson.svg" alt="Johnson &amp; Johnson" loading="lazy" decoding="async">
                   </div>
                   <span class="impact-badge">Zero-Downtime Cutover</span>
                 </div>
@@ -703,7 +711,7 @@
               <div>
                 <div class="project-top">
                   <div class="client-logo-box">
-                    <img src="assets/images/logos/dhani.svg" alt="Dhani">
+                    <img src="assets/images/logos/dhani.svg" alt="Dhani" loading="lazy" decoding="async">
                   </div>
                   <span class="impact-badge" style="background: rgba(16, 185, 129, 0.15); color: #34d399;">$28,000 / Month Saved</span>
                 </div>
@@ -736,7 +744,7 @@
               <div>
                 <div class="project-top">
                   <div class="client-logo-box">
-                    <img src="assets/images/logos/loantap.svg" alt="LoanTap">
+                    <img src="assets/images/logos/loantap.svg" alt="LoanTap" loading="lazy" decoding="async">
                   </div>
                   <span class="impact-badge">Employee of Quarter Award</span>
                 </div>
@@ -769,7 +777,7 @@
               <div>
                 <div class="project-top">
                   <div class="client-logo-box">
-                    <img src="assets/images/logos/isro.png" alt="ISRO">
+                    <img src="assets/images/logos/isro.png" alt="ISRO" loading="lazy" decoding="async">
                   </div>
                   <span class="impact-badge">100-Seat Air-Gapped VDI</span>
                 </div>
@@ -802,7 +810,7 @@
               <div>
                 <div class="project-top">
                   <div class="client-logo-box">
-                    <img src="assets/images/logos/IAF.png" alt="Indian Air Force">
+                    <img src="assets/images/logos/IAF.png" alt="Indian Air Force" loading="lazy" decoding="async">
                   </div>
                   <span class="impact-badge">Defense Data Center</span>
                 </div>
@@ -835,7 +843,7 @@
               <div>
                 <div class="project-top">
                   <div class="client-logo-box">
-                    <img src="assets/images/logos/bbk.webp" alt="Biryani By Kilo">
+                    <img src="assets/images/logos/bbk.webp" alt="Biryani By Kilo" loading="lazy" decoding="async">
                   </div>
                   <span class="impact-badge">50K+ Concurrent Orders</span>
                 </div>
@@ -868,7 +876,7 @@
               <div>
                 <div class="project-top">
                   <div class="client-logo-box">
-                    <img src="assets/images/logos/ksrsac.jpg" alt="KSRSAC">
+                    <img src="assets/images/logos/ksrsac.jpg" alt="KSRSAC" loading="lazy" decoding="async">
                   </div>
                   <span class="impact-badge">45U SAN Fabric</span>
                 </div>
@@ -901,7 +909,7 @@
               <div>
                 <div class="project-top">
                   <div class="client-logo-box">
-                    <img src="assets/images/logos/serviceplus.svg" alt="ServicePlus">
+                    <img src="assets/images/logos/serviceplus.svg" alt="ServicePlus" loading="lazy" decoding="async">
                   </div>
                   <span class="impact-badge">Zero Data Loss DMS</span>
                 </div>
@@ -934,7 +942,7 @@
               <div>
                 <div class="project-top">
                   <div class="client-logo-box">
-                    <img src="assets/images/logos/navi.svg" alt="Navi">
+                    <img src="assets/images/logos/navi.svg" alt="Navi" loading="lazy" decoding="async">
                   </div>
                   <span class="impact-badge">Landing Zone Assessment</span>
                 </div>
@@ -994,7 +1002,7 @@
                   <span class="timeline-date">Oct 2026 – Present &nbsp;|&nbsp; Gurugram · Hybrid</span>
                 </div>
                 <div class="timeline-company">
-                  <img src="assets/images/logos/cognizant.svg" alt="Cognizant" style="height: 22px; object-fit: contain;">
+                  <img src="assets/images/logos/cognizant.svg" alt="Cognizant" style="height: 22px; object-fit: contain;" loading="lazy" decoding="async">
                   <span>Cognizant &nbsp;•&nbsp; <strong>Life Sciences Practice</strong></span>
                 </div>
                 <ul class="timeline-points">
@@ -1023,7 +1031,7 @@
                   <span class="timeline-date">Dec 2022 – Sep 2026 &nbsp;|&nbsp; Delhi</span>
                 </div>
                 <div class="timeline-company">
-                  <img src="assets/images/logos/insight.png" alt="Insight Enterprises" style="height: 22px; object-fit: contain;">
+                  <img src="assets/images/logos/insight.png" alt="Insight Enterprises" style="height: 22px; object-fit: contain;" loading="lazy" decoding="async">
                   <span>Hanu Software (now part of Insight Enterprises) &nbsp;•&nbsp; Enterprise Project: <strong>Johnson &amp; Johnson</strong></span>
                 </div>
                 <ul class="timeline-points">
@@ -1051,7 +1059,7 @@
                   <span class="timeline-date">Jan 2022 – Dec 2022 &nbsp;|&nbsp; Pune</span>
                 </div>
                 <div class="timeline-company">
-                  <img src="assets/images/logos/loantap.svg" alt="LoanTap" style="height: 22px; object-fit: contain;">
+                  <img src="assets/images/logos/loantap.svg" alt="LoanTap" style="height: 22px; object-fit: contain;" loading="lazy" decoding="async">
                   <span>LoanTap Financial Technology Pvt Ltd</span>
                 </div>
                 <ul class="timeline-points">
@@ -1078,7 +1086,7 @@
                   <span class="timeline-date">Mar 2020 – Jan 2022 &nbsp;|&nbsp; Bengaluru</span>
                 </div>
                 <div class="timeline-company">
-                  <img src="assets/images/logos/rapyder.png" alt="Rapyder" style="height: 22px; object-fit: contain;">
+                  <img src="assets/images/logos/rapyder.png" alt="Rapyder" style="height: 22px; object-fit: contain;" loading="lazy" decoding="async">
                   <span>Rapyder Cloud Solutions India Pvt Ltd</span>
                 </div>
                 <ul class="timeline-points">
@@ -1105,7 +1113,7 @@
                   <span class="timeline-date">May 2017 – Mar 2020 &nbsp;|&nbsp; Bengaluru</span>
                 </div>
                 <div class="timeline-company">
-                  <img src="assets/images/logos/cerebra.png" alt="Cerebra" style="height: 22px; object-fit: contain;">
+                  <img src="assets/images/logos/cerebra.png" alt="Cerebra" style="height: 22px; object-fit: contain;" loading="lazy" decoding="async">
                   <span>Cerebra Integrated Technologies Limited</span>
                 </div>
                 <ul class="timeline-points">
@@ -1215,11 +1223,11 @@
 
             <!-- Security & Network Engineering -->
             <div class="skill-item" data-group="security aws">
-              <img src="assets/images/cloud-icons/WAF.svg" alt="AWS WAF" class="skill-icon-img">
+              <img src="assets/images/cloud-icons/WAF.svg" alt="AWS WAF" class="skill-icon-img" loading="lazy" decoding="async">
               <span class="skill-name">AWS WAF &amp; Shield</span>
             </div>
             <div class="skill-item" data-group="security aws">
-              <img src="assets/images/cloud-icons/GuardDuty.svg" alt="AWS GuardDuty" class="skill-icon-img">
+              <img src="assets/images/cloud-icons/GuardDuty.svg" alt="AWS GuardDuty" class="skill-icon-img" loading="lazy" decoding="async">
               <span class="skill-name">AWS GuardDuty</span>
             </div>
             <div class="skill-item" data-group="security aws">
@@ -1235,7 +1243,7 @@
               <span class="skill-name">AWS IAM &amp; SCP Governance</span>
             </div>
             <div class="skill-item" data-group="security">
-              <img src="assets/images/cloud-icons/active-directory.svg" alt="Entra ID" class="skill-icon-img">
+              <img src="assets/images/cloud-icons/active-directory.svg" alt="Entra ID" class="skill-icon-img" loading="lazy" decoding="async">
               <span class="skill-name">Entra ID (Azure AD) SSO</span>
             </div>
             <div class="skill-item" data-group="security devops">
@@ -1281,39 +1289,39 @@
 
             <!-- AWS Cloud Services -->
             <div class="skill-item" data-group="aws">
-              <img src="assets/images/cloud-icons/EC2.svg" alt="AWS EC2" class="skill-icon-img">
+              <img src="assets/images/cloud-icons/EC2.svg" alt="AWS EC2" class="skill-icon-img" loading="lazy" decoding="async">
               <span class="skill-name">Amazon EC2 &amp; Graviton</span>
             </div>
             <div class="skill-item" data-group="aws">
-              <img src="assets/images/cloud-icons/Simple-Storage-Service.svg" alt="AWS S3" class="skill-icon-img">
+              <img src="assets/images/cloud-icons/Simple-Storage-Service.svg" alt="AWS S3" class="skill-icon-img" loading="lazy" decoding="async">
               <span class="skill-name">Amazon S3 &amp; Glacier</span>
             </div>
             <div class="skill-item" data-group="aws">
-              <img src="assets/images/cloud-icons/RDS.svg" alt="AWS RDS" class="skill-icon-img">
+              <img src="assets/images/cloud-icons/RDS.svg" alt="AWS RDS" class="skill-icon-img" loading="lazy" decoding="async">
               <span class="skill-name">AWS RDS &amp; Aurora Multi-AZ</span>
             </div>
             <div class="skill-item" data-group="aws">
-              <img src="assets/images/cloud-icons/Lambda.svg" alt="AWS Lambda" class="skill-icon-img">
+              <img src="assets/images/cloud-icons/Lambda.svg" alt="AWS Lambda" class="skill-icon-img" loading="lazy" decoding="async">
               <span class="skill-name">AWS Lambda Serverless</span>
             </div>
             <div class="skill-item" data-group="aws">
-              <img src="assets/images/cloud-icons/Virtual-Private-Cloud.svg" alt="AWS VPC" class="skill-icon-img">
+              <img src="assets/images/cloud-icons/Virtual-Private-Cloud.svg" alt="AWS VPC" class="skill-icon-img" loading="lazy" decoding="async">
               <span class="skill-name">Amazon VPC Subnetting</span>
             </div>
             <div class="skill-item" data-group="aws">
-              <img src="assets/images/cloud-icons/Elastic-Load-Balancing.svg" alt="AWS ELB" class="skill-icon-img">
+              <img src="assets/images/cloud-icons/Elastic-Load-Balancing.svg" alt="AWS ELB" class="skill-icon-img" loading="lazy" decoding="async">
               <span class="skill-name">ALB / NLB / ELB</span>
             </div>
             <div class="skill-item" data-group="aws">
-              <img src="assets/images/cloud-icons/Route-53.svg" alt="AWS Route 53" class="skill-icon-img">
+              <img src="assets/images/cloud-icons/Route-53.svg" alt="AWS Route 53" class="skill-icon-img" loading="lazy" decoding="async">
               <span class="skill-name">Amazon Route 53</span>
             </div>
             <div class="skill-item" data-group="aws">
-              <img src="assets/images/cloud-icons/CloudFront.svg" alt="AWS CloudFront" class="skill-icon-img">
+              <img src="assets/images/cloud-icons/CloudFront.svg" alt="AWS CloudFront" class="skill-icon-img" loading="lazy" decoding="async">
               <span class="skill-name">CloudFront CDN</span>
             </div>
             <div class="skill-item" data-group="aws">
-              <img src="assets/images/cloud-icons/CloudWatch.svg" alt="AWS CloudWatch" class="skill-icon-img">
+              <img src="assets/images/cloud-icons/CloudWatch.svg" alt="AWS CloudWatch" class="skill-icon-img" loading="lazy" decoding="async">
               <span class="skill-name">Amazon CloudWatch</span>
             </div>
             <div class="skill-item" data-group="aws">
@@ -1351,23 +1359,23 @@
 
             <!-- Microsoft Azure -->
             <div class="skill-item" data-group="azure">
-              <img src="assets/images/cloud-icons/VM.svg" alt="Azure VM" class="skill-icon-img">
+              <img src="assets/images/cloud-icons/VM.svg" alt="Azure VM" class="skill-icon-img" loading="lazy" decoding="async">
               <span class="skill-name">Azure Virtual Machines</span>
             </div>
             <div class="skill-item" data-group="azure">
-              <img src="assets/images/cloud-icons/Storage-Account.svg" alt="Azure Storage" class="skill-icon-img">
+              <img src="assets/images/cloud-icons/Storage-Account.svg" alt="Azure Storage" class="skill-icon-img" loading="lazy" decoding="async">
               <span class="skill-name">Azure Blob &amp; Data Lake</span>
             </div>
             <div class="skill-item" data-group="azure">
-              <img src="assets/images/cloud-icons/Azure-Migrate.svg" alt="Azure Migrate" class="skill-icon-img">
+              <img src="assets/images/cloud-icons/Azure-Migrate.svg" alt="Azure Migrate" class="skill-icon-img" loading="lazy" decoding="async">
               <span class="skill-name">Azure Migrate &amp; ASR</span>
             </div>
             <div class="skill-item" data-group="azure">
-              <img src="assets/images/cloud-icons/Monitor.svg" alt="Azure Monitor" class="skill-icon-img">
+              <img src="assets/images/cloud-icons/Monitor.svg" alt="Azure Monitor" class="skill-icon-img" loading="lazy" decoding="async">
               <span class="skill-name">Azure Monitor &amp; Log Analytics</span>
             </div>
             <div class="skill-item" data-group="azure finops">
-              <img src="assets/images/cloud-icons/Cost-Management.svg" alt="Azure Cost Management" class="skill-icon-img">
+              <img src="assets/images/cloud-icons/Cost-Management.svg" alt="Azure Cost Management" class="skill-icon-img" loading="lazy" decoding="async">
               <span class="skill-name">Azure Cost Management</span>
             </div>
             <div class="skill-item" data-group="azure">
@@ -1389,23 +1397,23 @@
 
             <!-- DevOps & IaC -->
             <div class="skill-item" data-group="devops">
-              <img src="assets/images/cloud-icons/terraform.png" alt="Terraform" class="skill-icon-img">
+              <img src="assets/images/cloud-icons/terraform.png" alt="Terraform" class="skill-icon-img" loading="lazy" decoding="async">
               <span class="skill-name">Terraform Enterprise IaC</span>
             </div>
             <div class="skill-item" data-group="devops">
-              <img src="assets/images/cloud-icons/kubernetes.svg" alt="Kubernetes EKS" class="skill-icon-img">
+              <img src="assets/images/cloud-icons/kubernetes.svg" alt="Kubernetes EKS" class="skill-icon-img" loading="lazy" decoding="async">
               <span class="skill-name">Kubernetes (EKS &amp; AKS)</span>
             </div>
             <div class="skill-item" data-group="devops">
-              <img src="assets/images/cloud-icons/docker.svg" alt="Docker" class="skill-icon-img">
+              <img src="assets/images/cloud-icons/docker.svg" alt="Docker" class="skill-icon-img" loading="lazy" decoding="async">
               <span class="skill-name">Docker Containerization</span>
             </div>
             <div class="skill-item" data-group="devops">
-              <img src="assets/images/cloud-icons/jenkins.jpeg" alt="Jenkins" class="skill-icon-img">
+              <img src="assets/images/cloud-icons/jenkins.jpeg" alt="Jenkins" class="skill-icon-img" loading="lazy" decoding="async">
               <span class="skill-name">Jenkins CI/CD Pipelines</span>
             </div>
             <div class="skill-item" data-group="devops">
-              <img src="assets/images/cloud-icons/github.png" alt="GitHub Actions" class="skill-icon-img">
+              <img src="assets/images/cloud-icons/github.png" alt="GitHub Actions" class="skill-icon-img" loading="lazy" decoding="async">
               <span class="skill-name">GitHub Actions Workflows</span>
             </div>
             <div class="skill-item" data-group="devops">
@@ -1431,11 +1439,11 @@
 
             <!-- FinOps & Cloud Economics -->
             <div class="skill-item" data-group="finops aws">
-              <img src="assets/images/cloud-icons/Cost-Explorer.svg" alt="AWS Cost Explorer" class="skill-icon-img">
+              <img src="assets/images/cloud-icons/Cost-Explorer.svg" alt="AWS Cost Explorer" class="skill-icon-img" loading="lazy" decoding="async">
               <span class="skill-name">AWS Cost Explorer &amp; CUR</span>
             </div>
             <div class="skill-item" data-group="finops aws">
-              <img src="assets/images/cloud-icons/Cost-Management.svg" alt="Savings Plans" class="skill-icon-img">
+              <img src="assets/images/cloud-icons/Cost-Management.svg" alt="Savings Plans" class="skill-icon-img" loading="lazy" decoding="async">
               <span class="skill-name">Savings Plans &amp; Reserved Instances</span>
             </div>
             <div class="skill-item" data-group="finops aws">
@@ -1457,11 +1465,11 @@
 
             <!-- Systems & Middleware Infrastructure -->
             <div class="skill-item" data-group="systems">
-              <img src="assets/images/cloud-icons/linux.png" alt="Linux" class="skill-icon-img">
+              <img src="assets/images/cloud-icons/linux.png" alt="Linux" class="skill-icon-img" loading="lazy" decoding="async">
               <span class="skill-name">Red Hat Enterprise Linux (RHEL)</span>
             </div>
             <div class="skill-item" data-group="systems">
-              <img src="assets/images/cloud-icons/windows-server.png" alt="Windows Server" class="skill-icon-img">
+              <img src="assets/images/cloud-icons/windows-server.png" alt="Windows Server" class="skill-icon-img" loading="lazy" decoding="async">
               <span class="skill-name">Windows Server 2016-2022</span>
             </div>
             <div class="skill-item" data-group="systems">
@@ -1594,7 +1602,7 @@
             
             <div class="cert-card reveal">
               <div>
-                <img src="assets/images/badges/awssa.png" alt="AWS Solutions Architect Associate" class="cert-badge-img">
+                <img src="assets/images/badges/awssa.png" alt="AWS Solutions Architect Associate" class="cert-badge-img" loading="lazy" decoding="async">
                 <div class="cert-vendor">Amazon Web Services</div>
                 <h3 class="cert-name">Solutions Architect – Associate</h3>
               </div>
@@ -1603,7 +1611,7 @@
 
             <div class="cert-card reveal reveal-delay-1">
               <div>
-                <img src="assets/images/badges/awssys.png" alt="AWS SysOps Administrator Associate" class="cert-badge-img">
+                <img src="assets/images/badges/awssys.png" alt="AWS SysOps Administrator Associate" class="cert-badge-img" loading="lazy" decoding="async">
                 <div class="cert-vendor">Amazon Web Services</div>
                 <h3 class="cert-name">SysOps Administrator – Associate</h3>
               </div>
@@ -1612,7 +1620,7 @@
 
             <div class="cert-card reveal reveal-delay-2">
               <div>
-                <img src="assets/images/badges/azureaa.png" alt="Azure Administrator Associate AZ-104" class="cert-badge-img">
+                <img src="assets/images/badges/azureaa.png" alt="Azure Administrator Associate AZ-104" class="cert-badge-img" loading="lazy" decoding="async">
                 <div class="cert-vendor">Microsoft Azure</div>
                 <h3 class="cert-name">Azure Administrator (AZ-104)</h3>
               </div>
@@ -1621,7 +1629,7 @@
 
             <div class="cert-card reveal reveal-delay-3">
               <div>
-                <img src="assets/images/badges/azurene.png" alt="Azure Network Engineer Associate AZ-700" class="cert-badge-img">
+                <img src="assets/images/badges/azurene.png" alt="Azure Network Engineer Associate AZ-700" class="cert-badge-img" loading="lazy" decoding="async">
                 <div class="cert-vendor">Microsoft Azure</div>
                 <h3 class="cert-name">Azure Network Engineer (AZ-700)</h3>
               </div>
@@ -1630,7 +1638,7 @@
 
             <div class="cert-card reveal reveal-delay-4">
               <div>
-                <img src="assets/images/badges/MCSA.png" alt="MCSA Windows Server 2016" class="cert-badge-img">
+                <img src="assets/images/badges/MCSA.png" alt="MCSA Windows Server 2016" class="cert-badge-img" loading="lazy" decoding="async">
                 <div class="cert-vendor">Microsoft Certified</div>
                 <h3 class="cert-name">MCSA: Windows Server 2016</h3>
               </div>
@@ -2092,22 +2100,22 @@
 
   </div>
 
-  <!-- Scripts -->
-  <script src="assets/js/audio-fx.js?v=20261123-apple-v1"></script>
-  <script src="assets/js/telemetry-hud.js?v=20261123-apple-v1"></script>
-  <script src="assets/js/command-palette.js?v=20261123-apple-v1"></script>
-  <script src="assets/js/spotlight.js?v=20261123-apple-v1"></script>
-  <script src="assets/js/canvas-network.js?v=20261123-apple-v1"></script>
-  <script src="assets/js/finops-calculator.js?v=20261123-apple-v1"></script>
-  <script src="assets/js/counter-animations.js?v=20261123-apple-v1"></script>
-  <script src="assets/js/card-tilt.js?v=20261123-apple-v1"></script>
-  <script src="assets/js/architecture-visualizer.js?v=20261123-apple-v1"></script>
-  <script src="assets/js/cloud-terminal.js?v=20261123-apple-v1"></script>
-  <script src="assets/js/scroll-progress.js?v=20261123-apple-v1"></script>
-  <script src="assets/js/blueprint-diagrams.js?v=20261123-apple-v1"></script>
-  <script src="assets/js/skills-reel.js?v=20261123-apple-v1"></script>
-  <script src="assets/js/swarm.js?v=20261123-apple-v1"></script>
-  <script src="assets/js/tab-presence.js?v=20261123-apple-v1"></script>
-  <script src="assets/js/main.js?v=20261123-apple-v1"></script>
+  <!-- Scripts (Deferred for High-Speed Asynchronous Parsing & Execution) -->
+  <script defer src="assets/js/audio-fx.js?v=20261128-cdn-v1"></script>
+  <script defer src="assets/js/telemetry-hud.js?v=20261128-cdn-v1"></script>
+  <script defer src="assets/js/command-palette.js?v=20261128-cdn-v1"></script>
+  <script defer src="assets/js/spotlight.js?v=20261128-cdn-v1"></script>
+  <script defer src="assets/js/canvas-network.js?v=20261128-cdn-v1"></script>
+  <script defer src="assets/js/finops-calculator.js?v=20261128-cdn-v1"></script>
+  <script defer src="assets/js/counter-animations.js?v=20261128-cdn-v1"></script>
+  <script defer src="assets/js/card-tilt.js?v=20261128-cdn-v1"></script>
+  <script defer src="assets/js/architecture-visualizer.js?v=20261128-cdn-v1"></script>
+  <script defer src="assets/js/cloud-terminal.js?v=20261128-cdn-v1"></script>
+  <script defer src="assets/js/scroll-progress.js?v=20261128-cdn-v1"></script>
+  <script defer src="assets/js/blueprint-diagrams.js?v=20261128-cdn-v1"></script>
+  <script defer src="assets/js/skills-reel.js?v=20261128-cdn-v1"></script>
+  <script defer src="assets/js/swarm.js?v=20261128-cdn-v1"></script>
+  <script defer src="assets/js/tab-presence.js?v=20261128-cdn-v1"></script>
+  <script defer src="assets/js/main.js?v=20261128-cdn-v1"></script>
 </body>
 </html>

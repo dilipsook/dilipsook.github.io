@@ -3,8 +3,6 @@
    Cinematic Aurora Noir Design System & Base Tokens
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
-
 :root {
   /* Color Palette - Apple Space Black & Pure Obsidian Keynote Palette */
   --bg-primary: #000000;
@@ -203,6 +201,12 @@ body {
   pointer-events: none;
   z-index: 2;
   opacity: 0.6;
+  transition: opacity 0.3s ease;
+}
+
+[data-theme="light"] #networkCanvas {
+  opacity: 0.38;
+  mix-blend-mode: multiply;
 }
 
 /* Page Wrapper */

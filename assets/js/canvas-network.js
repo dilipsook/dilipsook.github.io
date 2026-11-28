@@ -124,13 +124,6 @@
   window.addEventListener('click', (e) => {
     createRipple(e.clientX, e.clientY);
   });
-        const n2 = nodes[j];
-        if (n1 !== n2 && Math.hypot(n1.x - n2.x, n1.y - n2.y) < 170) {
-          spawnPacket(n1, n2, 0.035);
-        }
-      }
-    });
-  });
 
   // Sporadic data packets traversing the network
   function spawnPacket(n1, n2, customSpeed) {
